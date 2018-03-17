@@ -1,25 +1,38 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.navigation-bar {
+    margin-top: 0px;
+    /*padding: 0px;*/
+    margin-left: 0;
+    width: 100%;
     overflow: hidden;
     background-color: #333;
+    position: absolute;
 }
 
-li {
+nav a {
     float: left;
+    position: relative;
 }
-
+/*
 li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 14px;
     text-decoration: none;
+}*/
+
+.nav-text-item {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 14px;
+    text-decoration: none;
+    font-size:150%;
 }
 
-li a:hover {
-    background-color: #111;
+nav a : hover {
+    display: block;
+    background-color:  #000;
 }
 /* 
 li input {
@@ -30,22 +43,32 @@ li input {
     text-decoration: none;
 } */
 
-.logo-image {
-    size:30%;
+.top-contact-icons {
+    float: right;
+    display: block;
+    margin-right: 15px;
+    overflow: hidden;
 }
-div.background {
-    background-color:whitesmoke;
+
+.logo-image {
+    /*size:30%;*/
+    padding: 10px 10px;
+    width: 102.666px;
+    height: 33.666px;
 }
 
 div.header {
-    background-color:black;
+    background-color: #333;
     top:0;
     left:0;
+    width: 100%;
+
+    position: absolute;
+    position: fixed;
 }
   
  .search-container {
     position:relative;
-    float: right;
   }
 
   
@@ -87,6 +110,14 @@ div.header {
     left:45%;
   }
   
- 
+ li.nav-item {
+    position: relative;
+    padding: 5px;
+
+ }
+
+ p {
+
+ }
 
   

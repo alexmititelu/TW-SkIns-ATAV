@@ -1,0 +1,32 @@
+.new-account-body {
+    /* padding-left: auto; */
+    /* display: block;
+    /* margin:0px auto; 
+    display: box;
+    align-self: center; */
+    width: 40%;
+    position: absolute;
+    left:43.5%;
+    right: 50%;
+    /* padding-left: 43.5%;
+    padding-right: 50%; */
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    font-weight: bold;
+}
+
+input {
+    border: 1px solid;
+    border-radius: 8px;
+    border-color: rgba(0, 0, 0, 0.7);
+    width: 35%;
+    height: 18px;
+    font-size: 17px;
+    
+}
