@@ -27,13 +27,11 @@
 	-moz-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 	-o-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1); */
 }
-/* 
-.header img {
+
+/* .header img {
     width: 154px;
     height: 55.5px;
-    
-    margin: 0;
-	float: left;
+    position: absolute;
 } */
 .header h1 span {
 	color: #192638;
@@ -228,8 +226,8 @@ li input {
     margin-right: 15px;
     overflow: hidden;
 }
-
-/* .logo-image {
+/* 
+.logo-image {
     
     position: fixed;
     padding: 0px 0px;
