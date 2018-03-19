@@ -306,10 +306,6 @@ div.header {
     background-color: grey;
   }
 
- .contact {
-     float:right;
-     margin-right: 10%; 
- }
 
  .socialMedia {
 	list-style: none;
@@ -319,6 +315,9 @@ div.header {
  }
 
 footer {
+    width: 100%;
+    margin: 0;
+    padding: 0;
     background: rgba(0, 0, 0, 0.7);
 }
 
@@ -339,6 +338,30 @@ footer h4 {
     width: 100%;
 	z-index: 5;
 }
+.container-footer {
+    display: block;
+    width: 100%;
+}
 
+.left-footer {
+    /* display: inline-block; */
+    margin-left: 0px;
+    width: 33.33%;
+}
+
+.center-footer {
+    width: 33.33%;
+    margin-left: 43.5%;
+    margin-right: auto;
+}
+
+.right-footer {
+    width: 33.33%;
+    display: inline-block;
+    /* display: inline; */
+    /* position: relative; */
+    /* float: right; */
+    margin-left: 66.67%;
+}
 
 
