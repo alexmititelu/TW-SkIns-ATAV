@@ -284,11 +284,11 @@ div.header {
         top:10;
   }
 
-  footer {
+  /* footer {
     position:fixed;
     bottom:0;
     left:45%;
-  }
+  } */
   
  li.nav-item {
     position: relative;
@@ -300,4 +300,45 @@ div.header {
 
  }
 
- 
+ #map {
+    width: 300px;
+    height: 200px;
+    background-color: grey;
+  }
+
+ .contact {
+     float:right;
+     margin-right: 10%; 
+ }
+
+ .socialMedia {
+	list-style: none;
+ }
+ .socialMedia li {
+     display: inline-block;
+ }
+
+footer {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+footer h4 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color : #D7DAE5;
+    text-align: center;
+    padding: 20px;
+}
+
+.footer {
+    /* margin-bottom: 0%;
+    margin-top: auto; */
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 1000px;
+    /* position: absolute; */
+    width: 100%;
+	z-index: 5;
+}
+
+
+

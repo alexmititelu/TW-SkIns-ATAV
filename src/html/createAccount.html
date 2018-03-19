@@ -17,6 +17,7 @@
 </head>
 
 <body>
+    <div></div>
     <div class="header">
         <div class="center">
             <h1>Skillz'
@@ -25,19 +26,19 @@
 
             <ul class="menu">
                 <li>
-                    <a href="../index.html">Home</a>
+                    <a href="../../index.html">Home</a>
                 </li>
                 <li>
-                    <a href="src/html/courses.html">Free</a>
+                    <a href="courses.html">Free</a>
                 </li>
                 <li>
-                    <a href="src/html/courses.html">Paid</a>
+                    <a href="courses.html">Paid</a>
                 </li>
                 <li>
-                    <a href="src/html/achievements.html">My Achivements</a>
+                    <a href="achievements.html">My Achivements</a>
                 </li>
                 <li>
-                    <a href="src/html/library.html">My Library</a>
+                    <a href="library.html">My Library</a>
                     <!-- </li> -->
                     <!-- PT BUTON LOGIN DE AICI -->
 
@@ -94,53 +95,57 @@
 
     <!-- <img src="../images/skinsred.png"/> -->
     <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+    <!-- <div class="bg-color"></div> -->
+    <div class="bg-image">
+        <img class="stickman-image" src="../images/blue_stickman.png"/>
+        </div>
     <div class="new-account-body">
-        <h1>Join SkIns</h1>
+        <h1 >Join &nbsp;</h1><h1 class="name-initial">S</h1><h1>k</h1><h1 class="name-initial">I</h1><h1>ns</h1>
         <p>The best way to learn and improve your knowledge</p>
 
         <h5>Create your personal account</h5>
 
         <form method="POST" autocomplete="on">
             <p>Username</p>
-            <input name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" 
+            <input class="new-account-input" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" 
             title="Can contain only letters or numbers" required/>
             <p>First name</p>
-            <input name="first_name" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" 
+            <input class="new-account-input" name="first_name" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" 
             title="Can contain only lower or upper characters from the english alphabet" required/>
             <p>Last name</p>
-            <input name="last_name" type="text" maxlength="20" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*" 
+            <input class="new-account-input" name="last_name" type="text" maxlength="20" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*" 
             title="Can contain only lower or upper characters from the english alphabet" required/>
 
             <p>Phone number</p>
-            <input name="phone" type="text" pattern="[0-9]{10}" title="Must have 10 digits"/>
+            <input class="new-account-input" name="phone" type="text" pattern="[0-9]{10}" title="Must have 10 digits"/>
 
             <p>Email</p>
-            <input name="email" type="email" placeholder="mail@domain.com" maxlength="30" required/>
+            <input class="new-account-input" name="email" type="email" placeholder="mail@domain.com" maxlength="30" required/>
             <p>Password</p>
-            <input name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
+            <input class="new-account-input" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
             <p>Confirm Password</p>
-            <input name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+            <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" required/>
 
             <p>Gender</p>
-            <select name="gender" required>
+            <select class="new-account-input" name="gender" required>
                 <option value="" selected disabled hidden>Choose here</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
             <p>Tell us your interests</p>
-            <textarea name="interests" placeholder="Enumerate your interests: music,health,machine learning etc." maxlength="80" pattern="[A-Z\ a-z]"></textarea>
+            <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc." maxlength="80" pattern="[A-Z\ a-z]"></textarea>
 
-            <label for="subscribe"></label>
+            <label class="new-account-input" for="subscribe"></label>
             </br>
             <button type="submit">Create account</button>
             <button type="reset">Reset</button>
 
         </form>
     </div>
-
 </body>
-<footer>
+
+
     <!-- <script language="javascript" type="text/javascript" src="../shared/footer.html"></script> -->
 </footer>
 
