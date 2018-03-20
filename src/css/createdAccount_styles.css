@@ -36,7 +36,74 @@ a i {
     color : #192638
 }
 
-body {
+/* body { */
     /* background: linear-gradient(#67a3aa,#192638); */
     /* height:400px; */
+/* } */
+
+@media(max-width:965px) {
+    .sent-mail {
+        margin: auto;
+        width: 60%;
+        /* border: 3px solid green; */
+        padding: 40px;
+        padding-left: 100px;
+    }
+    div img {
+        margin-left: 35%;
+        width:30%;
+        height:30%;
+    }
+    h1 {
+        font-size: 200%;
+    }
+
+    h2 {
+        font-size: 150%;
+    }
+}
+
+
+@media(max-width:703px) {
+    .sent-mail {
+        margin: auto;
+        width: 60%;
+        /* border: 3px solid green; */
+        padding: 40px;
+        padding-left: 80px;
+    }
+    div img {
+        margin-left: 35%;
+        width:40%;
+        height:40%;
+    }
+    h1 {
+        font-size: 170%;
+    }
+
+    h2 {
+        font-size: 130%;
+    }
+}
+
+@media(max-width:555px) {
+    .sent-mail {
+        margin: auto;
+        width: 60%;
+        /* border: 3px solid green; */
+        padding: 40px;
+        padding-left: 90px;
+    }
+    div img {
+        margin-left: 35%;
+        width:40%;
+        height:40%;
+    }
+    h1 {
+        font-size: 130%;
+    }
+
+    h2 {
+        font-size: 100%;
+    }
 }
