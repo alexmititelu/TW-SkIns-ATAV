@@ -355,6 +355,13 @@ footer #rightFooter h5 {
     width: 100%;
     height: 235px;
     background: rgba(0, 0, 0, 0.7);
+    /* test */
+     /* clear: both; */
+    /* position: relative; */
+    z-index: 4;
+    /* height: 3em; */
+    margin-bottom: 0em;
+    /* margin-top: 1000px; */
 }
 
 .lcr-footer {
@@ -373,12 +380,12 @@ footer #rightFooter h5 {
 .left-footer {
     display: table-cell;
     margin-left: 0px;
-    width: 33.33%;
+    width: 23.33%;
 }
 
 .center-footer {
     display: table-cell;
-    width: 33.33%;
+    width: 20.33%;
     margin-left: 43.5%;
     margin-right: auto;
 }
@@ -407,12 +414,13 @@ footer #rightFooter h5 {
  }
 
  #leftFooter {
-    padding-left: 3%; 
+     /* margin-left: 1px; */
+    padding-left: 1%; 
  }
 
  #centralFooter {
-     padding-left: 7%;
-     margin: 0 auto;
+     padding-left: 5%;
+     /* margin: 0 auto; */
  }
 
  #rightFooter {
@@ -421,3 +429,11 @@ footer #rightFooter h5 {
  }
 
  
+.socialMediaItem {
+    width: 30px;
+    height: 30px;
+    padding: 15px;
+    border: #192638 solid;
+    background: #192638;
+    border-radius: 50%;
+}
