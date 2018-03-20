@@ -7,8 +7,9 @@
     <title>New account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/createAccount_styles.css" />
     <link rel="stylesheet" type="text/css" href="../shared/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/createAccount_styles.css" />
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <center>
@@ -101,11 +102,12 @@
         </div>
     <div class="new-account-body">
         <h1 >Join &nbsp;</h1><h1 class="name-initial">S</h1><h1>k</h1><h1 class="name-initial">I</h1><h1>ns</h1>
-        <p>The best way to learn and improve your knowledge</p>
+        <p class"motto">The best way to learn and improve your knowledge</p>
 
         <h5>Create your personal account</h5>
 
-        <form method="POST" autocomplete="on">
+        <!-- <form method="POST" autocomplete="on" style="display: block" action="javascript:alert(this === window);"> -->
+                <form method="POST" autocomplete="on" style="display: block" action="createdAccount.html">
             <p>Username</p>
             <input class="new-account-input" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" 
             title="Can contain only letters or numbers" required/>
@@ -125,7 +127,22 @@
             <input class="new-account-input" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
             <p>Confirm Password</p>
             <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters" required/>
+            onchange="checkIfPasswordsMatch" required/>
+            <!-- <div class="registrationFormAlert" id="divCheckPasswordMatch"></div> -->
+
+            <!-- <script>
+                function checkIfPasswordsMatch() {
+    var password = $("#password").val();
+    var confirmPassword = $("#confirm_password").val();
+
+    if (password != confirmPassword) {
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+        alert("passwords must match");
+    } else {
+        $("#divCheckPasswordMatch").html("Passwords match.");
+    }
+}
+            </script> -->
 
             <p>Gender</p>
             <select class="new-account-input" name="gender" required>
@@ -140,6 +157,22 @@
             </br>
             <button type="submit">Create account</button>
             <button type="reset">Reset</button>
+            <p id="afterSubmitMessage"></p>
+            
+            <!-- <script>
+
+                function myFunction() {
+                    var x = document.getElementById("createAccountForm");
+                    var y = document.getElementById("afterSubmitMessage");
+                    if (x.style.display === "block") {
+                        x.style.display = "none";
+                        document.getElementById("afterSubmitMessage").innerHTML = "Welcome to SkIns";
+                         y.style.display = "block";
+                     } else { 
+                    //     x.style.display = "none";
+                    // }
+                }
+            </script> -->
 
         </form>
     </div>
