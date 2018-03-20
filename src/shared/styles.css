@@ -300,12 +300,6 @@ div.header {
 
  }
 
- #map {
-    width: 300px;
-    height: 200px;
-    background-color: grey;
-  }
-
 
  .socialMedia {
 	list-style: none;
@@ -327,6 +321,18 @@ footer h4 {
     text-align: center;
     padding: 20px;
 }
+footer h5 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color : #D7DAE5;
+    text-align: center;
+    padding: 14px;
+}
+
+footer #rightFooter h5 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color : #D7DAE5;
+    text-align: center;
+}
 
 .footer {
     /* margin-bottom: 0%;
@@ -334,34 +340,84 @@ footer h4 {
     margin-bottom: 0;
     margin-left: 0;
     margin-top: 1000px;
+    margin: 0px;
+    display: block;
+    width: 100%;
+    height: 235px;
+    background: rgba(0, 0, 0, 0.7);
     /* position: absolute; */
     width: 100%;
 	z-index: 5;
 }
 .container-footer {
+    margin: 0px;
     display: block;
     width: 100%;
+    height: 235px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.lcr-footer {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+
+.lcr-footer-element {
+    display: table-cell;
+    width: 33.33%;
+    /* display: inline-block; */
 }
 
 .left-footer {
-    /* display: inline-block; */
+    display: table-cell;
     margin-left: 0px;
     width: 33.33%;
 }
 
 .center-footer {
+    display: table-cell;
     width: 33.33%;
     margin-left: 43.5%;
     margin-right: auto;
 }
 
 .right-footer {
+    display: table-cell;
+    /* display: block; */
     width: 33.33%;
-    display: inline-block;
+    /* display: inline-block; */
     /* display: inline; */
     /* position: relative; */
     /* float: right; */
-    margin-left: 66.67%;
+    /* margin-left: 66.67%; */
+    
+    /* float:right; */
 }
 
 
+#map {
+    /* display: block; */
+    /* position: relative; */
+   width: 250px;
+   height: 130px;
+   /* background-color: grey; */
+   /* margin-bottom: 200px; */
+ }
+
+ #leftFooter {
+    padding-left: 3%; 
+ }
+
+ #centralFooter {
+     padding-left: 7%;
+     margin: 0 auto;
+ }
+
+ #rightFooter {
+     padding-left: 12%; 
+     padding-right: 3%;
+ }
+
+ 
