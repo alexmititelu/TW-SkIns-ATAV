@@ -10,67 +10,67 @@
     <link rel="stylesheet" type="text/css" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body bgcolor="#032E37">
 
-        <div class="header">
-                <div class="center">
-                    <h1>Skillz'
-                        <span>o</span>'Skillz</h1>
-                        <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
-        
-                    <ul class="menu">
-                        <li>
-                            <a href="../../index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="courses.html">Free</a>
-                        </li>
-                        <li>
-                            <a href="courses.html">Paid</a>
-                        </li>
-                        <li>
-                            <a href="achievements.html">My Achivements</a>
-                        </li>
-                        <li>
-                            <a href="library.html">My Library</a>
-                            <!-- </li> -->
-                            <!-- PT BUTON LOGIN DE AICI -->
-        
-                            <!-- pana aici!!!!  -->
-                            <!-- <li>
+    <div class="header">
+        <div class="center">
+            <h1>Skillz'
+                <span>o</span>'Skillz</h1>
+            <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
+
+            <ul class="menu">
+                <li>
+                    <a href="../../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="courses.html">Free</a>
+                </li>
+                <li>
+                    <a href="courses.html">Paid</a>
+                </li>
+                <li>
+                    <a href="achievements.html">My Achivements</a>
+                </li>
+                <li>
+                    <a href="library.html">My Library</a>
+                    <!-- </li> -->
+                    <!-- PT BUTON LOGIN DE AICI -->
+
+                    <!-- pana aici!!!!  -->
+                    <!-- <li>
                                     <a href="#">
                                         <i class="fa fa-gear fa-2x gear"></i>
                                     </a>
                                 </li> -->
-                            <!-- <li> -->
+                    <!-- <li> -->
+                    <li>
+                        <a href="#">LOGIN</a>
+                    </li>
+
+                    <li>
+                        <button class="settings" onclick="myFunction()">
+                            <i class="fa fa-gear fa-2x gear"></i>
+                        </button>
+
+                        <ul class="submenu" id="dropdownSettings">
                             <li>
-                                <a href="#">LOGIN</a>
+                                <a href="profile.html">Profil</a>
                             </li>
-        
                             <li>
-                                <button class="settings" onclick="myFunction()">
-                                    <i class="fa fa-gear fa-2x gear"></i>
-                                </button>
-        
-                                <ul class="submenu" id="dropdownSettings">
-                                    <li>
-                                        <a href="profile.html">Profil</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Paymant method</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Something</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Logout</a>
-                                    </li>
-                                </ul>
+                                <a href="#">Paymant method</a>
                             </li>
-                    </ul>
-                    <div class="clear"></div>
-                </div>
-            </div>
+                            <li>
+                                <a href="#">Something</a>
+                            </li>
+                            <li>
+                                <a href="#">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
         
             <!-- script button -->
         <!-- 
@@ -92,11 +92,130 @@
             
     
     <!-- Body-ul din pagina de My Profile-->
+<hr color="#6C7A82" style="margin-top:7%; width: 100%">
 
+<img src="../images/profile_images/LOGOPROFILE2.png" class="logo_profile">
 
+<div class="tot">
+<div class="username">
+    <h4>Username</h4>
+    <p>You can change your username, which impacts how you sign in.</p>
+    <form action="">
+            <input type="text">
+            <i class="fa fa-user" style="font-size:18px" aria-hidden="true"></i>
+            <input type="submit" value="Update">
+    </form>
+</div>
+<hr size="1" color="#D9D9D9" style="width: 50%;">
+<div class="password">
+    <h4>Password</h4>
+    <p>Choose another password that you like and is easier to remember.</p>
+    <form action="">
+            <input type="text">
+            <i class="fa fa-unlock-alt" style="font-size:18px" aria-hidden="true"></i>
+            <input type="submit" value="Update"> 
+    </form>
+</div>
+<hr size="1" color="#D9D9D9" style="width: 50%;">
 
+<div class="email">
+    <h4>E-Mail</h4>
+    <p>Change your e-mail to continue to receive account updates and newsletters. </p>
+    <form action="">
+            <input type="text">
+            <i class="fa fa-envelope" style="font-size:18px" aria-hidden="true"></i>
+            <input type="submit" value="Update">    
+    </form>
+</div>
+<hr size="1" color="#D9D9D9" style="width: 50%;">
+
+<div class="personalData">
+    <h4>Personal Data</h4>
+    <form action="">
+        <label>First Name</label>
+        <input type="text" placeholder="Enter your First Name">
+        <hr color="#032E37">
+        <label>Last Name</label>
+        <input type="text" placeholder="Enter your Last Name">
+        <hr color="#032E37">
+        <label>Address</label>
+        <input type="text" placeholder="Enter your Address">
+        <hr color="#032E37">
+        <label>Country</label>
+        <input type="text" placeholder="Enter your Country">
+        <hr color="#032E37">
+        <label>Telephone</label>
+        <input type="text" placeholder="Enter your Phone Number">
+        <hr color="#032E37">
+        <label>Birth Date</label>
+        <div class="wrapper">
+        <select>
+            <option>Day</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+        <select>
+            <option>Month</option>
+            <option>January</option>
+            <option>February</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+            <option>July</option>
+            <option>August</option>
+            <option>September</option>
+            <option>October</option>
+            <option>November</option>
+            <option>December</option>
+        </select>
+        <select>
+            <option>Year</option>
+            <option>2000</option>
+            <option>1999</option>
+            <option>1998</option>
+            <option>1997</option>
+            <option>1996</option>
+        </select>
+        
+        <input type="submit" value="Save Personal Data"> 
+    </div>
+    </form>
+</div>
+<hr size="1" color="#D9D9D9" style="width: 50%;">
+
+<div class="billingData">
+        <h4>Billing Data</h4>
+        <form action="">
+    
+                <div class="cardNumber">
+                        <input type="text" placeholder="Card Number">
+                        <i class="fa fa-credit-card" style="font-size:18px" aria-hidden="true"></i>
+                </div>
+                <hr color="#032E37">
+                <div class="expiryDate">
+                        <input type="text" placeholder="Month / Year">  
+                        <i class="fa fa-calendar-o" style="font-size:18px" aria-hidden="true"></i>
+                </div>
+                
+                <div class="CVCSecurity">
+                        <input type="text" placeholder="CVC">
+                        <i class="fa fa-shield" style="font-size:18px" aria-hidden="true"></i>       
+                </div>
+                <hr color="#032E37">
+                <input type="submit" value="Save Credit Card"> 
+        </form>
+    </div>
     <!-- end of Body -->
-
+</div>
     
 </body>
 <footer>
