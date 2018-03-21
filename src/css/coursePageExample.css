@@ -1,0 +1,13 @@
+.course-body {
+    padding-top: 150px;
+    width: 80%;
+    background: linear-gradient(#67a3aa, #D7DAE5,#67a3aa);
+    height:1700px;   
+    margin: auto;
+    color: #192638;
+}
+
+.course-body {
+    padding-left: 4%;
+    padding-right: 4%;
+}
