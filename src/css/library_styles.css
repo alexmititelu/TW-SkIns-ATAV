@@ -93,17 +93,16 @@
         font-size: 150%;
     }
 }
-
 .upper{
     display: grid;
     grid-template-columns: 100%;
-    height: 200px;
-    width: 100%;
+    height: 100%;
+    width: 100px;
 }
 .image{
     grid-column: 1/2;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
 }
 .box-content{
     display: grid;
@@ -111,12 +110,6 @@
 }
 .course-text{
     grid-column: 2/3;
-}
-.price{
-    color: red;
-    grid-column: 1/2;
-    width: 50%;
-    height: 15%;
 }
 .buton{
     grid-column: 3/4;

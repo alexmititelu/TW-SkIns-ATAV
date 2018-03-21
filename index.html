@@ -5,75 +5,85 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HOME</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <!-- <script language="javascript" type="text/javascript" src="src/shared/header.html"></script> -->
+    
+    
     <link rel="stylesheet" type="text/css" media="screen" href="src/css/index_styles.css" />
-    <link rel="stylesheet" type="text/css" href="src/shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
 </head>
 
 <body>
 
     <div class="header">
         <div class="center">
-            <h1>Skillz'
-                <span>o</span>'Skillz</h1>
-            <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
-
+            <h1>Skillz'<span>o</span>'Skillz</h1>
+    
             <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Free</a></li>
+                <li><a href="#">Paid</a></li>
+                <li><a href="#">My Achivements</a></li>
+                <li><a href="#">My Projects</a></li>
                 <li>
-                    <a href="index.html">Home</a>
+                    <div>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
+    
+                        <div id="id01" class="modal">
+                          
+                          <form class="modal-content animate" action="/action_page.php">
+                            <div class="imgcontainer">
+                              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                              <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg" alt="Avatar" class="avatar">
+                            </div>
+                        
+                            <div class="container">
+                              <label for="uname"><b>Username</b></label>
+                              <input type="text" placeholder="Enter Username" name="uname" required>
+                        
+                              <label for="psw"><b>Password</b></label>
+                              <input type="password" placeholder="Enter Password" name="psw" required>
+                                
+                              <button type="submit" class="button1">Login</button>
+                              <label>
+                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                              </label>
+                            </div>
+                        
+                            <div class="container">
+                              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                              <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
                 </li>
-                <li>
-                    <a href="src/html/courses.html">Free</a>
+                <li><a href="#"><i class="fa fa-gear fa-2x gear"></i></a>
+                            <ul class="submenu">
+                                  <li><a href="#">Profil</a></li>
+                                  <li><a href="#">Paymant method</a></li>
+                                  <li><a href="#">Something</a></li>
+                                     <li><a href="#">Logout</a></li>
+                               </ul>
                 </li>
-                <li>
-                    <a href="src/html/courses.html">Paid</a>
-                </li>
-                <li>
-                    <a href="src/html/achievements.html">My Achivements</a>
-                </li>
-                <li>
-                    <a href="src/html/library.html">My Library</a>
-                    <!-- </li> -->
-                    <!-- PT BUTON LOGIN DE AICI -->
-
-                    <!-- pana aici!!!!  -->
-                    <!-- <li>
-                                    <a href="#">
-                                        <i class="fa fa-gear fa-2x gear"></i>
-                                    </a>
-                                </li> -->
-                    <!-- <li> -->
-                    <li>
-                        <a href="#">LOGIN</a>
-                    </li>
-
-                    <li>
-                        <button class="settings" onclick="myFunction()">
-                            <i class="fa fa-gear fa-2x gear"></i>
-                        </button>
-
-                        <ul class="submenu" id="dropdownSettings">
-                            <li>
-                                <a href="#">Profil</a>
-                            </li>
-                            <li>
-                                <a href="#">Paymant method</a>
-                            </li>
-                            <li>
-                                <a href="#">Something</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
             </ul>
             <div class="clear"></div>
         </div>
     </div>
+    
+    <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+    <!-- Body-ul din pagina de HOME-->
+    <div class="desc">
+        <div class="center">
+            <span class="up">Courses for validation of skills </span><br>
+            <span class="down">And payment multiplication </span>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!-- end of Body -->
 
     <!-- script button -->
     <!-- 
@@ -95,18 +105,80 @@
 
 
 
-    <!-- Body-ul din pagina de HOME-->
+    
 
-    <p> verau acasa ca sunt racit si ma doare capul si nu am chef de html si cica nu e fain sa folosesti php, atatea dileme....of</p>
+    <footer class="container-footer">
+        <!--           
+        <h4>Copyright 2018, ATAV
+            <br>All Rights Reserved</h4> -->
+
+        <div class="lcr-footers">
+            <!--lefct center right footers -->
+            <div class="lcr-footer-element" id="leftFooter">
+                <h5>Phone number: 0747 815 389</h5>
+                <h5>Email: contact@skin.com </h5>
+                <h5>Fax: 0232 264 385</h5>
+            </div>
 
 
-    <!-- end of Body -->
+
+            <div class="lcr-footer-element" id="centralFooter">
+                    <ul class="socialMedia">
+                        <li style="display:block">
+                            <h4>Copyright 2018, ATAV
+                                <br>All Rights Reserved</h4>
+
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/">
+                                <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/">
+                                <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/">
+                                <i class="fa fa-youtube fa-2x" style="color:red;"></i>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+
+            <div class="lcr-footer-element" id="rightFooter">
+                <h5>Adress:</h5>
+                <div id="map"></div>
+                <script>
+                    function initMap() {
+                        var uluru = { lat: 47.175240, lng: 27.575136 };
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 15,
+                            center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                            position: uluru,
+                            map: map
+                        });
+                    }
+                </script>
+                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
+                </script>
+
+            </div>
+        </div>
+
+
+
+    </footer>
 
 
 
 </body>
-<footer>
+<!-- <footer>
     <script language="javascript" type="text/javascript" src="src/shared/footer.html"></script>
-</footer>
+</footer> -->
 
 </html>
