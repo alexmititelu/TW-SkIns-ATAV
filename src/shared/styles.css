@@ -313,6 +313,10 @@ div.header {
     left:45%;
   } */
  
+/* 
+  body > div.header > div > nav > div:nth-child(7) > button > i{
+    font-size:2.8vw;   
+} */
 
  @media(max-width:945px) {
     .header h1 {
@@ -353,6 +357,11 @@ div.header {
 
     .menu {
         margin-top:-1%;
+    }
+
+
+    body > div.header > div > nav > div:nth-child(7) > button > i{
+        font-size:3vw;   
     }
 }
 
@@ -398,6 +407,11 @@ div.header {
     .menu {
         margin-top:-1%;
     }
+
+
+    body > div.header > div > nav > div:nth-child(7) > button > i{
+        font-size:3vw;   
+    }
 }
 
 
@@ -438,6 +452,10 @@ div.header {
     .menu {
         margin-top:-2%;
     }
+
+    body > div.header > div > nav > div:nth-child(7) > button > i{
+        font-size:3vw;   
+    }
 }
 
 
@@ -472,16 +490,20 @@ div.header {
         margin-top:-1.2em;
         font-size:10px;
     }
-    /* .fa-2x {
+    .fa-2x {
         font-size: 1em;
-    } */
-/* 
+    }
+
     .settingButton {
         font-size: 1em;   
-    } */
+    }
 
     .menu {
         margin-top:-2%;
+    }
+
+    body > div.header > div > nav > div:nth-child(7) > button > i{
+        font-size:3vw;   
     }
 }
 
@@ -492,7 +514,6 @@ div.header {
         margin-left: -11%;
         font-size: 8px;
     }
-
     .menu div > a {
         height: 8px;
         line-height: 8px;
@@ -517,13 +538,13 @@ div.header {
         margin-top:-1.9em;
         font-size:7px;
     }
-    /* .fa-2x {
+    .fa-2x {
         font-size: 1em;
-    } */
-/* 
+    }
+
     .settingButton {
         font-size: 1em;   
-    } */
+    }
 
     .menu {
         margin-top:-2%;
@@ -532,6 +553,12 @@ div.header {
     .menu > div {
         padding-top: 0px;
     }
+
+
+    body > div.header > div > nav > div:nth-child(7) > button > i{
+        font-size:3vw;   
+    }
+
 }
  /* FOOOOOOOTER */
 
