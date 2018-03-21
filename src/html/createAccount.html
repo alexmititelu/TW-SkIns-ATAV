@@ -12,9 +12,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <center>
-        <h1>HEADER</h1>
-    </center>
+    
+        <!-- <h1>HEADER</h1> -->
+    
 </head>
 
 <body>
@@ -102,7 +102,7 @@
     <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
     <!-- <div class="bg-color"></div> -->
     <div class="bg-image">
-        <img class="stickman-image" src="../images/blue_stickman.png" />
+        <img class="stickman-image" src="../images/blue_stickman.png" alt="" />
     </div>
     <div class="new-account-body">
         <h1>Join &nbsp;</h1>
@@ -110,7 +110,7 @@
         <h1>k</h1>
         <h1 class="name-initial">I</h1>
         <h1>ns</h1>
-        <p class "motto">The best way to learn and improve your knowledge</p>
+        <p class="motto">The best way to learn and improve your knowledge</p>
 
         <h5>Create your personal account</h5>
 
@@ -160,10 +160,15 @@
             </select>
             <p>Tell us your interests</p>
             <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc."
-                maxlength="80" pattern="[A-Z\ a-z]"></textarea>
+                maxlength="80"></textarea>
 
-            <label class="new-account-input" for="subscribe"></label>
-            </br>
+            <!-- <label class="new-account-input" for="subscribe"></label> -->
+            <div>
+    
+                <label for="subscribeNews"><p>Subscribe to newsletter?</p></label>
+                <input class="new-account-input" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+            </div>
+            <br/>
             <button type="submit">Create account</button>
             <button type="reset">Reset</button>
             <p id="afterSubmitMessage"></p>
@@ -189,6 +194,6 @@
 
 
 <!-- <script language="javascript" type="text/javascript" src="../shared/footer.html"></script> -->
-</footer>
+
 
 </html>

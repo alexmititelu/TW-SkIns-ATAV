@@ -461,3 +461,51 @@ footer #rightFooter h5 {
 .submenu > div:hover {
     border-color: red;
 }
+
+
+@media(max-width:810px) {
+    .footer {
+        height: 500px;
+    }
+    .container-footer {
+        height: 500px;
+    }
+    #rightFooter {
+        padding-left: 160px;
+        display: inline-block;
+    }
+    #centralFooter {
+        display: inline-block;
+    }
+
+    #leftFooter {
+        display: inline-block;
+    }
+}
+
+
+@media(max-width:450px) {
+    .footer {
+        width: 100%;
+        height: 220px;
+    }
+    .map {
+        height: 100px;
+        widows: 150px;
+    }
+    .container-footer {
+        height: 250px;
+    }
+    #rightFooter {
+        display: none;
+        padding-left: 160px;
+        /* display: inline-block; */
+    }
+    #centralFooter {
+        display: inline-block;
+    }
+    #leftFooter {
+        display: inline-block;
+    }
+}
+
