@@ -9,7 +9,7 @@
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
     <link rel="stylesheet" type="text/css" href="../shared/styles.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/createAccount_styles.css" />
-   
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <center>
@@ -18,116 +18,124 @@
 </head>
 
 <body>
-    <div></div>
+
     <div class="header">
         <div class="center">
             <h1>Skillz'
                 <span>o</span>'Skillz</h1>
-                <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
+            <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
 
-            <ul class="menu">
-                <li>
-                    <a href="../../index.html">Home</a>
-                </li>
-                <li>
-                    <a href="courses.html">Free</a>
-                </li>
-                <li>
-                    <a href="courses.html">Paid</a>
-                </li>
-                <li>
-                    <a href="achievements.html">My Achivements</a>
-                </li>
-                <li>
-                    <a href="library.html">My Library</a>
-                    <!-- </li> -->
-                    <!-- PT BUTON LOGIN DE AICI -->
+            <nav class="menu">
+                <div>
+                    <a href="index.html">Home</a>
+                </div>
+                <div>
+                    <a href="../html/courses.html">Free</a>
+                </div>
+                <div>
+                    <a href="../html/courses.html">Paid</a>
+                </div>
+                <div>
+                    <a href="../html/achievements.html">My Achivements</a>
+                </div>
+                <div>
+                    <a href="../html/library.html">My Library</a>
+                </div>
+                <!-- </li> -->
+                <!-- PT BUTON LOGIN DE AICI -->
 
-                    <!-- pana aici!!!!  -->
-                    <!-- <li>
-                            <a href="#">
-                                <i class="fa fa-gear fa-2x gear"></i>
-                            </a>
-                        </li> -->
-                    <!-- <li> -->
-                    <li>
-                        <a href="#">LOGIN</a>
-                    </li>
+                <!-- pana aici!!!!  -->
+                <!-- <li>
+                                            <a href="#">
+                                                <i class="fa fa-gear fa-2x gear"></i>
+                                            </a>
+                                        </li> -->
+                <!-- <li> -->
+                <div>
+                    <a href="#">LOGIN</a>
+                </div>
 
-                    <li>
-                        <button class="settings" onclick="myFunction()">
-                            <i class="fa fa-gear fa-2x gear"></i>
-                        </button>
+                <div>
+                    <button class="settings" onclick="myFunction()">
+                        <i class="fa fa-gear fa-2x gear"></i>
+                    </button>
 
-                        <ul class="submenu" id="dropdownSettings">
-                            <li>
-                                <a href="#">Profil</a>
-                            </li>
-                            <li>
-                                <a href="#">Paymant method</a>
-                            </li>
-                            <li>
-                                <a href="#">Something</a>
-                            </li>
-                            <li>
-                                <a href="#">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-            </ul>
+                    <nav class="submenu" id="dropdownSettings">
+                        <div>
+                            <a href="../html/profile.html">Profil</a>
+                        </div>
+                        <div>
+                            <a href="#">Payment method</a>
+                        </div>
+                        <div>
+                            <a href="#">Something</a>
+                        </div>
+                        <div>
+                            <a href="#">Logout</a>
+                        </div>
+                    </nav>
+                </div>
+            </nav>
             <div class="clear"></div>
         </div>
     </div>
 
     <!-- script button -->
-<!-- 
-    <script>
-
-        function myFunction() {
-            var x = document.getElementById("dropdownSettings");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script> -->
+    <!-- 
+                    <script>
+                
+                        function myFunction() {
+                            var x = document.getElementById("dropdownSettings");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
+                    </script> -->
 
 
     <!-- <img src="../images/skinsred.png"/> -->
     <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+
+    <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
+    <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
     <!-- <div class="bg-color"></div> -->
     <div class="bg-image">
-        <img class="stickman-image" src="../images/blue_stickman.png"/>
-        </div>
+        <img class="stickman-image" src="../images/blue_stickman.png" />
+    </div>
     <div class="new-account-body">
-        <h1 >Join &nbsp;</h1><h1 class="name-initial">S</h1><h1>k</h1><h1 class="name-initial">I</h1><h1>ns</h1>
-        <p class"motto">The best way to learn and improve your knowledge</p>
+        <h1>Join &nbsp;</h1>
+        <h1 class="name-initial">S</h1>
+        <h1>k</h1>
+        <h1 class="name-initial">I</h1>
+        <h1>ns</h1>
+        <p class "motto">The best way to learn and improve your knowledge</p>
 
         <h5>Create your personal account</h5>
 
         <!-- <form method="POST" autocomplete="on" style="display: block" action="javascript:alert(this === window);"> -->
-                <form method="POST" autocomplete="on" style="display: block" action="createdAccount.html">
+        <form method="POST" autocomplete="on" style="display: block" action="createdAccount.html">
             <p>Username</p>
-            <input class="new-account-input" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" 
-            title="Can contain only letters or numbers" required/>
+            <input class="new-account-input" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" title="Can contain only letters or numbers"
+                required/>
             <p>First name</p>
-            <input class="new-account-input" name="first_name" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" 
-            title="Can contain only lower or upper characters from the english alphabet" required/>
+            <input class="new-account-input" name="first_name" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" title="Can contain only lower or upper characters from the english alphabet"
+                required/>
             <p>Last name</p>
-            <input class="new-account-input" name="last_name" type="text" maxlength="20" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*" 
-            title="Can contain only lower or upper characters from the english alphabet" required/>
+            <input class="new-account-input" name="last_name" type="text" maxlength="20" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*" title="Can contain only lower or upper characters from the english alphabet"
+                required/>
 
             <p>Phone number</p>
-            <input class="new-account-input" name="phone" type="text" pattern="[0-9]{10}" title="Must have 10 digits"/>
+            <input class="new-account-input" name="phone" type="text" pattern="[0-9]{10}" title="Must have 10 digits" />
 
             <p>Email</p>
             <input class="new-account-input" name="email" type="email" placeholder="mail@domain.com" maxlength="30" required/>
             <p>Password</p>
             <input class="new-account-input" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
             <p>Confirm Password</p>
-            <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
-            onchange="checkIfPasswordsMatch" required/>
+            <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="checkIfPasswordsMatch"
+                required/>
             <!-- <div class="registrationFormAlert" id="divCheckPasswordMatch"></div> -->
 
             <!-- <script>
@@ -151,14 +159,15 @@
                 <option value="female">Female</option>
             </select>
             <p>Tell us your interests</p>
-            <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc." maxlength="80" pattern="[A-Z\ a-z]"></textarea>
+            <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc."
+                maxlength="80" pattern="[A-Z\ a-z]"></textarea>
 
             <label class="new-account-input" for="subscribe"></label>
             </br>
             <button type="submit">Create account</button>
             <button type="reset">Reset</button>
             <p id="afterSubmitMessage"></p>
-            
+
             <!-- <script>
 
                 function myFunction() {
@@ -179,7 +188,7 @@
 </body>
 
 
-    <!-- <script language="javascript" type="text/javascript" src="../shared/footer.html"></script> -->
+<!-- <script language="javascript" type="text/javascript" src="../shared/footer.html"></script> -->
 </footer>
 
 </html>

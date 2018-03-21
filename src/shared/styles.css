@@ -28,11 +28,6 @@
 	-o-text-shadow: 1px 1px 2px rgba(0, 0, 0, 1); */
 }
 
-/* .header img {
-    width: 154px;
-    height: 55.5px;
-    position: absolute;
-} */
 .header h1 span {
 	color: #192638;
 }
@@ -44,12 +39,12 @@
 	float: right;
 }
 
-.menu > li {
+.menu > div {
 	float: left;
 	margin-right: 5px;
 }
 
-.menu li > a {
+.menu div > a {
 	display: block;
 	height: 30px;
 	line-height: 30px;
@@ -64,7 +59,7 @@
 
 
 
-.menu li > div {
+.menu div > div {
 	display: block;
 	height: 30px;
 	line-height: 30px;
@@ -97,7 +92,7 @@
 
 /* button */
 
-.menu li > button {
+.menu div > button {
 	display: block;
 	height: 30px;
 	line-height: 30px;
@@ -111,16 +106,16 @@
 }
 
 /* button */
-.menu li:last-child{
-	margin-right:0;
+.menu div:last-child{
+	margin-right:0px;
 }
 
-.menu li a:hover{
+.menu div a:hover{
 	border: 2px solid #868FA1;
 	color: #868FA1;
 }
 
-.menu li > div:hover{
+.menu div > div:hover{
 	border: 2px solid #868FA1;
 	color: #868FA1;
 }
@@ -147,8 +142,9 @@
     -o-perspective: 400px;
     perspective: 400px;
 }
-.submenu li {
-	border-right:none;
+.submenu div {
+    border-right:none;
+    /* padding-left: 1px; */
     opacity: 0;
     background-color:CC6600;
     min-width:200px;
@@ -166,14 +162,37 @@
     transition: opacity .4s, transform 0.5s;
 }
 
-.menu > li:hover .submenu, .menu > li:focus .submenu {
+
+.submenu div:last-child {
+    border-right:none;
+    /* border-bottom-left-radius: 10%; */
+    /* border-radius: 50%; */
+    /* padding-left: 1px; */
+    opacity: 0;
+    background-color:CC6600;
+    min-width:200px;
+    /* display: block; */
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+
+    -webkit-transition: opacity .4s, -webkit-transform 0.5s;
+    -moz-transition: opacity .4s, -moz-transform 0.5s;
+    -ms-transition: opacity .4s, -ms-transform 0.5s;
+    -o-transition: opacity .4s, -o-transform 0.5s;
+    transition: opacity .4s, transform 0.5s;
+}
+.menu > div:hover .submenu, .menu > div:focus .submenu {
     max-height: 500px;
-    border-radius: 0 0 25% 25%;
-    border-bottom-left-radius: 45px;
+    /* border-radius: 0 0 25% 25%;  INITIAL*/ 
+    border-radius: 0 0 5% 5%
+    /* border-bottom-left-radius: 45px; */
     /* display: block; */
     }
 
-.menu > li:hover .submenu li, .menu > li:focus .submenu li {
+.menu > div:hover .submenu div, .menu > div:focus .submenu div {
     opacity: 1;
     
     -webkit-transform: none;
@@ -436,4 +455,9 @@ footer #rightFooter h5 {
     border: #192638 solid;
     background: #192638;
     border-radius: 50%;
+}
+
+
+.submenu > div:hover {
+    border-color: red;
 }
