@@ -358,6 +358,256 @@ body {
 	margin-left: 23%;
 }
 
+.preview{
+
+	/*background-color: red;*/
+	height: 1200px;
+	width: 100%;
+	z-index: 2;
+	position: relative;
+}
+
+.CoursesBar{
+	height: 3%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+	font-size: 28px;
+	background-color:#192638;
+	color:#D7DAE5;
+	font-weight: 100;
+	/*opacity: 0.95;*/
+}
+
+/* VIDEOCLIP */
+.videoB{
+	background-color: #67A3AA;
+	width: 100%;
+	height: 360px;
+}
+ iframe{
+ 	display: block;
+   margin: 0 auto;
+ }
+.video{
+ /*   position: fixed;*/
+    min-height: 100%;
+    min-width: 100%;
+   /* object-fit: fill;*/
+}
+
+.Courses{
+	background-color: #67A3AA;
+	overflow: auto;
+	margin-top: -0.1%;
+}
+.Clistwraper{
+	margin: 0 auto;
+}
+
+div .CList{
+
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	list-style-type: none;
+}
+
+div .CList li{
+	float: left;
+	padding-right: 19px;
+
+}
+
+div .CList li p{
+	padding: 3px;
+	float: left;
+	padding-right: 50px;
+	background-color:#192638;
+	border-radius: 1000px;
+	font-size: 2vw;
+	color: #D7DAE5;
+}
+
+.Searchw{
+	margin-left: 6.2%;
+	margin-right: 6.2%;
+}
+.Courses form input[type=text] {
+	float: left;
+	clear: left;
+	margin-left: 10%; 
+    width: 15%;
+	padding: 3px;
+	margin: 0;
+	margin-top:1.9%;
+	margin-bottom: 1%;
+    /*box-sizing: border-box;*/
+    border: 2px solid #192638;
+    border-radius: 1000px;
+    font-size: 2vw;
+    background-color:#192638;
+    /*background-image: url(../img/searchicon.png);*/
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-right: 19px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.Courses form input[type=text]:focus {
+    width: 100%;
+}
+.gridTop {
+  margin: 0 auto; 
+  width: 86.2%;
+  height: 100%;
+  display: grid;
+  /*grid-gap: 0.8%;*/
+  grid-template-columns: repeat(4 minmax(1fr, 1fr));
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-row-gap: 15px;
+}
+
+.box img{
+	width: 80%;
+}
+
+.WhyUsBar{
+	background-color: #192638;
+	color: #D7DAE5;
+	font-size: 16px;
+	overflow: auto;
+	padding: 15px;
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+.WhyUsBar img{
+	width: 20%;
+	height: 30%;
+	float: left;
+	margin: 10px 10px -5px 0;
+}
+
+.WhyUsBar p{
+	margin: 0;
+}
+
+.WhyUsBar h1{
+	text-align: center;
+	margin: 0;
+}
+
+.AddCourse{
+	float: right;
+	background-color: #F6A83B;
+	border-radius: 25px;
+	color:#192638;
+	font-size: 27px;
+	padding: 5px;
+	margin: 20px;
+
+}
+
+.Map{
+	padding-top: 20%;
+	
+	width: 100%;
+	padding-bottom: 22%;
+
+	
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/c8/Blank_map_europe.png");
+	background-size: 100% 50%;
+
+	background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*z-index: 3;*/
+}
+.R{
+	position: relative;
+	height: 42%;
+	width: 100%;
+}
+.R1{
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	
+}
+.R2{
+    position: relative;
+	top: 93%;
+	height: 100%;
+	width: 100%;
+}
+
+.Map .ButonApp{
+	height: 16%;
+	width: 16%;
+
+	background-color: #F6A83B;
+	/*font-size: 24px;*/
+	color: #192638;
+
+	margin: 0 auto;
+	margin-top: -6%; 
+	border-radius: 50%;
+}
+.Map p{
+	margin: 0;
+	padding: 16%;
+	padding-top: 28%;
+	text-align: center;
+	font-size: 2.5vw;
+	
+}
+
+.Testimoniale{
+	height: 50%;
+	width: 100%;
+	overflow: auto;
+	position: relative;
+	background-color: blue;
+	top: 93.2%;
+	background-color: #192638;
+
+}
+.Testimoniale h1{
+	text-align: center;
+	color: #D7DAE5;
+
+}
+.T{
+	list-style: none;
+	float: left;
+	padding-left: 6%;
+}
+
+.T li{
+	float: left;
+	width: 30%;
+	padding-right: 10px;
+}
+
+.T li img{
+	float: left;
+	width: 40%;
+	height: 40%;
+	border-radius: 50%;
+}
+
+.T li span{
+	width: 10%;
+	height: 100%;
+	margin: 0;
+	font-size: 12px;
+	color:#D7DAE5;
+}
  /* footer {
     position:fixed;
     bottom:0;
@@ -367,10 +617,6 @@ body {
   li.nav-item {
     position: relative;
     padding: 5px;
-
- }
-
- p {
 
  }
 
@@ -513,7 +759,7 @@ footer #rightFooter h5 {
 }
 
 
-@media(max-width:810px) {
+/* @media(max-width:810px) {
     .footer {
         height: 500px;
     }
@@ -548,14 +794,14 @@ footer #rightFooter h5 {
     }
     #rightFooter {
         display: none;
-        padding-left: 160px;
+        padding-left: 160px; */
         /* display: inline-block; */
-    }
+    /* }
     #centralFooter {
         display: inline-block;
     }
     #leftFooter {
         display: inline-block;
     }
-}
+} */
 
