@@ -17,6 +17,7 @@
     text-align: center;
     display: inline-block;
     width: 32%;
+
     position: relative;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -86,24 +87,6 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-.billingData input[type=text] {
-    height: 28px;
-    border-radius: 3px;
-    border: 2px solid#D9D9D9;
-    
-    box-sizing: border-box;
-    font-size:16px;
-    color: #292F36;
-    background-color: #D9D9D9;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 5px;
-    padding-left: 33px;
-    padding-bottom: 3px;
-}
-
-
-
 .username input[type=text] {
     width: 75%;
     height: 28px;
@@ -152,46 +135,41 @@ p {
     padding-bottom: 3px;
 }
 
-.cardNumber input[type=text] {
-    width: 90%;
-}
-
-.expiryDate input[type=text] {
-    width: 60%;
-}
-.expiryDate, .CVCSecurity {
-    display: inline;
-}
-
-.CVCSecurity input[type=text] {
-    width: 25%;
-    margin-right: 20px;
-    padding-left: 25px;
+.billingData input[type=text] {
+    height: 28px;
+    width: 100%;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
     float: right;
+    color: #292F36;
+    background-color: #D9D9D9;
+    padding-left: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cardNumber, .expiryDate, .CVCSecurity {
+    position: relative;
 }
 
 .cardNumber i {
     position: absolute;
-    left: 0;
-    padding-left: 30px;
-    padding-top:6px;
     color: #637081;
+    margin-top: 7px;
+    margin-left: 10px;
 }
-
-.expiryDate i{
+.expiryDate i {
     position: absolute;
-    left: 0;
-    padding-top: 6px;
-    padding-left: 32px;
     color: #637081;
+    margin-top: 6px;
+    margin-left: 12px;
 }
-
-.CVCSecurity i{
+.CVCSecurity i {
     position: absolute;
-    left: 0;
-    padding-top: 7px;
-    padding-left: 308px;
     color: #637081;
+    margin-top: 7px;
+    margin-left: 14px;
 }
 
 .username i{
@@ -234,12 +212,12 @@ p {
 
 .personalData input[type=submit] {
     position: absolute;
-    width: 40%;
+    width: 45%;
     margin-top: 10%;
 }
 
 .billingData input[type=submit] {
-    width: 40%;
+    width: 45%;
     position: absolute;
     margin-left: -20%;
 }

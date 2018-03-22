@@ -4,6 +4,84 @@
     margin-right: auto;
     display: block;
 }
+.level5, .level6, .level8 {
+    position: relative;
+}
+.level5 i.plane {
+    position: absolute;
+    margin-top: -49%;
+    margin-left: -9%;
+    color: #D9D9D9;
+}
+.level8 i.music {
+    position: absolute;
+    margin-top: -50%;
+    margin-left: -11%;
+    color: #D9D9D9;
+}
+.level6 i.ambulance {
+    position: absolute;
+    margin-top: -86%;
+    margin-left: -23%;
+    color: #D9D9D9;
+}
+
+.level5 i.star1{
+    position: absolute;
+    margin-top: -18%;
+    margin-left: -14%;
+    color: #D9D9D9;
+}
+.level6 i.star1{
+    position: absolute;
+    margin-top: -31%;
+    margin-left: -25%;
+    color: #D9D9D9;
+}
+.level8 i.star1 {
+    position: absolute;
+    margin-top: -18%;
+    margin-left: -14%;
+    color: #D9D9D9;
+}
+
+.level5 i.star2 {
+    position: absolute;
+    margin-top: -18%;
+    margin-left: -2%;
+    color: #D9D9D9;
+}
+.level6 i.star2 {
+    position: absolute;
+    margin-top: -31%;
+    margin-left: -4%;
+    color: #D9D9D9;
+}
+.level8 i.star2 {
+    position: absolute;
+    margin-top: -18%;
+    margin-left: -3%;
+    color: #D9D9D9;
+}
+
+.level5 i.star3 {
+    position: absolute;
+    margin-top: -18%;
+    margin-left: 10%;
+    color: #D9D9D9;
+}
+.level6 i.star3 {
+    position: absolute;
+    margin-top: -31%;
+    margin-left: 17%;
+    color: #D9D9D9;
+}
+.level8 i.star3 {
+    position: absolute;
+    margin-top: -18%;
+    margin-left: 8%;
+    color: #D9D9D9;
+}
 
 .first_row,.second_row,.third_row{
     text-align: center;
@@ -77,13 +155,4 @@
     font-size: 13px;
     padding: 10px 
 }
-.show_box {
-display: none;
-border:1px solid #000;
-height:20px;
-width:208px;
-}
 
-img:hover + p.show_box {
-display: block;
-}​
