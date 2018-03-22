@@ -275,10 +275,13 @@ input[type=text] {
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    background-image: url(../images/searchicon.png);
+    border: none;
 }
 input[type=text]:focus {
-    width: 80%;
+    width: 70%;
 }
+
 .tilt {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -309,4 +312,12 @@ input[type=text]:focus {
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+body > div.header > div.tagbar > div > button{
+    border-radius: 50%;
+    
+}
+body > div.header > div.tagbar > div{
+    grid-row-gap: 2em;
 }
