@@ -54,7 +54,7 @@ button{
     display : flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: space-around;
+    align-content: space-around;
     top: 100px;
     background-color: #192638;
     color: #D7DAE5;
@@ -65,7 +65,7 @@ button{
     font-size: 150%;
     height: 100%;
     z-index: -2000;
-    top: 25%;
+    top: 24%;
     left: 0px;
     width: 8.5%;
 }
@@ -84,7 +84,7 @@ button{
     padding: 10% 0% 0% 5%;
 }
 .main-flex > *{
-    flex: 0 1 1;
+    flex: 0 1 auto;
     height: 50%;
 }
 .availability{
@@ -232,7 +232,7 @@ button{
 .centered{
     display: flex;
     justify-content: space-around;
-    align-items: space-around;
+    align-content: space-around;
 }
 .bottom{
     display: grid;
