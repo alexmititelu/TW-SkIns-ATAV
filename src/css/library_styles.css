@@ -29,7 +29,10 @@
     grid-template-rows: 20% 20% 20% 20% 20%;
     height: 25%;
     width: 100%;
-    margin: -10% 0% 0% 0%;
+    margin: 20% 0% 0% 0%;
+}
+.tagbar-element-width{
+    left: -9.9%;
 }
 .tagbar-element0{
     grid-row: 1/2;
@@ -62,7 +65,7 @@
     font-size: 150%;
     height: 100%;
     z-index: -2000;
-    top: calc(10% + 120px);
+    top: 27%;
     left: 0px;
     width: 8.5%;
 }
@@ -70,6 +73,7 @@
     margin: 0% 0% 0% 8.9%;
 }
 .main-flex{
+    background-color: rgb(255,255,255);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -100,6 +104,56 @@
     height: auto;
     font-size: 150%;
 }
+.image{
+    grid-column: 1/2;
+    width: 50%;
+    height: 100%;
+}
+@media only screen and (max-width: 960px){
+    .main-flex{
+        padding: 12% 0% 0% 5%;
+    }
+    .tagbar{
+        top: 29%;
+    }
+    .search{
+        font-size:120%;
+    }
+    .tagbar{
+        font-size: 120%;
+    }
+}
+@media only screen and (max-width: 945px){
+    .tagbar{
+        top: 27%;
+    }
+}
+@media only screen and (max-width: 770px){
+    .main-flex{
+        padding: 18% 0% 0% 5%;
+    }
+}
+@media only screen and (max-width: 700px){
+    .tagbar-element-width{
+        right: 30%;
+        left: -29.9%;
+    }
+    .main-flex{
+        padding: 20% 0% 0% 5%;
+    }
+}
+@media only screen and (max-width: 656px){
+    .main-flex{
+        padding: 16% 0% 0% 5%;
+    }
+    .search{
+        font-size:100%;
+    }
+    .tagbar{
+        top: 27%;
+        font-size: 100%;
+    }
+}
 @media only screen and (max-width : 600px)
 {
     .main-flex{
@@ -110,7 +164,7 @@
         align-items: flex-start;
         height: 50%;
         width: 100%;
-        padding: 50% 0% 0% 0%;
+        padding: 20% 0% 0% 0%;
     }
     .box{
         background-color: rgb(204, 203, 190);
@@ -122,7 +176,7 @@
         top: 96px;
         width: 80%;
         height: auto;
-        font-size: 150%;
+        font-size: 100%;
     }
     .availability{
         grid-column: 2/3;
@@ -133,17 +187,38 @@
         display: none;
         visibility: hidden;
     }
+    .image{
+        grid-column: 1/2;
+        width: 90%;
+        height: 90%;
+    }
+}
+@media only screen and (max-width: 420px){
+    .main-flex{
+        padding: 52% 0% 0% 5%;
+    }
+    .search{
+        font-size:80%;
+    }
+    .tagbar{
+        font-size: 80%;
+    }
+}
+@media only screen and (max-width: 386px){
+    .main-flex{
+        padding: 64% 0% 0% 5%;
+    }
+}
+@media only screen and (min-width: 320px) and (max-width: 370px){
+    .main-flex{
+        padding: 40% 0% 0% 5%;
+    }
 }
 .upper{
     display: grid;
     grid-template-columns: 100%;
     height: 100%;
     width: 100px;
-}
-.image{
-    grid-column: 1/2;
-    width: 50%;
-    height: 100%;
 }
 .box-content{
     display: grid;
