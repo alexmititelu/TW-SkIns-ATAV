@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script>
         function myFunction(x) {
-            x.classList.toggle("change");
+        x.classList.toggle("change");
         }
-        </script>
+    </script>
+    
 </head>
 
 <body>
@@ -117,7 +118,30 @@
                       </form>
                     </div>
                 </div>
-                <a href="#">Settings</a>
+                <button class="accordion">Settings</button>
+                <div class="panel">
+                    <a href="#">Profil</a>
+                    <a href="#">Payment Method</a>
+                    <a href="#">Something</a>
+                    <a href="#">Logout</a>
+                </div>
+                <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function() {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.display === "block") {
+                                    panel.style.display = "none";
+                                } else {
+                                    panel.style.display = "block";
+                                }
+                            });
+                        }
+                </script>
+            </button>
                 </div>
               </div>
             <div class="clear"></div>
@@ -128,6 +152,7 @@
 
 
     <!-- Body-ul din pagina de HOME-->
+    
     <div class="desc">
         <div class="center">
             <span class="up">Courses for validation of skills </span><br>

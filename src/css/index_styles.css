@@ -888,6 +888,46 @@ footer #rightFooter h5 {
 
 
 /* end meniu cross icon */
+
+/* acordeon pt meniu */
+.accordion {
+    background-color: #eee;
+    color: #D7DAE5;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #f6a83b; 
+}
+
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: rgba(255,255,255,0.0);
+    overflow: hidden;
+}
+body > div.header > div > div.dropdown > div.dropdown-content > div.panel > a{
+    background-color: rgba(255,255,255,0.0);
+}
+body > div.header > div > div.dropdown > div.dropdown-content > button{
+    color:#D7DAE5;
+}
+body > div.header > div > div.dropdown > div.dropdown-content > div.panel > a{
+    color:#D7DAE5;
+}
+
+/* end acordeon */
+
+body > div.header > div > div.dropdown > div.dropdown-content > a{
+    color: #D7DAE5;
+}
 @media only screen and (max-width:768px){
     .Testimoniale{
         top: 74.2%;
@@ -1014,6 +1054,7 @@ footer #rightFooter h5 {
     }
     body > div.header > div > div.dropdown > div.dropdown-content > div > button{
         background-color: rgba(0,0,0,0.0);
+        color: #D7DAE5;
     }
 }
 
