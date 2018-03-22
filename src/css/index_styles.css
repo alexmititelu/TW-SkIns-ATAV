@@ -888,6 +888,14 @@ footer #rightFooter h5 {
 
 
 /* end meniu cross icon */
+@media only screen and (max-width:768px){
+    .Testimoniale{
+        top: 74.2%;
+    }
+    .container-footer{
+        top: 74.2%;
+    }
+}
 @media only screen and (max-width:600px)
 {
     .dropdown{
