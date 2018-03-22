@@ -273,7 +273,73 @@
     <!-- end of Body -->
 
     
-
+    <footer class="container-footer">
+            <!--           
+                        <h4>Copyright 2018, ATAV
+                            <br>All Rights Reserved</h4> -->
+    
+            <div class="lcr-footers">
+                <!--lefct center right footers -->
+                <div class="lcr-footer-element" id="leftFooter">
+                    <h5>Phone number: 0747 815 389</h5>
+                    <h5>Email: contact@skin.com </h5>+
+                    <h5>Fax: 0232 264 385</h5>
+                </div>
+    
+    
+    
+                <div class="lcr-footer-element" id="centralFooter">
+                        <ul class="socialMedia">
+                            <li style="display:block">
+                                <h4>Copyright 2018, ATAV
+                                    <br>All Rights Reserved</h4>
+    
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/">
+                                    <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/">
+                                    <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/">
+                                    <i class="fa fa-youtube fa-2x" style="color:red;"></i>
+                                </a>
+                            </li>
+                        </ul>
+                </div>
+    
+                <div class="lcr-footer-element" id="rightFooter">
+                    <h5>Adress:</h5>
+                    <div id="map"></div>
+                    <script>
+                        function initMap() {
+                            var uluru = { lat: 47.175240, lng: 27.575136 };
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 15,
+                                center: uluru
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                            });
+                        }
+                    </script>
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
+                    </script>
+    
+                </div>
+            </div>
+    
+    
+    
+        </footer>
+    
 
     <!-- <footer>
         <script language="javascript" type="text/javascript" src="../shared/footer.html"></script>

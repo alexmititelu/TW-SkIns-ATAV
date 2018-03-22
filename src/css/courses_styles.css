@@ -312,3 +312,8 @@ body > div.header > div.tagbar > div > button{
 body > div.header > div.tagbar > div{
     grid-row-gap: 2em;
 }
+
+
+footer {
+    visibility: hidden;
+}
