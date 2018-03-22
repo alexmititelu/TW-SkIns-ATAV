@@ -1066,3 +1066,13 @@ body > div.header > div > div.dropdown > div.dropdown-content > a{
         padding: 10px 10px;
     }
 }
+
+body > div.preview.clear > div.Courses.clear > div.gridTop > div > img{
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+body > div.preview.clear > div.Courses.clear > div.gridTop > div > img:hover{
+    -ms-transform: skewY(-5deg); /* IE 9 */
+    -webkit-transform: skewY(-5deg); /* Safari 3-8 */
+    transform: skewY(-5deg);
+}
