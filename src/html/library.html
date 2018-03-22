@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
+    <!-- <script language="javascript" type="text/javascript" src="../../shared/header.html"></script> -->
     <link rel="stylesheet" type="text/css" media="screen" href="../css/library_styles.css" />
     <link rel="stylesheet" type="text/css" href="../shared/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
-
 
     <div class="header">
         <div class="center">
@@ -42,10 +39,10 @@
 
                 <!-- pana aici!!!!  -->
                 <!-- <li>
-                                            <a href="#">
-                                                <i class="fa fa-gear fa-2x gear"></i>
-                                            </a>
-                                        </li> -->
+                                        <a href="#">
+                                            <i class="fa fa-gear fa-2x gear"></i>
+                                        </a>
+                                    </li> -->
                 <!-- <li> -->
                 <div>
                     <a href="#">LOGIN</a>
@@ -74,107 +71,121 @@
             </nav>
             <div class="clear"></div>
         </div>
-    </div>
-
-    <!-- script button -->
-    <!-- 
-                    <script>
-                
-                        function myFunction() {
-                            var x = document.getElementById("dropdownSettings");
-                            if (x.style.display === "none") {
-                                x.style.display = "block";
-                            } else {
-                                x.style.display = "none";
-                            }
-                        }
-                    </script> -->
 
 
-    <!-- <img src="../images/skinsred.png"/> -->
-    <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
-
-    <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
-    <!-- Body-ul din pagina de Library-->
-
-
-
-
-    <!-- end of Body -->
-
-    <footer class="container-footer">
-        <!--           
-                    <h4>Copyright 2018, ATAV
-                        <br>All Rights Reserved</h4> -->
-
-        <div class="lcr-footers">
-            <!--lefct center right footers -->
-            <div class="lcr-footer-element" id="leftFooter">
-                <h5>Phone number: 0747 815 389</h5>
-                <h5>Email: contact@skin.com </h5>
-                <h5>Fax: 0232 264 385</h5>
-            </div>
-
-
-
-            <div class="lcr-footer-element" id="centralFooter">
-                <center>
-                    <ul class="socialMedia">
-                        <li style="display:block">
-                            <h4>Copyright 2018, ATAV
-                                <br>All Rights Reserved</h4>
-
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/">
-                                <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/">
-                                <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/">
-                                <i class="fa fa-youtube fa-2x" style="color:red;"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </center>
-            </div>
-
-            <div class="lcr-footer-element" id="rightFooter">
-                <h5>Adress:</h5>
-                <div id="map"></div>
+        <!-- script button -->
+        <!-- 
                 <script>
-                    function initMap() {
-                        var uluru = { lat: 47.175240, lng: 27.575136 };
-                        var map = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 15,
-                            center: uluru
-                        });
-                        var marker = new google.maps.Marker({
-                            position: uluru,
-                            map: map
-                        });
+            
+                    function myFunction() {
+                        var x = document.getElementById("dropdownSettings");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
                     }
-                </script>
-                <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
-                </script>
+                </script> -->
 
+
+        <!-- <img src="../images/skinsred.png"/> -->
+        <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+
+        <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
+        <div class="search centered">
+            <span>Cautati un curs ...</span>
+            <span class="fa fa-search">
+                <input type="text" name="search" placeholder="Search..">
+            </span>
+            <div class="dropdown">
+                <span>Sort by ...</span>
+                <div class="dropdown-content">
+                  <button>Name</button>
+                  <button>Type</button>
+                  <button>% completed</button>
+                </div>
+              </div>
+        </div>
+        <div class="tagbar">
+            <div class = "tagbar-grid">
+                <div class = "tagbar-element0">Tags</div>
+                <button class = "tagbar-element1">Chitara</button>
+                <button class = "tagbar-element2">Autoaparare</button>
+                <button class = "tagbar-element3">Planorism</button>
+                <button class = "tagbar-element4">MISTER</button>
             </div>
         </div>
+    </div>
 
-
-
-    </footer>
+        <div class="content">
+                <div class="course-content">
+                    <div class="main-flex">
+                        <div class="box tilt">
+                            <div class = "box-content">
+                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
+                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                                <form action="#curs1">
+                                    <button class="fa fa-arrow-right"></button>
+                                </form>
+                                </div>
+                            </div>
+                        <a href="#_" class="lightbox" id="curs1">
+                            Acum ar trebui sa vedem un overlay;1
+                        </a>
+                        <div class="box tilt">
+                            <div class = "box-content">
+                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
+                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                                <form action="#curs2">
+                                    <button class="fa fa-arrow-right"></button>
+                                </form>
+                                </div>
+                            </div>
+                        <a href="#_" class="lightbox" id="curs2">
+                            Acum ar trebui sa vedem un overlay;2
+                        </a>
+                        <div class="box tilt">
+                            <div class = "box-content">
+                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
+                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                                <form action="#curs3">
+                                    <button class="fa fa-arrow-right"></button>
+                                </form>
+                                </div>
+                            </div>
+                        <a href="#_" class="lightbox" id="curs3">
+                            Acum ar trebui sa vedem un overlay;3
+                        </a>
+                        <div class="box tilt">
+                            <div class = "box-content">
+                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
+                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                                <form action="#curs4">
+                                    <button class="fa fa-arrow-right"></button>
+                                </form>
+                                </div>
+                            </div>
+                        <a href="#_" class="lightbox" id="curs4">
+                            Acum ar trebui sa vedem un overlay;4
+                        </a>
+                        <div class="box tilt">
+                            <div class = "box-content">
+                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
+                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                                <form action="#curs5">
+                                    <button class="fa fa-arrow-right"></button>
+                                </form>
+                                </div>
+                            </div>
+                        <a href="#_" class="lightbox" id="curs5">
+                            Acum ar trebui sa vedem un overlay;5
+                        </a>
+                    </div>
+                </div>
+            </div>
 
 
 </body>
-<!-- <footer>
-    <script language="javascript" type="text/javascript" src="../shared/footer.html"></script>
-</footer> -->
+
 
 </html>
