@@ -152,19 +152,19 @@ p {
 .cardNumber i {
     position: absolute;
     color: #637081;
-    margin-top: 7px;
+    margin-top: 14px;
     margin-left: 10px;
 }
 .expiryDate i {
     position: absolute;
     color: #637081;
-    margin-top: 6px;
+    margin-top: 14px;
     margin-left: 12px;
 }
 .CVCSecurity i {
     position: absolute;
     color: #637081;
-    margin-top: 7px;
+    margin-top: 14px;
     margin-left: 14px;
 }
 
@@ -172,7 +172,7 @@ p {
     position: absolute;
     left: 0;
     padding-left: 10px;
-    padding-top: 5px;
+    padding-top: 14px;
     color: #637081;
 }
 
@@ -180,7 +180,7 @@ p {
     position: absolute;
     left: 0;
     padding-left: 10px;
-    padding-top: 7px;
+    padding-top: 14px;
     color: #637081;
 }
 
@@ -188,7 +188,7 @@ p {
     position: absolute;
     left: 0;
     padding-left: 10px;
-    padding-top: 6px;
+    padding-top: 14px;
     color: #637081;
 }
 
