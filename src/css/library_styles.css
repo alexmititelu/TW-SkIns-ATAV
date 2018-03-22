@@ -2,10 +2,18 @@
 .content{
     padding: 0 0 0 0;
 }
+.colorez{
+    background-color: #67A3AA;
+}
+button{
+    background-color: #F6A83B;
+    color: #192638;
+    border:none;
+}
 .search{
     /* display: flex;
     justify-content: space-around; */
-    background-color: #444;
+    background-color: #192638;
     color: #D7DAE5;
     border-radius: 5px;
     padding: 20px;
@@ -56,7 +64,7 @@
     justify-content: space-around;
     align-items: space-around;
     top: 100px;
-    background-color: #444;
+    background-color: #192638;
     color: #D7DAE5;
     border-radius: 5px;
     padding: 20px;
@@ -73,7 +81,7 @@
     margin: 0% 0% 0% 8.9%;
 }
 .main-flex{
-    background-color: rgb(255,255,255);
+    background-color: #67A3AA;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -93,9 +101,9 @@
     height: 100%;
 }
 .box{
-    background-color: rgb(204, 203, 190);
-    color: #000;
-    border-radius: 5px;
+    background-color: #192638;
+    color: #D7DAE5;
+    border-radius: 46px;
     padding: 20px;
     margin : 5px;
     position: relative;
@@ -167,8 +175,8 @@
         padding: 20% 0% 0% 0%;
     }
     .box{
-        background-color: rgb(204, 203, 190);
-        color: #000;
+        background-color: #192638;
+        color: #D7DAE5;
         border-radius: 5px;
         padding: 20px;
         margin : 5px;
@@ -256,20 +264,24 @@
 input[type=text] {
     width: 130px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid #D7DAE5;
+    color: #D7DAE5;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;
+    background-color: #F6A83B;
     background-image: url('searchicon.png');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
+    background-image: url(../images/searchicon.png);
+    border: none;
 }
 input[type=text]:focus {
-    width: 80%;
+    width: 70%;
 }
+
 .tilt {
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -291,7 +303,7 @@ input[type=text]:focus {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(163, 163, 153);
+    background-color: rgba(0, 0, 0, 0.7);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
@@ -300,4 +312,12 @@ input[type=text]:focus {
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+body > div.header > div.tagbar > div > button{
+    border-radius: 50%;
+    
+}
+body > div.header > div.tagbar > div{
+    grid-row-gap: 2em;
 }
