@@ -1076,3 +1076,7 @@ body > div.preview.clear > div.Courses.clear > div.gridTop > div > img:hover{
     -webkit-transform: skewY(-5deg); /* Safari 3-8 */
     transform: skewY(-5deg);
 }
+
+body > div.preview.clear > div.R > footer{
+    background: rgba(0, 0, 0, 1);
+}
