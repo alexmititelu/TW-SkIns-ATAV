@@ -1,8 +1,8 @@
 .course-body {
     padding-top: 150px;
     width: 80%;
-    background: linear-gradient(#67a3aa, #D7DAE5,#67a3aa);
-    height:1700px;   
+    background: linear-gradient(#67a3aa, #D7DAE5,#67a3aa) fixed;
+    height: 100%;
     margin: auto;
     color: #192638;
 }
@@ -10,4 +10,34 @@
 .course-body {
     padding-left: 4%;
     padding-right: 4%;
+}
+
+.courseTitle {
+    text-align: center;
+}
+
+
+.course-title h1 {
+    text-align: center;
+}
+
+.imagineRockstar {
+    width: 255px;
+    height: 175px;
+    float: right;
+    margin-right: -5%;
+}
+
+.music-sign {
+    text-align: center;
+}
+
+.launchTest {
+    width: 110px;
+    height: 30px;
+    float: right;
+    border: #192638 solid 2px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #192638;
+    font-weight: bolder;
 }

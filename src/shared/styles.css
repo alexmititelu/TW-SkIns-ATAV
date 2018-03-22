@@ -563,6 +563,7 @@ div.header {
  /* FOOOOOOOTER */
 
 
+
  .socialMedia {
 	list-style: none;
  }
@@ -581,14 +582,19 @@ footer h4 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color : #D7DAE5;
     text-align: center;
-    padding: 20px;
+    font-size: 90%;
+    /* padding: 10px; */
 }
+
+
 footer h5 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color : #D7DAE5;
     text-align: center;
     padding: 14px;
 }
+
+
 
 footer #rightFooter h5 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -601,21 +607,22 @@ footer #rightFooter h5 {
     margin-top: auto; */
     margin-bottom: 0;
     margin-left: 0;
-    margin-top: 1000px;
+    /* margin-top: 1000px; */
     margin: 0px;
     display: block;
     width: 100%;
-    height: 235px;
+    height: 265px fixed;
     background: rgba(0, 0, 0, 0.7);
     /* position: absolute; */
     width: 100%;
 	z-index: 5;
 }
+
 .container-footer {
     margin: 0px;
     display: block;
     width: 100%;
-    height: 235px;
+    height: 315px fixed;
     background: rgba(0, 0, 0, 0.7);
     /* test */
      /* clear: both; */
@@ -625,31 +632,32 @@ footer #rightFooter h5 {
     margin-bottom: 0em;
     /* margin-top: 1000px; */
 }
-
 .lcr-footer {
     display: table;
     width: 100%;
     table-layout: fixed;
-    border-spacing: 10px;
+    /* border-spacing: 10px; */
 }
 
 .lcr-footer-element {
-    display: table-cell;
+    display: inline-block;
     width: 33.33%;
     /* display: inline-block; */
 }
 
 .left-footer {
     display: table-cell;
-    margin-left: 0px;
-    width: 23.33%;
+    /* margin-left: 0px; */
+    width: 33.33%;
+    /* font-size: 100px; */
 }
 
 .center-footer {
     display: table-cell;
-    width: 20.33%;
-    margin-left: 43.5%;
-    margin-right: auto;
+    width: 33.33%;
+    /* margin-left: -400px; */
+    /* margin-left: 43.5%; */
+    /* margin-right: auto; */
 }
 
 .right-footer {
@@ -669,8 +677,8 @@ footer #rightFooter h5 {
 #map {
     /* display: block; */
     /* position: relative; */
-   width: 250px;
-   height: 130px;
+   width: 70%;
+   height: 70%;
    /* background-color: grey; */
    /* margin-bottom: 200px; */
  }
@@ -678,16 +686,28 @@ footer #rightFooter h5 {
  #leftFooter {
      /* margin-left: 1px; */
     padding-left: 1%; 
+    text-align: center;
+    color: #D7DAE5;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 90%;
+    font-weight: 500;
  }
 
  #centralFooter {
-     padding-left: 5%;
+     /* margin-left: -1%; */
+     /* padding-left: 20%; */
      /* margin: 0 auto; */
  }
 
  #rightFooter {
-     padding-left: 12%; 
-     padding-right: 3%;
+     padding-left:5%;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: 90%;
+     font-weight: 500;
+    color: #D7DAE5;
+     /* padding-left: 12%;  */
+     /* padding-right: 3%; */
  }
 
  
@@ -705,7 +725,7 @@ footer #rightFooter h5 {
     border-color: red;
 }
 
-
+/* 
 @media(max-width:810px) {
     .footer {
         height: 500px;
@@ -742,7 +762,7 @@ footer #rightFooter h5 {
     #rightFooter {
         display: none;
         padding-left: 160px;
-        /* display: inline-block; */
+        display: inline-block;
     }
     #centralFooter {
         display: inline-block;
@@ -750,5 +770,31 @@ footer #rightFooter h5 {
     #leftFooter {
         display: inline-block;
     }
+
+} */
+
+/*  FOOTER USING FLEX */
+
+.flex-footer-container {
+    display: flex;
+    background-color: #333;
+    height: 200px;
 }
 
+.flex-footer-container > div {
+    /* margin: 10px; */
+    width: 33.33%;
+}
+
+.socialIcons {
+    display: block;
+    /* text-align: center; */
+    /* margin-left: 357px; */
+    /* margin-left: 12vw; */
+    font-size: 100%;
+
+}
+
+.socialIcons a i {
+    font-size: 190%;
+}
