@@ -142,9 +142,7 @@
 
 .atribute_achievement{
     display: inline-block;
- 
-    border: 1px solid red;
-}
+ }
 
 .tilt {
     -webkit-transition: all 0.5s ease;
