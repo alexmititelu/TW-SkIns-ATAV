@@ -1,0 +1,1 @@
+Arhitectura aplicatiei noastra va fi in acest folder.
