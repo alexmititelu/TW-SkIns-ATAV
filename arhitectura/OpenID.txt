@@ -1,0 +1,40 @@
+OpenID Client
+
+Este un API construit peste cel de OAuth, ce permite clientilor sa verifice identitatea
+celor ce s-au autentificat cu OAuth, cat si sa obtina informatii de basa despre profilul
+acestora intr-o maniera REST. Acesta are si niste functionalitati optionale cum ar fi
+criptarea datelor de indentitate, gasirea providerilor de OpenID si managment-ul sesiunilor.
+
+OpenID functionalitati:
+	Core: autentificarea construita pe baza OAuth si accesul la informatii despre
+	      3d-party-app
+	Discovery: modelul in care clienti obtin informatii despre OpenID providers
+	OAuth 2.0 Form Post Response Mode: mod de translatare a datelor despre entitatile
+	      autentificate intr-un format HTML
+	Session Management: modelul pentru gestionarea sesiunilor de autentificare cu
+			    OpenID
+
+Protocolul OpendID:
++--------+                                   +--------+
+|        |                                   |        |
+|        |---------(1) AuthN Request-------->|        |
+|        |                                   |        |
+|        |  +--------+                       |        |
+|        |  |        |                       |        |
+|        |  |  End-  |<--(2) AuthN & AuthZ-->|        |
+|        |  |  User  |                       |        |
+|   RP   |  |        |                       |   OP   |
+|        |  +--------+                       |        |
+|        |                                   |        |
+|        |<--------(3) AuthN Response--------|        |
+|        |                                   |        |
+|        |---------(4) UserInfo Request----->|        |
+|        |                                   |        |
+|        |<--------(5) UserInfo Response-----|        |
+|        |                                   |        |
++--------+                                   +--------+
+
+
+Astfel acest API va fi folosit pentru a da incredere altor applicatii ce o sa vrea sa
+ne foloseasca API-ul Skillz'o'skillz, oferindu-le informatii desprea aceasta ca sa stie
+cu ce entitate interactioneaza.
