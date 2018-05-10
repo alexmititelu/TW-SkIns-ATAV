@@ -1,0 +1,44 @@
+
+
+OAuth 2.0:
+
+Clientul API-ului este aplicatia noastra care incearca sa aibe acces
+la datele utilizatorului. Aceasta are nevoie de permisiune pentru a realiza
+aceasta. API-ul permite altor site-uri sa acceseze credentialele de pe 
+Skillz'o'skillz pe baza unui token oferit in schimbul respectivelor
+credentiale. Practic ofera userului o metoda de a oferi acces la resursele
+private din aplicatia "mama" (Skillz'o'skillz) catre o alta aplicatie consumatoare
+al acestor resurse. In randurile ce urmeaza putem considera ca fiind aplicatie
+mama API-ul de loggare ce are acces direct la BD cu utilizator, iar 
+site-ul "consumator" API-ul gateway al Skillz'o'skillz. De asemenea putem
+folosi pentru dezvoltare in viitor aceasta strategie de autentificare ca
+alte aplicatii sa se foloseasca de API-ul nostru Skillz'o'skillz.
+
+Aplicatia se bazeaza pe un client_id care este public si este folosit 
+pentru criptarea credentialelor si un client_secret care este keya secreta
+folosita pentru decriptare de utilizator.
+
+Un prim pas ar fi inregistrarea aplicatiei cu serviciul oferit de OAuth. 
+De asemenea se va configura un URI sau mai multe URI-uri de redirectare 
+pentru useri.
+
+Urmatori pasi pentru o aplicatie web sunt in ordine:
+1) crearea unui link de "Log in" ce va contine campurile code, client_id,
+redirect_uri, scope, state
+	code: server-ul "mama" se asteapta sa primeasca un cod de autentificare
+	client_id: cel care il primim cand cream prima oara aplicatia
+	redirect_uri: link-urile de redirect dupa confirmarea "cheilor" publice
+	scope: partile din datele private ce vor fi accesate
+	state: starea
+*starea poate fi pastrata intr-un coockie ca sa putem verifica mai tarziu
+cand acel 3rd-party-app incearca sa acceseze datele private din nou.
+
+2)serverul mama schimba code-ul de autentificare cu un token de acces, cu
+OAuth astfel se trimite inapoi un request POST cu:
+	grant_type=authorization_code: tipul de permisiune pt flow-ul respectiv
+	code: codul primit in stringul de la inceput
+	redirect_uri: tot cele din prima cerere
+	client_id: acelasi din prima cerere
+	cleint_secre: "cheia privata" de pe partea de server
+3)serverul mama raspunde inapoi cu un token de autentificare catre
+3rd party app si timpul de valabilitate al acestuia
