@@ -1,0 +1,11 @@
+Am decis sa folosim o baza de date de tip noSQL intrucat aplicatia va implementa 
+microservicii si acest lucru va permite o gestionare mai usoara a informatiei, mai
+ales cand e vorba de aplicatiile web / dimensiuni mari ale informatiei. 
+
+Astfel, avantajele acestei alegeri sunt:
+
+    - design simplu
+    - scalabilitate pe orizontala
+    - timp de raspuns imbunatatit
+    - fiecare microserviciu are control direct asupra bazei de date cu care interactioneaza
+     
