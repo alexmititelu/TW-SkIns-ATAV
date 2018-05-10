@@ -1,0 +1,6 @@
+Vom folosi design pattern-ul Singleton pentru fiecare baza de date din microservicii. De asemenea, vom crea un Builder pentru
+fiecare microserviciu, iar rolul acestuia va fi de a porni microserviciul propriu-zis (asignare de porturi etc si tot ce tine de configurarea acestuia). De exemplu,
+daca microserviciul foloseste un API third-party, trebuie sa ne asiguram ca API-ul are cheia valida etc.
+
+Intrucat ne folosim de paradigma REST, requesturile client-side si requesturile pentru microservicii vor fi independente. Asadar, un request venit din client-side
+va trebui adaptat si retrimis catre microserviciul asociat. Pentru a implementa acest aspect, ne vom folosi de un Adapter, care sa permita acest tip de tranzitii.
