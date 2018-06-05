@@ -7,8 +7,8 @@
     <title>New account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
-    <link rel="stylesheet" type="text/css" href="../shared/styles.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/createAccount_styles.css" />
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/createAccount_styles.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -65,11 +65,11 @@
             </div>
         
             <div class="container">
-              <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required>
+              <label for="username"><b>Username</b></label>
+              <input type="text" placeholder="Enter Username" name="username" required>
         
               <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
+              <input type="password" placeholder="Enter Password" name="password" required>
                 
               <button type="submit">Login</button>
               <label>
@@ -149,10 +149,12 @@
         <h5>Create your personal account</h5>
 
         <!-- <form method="POST" autocomplete="on" style="display: block" action="javascript:alert(this === window);"> -->
-        <form method="POST" autocomplete="on" style="display: block" action="createdAccount.html">
+        <form method="POST" autocomplete="on" style="display: block" action="/register">
             <p>Username</p>
-            <input class="new-account-input" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" title="Can contain only letters or numbers"
+            <!-- <label for="username"> -->
+            <input class="new-account-input" id="username" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" title="Can contain only letters or numbers"
                 required/>
+            <!-- </label> -->
             <p>First name</p>
             <input class="new-account-input" name="first_name" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" title="Can contain only lower or upper characters from the english alphabet"
                 required/>
@@ -167,25 +169,10 @@
             <input class="new-account-input" name="email" type="email" placeholder="mail@domain.com" maxlength="30" required/>
             <p>Password</p>
             <input class="new-account-input" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
-            <p>Confirm Password</p>
+            <!-- <p>Confirm Password</p>
             <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="checkIfPasswordsMatch"
                 required/>
-            <!-- <div class="registrationFormAlert" id="divCheckPasswordMatch"></div> -->
-
-            <!-- <script>
-                function checkIfPasswordsMatch() {
-    var password = $("#password").val();
-    var confirmPassword = $("#confirm_password").val();
-
-    if (password != confirmPassword) {
-        $("#divCheckPasswordMatch").html("Passwords do not match!");
-        alert("passwords must match");
-    } else {
-        $("#divCheckPasswordMatch").html("Passwords match.");
-    }
-}
-            </script> -->
-
+             -->
             <p>Gender</p>
             <select class="new-account-input" name="gender" required>
                 <option value="" selected disabled hidden>Choose here</option>
@@ -196,31 +183,16 @@
             <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc."
                 maxlength="80"></textarea>
 
-            <!-- <label class="new-account-input" for="subscribe"></label> -->
             <div>
     
                 <label for="subscribeNews"><p>Subscribe to newsletter?</p></label>
                 <input class="new-account-input" type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
             </div>
             <br/>
+           
             <button class="submitButton" type="submit">Create account</button>&nbsp;&nbsp;&nbsp;
             <button class="submitButton" type="reset">Reset</button>
-            <p id="afterSubmitMessage"></p>
-
-            <!-- <script>
-
-                function myFunction() {
-                    var x = document.getElementById("createAccountForm");
-                    var y = document.getElementById("afterSubmitMessage");
-                    if (x.style.display === "block") {
-                        x.style.display = "none";
-                        document.getElementById("afterSubmitMessage").innerHTML = "Welcome to SkIns";
-                         y.style.display = "block";
-                     } else { 
-                    //     x.style.display = "none";
-                    // }
-                }
-            </script> -->
+            <p id="afterSubmitMessage"></p> 
 
         </form>
     </div>
