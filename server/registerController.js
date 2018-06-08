@@ -1,7 +1,36 @@
 var url = require('url');
 var fs = require('fs');
 var qs = require('querystring');
+var nodemailer = require('nodemailer');
+const randomstring = require('randomstring');
 const MongoClient = require('mongodb').MongoClient;
+
+function sendRegistrationMail(destinationEmail, username, activationLink, success) {
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'skinsvirtualinstructor@gmail.com',
+            pass: 'parolaSkIns10'
+        }
+    });
+
+    var mailOptions = {
+        from: 'skinsvirtualinstructor@gmail.com',
+        to: destinationEmail,
+        subject: 'Sending Email using Node.js',
+        html: '<h1>Welcome ' + username + '</h1>' +
+            '<p>In order to activate your account click on the following link: <br>localhost:8888/register/' + activationLink + '</p> ' +
+            '<br><br> <p>© SkIns</p>'
+    }
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
+};
 
 function renderHTML(path, response) {
     fs.readFile("../src/html/" + path, function (error, htmlContent) {
@@ -21,7 +50,6 @@ module.exports = {
     handleRequest: function (request, response) {
 
         var path = url.parse(request.url).pathname;
-        console.log("Path: " + path);
 
         if (request.method === "GET" && path.includes(".css") === false) {
             if (path === "/register") {
@@ -31,26 +59,14 @@ module.exports = {
                 response.write("Couldn't load HTML / not found");
             }
         } else if (request.method === "POST") {
-            console.log("Post method call");
             if (path === "/register") {
                 var requestBody = '';
-                console.log('Validating registration');
                 request.on('data', function (data) {
                     requestBody += data;
                 });
 
                 request.on('end', function () {
                     var formData = qs.parse(requestBody);
-                    console.log(formData);
-
-                    // response.write('<!doctype html><html><head><title>response</title></head><body>');
-                    // response.write('Thanks for the data!<br />User Name: ' + formData.username);
-                    // response.write('<br />Password: ' + formData.password);
-                    // response.end('</body></html>');
-                    // // connection.db('Skillz')
-                    //   .collection('Autentificari')
-                    //   .insertOne({
-                    // response.redirect('/register');
 
                     MongoClient
                         .connect('mongodb://localhost:27017', function (error, connection) {
@@ -70,8 +86,6 @@ module.exports = {
                                     throw error;
                                 }
 
-                                console.log("Am adaugat un cont nou");
-
                                 var query = { username: newAccount.username };
                                 var idCont = dbConnection.collection("Conturi").find(query).toArray(function (queryError, queryResult) {
 
@@ -79,10 +93,7 @@ module.exports = {
                                         throw queryError;
                                     }
 
-                                    console.log(queryResult[0]._id);
-
-
-                                    var newAccountDetails = {
+                                     var newAccountDetails = {
                                         cont_id: queryResult[0]._id,
                                         first_name: formData.firstName,
                                         last_name: formData.lastName,
@@ -95,31 +106,64 @@ module.exports = {
                                     dbConnection.collection("Utilizatori").insertOne(newAccountDetails, function (error, success) {
                                         if (error) {
                                             throw error;
-                                            connection.close();
+                                           
                                         }
-                                        connection.close();
                                     });
-                                    console.log("Am adaugat si user details");
-                                    // renderHTML("createdAccount.html",response);
-                                    /**/
+                                    
+                                    var newToken = randomstring.generate(64);
+                                    
+                                    var query = { token: newToken };
 
-                                    response.writeHead(200, { 'Content-Type': 'text/html' });
-                                    response.write("Thanks");
-                                    response.end();
+                                    varconturi = dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
+
+                                        if (queryError) {
+                                            throw queryError;
+                                        }
+
+                                        if (!(queryResult.length === 0)) {
+                                            newToken = randomstring.generate(64);
+                                        } else {
 
 
-                                    // fs.readFile("../src/html/createdAccount.html", function (error, htmlContent) {
-                                    //     if (error) {
-                                    //         response.writeHead(404);
-                                    //         response.write("Couldn't load HTML / not found");
-                                    //     } else {
-                                    //         response.writeHead(200, { 'Content-Type': 'text/html' })
-                                    //         response.write(htmlContent);
-                                    //     }
-                                    //     response.end();
-                                    // });
+                                            var newTokenRow = {
+                                                token: newToken,
+                                                exp_date: new Date(new Date().getTime() + 2 * 1000 * 60 * 60),
+                                                cont_id: newAccountDetails.cont_id
+                                            }
+                                            
+                                            dbConnection.collection("Tokens").insertOne(newTokenRow, function (error, success) {
+                                                if (error) {
+                                                    throw error;
+                                                    
+                                                }
+                                                console.log("Insrted");
+                                                
+                                            });
 
-                                    /**/
+
+                                            // renderHTML("createdAccount.html",response);
+                                            /**/
+                                            sendRegistrationMail(formData.email, formData.username, "test", success);
+                                            response.writeHead(200, { 'Content-Type': 'text/html' });
+                                            response.write("Thanks");
+                                            response.end();
+
+
+                                            // fs.readFile("../src/html/createdAccount.html", function (error, htmlContent) {
+                                            //     if (error) {
+                                            //         response.writeHead(404);
+                                            //         response.write("Couldn't load HTML / not found");
+                                            //     } else {
+                                            //         response.writeHead(200, { 'Content-Type': 'text/html' })
+                                            //         response.write(htmlContent);
+                                            //     }
+                                            //     response.end();
+                                            // });
+
+                                            /**/
+                                        }
+
+                                    });
                                 });
                             });
                         });
