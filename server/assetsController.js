@@ -14,7 +14,7 @@ function renderCSS(path, response) {
     });
 }
 
-function renderImage(path,response) {
+function renderImage(path, response) {
     fs.readFile("../src/assets" + path, function(error,image) {
         if (error) {
             response.writeHead(404);
@@ -26,13 +26,19 @@ function renderImage(path,response) {
         }
         response.end();
     });
+    // var file = fs.createReadStream("../src/assets" + path);
+    // file.on('open', function () {
+    //     response.setHeader('Content-Type', 'image/png');
+    //     file.pipe(response);
+    // });
+    // response.sendfile("../src/assets"+path);
 }
 
 module.exports = {
     handleRequest: function (request, response) {
 
         var path = url.parse(request.url).pathname;
-        
+
         if (path.includes('.css') && request.method === 'GET') {
             switch (path) {
                 case '/createAccount_styles.css':
@@ -44,9 +50,9 @@ module.exports = {
                 default:
                     console.log('test');
             }
-        } else  if (path.includes('.png') && request.method === 'GET'){
+        } else if (path.includes('.png') && request.method === 'GET') {
             console.log(path);
-            renderImage(path,response);
+            renderImage(path, response);
         }
     }
 }
