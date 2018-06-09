@@ -70,6 +70,10 @@ module.exports = {
                         dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
 
                             if (queryError) {
+                                // throw queryError;
+                                response.writeHead(404);
+                                response.write("Couldn't load HTML / not found");
+                                response.end();
                                 throw queryError;
                             }
 
@@ -94,7 +98,10 @@ module.exports = {
                                     "</body></html>");
                                 response.end();
                                 dbConnection.collection("Tokens").remove(query);
-                        
+                            } else {
+                                response.writeHead(404);
+                                response.write("Couldn't load HTML / not found");
+                                response.end();
                             }
 
                         });
