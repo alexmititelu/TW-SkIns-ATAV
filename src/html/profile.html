@@ -8,15 +8,15 @@
     <title>My Profile</title>
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/profile_styles.css" />
-    <link rel="stylesheet" type="text/css" href="../shared/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/profile_styles.css" />
+    <link rel="stylesheet" type="text/css" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body bgcolor="#032E37">
 
-    
-        <div class="header">
+    <!--header aici -->
+<div class="header">
                 <div class="center">
                     <h1>Skillz'
                         <span>o</span>'Skillz</h1>
@@ -131,14 +131,25 @@
     <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- Body-ul din pagina de My Profile-->
     <hr color="#032E37" style="margin-top:7%; width: 100%">
-    <img src="../images/profile_images/LOGOPROFILE2.png" class="logo_profile">
+    <img src="LOGOPROFILE2.png" class="logo_profile" alt="logo_image">
+    <!--<img src="LOGOPROFILE2.png" class="logo_profile">-->
 
+	<form action="/my_profile" method="POST">
+        <label>Name: </label>
+        <input type="text" name="dname" value="" /><br />
+        <label>Email: </label>
+        <input type="text" name="demail" value="" /><br />
+        <label>Address: </label>
+        <input type="text" name="daddress" value="" /><br />
+        <button>submit</button>
+    </form>
+	
     <div class="toate_sectiunile">
         <div class="username">
             <h4>Username</h4>
             <p>You can change your username, which impacts how you sign in.</p>
-            <form action="">
-                <input type="text">
+            <form action="/my_profile" method="POST">
+                <input type="text" name="username" placeholder="Enter your new Username" value="{{someVal}}">
                 <i class="fa fa-user" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -147,8 +158,8 @@
         <div class="password">
             <h4>Password</h4>
             <p>Choose another password that you like and is easier to remember.</p>
-            <form action="">
-                <input type="text">
+            <form action="/my_profile" method="POST">
+                <input type="text" name="password" placeholder="Enter your new Password" value="{{someVal2}}">
                 <i class="fa fa-unlock-alt" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -158,8 +169,8 @@
         <div class="email">
             <h4>E-Mail</h4>
             <p>Change your e-mail to continue to receive account updates and newsletters. </p>
-            <form action="">
-                <input type="text">
+            <form action="/my_profile" method="POST">
+                <input type="text" name="email" placeholder="Enter your new Email" value="{{someVal3}}">
                 <i class="fa fa-envelope" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -168,21 +179,21 @@
 
         <div class="personalData">
             <h4>Personal Data</h4>
-            <form action="">
+            <form action="/my_profile" method="POST">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your First Name">
+                <input type="text" placeholder="Enter your First Name" name="first_name" value="{{someVal4}}">
                 <hr color="#032E37">    
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Last Name">
+                <input type="text" placeholder="Enter your Last Name" name="last_name" value="{{someVal5}}">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Address">
+                <input type="text" placeholder="Enter your Address" name="address">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Country">
+                <input type="text" placeholder="Enter your Country" name="country" value="{{someVal6}}">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Phone Number">
+                <input type="text" placeholder="Enter your Phone Number" name="telefon" value="{{someVal7}}">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
                 <div class="wrapper">
@@ -231,20 +242,20 @@
 
         <div class="billingData">
             <h4>Billing Data</h4>
-            <form action="">
+            <form action="/my_profile" method="POST">
 
                 <div class="cardNumber">
-                    <input type="text" placeholder="Card Number">
+                    <input type="text" placeholder="Card Number" name="card_number">
                     <i class="fa fa-credit-card" style="font-size:18px" aria-hidden="true"></i>
                 </div>
                 <hr color="#032E37">
                 <div class="expiryDate">
-                    <input type="text" placeholder="Month / Year">
+                    <input type="text" placeholder="Month / Year" name="expiry_date">
                     <i class="fa fa-calendar-o" style="font-size:18px" aria-hidden="true"></i>
                 </div>
                 <hr color="#032E37">
                 <div class="CVCSecurity">
-                    <input type="text" placeholder="CVC">
+                    <input type="text" placeholder="CVC" name="cvc">
                     <i class="fa fa-shield" style="font-size:18px" aria-hidden="true"></i>
                 </div>
                 <hr color="#032E37">
@@ -255,7 +266,9 @@
         <hr color="#032E37">
         <hr color="#032E37">
         <!-- end of Body -->
-        <footer class="container-footer">
+        
+            <!--footer aici -->
+<footer class="container-footer">
                 <!--           
                             <h4>Copyright 2018, ATAV
                                 <br>All Rights Reserved</h4> -->
@@ -331,7 +344,6 @@
         
         
             </footer>
-        
 
 
     </div>
