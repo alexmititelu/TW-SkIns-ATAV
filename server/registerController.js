@@ -144,21 +144,21 @@ module.exports = {
                                             // renderHTML("createdAccount.html",response);
                                             /**/
                                             sendRegistrationMail(formData.email, formData.username, "test", success);
-                                            response.writeHead(200, { 'Content-Type': 'text/html' });
-                                            response.write("Thanks");
-                                            response.end();
+                                            // response.writeHead(200, { 'Content-Type': 'text/html' });
+                                            // response.write("Thanks");
+                                            // response.end();
 
 
-                                            // fs.readFile("../src/html/createdAccount.html", function (error, htmlContent) {
-                                            //     if (error) {
-                                            //         response.writeHead(404);
-                                            //         response.write("Couldn't load HTML / not found");
-                                            //     } else {
-                                            //         response.writeHead(200, { 'Content-Type': 'text/html' })
-                                            //         response.write(htmlContent);
-                                            //     }
-                                            //     response.end();
-                                            // });
+                                            fs.readFile("../src/html/createdAccount.html", function (error, htmlContent) {
+                                                if (error) {
+                                                    response.writeHead(404);
+                                                    response.write("Couldn't load HTML / not found");
+                                                } else {
+                                                    response.writeHead(200, { 'Content-Type': 'text/html' })
+                                                    response.write(htmlContent);
+                                                }
+                                                response.end();
+                                            });
 
                                             /**/
                                         }
