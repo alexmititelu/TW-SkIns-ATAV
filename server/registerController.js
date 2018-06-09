@@ -17,7 +17,7 @@ function sendRegistrationMail(destinationEmail, username, activationLink, succes
     var mailOptions = {
         from: 'skinsvirtualinstructor@gmail.com',
         to: destinationEmail,
-        subject: 'Sending Email using Node.js',
+        subject: 'SkIns Account Registration',
         html: '<h1>Welcome ' + username + '</h1>' +
             '<p>In order to activate your account click on the following link: <br>localhost:8888/register/' + activationLink + '</p> ' +
             '<br><br> <p>© SkIns</p>'
@@ -54,6 +54,53 @@ module.exports = {
         if (request.method === "GET" && path.includes(".css") === false) {
             if (path === "/register") {
                 renderHTML("createAccount.html", response);
+            } else if (path.startsWith("/register/") === true) {
+
+                var tokenFromPath = path.split("/", 3)[2];
+
+                MongoClient
+                    .connect('mongodb://localhost:27017', function (error, connection) {
+                        if (error) {
+                            throw error;
+                        }
+
+                        var dbConnection = connection.db("TW_PROJECT_SkIns");
+
+                        var query = { token: tokenFromPath };
+                        dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
+
+                            if (queryError) {
+                                throw queryError;
+                            }
+
+                            if (queryResult.length === 1) {
+                                response.writeHead(200, { 'Content-Type': 'text/html' })
+                                response.write("<html><head></head><body><h2>Registration succesfull!</h2>" +
+                                    "You'll be redirected to home page in " +
+                                    "<span id=\"countdown\">5</span> seconds" +
+                                    "<script type=\"text/javascript\">" +
+                                    "   var seconds = 5;" +
+                                    "   function countdown() {" +
+                                    "      seconds = seconds - 1;" +
+                                    "      if (seconds < 0) {" +
+                                    "           window.location = \"localhost:8888/register\";" +
+                                    "       } else {" +
+                                    "           document.getElementById(\"countdown\").innerHTML = seconds;" +
+                                    "           window.setTimeout(\"countdown()\", 1000);" +
+                                    "        }" +
+                                    "    }" +
+                                    "countdown();" +
+                                    "</script>" +
+                                    "</body></html>");
+                                response.end();
+                                dbConnection.collection("Tokens").remove(query);
+                        
+                            }
+
+                        });
+                    });
+
+
             } else {
                 response.writeHead(404);
                 response.write("Couldn't load HTML / not found");
@@ -93,7 +140,7 @@ module.exports = {
                                         throw queryError;
                                     }
 
-                                     var newAccountDetails = {
+                                    var newAccountDetails = {
                                         cont_id: queryResult[0]._id,
                                         first_name: formData.firstName,
                                         last_name: formData.lastName,
@@ -106,12 +153,12 @@ module.exports = {
                                     dbConnection.collection("Utilizatori").insertOne(newAccountDetails, function (error, success) {
                                         if (error) {
                                             throw error;
-                                           
+
                                         }
                                     });
-                                    
+
                                     var newToken = randomstring.generate(64);
-                                    
+
                                     var query = { token: newToken };
 
                                     varconturi = dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
@@ -127,23 +174,23 @@ module.exports = {
 
                                             var newTokenRow = {
                                                 token: newToken,
-                                                exp_date: new Date(new Date().getTime() + 2 * 1000 * 60 * 60),
+                                                createdAt: new Date().toISOString(),
                                                 cont_id: newAccountDetails.cont_id
                                             }
-                                            
+
                                             dbConnection.collection("Tokens").insertOne(newTokenRow, function (error, success) {
                                                 if (error) {
                                                     throw error;
-                                                    
+
                                                 }
                                                 console.log("Insrted");
-                                                
+
                                             });
 
 
                                             // renderHTML("createdAccount.html",response);
                                             /**/
-                                            sendRegistrationMail(formData.email, formData.username, "test", success);
+                                            sendRegistrationMail(formData.email, formData.username, newTokenRow.token, success);
                                             // response.writeHead(200, { 'Content-Type': 'text/html' });
                                             // response.write("Thanks");
                                             // response.end();
