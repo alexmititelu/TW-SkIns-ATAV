@@ -22,11 +22,11 @@ const loginController = require('./controllers/loginController');
 const registerController = require('./controllers/registerController');
 
 const assetsController = require('./controllers/assetsController');
-// const mainController = require('./controllers/mainController');
+const mainController = require('./controllers/mainController');
 
 const achievementController = require('./controllers/achievementController');
 const libraryController = require('./controllers/libraryController');
-// const profileController = require('./controllers/profileController');
+const profileController = require('./controllers/profileController');
 const coursesController = require('./controllers/coursesController');
 
 // const addOwnCourseController = require('./controllers/addOwnCourseController');
@@ -51,49 +51,19 @@ const server = http.createServer( (req, res) => {
     var cookies = new Cookies(req, res, null);
 
     assetsController.handleRequest(req, res);
-    // mainController(req, res, cookies);
+    mainController(req, res, cookies, fs);
 
-    registerHandler(req, res, cookies, axios, fs, qs);
+    registerHandler(req, res, cookies, axios, fs);
     loginHandler(req, res, cookies, validate, jwt, mongoClient);
 
-    achievementHandler(req, res, cookies, axios, fs, qs)
-    libraryHandler(req, res, cookies, axios, fs, qs);
-    // profileHandler(req, res, qs, cookies);
-    coursesHandler(req, res, cookies, axios, fs, qs);
+    achievementHandler(req, res, cookies, axios, fs)
+    libraryHandler(req, res, cookies, axios, fs);
+    profileHandler(req, res, cookies, axios, fs);
+    coursesHandler(req, res, cookies, axios, fs);
 
     // addOwnCourseHandler(req, res, qs, cookies);
 
-    if(req.method === 'GET' && req.url === '/index.html')
-        {   
 
-            
-            
-
-            // interogat BD sa vad daca e logat sau nu ca sa vad ce ii afisez in menoul de sus
-
-            res.writeHead(200, {'Content-type' : 'text/html'})
-
-            var pathElements = __dirname.split('\\');
-
-            pathElements.pop();
-            
-            var homePath = pathElements.join("/") + "/index.html";
-            
-            let inputHtml = fs.createReadStream(homePath)
-
-            inputHtml.on('open', function () {
-
-				inputHtml.pipe(res);
-			});
-
-			inputHtml.on('error', function(err) {
-				res.end(err.message);
-            });
-            
-            
-            // res.write('ala bala portocala')
-            // res.end()
-        }
        
 });
 

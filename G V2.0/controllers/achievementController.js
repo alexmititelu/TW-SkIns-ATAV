@@ -17,7 +17,7 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = achievementHandler = function(req, res, cookies, axios, fs, qs)
+module.export = achievementHandler = function(req, res, cookies, axios, fs)
 {	
 	
 
