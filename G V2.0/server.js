@@ -51,7 +51,7 @@ const server = http.createServer( (req, res) => {
     var cookies = new Cookies(req, res, null);
 
     assetsController.handleRequest(req, res);
-    mainController(req, res, cookies, fs);
+    mainHandler(req, res, cookies, fs);
 
     registerHandler(req, res, cookies, axios, fs);
     loginHandler(req, res, cookies, validate, jwt, mongoClient);
