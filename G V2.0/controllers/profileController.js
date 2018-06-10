@@ -103,4 +103,5 @@ module.export = profileHandler = function(req, res, cookies, axios, fs)
 				res.end(error.message);
 			})
 		})
-    }
+	}
+}
