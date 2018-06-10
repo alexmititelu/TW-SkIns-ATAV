@@ -6,7 +6,7 @@ var homePath = pathElements.join('\\');
 
 
 
-module.export = mainHandler = function(req, res, cookies, axios, fs, qs)
+module.export = mainHandler = function(req, res, cookies, fs)
 {	
 	
     if(req.method === 'GET' && req.url === '/index.html')
