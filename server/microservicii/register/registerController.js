@@ -207,7 +207,7 @@ module.exports = {
                                             // response.end();
 
 
-                                            fs.readFile("../src/html/createdAccount.html", function (error, htmlContent) {
+                                            fs.readFile("../../../src/html/createdAccount.html", function (error, htmlContent) {
                                                 if (error) {
                                                     response.writeHead(404);
                                                     response.write("Couldn't load HTML / not found");
