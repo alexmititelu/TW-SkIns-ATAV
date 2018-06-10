@@ -44,9 +44,9 @@ const port = process.env.PORT || 8050;
 
 const server = http.createServer( (req, res) => {
 
-    console.log(req.url)
-    console.log(req.method)
-    console.log('------------------------')
+    // console.log(req.url)
+    // console.log(req.method)
+    // console.log('------------------------')
 
     var cookies = new Cookies(req, res, null);
 
