@@ -120,13 +120,14 @@ module.exports = {
                 });
 
                 request.on('end', function () {
-                    var formData = qs.parse(requestBody);
-
+                    var formData = JSON.parse(requestBody);
+                    
                     MongoClient
                         .connect('mongodb://localhost:27017', function (error, connection) {
                             if (error) {
                                 throw error;
                             }
+                            
 
                             var dbConnection = connection.db("TW_PROJECT_SkIns");
                             var newAccount = {
@@ -134,6 +135,9 @@ module.exports = {
                                 password: formData.password,
                                 email: formData.email
                             };
+
+                            
+                            
 
                             dbConnection.collection("Conturi").insertOne(newAccount, function (error, success) {
                                 if (error) {

@@ -44,9 +44,9 @@ const port = process.env.PORT || 8050;
 
 const server = http.createServer( (req, res) => {
 
-    // console.log(req.url)
-    // console.log(req.method)
-    // console.log('------------------------')
+    console.log(req.url)
+    console.log(req.method)
+    console.log('------------------------')
 
     var cookies = new Cookies(req, res, null);
 
@@ -72,13 +72,25 @@ const server = http.createServer( (req, res) => {
             // interogat BD sa vad daca e logat sau nu ca sa vad ce ii afisez in menoul de sus
 
             res.writeHead(200, {'Content-type' : 'text/html'})
-            var pathElements = __dirname.split("/");
+
+            var pathElements = __dirname.split('\\');
+
             pathElements.pop();
+            
             var homePath = pathElements.join("/") + "/index.html";
-            console.log(homePath);
+            
             let inputHtml = fs.createReadStream(homePath)
 
-            inputHtml.pipe(res);
+            inputHtml.on('open', function () {
+
+				inputHtml.pipe(res);
+			});
+
+			inputHtml.on('error', function(err) {
+				res.end(err.message);
+            });
+            
+            
             // res.write('ala bala portocala')
             // res.end()
         }
