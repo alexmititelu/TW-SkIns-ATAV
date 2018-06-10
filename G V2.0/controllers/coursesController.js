@@ -1,5 +1,11 @@
 var qs = require('querystring');
 
+var pathElements = __dirname.split("/");
+pathElements.pop();
+pathElements.pop();
+var homePath = pathElements.join("/");
+
+
 function collectRequestData(request, callback) {
 	    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
 
@@ -35,7 +41,7 @@ module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
 		}
 		else
 		{
-			const file = __dirname + '/..' + '/src/html/courses.html';
+			const file = homePath + "/src/html/courses.html";
 
 			var readStream = fs.createReadStream(file);
 

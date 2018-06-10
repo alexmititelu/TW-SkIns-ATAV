@@ -1,5 +1,12 @@
 var qs = require('querystring');
 
+var pathElements = __dirname.split("/");
+pathElements.pop();
+pathElements.pop();
+var homePath = pathElements.join("/");
+            
+
+
 function collectRequestData(request, callback) {
 	    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
 
@@ -21,7 +28,7 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 {	
 	
 
-	if(req.url === '/src/html/createAccount.html' && req.method === 'GET')
+	if(req.url === '/register' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');
 
@@ -35,7 +42,41 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 		}
 		else
 		{
-			const file = __dirname + '/..' + req.url;
+			const file = homePath + "/src/html/createAccount.html";
+			console.log("***** FILE: " + file);
+			var readStream = fs.createReadStream(file);
+
+			readStream.on('open', function () {
+
+				readStream.pipe(res);
+			});
+
+			readStream.on('error', function(err) {
+				res.end(err.message);
+			});
+
+			res.writeHead(200, {
+                    'Content-Type': 'text/html'
+            });
+		}	
+	}
+
+
+	if(req.url === '/createdAccount' && req.method === 'GET')
+	{
+		var cookie = cookies.get('userToken');
+
+		if(cookie)
+		{
+			var url = 'http://localhost:8050/index.html';
+
+			res.writeHead(302, {Location: url});
+
+			res.end();
+		}
+		else
+		{
+			const file = homePath + "/src/html/createdAccount.html";
 
 			var readStream = fs.createReadStream(file);
 
@@ -55,17 +96,15 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 		
 	}
 
-	if(req.url === '/src/html/createdAccount.html' && req.method === 'POST')
+
+	if(req.url === '/register' && req.method === 'POST')
 	{
-		
-
-
 		collectRequestData(req, userDetails => {
 			
 
-			axios.post('localhost:8051/src/html/createAccount.html', userDetails)
+			axios.post('localhost:8051/register', userDetails)
 			.then(function(res){
-
+				console.log("register--------------");
 				this.res.setEncoding('utf8');
 
 			    var body = '';

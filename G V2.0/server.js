@@ -72,8 +72,11 @@ const server = http.createServer( (req, res) => {
             // interogat BD sa vad daca e logat sau nu ca sa vad ce ii afisez in menoul de sus
 
             res.writeHead(200, {'Content-type' : 'text/html'})
-
-            let inputHtml = fs.createReadStream('./index.html')
+            var pathElements = __dirname.split("/");
+            pathElements.pop();
+            var homePath = pathElements.join("/") + "/index.html";
+            console.log(homePath);
+            let inputHtml = fs.createReadStream(homePath)
 
             inputHtml.pipe(res);
             // res.write('ala bala portocala')

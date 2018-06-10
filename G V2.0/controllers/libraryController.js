@@ -1,4 +1,9 @@
 var qs = require('querystring');
+var pathElements = __dirname.split("/");
+pathElements.pop();
+pathElements.pop();
+var homePath = pathElements.join("/");
+
 
 function collectRequestData(request, callback) {
 	    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -35,7 +40,7 @@ module.export = libraryHandler = function(req, res, cookies, axios, fs, qs)
 		}
 		else
 		{
-			const file = __dirname + '/..' + '/src/html/library.html';
+			const file = homePath + "/src/html/library.html";
 
 			var readStream = fs.createReadStream(file);
 
