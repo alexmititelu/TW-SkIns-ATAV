@@ -2,17 +2,14 @@ var url = require('url');
 var fs = require('fs');
 var pathResolver = require('path');
 
+var pathElements = __dirname.split("/");
+pathElements.pop();
+pathElements.pop();
+var homePath = pathElements.join("/");
+
 function renderCSS(path, response) {
 
-    var pathElements = __dirname.split("/");
-    pathElements.pop();
-    pathElements.pop()
-    console.log(pathElements);
-    console.log("PATH: " + path);
-    path = "/"+path.split("/").pop();
-    console.log("PATH: " + path);
-    var cssPath = pathElements.join("/") + "/src/assets/css" + path;
-    console.log(cssPath);
+    var cssPath = homePath + "/src/assets/css" + path;
 
     fs.readFile(cssPath, function (error, cssContent) {
         if (error) {
@@ -30,7 +27,10 @@ function renderCSS(path, response) {
 }
 
 function renderImage(path, response) {
-    fs.readFile("../src/assets" + path, function(error,image) {
+
+    var imagePath = homePath + "/src/assets/images" + path;
+
+    fs.readFile(imagePath, function(error,image) {
         if (error) {
             response.writeHead(404);
             response.write("Couldn't load Image / not found");
