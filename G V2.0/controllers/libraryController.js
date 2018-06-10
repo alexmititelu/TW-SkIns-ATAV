@@ -30,7 +30,7 @@ module.export = libraryHandler = function(req, res, cookies, axios, fs, qs)
 	{
 		var cookie = cookies.get('userToken');
 
-		if(!cookie)
+		if(cookie)
 		{
 			var url = 'http://localhost:8050/index.html';
 

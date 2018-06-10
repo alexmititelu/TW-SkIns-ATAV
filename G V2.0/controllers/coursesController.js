@@ -26,12 +26,14 @@ function collectRequestData(request, callback) {
 module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
 {	
 	
+	console.log("@@@@@@@" + req.url)
 
 	if(req.url === '/courses' && req.method === 'GET')
 	{
+		console.log("TEST");
 		var cookie = cookies.get('userToken');
 
-		if(!cookie)
+		if(cookie)
 		{
 			var url = 'http://localhost:8050/index.html';
 
