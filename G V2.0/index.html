@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HOME</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script language="javascript" type="text/javascript" src="src/shared/header.html"></script> -->
+    
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="css/index_styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+        function myFunction(x) {
+        x.classList.toggle("change");
+        }
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="center">
+            <h1>Skillz'<span>o</span>'Skillz</h1>
+    
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses">Free</a></li>
+                <li><a href="courses">Paid</a></li>
+                <li><a href="src/html/achievements.html">My Achivements</a></li>
+                <li><a href="myLibrary">My Library</a></li>
+                <li>
+                    <div>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
+    
+                        <div id="id01" class="modal">
+                          
+                          <form class="modal-content animate" method="post" action="/signin">
+                            <div class="imgcontainer">
+                              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                              <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg" alt="Avatar" class="avatar">
+                            </div>
+                        
+                            <div class="container">
+                            
+                                
+                              <label for="username"><b>Username</b></label>
+                              <input type="text" placeholder="Enter Username" name="email" required>
+                        
+                              <label for="password"><b>Password</b></label>
+                              <input type="password" placeholder="Enter Password" name="password" required>
+                                
+                              <button type="submit" class="button1">Login</button>
+                              <label>
+                                
+                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                              </label>
+                            </div>
+                        
+                            <div class="container">
+                              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                              <span class="psw">Forgot <a href="#">password?</a></span>
+                            </div>
+                          </form>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#"><i class="fa fa-gear fa-2x gear"></i></a>
+                            <ul class="submenu">
+                                  <li><a href="src/html/profile.html">Profil</a></li>
+                                  <li><a href="src/html/profile.html">Paymant method</a></li>
+                                  <li><a href="src/html/profile.html">Security</a></li>
+                                     <li><a href="#">Logout</a></li>
+                               </ul>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <!-- <button class="dropbtn">Dropdown</button> -->
+                <div class="container dropbtn" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                  </div>
+                <div class="dropdown-content">
+                  <a href="index.html">Home</a>
+                  <a href="courses">Free</a>
+                  <a href="courses">Paid</a>
+                  <a href="src/html/achievements.html">My Achivements</a>
+                  <a href="myLibrary">My Library</a>
+                  <div>
+                 
+                    <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
+
+                    <div id="id02" class="modal">
+                      
+                      <form class="modal-content animate" action="/action_page.php">
+                        <div class="imgcontainer">
+                          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                          <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg" alt="Avatar" class="avatar">
+                        </div>
+                    
+                        <div class="container">
+                          <label for="uname"><b>Username</b></label>
+                          <input type="text" placeholder="Enter Username" name="uname" required>
+                    
+                          <label for="psw"><b>Password</b></label>
+                          <input type="password" placeholder="Enter Password" name="psw" required>
+                            
+                          <button type="submit" class="button1">Login</button>
+                          <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                          </label>
+                        </div>
+                    
+                        <div class="container">
+                          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                          <span class="psw">Forgot <a href="#">password?</a></span>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+                <button class="accordion">Settings</button>
+                <div class="panel">
+                    <a href="src/html/profile.html">Profil</a>
+                    <a href="src/html/profile.html">Payment Method</a>
+                    <a href="src/html/profile.html">Security</a>
+                    <a href="#">Logout</a>
+                </div>
+                <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+                        
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function() {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.display === "block") {
+                                    panel.style.display = "none";
+                                } else {
+                                    panel.style.display = "block";
+                                }
+                            });
+                        }
+                </script>
+            </button>
+                </div>
+              </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    
+    <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+    <!-- Body-ul din pagina de HOME-->
+    
+    <div class="desc">
+        <div class="center">
+            <span class="up">Courses for validation of skills </span><br>
+            <span class="down">And payment multiplication </span>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class=" preview clear">
+        <div class="CoursesBar clear">
+            <span>Numbers do speak</span>
+        </div>
+        <!-- <div class="videoB">
+            <video class="video center " height="200px" controls>
+                  <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div> -->
+        <div class="videoB">
+            <!-- <iframe width="1170" height="360" src="https://www.youtube.com/embed/2MpUj-Aua48" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+    
+            <iframe width='980' height='360' src="https://www.youtube.com/embed/ea5-SIe5l7M?&theme=dark&autoplay=0&autohide=1&modestbranding=1&fs=0&showinfo=0&rel=0&iv_load_policy=3&controls=0"frameborder="0"></iframe>
+        </div>
+    
+        <div class="CoursesBar">
+            <span>The most vary courses list</span>
+        </div>
+        <div class="Courses clear">
+            <div class="Clistwraper clear">
+                <ul class="CList">
+                <li>
+                    <a href="#">
+                        <p>Paid</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Free</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Guitar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>First Aid</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Avionics</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Origami</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Wire Walking</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Survival</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <p>...</p>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            <div class="Searchw">
+                <form>
+                      <input type="text" name="search" placeholder="Search..">
+                </form>
+            </div>
+            
+    
+            <div class="gridTop">
+                  <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+                <div class="box"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1pjRZ9lVsMljtzap5NwNNvU9KCaa3_LZxDckLGpUtYFocmWnDdA"></div>
+            </div>
+        </div>
+        <div class="WhyUsBar clear">
+            <h1> Why us? </h1>
+    
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</p>
+    
+            <img src="http://www.trainer.ir/Trainer.ir.jpg">
+    
+            <p><BR>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna. Aenean condimentum nisi eget consequat fringilla. Proin ante erat, eleifend id bibendum eget, tincidunt a nisl. Pellentesque et lectus lacus. Quisque a nisl commodo, varius odio nec, congue velit.<BR><BR> Aliquam id nisi semper, dictum lorem id, pulvinar turpis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna. Aenean condimentum nisi eget consequat fringilla. Proin ante erat, eleifend id bibendum eget, tincidunt a nisl.</p>
+            <div class="AddCourse"> Add your own course </div>	
+        </div>
+    
+        <div class="R">
+            
+            <div class="R1">
+                <div class="Map">
+                    <div class="ButonApp">
+                        <p>Download S'o'S</p>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="Testimoniale">
+                <h1>Testimoniale</h1>
+                <ul class="T">
+                    <li>
+                        <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                    </li>
+    
+                    <li>
+                        <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                    </li>
+    
+                    <li>
+                        <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                    </li>
+                </ul>
+    
+                
+            </div>
+            <footer class="container-footer R2">
+                <!--           
+                <h4>Copyright 2018, ATAV
+                    <br>All Rights Reserved</h4> -->
+        
+                <div class="lcr-footers">
+                    <!--lefct center right footers -->
+                    <div class="lcr-footer-element" id="leftFooter">
+                        <h5>Phone number: 0747 815 389</h5>
+                        <h5>Email: contact@skin.com </h5>
+                        <h5>Fax: 0232 264 385</h5>
+                    </div>
+        
+        
+        
+                    <div class="lcr-footer-element" id="centralFooter">
+                            <ul class="socialMedia">
+                                <li style="display:block">
+                                    <h4>Copyright 2018, ATAV
+                                        <br>All Rights Reserved</h4>
+        
+                                </li>
+                                <li>
+                                    <a href="https://www.facebook.com/">
+                                        <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/">
+                                        <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.youtube.com/">
+                                        <i class="fa fa-youtube fa-2x" style="color:red;"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+        
+                    <div class="lcr-footer-element" id="rightFooter">
+                        <h5>Adress:</h5>
+                        <div id="map"></div>
+                        <script>
+                            function initMap() {
+                                var uluru = { lat: 47.175240, lng: 27.575136 };
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 15,
+                                    center: uluru
+                                });
+                                var marker = new google.maps.Marker({
+                                    position: uluru,
+                                    map: map
+                                });
+                            }
+                        </script>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
+                        </script>
+        
+                    </div>
+                </div>
+        
+        
+        
+            </footer>
+        </div>	
+        <div class="clear"></div>
+        
+    </div>
+    <!-- end of Body -->
+
+    <!-- script button -->
+    <!-- 
+            <script>
+        
+                function myFunction() {
+                    var x = document.getElementById("dropdownSettings");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+            </script> -->
+
+
+    <!-- <img src="../images/skinsred.png"/> -->
+    <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+
+
+
+    
+
+    
+
+
+
+</body>
+<!-- <footer>
+    <script language="javascript" type="text/javascript" src="src/shared/footer.html"></script>
+</footer> -->
+
+</html>

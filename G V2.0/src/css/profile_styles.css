@@ -1,0 +1,232 @@
+.toate_sectiunile {
+    text-align: center;
+}
+
+.logo_profile {
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    display: block;
+    text-align: center;
+}
+
+.username {
+    margin-top: 5%;
+    margin-bottom: 8%;
+    text-align: center;
+    display: inline-block;
+    width: 32%;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.wrapper {
+    display: grid;
+    width: 100%;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto auto;
+}
+
+select {
+    background-color: #D9D9D9;
+    height: 28px;
+    border-radius: 3px;
+    color: #292F36;
+    font-size:16px;
+    padding-left: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.password, .email, .billingData, .personalData{
+    margin-top:6%;
+    margin-bottom:8%;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 32%;
+    color: #D9D9D9;
+}
+
+.personalData {
+    margin-top:6%;
+    margin-bottom:12%;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 32%;
+    color: #D9D9D9;
+}
+
+h4 {
+    color: #D9D9D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
+}
+
+p {
+    color: #D9D9D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:16px;
+}
+
+.username input[type=text] {
+    width: 75%;
+    height: 28px;
+    float:left;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
+    color: #292F36;
+    background-color: #D9D9D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 27px;
+    padding-bottom: 7px;
+}
+
+.password input[type=text] {
+    width: 75%;
+    height: 28px;
+    float:left;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
+    color: #292F36;
+    background-color: #D9D9D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 26px;
+    padding-bottom: 5px;
+}
+
+.email input[type=text] {
+    width: 75%;
+    height: 28px;
+    float:left;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
+    color: #292F36;
+    background-color: #D9D9D9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 5px;
+    padding-left: 34px;
+    padding-bottom: 3px;
+}
+
+.personalData input[type=text] {
+    height: 28px;
+    width: 100%;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
+    float: right;
+    color: #292F36;
+    background-color: #D9D9D9;
+    padding-left: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.billingData input[type=text] {
+    height: 28px;
+    width: 100%;
+    border-radius: 3px;
+    border:3px solid #D9D9D9;
+    box-sizing: border-box;
+    font-size:16px;
+    float: right;
+    color: #292F36;
+    background-color: #D9D9D9;
+    padding-left: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cardNumber, .expiryDate, .CVCSecurity {
+    position: relative;
+}
+
+.cardNumber i {
+    position: absolute;
+    color: #637081;
+    margin-top: 14px;
+    margin-left: 10px;
+}
+.expiryDate i {
+    position: absolute;
+    color: #637081;
+    margin-top: 14px;
+    margin-left: 12px;
+}
+.CVCSecurity i {
+    position: absolute;
+    color: #637081;
+    margin-top: 14px;
+    margin-left: 14px;
+}
+
+.username i{
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    padding-top: 14px;
+    color: #637081;
+}
+
+.password i{
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    padding-top: 14px;
+    color: #637081;
+}
+
+.email i{
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    padding-top: 14px;
+    color: #637081;
+}
+
+ input[type=submit] {
+    width: 20%;
+    height: 30px;
+    padding: 3px;
+    font-size: 15px;
+    padding-bottom: 7px;
+    float:right;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #292F36;
+    border:3px solid #637081;
+    background-color: #D9D9D9;
+    border-radius: 5px;
+}
+
+.personalData input[type=submit] {
+    position: absolute;
+    width: 60%;
+    margin-top: 10px;
+    margin-left: -29%;
+}
+
+.billingData input[type=submit] {
+    width: 60%;
+    position: absolute;
+    margin-left: -29%;
+}
+
+input[type=submit]:hover {
+    border:3px solid #292F36;
+}
+
+input:focus {
+    outline:none;
+}
+
+select:focus {
+    outline:none;
+}
