@@ -1,9 +1,9 @@
 var qs = require('querystring');
 
-var pathElements = __dirname.split("/");
+var pathElements = __dirname.split('\\');
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join("/");
+var homePath = pathElements.join('\\');
             
 
 
@@ -32,7 +32,7 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 	{
 		var cookie = cookies.get('userToken');
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'http://localhost:8050/index.html';
 
@@ -101,40 +101,20 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 	{
 		collectRequestData(req, userDetails => {
 			
+			console.log(userDetails)
+			axios({
+				method : 'post',
+				url : 'http://127.0.0.1:8051/register',
+				data : userDetails
+			})
+			.then(function(responsex){
 
-			axios.post('localhost:8051/register', userDetails)
-			.then(function(res){
-				console.log("register--------------");
-				this.res.setEncoding('utf8');
-
-			    var body = '';
-
-			    this.res.on('data', function(chunk) {
-			        body += chunk;
-			    });
-
-				this.res.on('end', function(){
-
-					body = JSON.parse(body);
-
-					if( body.result === 'succes')
-					{
-						url = 'http://localhost:8050/createdAccount.html'
-						res.writeHead(302, {Location: url});
-						res.end();
-					}
-					else if( body.result === 'fail')
-					{
-						res.write(this.res)
+						res.write(responsex.data)
 						res.writeHead(200, {
 	                    'Content-Type': 'text/html'
 	            		});
 	            		res.end();
-					}
-					else{
-
-					}
-				});
+				
 					
 			})
 			.catch(function(error){

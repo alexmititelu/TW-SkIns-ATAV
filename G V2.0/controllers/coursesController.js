@@ -1,9 +1,9 @@
 var qs = require('querystring');
 
-var pathElements = __dirname.split("/");
+var pathElements = __dirname.split('\\');
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join("/");
+var homePath = pathElements.join('\\');
 
 
 function collectRequestData(request, callback) {
