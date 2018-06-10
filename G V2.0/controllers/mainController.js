@@ -17,6 +17,7 @@ module.export = mainHandler = function(req, res, cookies, fs)
         var pathElements = __dirname.split('\\');
 
         pathElements.pop();
+        pathElements.pop();
         
         var homePath = pathElements.join("/") + "/index.html";
         
@@ -35,8 +36,16 @@ module.export = mainHandler = function(req, res, cookies, fs)
 
     if (req.url === '/sign-out' && req.method === 'GET') {
 
-        cookies.set('userToken', {maxAge: Date.now()});
-        cookies.set('testtoken', {expires: Date.now()});
+        console.log('data  ' + new Date().toLocaleString());
+        cookies.set('userToken', {maxAge: new Date()});
+        cookies.set('userToken', {expires: new Date()});
+
+        var url = 'http://localhost:8050/index.html';
+
+        res.writeHead(302, {Location: url});
+
+        res.end();
+    
                 
     }
 

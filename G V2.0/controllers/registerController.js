@@ -32,7 +32,9 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 	{
 		var cookie = cookies.get('userToken');
 
-		if(cookie)
+		
+
+		if(cookie !== '[object Object]' )
 		{
 			var url = 'http://localhost:8050/index.html';
 
@@ -109,6 +111,8 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 			})
 			.then(function(responsex){
 
+
+						console.log(responsex.data)
 						res.write(responsex.data)
 						res.writeHead(200, {
 	                    'Content-Type': 'text/html'

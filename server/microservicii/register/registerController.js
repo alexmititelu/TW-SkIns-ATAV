@@ -36,6 +36,7 @@ function renderHTML(path, response) {
     fs.readFile("../src/html/" + path, function (error, htmlContent) {
         if (error) {
             response.writeHead(404);
+            
             response.write("Couldn't load HTML / not found");
         } else {
             response.writeHead(200, { 'Content-Type': 'text/html' })
@@ -71,7 +72,9 @@ module.exports = {
 
                             if (queryError) {
                                 // throw queryError;
+                                console.log('b')
                                 response.writeHead(404);
+                                
                                 response.write("Couldn't load HTML / not found");
                                 response.end();
                                 throw queryError;
@@ -122,6 +125,7 @@ module.exports = {
                 request.on('end', function () {
                     var formData = JSON.parse(requestBody);
                     
+                    console.log(formData)
                     MongoClient
                         .connect('mongodb://localhost:27017', function (error, connection) {
                             if (error) {
@@ -206,8 +210,7 @@ module.exports = {
                                             // response.write("Thanks");
                                             // response.end();
 
-
-                                            fs.readFile("../../../src/html/createdAccount.html", function (error, htmlContent) {
+                                            fs.readFile(__dirname + "/../../../src/html/createdAccount.html", function (error, htmlContent) {
                                                 if (error) {
                                                     response.writeHead(404);
                                                     response.write("Couldn't load HTML / not found");
