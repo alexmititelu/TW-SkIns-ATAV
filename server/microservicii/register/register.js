@@ -8,7 +8,7 @@ var serverPort = 8051;
 http.createServer(function (request, response) {
     
     var path = url.parse(request.url).pathname;
-    if (path.startsWith('/courses')){
+    if (path.startsWith('/register')){
         registerController.handleRequest(request,response);
     }
 
