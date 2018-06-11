@@ -1,6 +1,24 @@
 var url = require('url');
 var fs = require('fs');
+var qs = require('qs');
 const MongoClient = require('mongodb').MongoClient;
+
+function collectRequestData(request, callback) {
+    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
+
+    if(request.headers['content-type'] === FORM_URLENCODED) {
+        let body = '';
+        request.on('data', chunk => {
+            body += chunk.toString();
+        });
+        request.on('end', () => {
+            callback(qs.parse(body));
+        });
+    }
+    else {
+        callback(null);
+    }
+}
 
 module.exports = {
     handleRequest: function(request, response){
@@ -20,12 +38,12 @@ module.exports = {
 
                     var dbConnection = connection.db("TW_PROJECT_SkIns");
 
-                    //var token = cookies.get('userToken');
-                    //var userData = JSON.parse(jwt.verify(token,secret));
-                    //var email = {email : userData.email};
+                    var token = cookies.get('userToken');
+                    var userData = jwt.verify(token,secret);
+                    var email = JSON.stringify({email : userData.email});
                     //cookie !
 
-                    var emailData = {email : "mititelu.alex@yahoo.com"};
+                    //var emailData = {email : "mititelu.alex@yahoo.com"};
 
                     dbConnection.collection('Conturi').find(emailData).toArray(function (queryError, queryResult) {
 
@@ -107,23 +125,29 @@ module.exports = {
                     var contId = "5b16b59065136feeb6a37b1a";
 
                     //iau asta din REQUEST !
+                    var course;
+                    collectRequestData(request,courseData => {
+                        
+                        console.log(courseData);
+                        course = courseData._id;
+                        
+                        //var course = "DOAR PENTRU TEST: STERGE DIN DB !";
 
-                    var course = "DOAR PENTRU TEST: STERGE DIN DB !";
+                        var newSubscription = {
+                            cont_id : contId,
+                            curs_id : course
+                        };
 
-                    var newSubscription = {
-                        cont_id : contId,
-                        curs_id : course
-                    };
+                        dbConnection.collection("Abonati").insertOne(newSubscription, function(error, success) {
+                            if (error) {
+                                throw error;
 
-                    dbConnection.collection("Abonati").insertOne(newSubscription, function(error, success) {
-                        if (error) {
-                            throw error;
-
-                        }
-                        console.log("Inserat");
-                        response.writeHead(200);
-                        response.end("Succesfully inserted !");
-                        connection.close();
+                            }
+                            console.log("Inserat");
+                            response.writeHead(200);
+                            response.end("Succesfully inserted !");
+                            connection.close();
+                        });
                     });
                 });
             }
