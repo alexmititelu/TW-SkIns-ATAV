@@ -1,4 +1,5 @@
 var qs = require('querystring');
+var Cookies = require('cookies');
 
 function collectRequestData(request, callback) {
 	    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -17,9 +18,9 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = achievementHandler = function(req, res, cookies, axios, fs)
+module.export = achievementHandler = function(req, res, axios, fs)
 {	
-	
+	var cookies = new Cookies(req, res, null);
 
 	if(req.url === '/src/html/achievements.html' && req.method === 'GET')
 	{

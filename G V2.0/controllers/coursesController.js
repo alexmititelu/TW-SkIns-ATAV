@@ -1,4 +1,6 @@
 var qs = require('querystring');
+var Cookies = require('cookies');
+
 
 var pathElements = __dirname.split('\\');
 pathElements.pop();
@@ -23,8 +25,10 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
+module.export = coursesHandler = function(req, res, axios, fs)
 {	
+	
+	var cookies = new Cookies(req, res, null);
 	
 	console.log("@@@@@@@" + req.url)
 

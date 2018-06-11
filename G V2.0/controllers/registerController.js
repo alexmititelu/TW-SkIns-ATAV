@@ -1,4 +1,5 @@
 var qs = require('querystring');
+var Cookies = require('cookies');
 
 var pathElements = __dirname.split('\\');
 pathElements.pop();
@@ -24,14 +25,15 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = registerHandler = function(req, res, cookies, axios, fs)
+module.export = registerHandler = function(req, res, axios, fs)
 {	
 	
+	var cookies = new Cookies(req, res, null);
 
 	if(req.url === '/register' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');
-
+		console.log(cookie)
 		
 
 		if(cookie)
