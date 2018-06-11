@@ -1,13 +1,14 @@
-var http = require('http');
+var https = require('https');
 var qs = require('querystring');
 var fs = require('fs');
 var PythonShell = require('python-shell');
 var formidable = require('formidable');
 const MongoClient = require('mongodb').MongoClient;
 var url = require('url');
+var path = require('path');
 
-function renderCoursePage(response) {
-    fs.readFile("./microserviciu-python/pythoncourse.html", function (error, htmlContent) {
+function renderPythonPage(path, response) {
+    fs.readFile(path, function (error, htmlContent) {
         if (error) {
             response.writeHead(404);
             response.write("Couldn't load HTML / not found");
@@ -19,13 +20,18 @@ function renderCoursePage(response) {
     });
 }
 
+var certOptions = {
+    key: fs.readFileSync(path.resolve('./server.key')),
+    cert: fs.readFileSync(path.resolve('./server.crt'))
+  }
+
 var serverPort = 9000;
-http.createServer(function (request, response) {
+https.createServer(certOptions,function (request, response) {
     console.log(request.url);
 
     if (request.method === 'GET') {
         if (request.url === '/python') {
-            renderCoursePage(response);
+            renderPythonPage("./pythoncourse.html", response);
 
             // response.writeHead(200, { 'Content-Type': 'text/html' });
             // response.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
@@ -38,13 +44,13 @@ http.createServer(function (request, response) {
         } else if (request.url === '/python/documentation') {
 
 
-            fs.readFile("./microserviciu-python/documentation.txt", 'utf8', function (error, data) {
+            fs.readFile("./documentation.txt", 'utf8', function (error, data) {
                 if (error) throw error;
-                
+
                 // console.log(data)
 
                 var jsonData = {
-                    content : data
+                    content: data
                 };
 
 
@@ -56,12 +62,132 @@ http.createServer(function (request, response) {
             });
 
 
+        } else if (request.url === '/python/exercises') {
+
+            renderPythonPage("./pythonexercises.html", response);
+
+        }
+        else if (request.url === '/python/getExercises') {
+
+
+            var exercises = [];
+
+            /** EXERCITIILE DIN BD */
+
+            MongoClient
+                .connect('mongodb://localhost:27017', function (error, connection) {
+                    if (error) {
+                        throw error;
+                    }
+
+                    var dbConnection = connection.db("TW_PROJECT_SkIns");
+                    var collection = dbConnection.collection("Python_Exercises");
+
+                    var query = {
+                        nrExercitiu: { $gt: 0, $lt: 6 }
+                    };
+
+                    var cursor = collection.find(query);
+
+                    cursor.forEach(
+                        function (doc) {
+                            // console.log(doc);
+
+                            var exercise = {
+                                nrExercitiu: doc.nrExercitiu,
+                                enunt: doc.enunt
+                            }
+
+                            exercises.push(exercise);
+                            // console.log(exercises);
+                        },
+                        function (err) {
+                            // dbConnection.close();
+                            console.log("error");
+                            console.log(exercises);
+
+                            var jsonData = {
+                                content: exercises
+                            };
+
+                            // console.log(JSON.stringify(jsonData));
+                            response.writeHead(200, { 'Content-Type': 'application/json' });
+                            response.write(JSON.stringify(jsonData));
+                            response.end();
+
+                        }
+
+                    );
+
+
+
+                });
+
+
+        } else if (request.url.startsWith('/python/getExercise/')) {
+
+            var nrExercitiuCerut = request.url.split("/").pop();
+
+            var exercises = [];
+
+            /** EXERCITIILE DIN BD */
+
+            MongoClient
+                .connect('mongodb://localhost:27017', function (error, connection) {
+                    if (error) {
+                        throw error;
+                    }
+
+                    var dbConnection = connection.db("TW_PROJECT_SkIns");
+                    var collection = dbConnection.collection("Python_Exercises");
+
+                    var query = {
+                        nrExercitiu: parseFloat(nrExercitiuCerut)
+                    };
+
+                    var cursor = collection.find(query);
+                    var index = 0;
+                    cursor.forEach(
+                        function (doc) {
+                            // console.log(doc);
+
+                            var exercise = {
+                                nrExercitiu: doc.nrExercitiu,
+                                enunt: doc.enunt
+                            }
+
+                            exercises.push(exercise);
+                            // console.log(exercises);
+                        },
+                        function (err) {
+                            // dbConnection.close();
+                            console.log("error");
+                            console.log(exercises[0]);
+
+                            var jsonData = {
+                                data: exercises[0]
+                            };
+
+                            // console.log(JSON.stringify(jsonData));
+                            response.writeHead(200, { 'Content-Type': 'application/json' });
+                            response.write(JSON.stringify(jsonData));
+                            response.end();
+
+                        }
+
+                    );
+
+
+
+                });
+
+
         } else {
 
             var path = url.parse(request.url).pathname;
 
             if (path.includes(".css")) {
-                fs.readFile("../src/assets/css/" + path, function (error, cssContent) {
+                fs.readFile("../../../src/assets/css/" + path, function (error, cssContent) {
                     if (error) {
                         response.writeHead(404);
                         response.write("Couldn't load CSS / not found");
