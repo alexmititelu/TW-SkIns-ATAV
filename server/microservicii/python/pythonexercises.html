@@ -143,7 +143,12 @@
 
 
     <div class="course-body">
-
+        <!-- <div> -->
+                <!-- <img src="/src/assets/images/python.png"> -->
+                <img id="pythonLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/600px-Python.svg.png"
+                alt="Python Logo" height="20%" width="20%" >
+                <!-- IMAGINEA CU PITONU -->
+        <!-- </div> -->
         <div class="courseTitle">
             <h1>Python exercises</h1>
         </div>
@@ -152,6 +157,14 @@
         <br/>
 
         <div id="exercisesContainer">
+
+        </div>
+        <br><br><br>
+        <div id ="displayedExercise">
+
+        </div>
+
+        <div id="submitSolutionContainer">
 
         </div>
 
@@ -252,9 +265,170 @@
 
     <!-- <script src="exercises.js"></script> -->
     <script>
+
+
+        function displayExercise(exerciseToDisplay) {
+            const URL = 'https://localhost:9000/python/getExercise/'+exerciseToDisplay;
+            const TIME = 5000;
+
+            var displayedExerciseContainer = document.getElementById('displayedExercise');
+
+            while (displayedExerciseContainer.firstChild) {
+                displayedExerciseContainer.removeChild(displayedExerciseContainer.firstChild);
+            }
+
+        try { // trying to instantiate a XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+        } catch (e) {
+            exercisesContainer.innerHTML = 'XMLHttpRequest cannot be instantiated: ' + e.message;
+        } finally {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {   // data arrived
+                    if (xhr.status === 200) { // response Ok from Web service
+                        //    callback(xhr.responseText.trim());
+                        
+                        var jsonResponse = JSON.parse(xhr.responseText);
+                        var exerciseToBeDisplayed = jsonResponse.data;
+                        
+                        // exercises.forEach(exercise => {
+                        //     console.log(exercise);
+                        //     var button = document.createElement('BUTTON');
+                        //     var nrExercitiu = document.createTextNode('Exercitiul '+exercise.nrExercitiu); 
+                        //     button.className = 'buton-exercitiu';
+                        //     button.appendChild(nrExercitiu);
+                        //     exercisesContainer.appendChild(button);
+                        // });
+
+                        var enunt = document.createElement('p');
+                        var continutEnunt = document.createTextNode(exerciseToBeDisplayed.enunt);
+                        enunt.appendChild(continutEnunt);
+                        displayedExerciseContainer.appendChild(enunt);
+
+                        
+                        // var exercise = JSON.parse(exercises[0]);
+                        // exercisesContainer.innerHTML = jsonResponse.content[0];
+                        // var json = JSON.parse(responseArray[0]);
+                        // exercisesContainer.innerHTML = exercises[0].enunt;
+                    }
+                }
+            };
+            xhr.open("GET", URL, true); // opening connection
+            xhr.timeout = TIME;         // setting the response time
+            xhr.send();             // sending the HTTP request (no data is provided)
+        }
+
+
+        };
+
+        /** end of displayExercise function **/
+
+        function firstButtonPush(){
+            var button = document.getElementById('buton-exercitiu-1');
+            
+                button.indexNumber = 1;   
+                button.onclick = function() {
+                    // displayExercise(buttons[i].indexNumber);
+                    console.log(1);
+                    displayExercise(1);
+                };
+        };
+
+        function secondButtonPush(){
+            var button = document.getElementById('buton-exercitiu-2');
+            
+                button.indexNumber = 2;   
+                button.onclick = function() {
+                    // displayExercise(buttons[i].indexNumber);
+                    console.log(2);
+                    displayExercise(2);
+                };
+        };
+
+         function thirdButtonPush(){
+            var button = document.getElementById('buton-exercitiu-3');
+            
+                button.indexNumber = 3;   
+                button.onclick = function() {
+                    // displayExercise(buttons[i].indexNumber);
+                    console.log(3);
+                    displayExercise(3);
+                };
+        };
+
+        function fourthButtonPush(){
+            var button = document.getElementById('buton-exercitiu-4');
+            
+                button.indexNumber = 4;   
+                button.onclick = function() {
+                    // displayExercise(buttons[i].indexNumber);
+                    console.log(4);
+                    displayExercise(4);
+                };
+        };
+
+         function fifthButtonPush(){
+            var button = document.getElementById('buton-exercitiu-5');
+            
+                button.indexNumber = 5;   
+                button.onclick = function() {
+                    // displayExercise(buttons[i].indexNumber);
+                    console.log(5);
+                    displayExercise(5);
+                };
+        };
+
+        function createSubmitSolutionContainer() {
+
+            var container = document.getElementById('submitSolutionContainer');
+
+            var submitForm = document.createElement('form');
+            submitForm.action = '/python/fileupload';
+            submitForm.method = 'post';
+            submitForm.enctype = 'multipart/form-data';
+            submitForm.target = 'formDestination'
+            
+            
+
+            var inputButton = document.createElement('input');
+            inputButton.type = 'file';
+            inputButton.name = 'filetoupload';
+            
+            var submitButton = document.createElement('input');
+            submitButton.type = 'submit';
+
+            submitForm.appendChild(inputButton);
+            submitForm.appendChild(submitButton);
+
+
+            container.appendChild(submitForm);
+
+            // <iframe name="formDestination"></iframe>
+            var iframe = document.createElement('iframe');
+            iframe.name = 'formDestination';
+
+            container.appendChild(iframe);
+
+            
+           
+        };
+
+window.onload = function(){
+    firstButtonPush();
+    secondButtonPush();
+    thirdButtonPush();
+    fourthButtonPush();
+    fifthButtonPush();
+    createSubmitSolutionContainer();
+
+//   document.getElementById("button1").click();   
+};    
+
+
+
+
         var exercisesContainer = document.getElementById("exercisesContainer");
 
-        const URL = 'http://localhost:9000/python/getExercises';
+        const URL = 'https://localhost:9000/python/getExercises';
         const TIME = 5000;
 
         try { // trying to instantiate a XMLHttpRequest object
@@ -269,13 +443,20 @@
                         
                         var jsonResponse = JSON.parse(xhr.responseText);
                         var exercises = jsonResponse.content;
-                        
+                        var indexExercitiu = 1;
                         exercises.forEach(exercise => {
                             console.log(exercise);
                             var button = document.createElement('BUTTON');
                             var nrExercitiu = document.createTextNode('Exercitiul '+exercise.nrExercitiu); 
                             button.className = 'buton-exercitiu';
+                            button.id = 'buton-exercitiu-' + exercise.nrExercitiu;
                             button.appendChild(nrExercitiu);
+                            // button.onclick = 'displayExercise(index)';
+                            // if (button.addEventListener)
+                            //     button.addEventListener("click", displayExercise(index), false);
+                            // else if (button.attachEvent)
+                            //     button.attachEvent('onclick', displayExercise(index));
+                            nrExercitiu++;
                             exercisesContainer.appendChild(button);
                         });
                         
@@ -291,48 +472,6 @@
             xhr.send();             // sending the HTTP request (no data is provided)
         }
 
-
-
-        function changeDisplayedExercise() {
-            const URL = 'http://localhost:9000/python/getExercises';
-        const TIME = 5000;
-
-        try { // trying to instantiate a XMLHttpRequest object
-            var xhr = new XMLHttpRequest();
-        } catch (e) {
-            exercisesContainer.innerHTML = 'XMLHttpRequest cannot be instantiated: ' + e.message;
-        } finally {
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {   // data arrived
-                    if (xhr.status === 200) { // response Ok from Web service
-                        //    callback(xhr.responseText.trim());
-                        
-                        var jsonResponse = JSON.parse(xhr.responseText);
-                        var exercises = jsonResponse.content;
-                        
-                        exercises.forEach(exercise => {
-                            console.log(exercise);
-                            var button = document.createElement('BUTTON');
-                            var nrExercitiu = document.createTextNode('Exercitiul '+exercise.nrExercitiu); 
-                            button.className = 'buton-exercitiu';
-                            button.appendChild(nrExercitiu);
-                            exercisesContainer.appendChild(button);
-                        });
-                        
-                        // var exercise = JSON.parse(exercises[0]);
-                        // exercisesContainer.innerHTML = jsonResponse.content[0];
-                        // var json = JSON.parse(responseArray[0]);
-                        // exercisesContainer.innerHTML = exercises[0].enunt;
-                    }
-                }
-            };
-            xhr.open("GET", URL, true); // opening connection
-            xhr.timeout = TIME;         // setting the response time
-            xhr.send();             // sending the HTTP request (no data is provided)
-        }
-
-
-        }
 
     </script>
 </body>
