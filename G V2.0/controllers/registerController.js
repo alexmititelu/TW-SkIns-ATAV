@@ -113,11 +113,33 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 
 
 						console.log(responsex.data)
-						res.write(responsex.data)
-						res.writeHead(200, {
-	                    'Content-Type': 'text/html'
-	            		});
-	            		res.end();
+						// res.write(responsex.data)
+						// res.writeHead(200, {
+						// 'Content-Type': 'text/html; charset=UTF-8',
+						// 'Transfer-Encoding': 'chunked'
+	            		// });
+						
+					if(responsex.data === 'succes')	
+					{
+						fs.readFile(__dirname + "/../../src/html/createdAccount.html", function (error, htmlContent) {
+							if (error) {
+								res.writeHead(404);
+								res.write("Couldn't load HTML / not found");
+								res.end();
+							} else {
+								res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8','Transfer-Encoding': 'chunked' })
+								res.write(htmlContent);
+								res.end();
+							}
+						});
+					}
+					else{
+						res.writeHead(404);
+						res.write("Microserviciul register a picat");
+						res.end();
+					}
+
+						
 				
 					
 			})
