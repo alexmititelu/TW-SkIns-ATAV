@@ -37,8 +37,10 @@ module.export = mainHandler = function(req, res, cookies, fs)
     if (req.url === '/sign-out' && req.method === 'GET') {
 
         console.log('data  ' + new Date().toLocaleString());
-        cookies.set('userToken', {maxAge: new Date()});
+
+        
         cookies.set('userToken', {expires: new Date()});
+        cookies.set('userToken', undefined,{maxAge: new Date()} )
 
         var url = 'https://localhost:8050/index.html';
 
