@@ -1,10 +1,11 @@
 var qs = require('querystring');
 var Cookies = require('cookies');
+var pathResolver = require('path');
 
-var pathElements = __dirname.split('\\');
+var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join('\\');
+var homePath = pathElements.join(pathResolver.sep);
             
 
 

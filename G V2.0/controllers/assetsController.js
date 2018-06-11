@@ -2,10 +2,10 @@ var url = require('url');
 var fs = require('fs');
 var pathResolver = require('path');
 
-var pathElements = __dirname.split('\\');
+var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join('\\');
+var homePath = pathElements.join(pathResolver.sep);
 
 function renderCSS(path, response) {
 
