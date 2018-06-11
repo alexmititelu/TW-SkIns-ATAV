@@ -1,4 +1,8 @@
 var qs = require('querystring');
+var Cookies = require('cookies');
+
+
+
 var pathElements = __dirname.split('\\');
 pathElements.pop();
 pathElements.pop();
@@ -22,10 +26,11 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = libraryHandler = function(req, res, cookies, axios, fs, qs)
+module.export = libraryHandler = function(req, res, axios, fs)
 {	
 	
-
+	var cookies = new Cookies(req, res, null);
+	
 	if(req.url === '/myLibrary' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');

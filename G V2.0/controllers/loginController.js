@@ -1,5 +1,9 @@
 var qs = require('querystring');
 var fs = require('fs');
+var Cookies = require('cookies');
+
+
+
 
 function collectRequestData(request, callback) {
 	const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -19,10 +23,11 @@ function collectRequestData(request, callback) {
 	}
 }
 
-module.export = loginHandler = function(req, res, cookies, validate, jwt, mongoClient)
+module.export = loginHandler = function(req, res, validate, jwt, mongoClient)
 {
 
-
+	var cookies = new Cookies(req, res, null);
+	
 	if (req.url === '/signin' && req.method === 'POST') {
 		collectRequestData(req, loginData => {
 
