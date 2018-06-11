@@ -176,7 +176,7 @@ module.exports = {
 
                                     var query = { token: newToken };
 
-                                    varconturi = dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
+                                    var conturi = dbConnection.collection("Tokens").find(query).toArray(function (queryError, queryResult) {
 
                                         if (queryError) {
                                             throw queryError;
