@@ -80,7 +80,7 @@ module.export = loginHandler = function(req, res, cookies, validate, jwt, mongoC
 											console.log('@@@@@@@@@@@@@@@@@@@@@@@@')
 											client.close();
 
-											res.writeHead(302, {Location: 'http://localhost:8050/index.html'});
+											res.writeHead(302, {Location: 'https://localhost:8050/index.html'});
 
 											res.end(console.log('http://localhost:8050/index.html') + '\n');
 										

@@ -40,7 +40,7 @@ module.export = mainHandler = function(req, res, cookies, fs)
         cookies.set('userToken', {maxAge: new Date()});
         cookies.set('userToken', {expires: new Date()});
 
-        var url = 'http://localhost:8050/index.html';
+        var url = 'https://localhost:8050/index.html';
 
         res.writeHead(302, {Location: url});
 
