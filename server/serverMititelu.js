@@ -2,9 +2,9 @@ var http = require('http');
 var qs = require('querystring');
 var fs = require('fs');
 var url = require('url');
-var registerController = require('./registerController');
+var registerController = require('./microservicii/register/registerController');
 var assetsController = require('./assetsController');
-var courseController = require('./courseController');
+var courseController = require('./microservicii/courses/courseController');
 
 
 var serverPort = 8051;
@@ -18,6 +18,6 @@ http.createServer(function (request, response) {
     }
     
     
-    
+
 }).listen(serverPort);
 console.log('Server running at localhost:' + serverPort);

@@ -35,7 +35,7 @@ module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
 
 		if(cookie)
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 
@@ -87,7 +87,7 @@ module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
 
 					if( body.result === 'succes')
 					{
-						url = 'http://localhost:8050/index.html'
+						url = 'https://localhost:8050/index.html'
 						res.writeHead(302, {Location: url});
 						res.end();
 					}
@@ -138,7 +138,7 @@ module.export = coursesHandler = function(req, res, cookies, axios, fs, qs)
 
 				if( body.result === 'succes')
 				{
-					url = 'http://localhost:8050/index.html'
+					url = 'https://localhost:8050/index.html'
 					res.writeHead(302, {Location: url});
 					res.end();
 				}

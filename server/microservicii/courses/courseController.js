@@ -6,8 +6,8 @@ module.exports = {
     handleRequest: function(request, response){
         var path = url.parse(request.url).pathname;
         console.log("Path: " + path);
-        if (request.method === "GET" && path.includes(".css") === false) {
-            if (path === "/courses") {
+        if (request.method === "GET") {
+            if (path === "/getAllCourses") {
                 MongoClient
                 .connect('mongodb://localhost:27017', function (error, connection) {
                     if (error) {
@@ -32,7 +32,29 @@ module.exports = {
                 })
             }else {
                 response.writeHead(404);
-                response.write("Couldn't load HTML / not found");
+                response.end("Couldn't find the specified path.");
+            }
+        }
+        else if (request.method === "POST"){
+            if (path === "/postCourse"){
+                MongoClient
+                .connect('mongodb://localhost:27017', function (error, connection) {
+                    if (error) {
+                        throw error;
+                        connection.close();
+                    }
+
+                    var dbConnection = connection.db("TW_PROJECT_SkIns");
+
+                    var courseData = {
+
+                    };
+                    connection.close();
+                });
+            }
+            else{
+                response.writeHead(404);
+                response.end("Couldn't find the specified path.");
             }
         }
         else{
