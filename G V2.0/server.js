@@ -42,7 +42,12 @@ const port = process.env.PORT || 8050;
 //     rejectUnauthorized: false
 // };
 
-const server = http.createServer( (req, res) => {
+var certOptions = {
+    key: fs.readFileSync(path.resolve('./server.key')),
+    cert: fs.readFileSync(path.resolve('./server.crt'))
+  }
+
+const server = https.createServer(certOptions, (req, res) => {
 
     console.log(req.url)
     console.log(req.method)
