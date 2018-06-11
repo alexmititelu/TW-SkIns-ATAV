@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 var axios = require('axios');
 
+var path = require('path');
 
 var Cookies = require('cookies');
 var qs = require('querystring');
