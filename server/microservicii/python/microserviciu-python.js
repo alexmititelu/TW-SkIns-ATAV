@@ -251,15 +251,19 @@ https.createServer(certOptions,function (request, response) {
 
 
                 });
-            } else if (request.url == '/fileupload') {
+            } else if (request.url == '/python/fileupload') {
                 var form = new formidable.IncomingForm();
+                console.log(form);
                 form.parse(request, function (error, fields, files) {
                     var oldpath = files.filetoupload.path;
-                    var newpath = './microserviciu-python/' + 'script.py';
+                    var newpath = __dirname +'/uploaded-user-files/' + 'username2.py'; // de pus uernameu la fraer
                     fs.rename(oldpath, newpath, function (error) {
-                        if (error) throw error;
-
-                        PythonShell.run('./microserviciu-python/script.py', function (shellError, results) {
+                        if (error) {
+                            console.log(error);
+                            // throw error;
+                        }
+                        
+                        PythonShell.run('/./uploaded-user-files/username2.py', function (shellError, results) {
                             if (shellError) {
                                 console.log(shellError);
                                 response.writeHead(404, { 'content-type': 'text/html' });
@@ -276,7 +280,7 @@ https.createServer(certOptions,function (request, response) {
 
                                 response.writeHead(200, { 'Content-type': 'text/html' });
                                 // response.write(results[0]);
-                                response.end(JSON.stringify(jsonResult));
+                                response.end('<html><body bgcolor=\'#E6E6FA\'>'+JSON.stringify(jsonResult)+'</body></html>');
                             }
                         });
 
