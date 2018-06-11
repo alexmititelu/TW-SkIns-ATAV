@@ -36,7 +36,7 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 
 		if(cookie !== '[object Object]' )
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 
@@ -70,7 +70,7 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 
 		if(cookie)
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 
