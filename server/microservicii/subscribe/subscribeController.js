@@ -105,7 +105,7 @@ module.exports = {
                     //cookie + fetch pe cont_id !
 
                     var contId = "5b16b59065136feeb6a37b1a";
-
+                    
                     //iau asta din REQUEST !
 
                     var course = "DOAR PENTRU TEST: STERGE DIN DB !";
