@@ -24,7 +24,7 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
+module.export = registerHandler = function(req, res, cookies, axios, fs)
 {	
 	
 
@@ -32,9 +32,11 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 	{
 		var cookie = cookies.get('userToken');
 
+		
+
 		if(cookie)
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 
@@ -68,7 +70,7 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 
 		if(cookie)
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 
@@ -109,11 +111,35 @@ module.export = registerHandler = function(req, res, cookies, axios, fs, qs)
 			})
 			.then(function(responsex){
 
-						res.write(responsex.data)
-						res.writeHead(200, {
-	                    'Content-Type': 'text/html'
-	            		});
-	            		res.end();
+
+						console.log(responsex.data)
+						// res.write(responsex.data)
+						// res.writeHead(200, {
+						// 'Content-Type': 'text/html; charset=UTF-8',
+						// 'Transfer-Encoding': 'chunked'
+	            		// });
+						
+					if(responsex.data === 'succes')	
+					{
+						fs.readFile(__dirname + "/../../src/html/createdAccount.html", function (error, htmlContent) {
+							if (error) {
+								res.writeHead(404);
+								res.write("Couldn't load HTML / not found");
+								res.end();
+							} else {
+								res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8','Transfer-Encoding': 'chunked' })
+								res.write(htmlContent);
+								res.end();
+							}
+						});
+					}
+					else{
+						res.writeHead(404);
+						res.write("Microserviciul register a picat");
+						res.end();
+					}
+
+						
 				
 					
 			})

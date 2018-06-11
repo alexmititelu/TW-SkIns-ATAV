@@ -17,7 +17,7 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = achievementHandler = function(req, res, cookies, axios, fs, qs)
+module.export = achievementHandler = function(req, res, cookies, axios, fs)
 {	
 	
 
@@ -27,7 +27,7 @@ module.export = achievementHandler = function(req, res, cookies, axios, fs, qs)
 
 		if(cookie)
 		{
-			var url = 'http://localhost:8050/index.html';
+			var url = 'https://localhost:8050/index.html';
 
 			res.writeHead(302, {Location: url});
 

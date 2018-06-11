@@ -1,0 +1,1 @@
+Orice parola va cere pt https certificates -> este "alex"
