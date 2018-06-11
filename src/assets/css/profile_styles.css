@@ -86,7 +86,7 @@ p {
     padding-bottom: 7px;
 }
 
-.password input[type=text] {
+.password input[type=password] {
     width: 75%;
     height: 28px;
     float:left;
