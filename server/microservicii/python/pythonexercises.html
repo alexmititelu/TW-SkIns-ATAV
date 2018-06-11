@@ -329,7 +329,10 @@
                 button.onclick = function() {
                     // displayExercise(buttons[i].indexNumber);
                     console.log(1);
+                    hideIframe();
                     displayExercise(1);
+                    document.getElementById('submitSolutionContainer').style = 'display:block';
+                    document.getElementById('uploadedEx').value = '1';
                 };
         };
 
@@ -340,7 +343,10 @@
                 button.onclick = function() {
                     // displayExercise(buttons[i].indexNumber);
                     console.log(2);
+                    hideIframe();
                     displayExercise(2);
+                    document.getElementById('submitSolutionContainer').style = 'display:block';
+                    document.getElementById('uploadedEx').value = '2';
                 };
         };
 
@@ -351,7 +357,10 @@
                 button.onclick = function() {
                     // displayExercise(buttons[i].indexNumber);
                     console.log(3);
+                    hideIframe();
                     displayExercise(3);
+                    document.getElementById('submitSolutionContainer').style = 'display:block';
+                    document.getElementById('uploadedEx').value = '3';
                 };
         };
 
@@ -362,7 +371,10 @@
                 button.onclick = function() {
                     // displayExercise(buttons[i].indexNumber);
                     console.log(4);
+                    hideIframe();
                     displayExercise(4);
+                    document.getElementById('submitSolutionContainer').style = 'display:block';
+                    document.getElementById('uploadedEx').value = '4';
                 };
         };
 
@@ -372,8 +384,11 @@
                 button.indexNumber = 5;   
                 button.onclick = function() {
                     // displayExercise(buttons[i].indexNumber);
+                    hideIframe();
                     console.log(5);
                     displayExercise(5);
+                    document.getElementById('submitSolutionContainer').style = 'display:block';
+                    document.getElementById('uploadedEx').value = '5';
                 };
         };
 
@@ -385,9 +400,22 @@
             submitForm.action = '/python/fileupload';
             submitForm.method = 'post';
             submitForm.enctype = 'multipart/form-data';
-            submitForm.target = 'formDestination'
+            submitForm.target = 'formDestination';
+            submitForm.id = 'uploadSolutionForm';
             
-            
+            // var inputText = document.createElement('input');
+            // inputText.type = 'text';
+            // inputText.name = 'textFromForm';
+
+            // var uploadedEx = document.createElement('p');
+            // uploadedEx.innerHTML = '1'; 
+            // uploadedEx.name = 'uploadedEx';
+            var uploadedEx = document.createElement('input');
+            uploadedEx.value = 'Nr Exercitiu';
+            uploadedEx.type= 'text';
+            uploadedEx.name = 'uploadedEx';
+            uploadedEx.id = 'uploadedEx';
+            uploadedEx.style = 'display:none';
 
             var inputButton = document.createElement('input');
             inputButton.type = 'file';
@@ -396,6 +424,8 @@
             var submitButton = document.createElement('input');
             submitButton.type = 'submit';
 
+            // submitForm.appendChild(inputText);
+            submitForm.appendChild(uploadedEx);
             submitForm.appendChild(inputButton);
             submitForm.appendChild(submitButton);
 
@@ -403,14 +433,42 @@
             container.appendChild(submitForm);
 
             // <iframe name="formDestination"></iframe>
+            var br1 = document.createElement('br');
+            var br2 = document.createElement('br');
+
             var iframe = document.createElement('iframe');
             iframe.name = 'formDestination';
+            iframe.id = 'solutionOutput';
+            iframe.style = 'display:none;';
 
+            container.appendChild(br1);
+            container.appendChild(br2);
             container.appendChild(iframe);
 
+            // container.style = 'display:none;border:1px solid black;background-color:red;';
             
-           
         };
+
+function hideIframe() {
+    var iframe = document.getElementById('solutionOutput');
+    iframe.style = 'display:none';
+    console.log('Am ascuns iframeul');
+};
+
+function addEventWhenSubmitingForm() {
+    var form = document.getElementById('uploadSolutionForm');
+
+    form.onsubmit = function () {
+        var iframe = document.getElementById('solutionOutput');
+        iframe.style = 'display:block';
+        console.log('Am afisat iframeul');
+    };
+
+    var iframe = document.getElementById('solutionOutput');
+    iframe.style = 'display:none';
+
+    console.log('Am adaugat event la submt');
+};
 
 window.onload = function(){
     firstButtonPush();
@@ -419,6 +477,7 @@ window.onload = function(){
     fourthButtonPush();
     fifthButtonPush();
     createSubmitSolutionContainer();
+    addEventWhenSubmitingForm();
 
 //   document.getElementById("button1").click();   
 };    
