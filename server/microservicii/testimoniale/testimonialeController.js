@@ -19,7 +19,11 @@ module.exports = {
 					console.log("Cautam in testimoniale");
 					
 					var queryFindTest =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
-                    dbConnection.collection("Testimoniale").find(queryFindTest).toArray( function (err, result) {
+                    /*var token = cookie.get('userToken');
+					var cookieData = JSON.parse(jwt.verify(token,'asdkasnd@#@#das');
+					var queryFindTest = {id_cont: cookieData._id};
+					*/
+					dbConnection.collection("Testimoniale").find(queryFindTest).toArray( function (err, result) {
 
                         if (err) {
                             throw err;

@@ -19,7 +19,11 @@ module.exports = {
 					console.log("Cautam in achievements");
 					
 					var queryFindAch =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
-                    dbConnection.collection("Achievements").find(queryFindAch).toArray( function (err, result) {
+                    /*var token = cookie.get('userToken');
+					var cookieData = JSON.parse(jwt.verify(token,'asdkasnd@#@#das');
+					var queryFindAch = {id_cont: cookieData._id};
+					*/
+					dbConnection.collection("Achievements").find(queryFindAch).toArray( function (err, result) {
 
                         if (err) {
                             throw err;
@@ -30,6 +34,8 @@ module.exports = {
 						
 						
 						var queryFindLogo =  { logo_path: "achievement.png" }; //AICI VIN COOKIEURILE
+						/*var queryFindLogo = {id_cont: cookieData._id};
+						*/
 						dbConnection.collection("AchievementsLogos").find(queryFindLogo).toArray( function (err, result2) {
 
 							if (err) {
