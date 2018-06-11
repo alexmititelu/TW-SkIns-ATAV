@@ -1,3 +1,4 @@
+var Cookies = require('cookies');
 
 var pathElements = __dirname.split('\\');
 pathElements.pop();
@@ -6,9 +7,11 @@ var homePath = pathElements.join('\\');
 
 
 
-module.export = mainHandler = function(req, res, cookies, fs)
+module.export = mainHandler = function(req, res, fs)
 {	
 	
+    var cookies = new Cookies(req, res, null);
+
     if(req.method === 'GET' && req.url === '/index.html')
     {   
 
@@ -37,8 +40,10 @@ module.export = mainHandler = function(req, res, cookies, fs)
     if (req.url === '/sign-out' && req.method === 'GET') {
 
         console.log('data  ' + new Date().toLocaleString());
-        cookies.set('userToken', {maxAge: new Date()});
+
+        
         cookies.set('userToken', {expires: new Date()});
+        cookies.set('userToken', undefined,{maxAge: new Date()} )
 
         var url = 'https://localhost:8050/index.html';
 

@@ -33,7 +33,7 @@ module.exports = {
         console.log("Path: " + path);
 
         if (req.method === "GET" && path.includes(".css") === false) {
-            if (path === "/my_profile") {
+            if (path === "/getFields") {
 
                 MongoClient
                         .connect('mongodb://localhost:27017', function (err, connection) {
@@ -45,7 +45,11 @@ module.exports = {
 
                             console.log("Cautam sa vedem daca gasim in bd useru");
 
-                            var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE
+                            var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE DE MAI JOS
+							/*var token = cookie.get('userToken');
+							var cookieData = JSON.parse(jwt.verify(token,'asdkasnd@#@#das');
+							var queryFindConturi = {_id: cookieData._id};
+							*/
                             dbConnection.collection("Conturi").findOne(queryFindConturi, function (err, result) {
 
                                 if (err) {
@@ -53,58 +57,44 @@ module.exports = {
                                 }
 
                                 console.log("Din conturi: " + result.username + " " + result.password + " " + result.email);
-                        
-                                var fieldValue = result.username;
-                                var fieldValue2 = result.password;
-                                var fieldValue3 = result.email;
 
-                                var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE
-                                dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result) {
+                                var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE DE MAI JOS
+								/*
+								var queryFindUtilizatori = {cont_id: conturiData._id};
+								*/
+                                dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result2) {
 
                                         if (err) {
                                             throw err;
                                         }
 
-                                        console.log("Din Utilizatori: " + result.first_name + " " + result.last_name + " " + result.country + " " + result.telefon);
-                                
-                                        var fieldValue4 = result.first_name;
-                                        var fieldValue5 = result.last_name;
-                                        var fieldValue6 = result.country;
-                                        var fieldValue7 = result.telefon;
+                                        console.log("Din Utilizatori: " + result2.first_name + " " + result2.last_name + " " + result2.country + " " + result2.telefon);
 
-                                        renderHTML("profile.html", res, fieldValue, fieldValue2, fieldValue3, fieldValue4, fieldValue5, fieldValue6, fieldValue7);
-
+										var objectGet = {};
+										for (var key in result) {                  
+											
+											var value = result[key];
+											objectGet[key] = value;
+										}
+										
+										for (var key in result2) {                 
+											
+											var value = result2[key];
+											objectGet[key] = value;
+										}
+									
+										console.log(JSON.stringify(objectGet));
+									
+										res.writeHead(200,{'Content-Type': 'application/json'});
+										res.write("JSONul trimis inapoi cu datele din bd: " + JSON.stringify(objectGet));
+										res.end();
                                     });
 
                             });
 
-                            /*var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE
-                            dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result) {
-
-                                if (err) {
-                                    throw err;
-                                }
-
-                                console.log(result.first_name + " " + result.last_name + " " + result.telefon);
-                        
-                                fieldValue4 = result.first_name;
-                                fieldValue5 = result.last_name;
-                                fieldValue6 = result.telefon;
-
-                                renderHTML("profile.html", res, fieldValue, fieldValue2, fieldValue3);
-
-                            });*/
-
                         });
                         
             }
-            //} 
-            /*else if (req.url.match("\.png$")) {
-                var imagePath = path.join('./', 'src', req.url);
-                var fileStream = fs.createReadStream(imagePath);
-                res.writeHead(200, {"Content-Type" : "image/png"});
-                fileStream.pipe(res);
-            }*/
 			else {
                 res.writeHead(404);
                 res.write("Couldn't load HTML / not found");
@@ -134,7 +124,7 @@ module.exports = {
                             var searchTable = 'Utilizatori';
                             var objectUpdate = {};
 
-                            for (var key in formData) { //cream obietul cu campuri nenule pt update                   
+                            for (var key in formData) {                 
                                 if (key == 'username' || key == 'password' || key =='email')
                                     searchTable = 'Conturi';
 
@@ -142,7 +132,6 @@ module.exports = {
                                 if (value != '') {
                                     objectUpdate[key] = value;
                                 }
-                                    //console.log(key + ", " + value);
                             }
                             console.log("ASTA E NOUL OBIECT: " + JSON.stringify(objectUpdate));
                             
@@ -169,11 +158,11 @@ module.exports = {
                                 });
                             }
 
-                            /*res.writeHead(200, { 'Content-Type': 'text/html' });
+                            res.writeHead(200, { 'Content-Type': 'text/html' });
                             res.write("Am primit datele si am facut modificarile in bd!");
-                            res.end();*/
+                            res.end();
 
-                            var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE
+                            /*var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE
                             dbConnection.collection("Conturi").findOne(queryFindConturi, function (err, result) {
 
                                 if (err) {
@@ -204,7 +193,7 @@ module.exports = {
 
                                 });
 
-                            });
+                            });*/
 
                         });
                 });

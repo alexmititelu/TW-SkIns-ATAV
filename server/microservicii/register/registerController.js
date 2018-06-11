@@ -210,16 +210,11 @@ module.exports = {
                                             // response.write("Thanks");
                                             // response.end();
 
-                                            fs.readFile(__dirname + "/../../../src/html/createdAccount.html", function (error, htmlContent) {
-                                                if (error) {
-                                                    response.writeHead(404);
-                                                    response.write("Couldn't load HTML / not found");
-                                                } else {
-                                                    response.writeHead(200, { 'Content-Type': 'text/html' })
-                                                    response.write(htmlContent);
-                                                }
+                                           
+                                                response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8','Transfer-Encoding': 'chunked' });
+                                                response.write('succes')
                                                 response.end();
-                                            });
+                                            
 
                                             /**/
                                         }

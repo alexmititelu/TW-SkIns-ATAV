@@ -1,4 +1,5 @@
 var qs = require('querystring');
+var Cookies = require('cookies');
 
 var pathElements = __dirname.split('\\');
 pathElements.pop();
@@ -24,17 +25,18 @@ function collectRequestData(request, callback) {
 	    }
 	}
 
-module.export = registerHandler = function(req, res, cookies, axios, fs)
+module.export = registerHandler = function(req, res, axios, fs)
 {	
 	
+	var cookies = new Cookies(req, res, null);
 
 	if(req.url === '/register' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');
-
+		console.log(cookie)
 		
 
-		if(cookie !== '[object Object]' )
+		if(cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -113,11 +115,33 @@ module.export = registerHandler = function(req, res, cookies, axios, fs)
 
 
 						console.log(responsex.data)
-						res.write(responsex.data)
-						res.writeHead(200, {
-	                    'Content-Type': 'text/html'
-	            		});
-	            		res.end();
+						// res.write(responsex.data)
+						// res.writeHead(200, {
+						// 'Content-Type': 'text/html; charset=UTF-8',
+						// 'Transfer-Encoding': 'chunked'
+	            		// });
+						
+					if(responsex.data === 'succes')	
+					{
+						fs.readFile(__dirname + "/../../src/html/createdAccount.html", function (error, htmlContent) {
+							if (error) {
+								res.writeHead(404);
+								res.write("Couldn't load HTML / not found");
+								res.end();
+							} else {
+								res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8','Transfer-Encoding': 'chunked' })
+								res.write(htmlContent);
+								res.end();
+							}
+						});
+					}
+					else{
+						res.writeHead(404);
+						res.write("Microserviciul register a picat");
+						res.end();
+					}
+
+						
 				
 					
 			})

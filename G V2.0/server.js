@@ -57,15 +57,15 @@ const server = https.createServer(certOptions, (req, res) => {
     var cookies = new Cookies(req, res, null);
 
     assetsController.handleRequest(req, res);
-    mainHandler(req, res, cookies, fs);
+    mainHandler(req, res, fs);
 
-    registerHandler(req, res, cookies, axios, fs);
-    loginHandler(req, res, cookies, validate, jwt, mongoClient);
+    registerHandler(req, res, axios, fs);
+    loginHandler(req, res, validate, jwt, mongoClient);
 
-    achievementHandler(req, res, cookies, axios, fs)
-    libraryHandler(req, res, cookies, axios, fs);
-    profileHandler(req, res, cookies, axios, fs);
-    coursesHandler(req, res, cookies, axios, fs);
+    achievementHandler(req, res, axios, fs);
+    libraryHandler(req, res, axios, fs);
+    profileHandler(req, res, axios, fs);
+    coursesHandler(req, res, axios, fs);
 
     // addOwnCourseHandler(req, res, qs, cookies);
 
