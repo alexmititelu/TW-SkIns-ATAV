@@ -152,23 +152,31 @@
         <form method="POST" autocomplete="on" style="display: block" action="/register">
             <p>Username</p>
             <!-- <label for="username"> -->
-            <input class="new-account-input" id="username" name="username" type="text" maxlength="20" pattern="[A-Za-z0-9]{1,}" title="Can contain only letters or numbers"
-                required/>
+            
+            <input class="new-account-input" id="username" name="username" type="text"  onfocusout="validateUsername()" required/>
+            <!-- <i class="fa fa-check-circle create-account-validator-true"></i> -->
+            <p id='username-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="username-validator-message">&nbsp </span></p>
+            
             <!-- </label> -->
             <p>First name</p>
-            <input class="new-account-input" name="firstName" type="text" maxlength="20" pattern="^[a-zA-Z]+( [a-zA-Z]+)*" title="Can contain only lower or upper characters from the english alphabet"
-                required/>
+            <input class="new-account-input" id="firstname" name="firstName" type="text" onfocusout="validateFirstname()" required/>
+            <p id='firstname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="firstname-validator-message">&nbsp </span></p>
+
             <p>Last name</p>
-            <input class="new-account-input" name="lastName" type="text" maxlength="20" pattern="^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*" title="Can contain only lower or upper characters from the english alphabet"
-                required/>
+            <input class="new-account-input" id="lastname" name="lastName" type="text" onfocusout="validateLastname()" required/>
+            <p id='lastname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="lastname-validator-message">&nbsp </span></p>
 
             <p>Phone number</p>
-            <input class="new-account-input" name="phone" type="text" pattern="[0-9]{10}" title="Must have 10 digits" />
+            <input class="new-account-input" id="phone" name="phone" type="text" onfocusout="validatePhoneNumber()"/>
+            <p id='phone-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="phone-validator-message">&nbsp </span></p>
 
             <p>Email</p>
-            <input class="new-account-input" name="email" type="email" placeholder="mail@domain.com" maxlength="30" required/>
+            <input class="new-account-input" id="email" name="email" placeholder="mail@domain.com" onfocusout="validateEmail()" required/>
+            <p id='email-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id=email-validator-message>&nbsp </span></p>
+
             <p>Password</p>
-            <input class="new-account-input" name="password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required/>
+            <input class="new-account-input" id="password" name="password" type="password" onfocusout="validatePassword()" required/>
+            <p id='password-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="password-validator-message">&nbsp </span></p>
             <!-- <p>Confirm Password</p>
             <input class="new-account-input" name="confirm_password" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" onchange="checkIfPasswordsMatch"
                 required/>
@@ -180,9 +188,8 @@
                 <option value="female">Female</option>
             </select>
             <p>Tell us your interests</p>
-            <textarea class="new-account-input" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc."
-                maxlength="80"></textarea>
-
+            <textarea class="new-account-input" id="interests" name="interests" placeholder="Enumerate your interests: music,health,machine learning etc." onfocusout="validateInterests()"></textarea>
+                <p id='interests-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="interests-validator-message">&nbsp </span></p>
             <div>
     
                 <label for="subscribeNews"><p>Subscribe to newsletter?</p></label>
@@ -190,7 +197,7 @@
             </div>
             <br/>
            
-            <button class="submitButton" type="submit">Create account</button>&nbsp;&nbsp;&nbsp;
+            <button class="submitButton" id="create-account-button" type="submit">Create account</button>&nbsp;&nbsp;&nbsp;
             <button class="submitButton" type="reset">Reset</button>
             <p id="afterSubmitMessage"></p> 
 
@@ -198,6 +205,7 @@
     </div>
 </body>
 
+<script language="javascript" type="text/javascript" src="/createAccount.js"></script>
 
 <!-- <script language="javascript" type="text/javascript" src="../shared/footer.html"></script> -->
 
