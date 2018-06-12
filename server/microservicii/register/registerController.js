@@ -33,10 +33,11 @@ function sendRegistrationMail(destinationEmail, username, activationLink, succes
 };
 
 function renderHTML(path, response) {
-    fs.readFile("../src/html/" + path, function (error, htmlContent) {
+    console.log(__dirname);
+    fs.readFile(__dirname + "/../../../src/html/" + path, function (error, htmlContent) {
         if (error) {
             response.writeHead(404);
-            
+
             response.write("Couldn't load HTML / not found");
         } else {
             response.writeHead(200, { 'Content-Type': 'text/html' })
@@ -47,14 +48,65 @@ function renderHTML(path, response) {
 }
 
 
+function sendJSON(objectResult, response) {
+
+    response.writeHead(200, { 'Content-Type': 'application/json' });
+    // response.write(JSON.stringify(queryResult));
+    console.log(JSON.stringify(objectResult));    
+    response.write(JSON.stringify(objectResult));
+    response.end();
+}
+
 module.exports = {
     handleRequest: function (request, response) {
 
         var path = url.parse(request.url).pathname;
 
         if (request.method === "GET" && path.includes(".css") === false) {
+            
             if (path === "/register") {
                 renderHTML("createAccount.html", response);
+            } else if (path.startsWith("/registerUsername=")) {
+                
+                var usernameToCheck = path.split("=", 2)[1].toLowerCase();
+                
+                
+                var jsonResult = {
+                    "status": 200,
+                    "response": "valid"
+                };
+
+                MongoClient
+                    .connect('mongodb://localhost:27017', function (error, connection) {
+                        if (error) {
+                            jsonResult.status = 500;
+                            sendJSON(jsonResult, response);
+                        } else {
+
+                            var dbConnection = connection.db("TW_PROJECT_SkIns");
+
+                            var query = { username: usernameToCheck };
+                            dbConnection.collection("Conturi").find(query).toArray(function (queryError, queryResult) {
+
+                                if (queryError) {
+                                    // throw queryError;
+                                    jsonResult.status = 500;
+
+                                    sendJSON(jsonResult, response);
+
+                                } else {
+
+                                    if (queryResult.length === 0) {
+                                        sendJSON(jsonResult, response);
+                                    } else {
+                                        jsonResult.response = "invalid";
+                                        sendJSON(jsonResult, response);
+                                    }
+                                }
+                            });
+                        }
+                    });
+
             } else if (path.startsWith("/register/") === true) {
 
                 var tokenFromPath = path.split("/", 3)[2];
@@ -74,7 +126,7 @@ module.exports = {
                                 // throw queryError;
                                 console.log('b')
                                 response.writeHead(404);
-                                
+
                                 response.write("Couldn't load HTML / not found");
                                 response.end();
                                 throw queryError;
@@ -124,24 +176,24 @@ module.exports = {
 
                 request.on('end', function () {
                     var formData = JSON.parse(requestBody);
-                    
+
                     console.log(formData)
                     MongoClient
                         .connect('mongodb://localhost:27017', function (error, connection) {
                             if (error) {
                                 throw error;
                             }
-                            
+
 
                             var dbConnection = connection.db("TW_PROJECT_SkIns");
                             var newAccount = {
-                                username: formData.username,
+                                username: formData.username.toLowerCase(),
                                 password: formData.password,
-                                email: formData.email
+                                email: formData.email.toLowerCase()
                             };
 
-                            
-                            
+
+
 
                             dbConnection.collection("Conturi").insertOne(newAccount, function (error, success) {
                                 if (error) {
@@ -210,11 +262,11 @@ module.exports = {
                                             // response.write("Thanks");
                                             // response.end();
 
-                                           
-                                                response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8','Transfer-Encoding': 'chunked' });
-                                                response.write('succes')
-                                                response.end();
-                                            
+
+                                            response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8', 'Transfer-Encoding': 'chunked' });
+                                            response.write('succes')
+                                            response.end();
+
 
                                             /**/
                                         }
