@@ -22,13 +22,43 @@ function validateUsername() {
         usernameValidator.style = 'display:block';
         disableCreateAccountButton();
 
-    } else if (username === 'alex') {
+    } else {
         // AICI TRE SA VERIFICAM DACA EXISTA DEJA IN BAZA DE DATE
-        usernameValidatorMessage.textContent = 'This username already exists';
-        usernameValidator.style = 'display:block';
-        disableCreateAccountButton();
+        
+        /** verificare username */
+
+        const URL = 'https://localhost:8050/registerUsername=' + username;
+        const TIME = 5000;
+
+
+        try { // trying to instantiate a XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+        } catch (e) {
+            console.log('XMLHttpRequest cannot be instantiated: ' + e.message);
+        } finally {
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {   // data arrived
+                    if (xhr.status === 200) { // response Ok from Web service
+                        //    callback(xhr.responseText.trim());
+                        var jsonResponse = JSON.parse(xhr.responseText);
+                        console.log(jsonResponse);
+
+                        if(jsonResponse.status === 200 && jsonResponse.response === 'invalid') {
+                            usernameValidatorMessage.textContent = 'This username already exists';
+                            usernameValidator.style = 'display:block';
+                            disableCreateAccountButton();
+                        }
+                    }
+                }
+            };
+            xhr.open("GET", URL, true); // opening connection
+            xhr.timeout = TIME;         // setting the response time
+            xhr.send();             // sending the HTTP request (no data is provided)
+        }
 
     }
+
+    // usernameValidatorMessage.textContent = checkIfUsernameExists("alex");
 }
 
 /** FUNCTIE PT VALIDARE FIRST NAME */
@@ -128,7 +158,7 @@ function validateEmail() {
 
     var regexp = new RegExp("(^([a-zA-Z._0-9]+)([@])([a-zA-Z]+)([.][a-zA-Z]+)$)");
 
-     if (!regexp.test(email)) {
+    if (!regexp.test(email)) {
 
         emailValidatorMessage.textContent = 'Email must be valid.';
         emailValidator.style = 'display:block';
@@ -180,7 +210,7 @@ function validateInterests() {
     enableCreateAccountButton();
 
 
-     if (interests.length >= 300) {
+    if (interests.length >= 300) {
 
         interestsValidatorMessage.textContent = 'The text must contain less than 300 characters';
         interestsValidator.style = 'display:block';
@@ -201,4 +231,38 @@ function disableCreateAccountButton() {
 function enableCreateAccountButton() {
     var button = document.getElementById('create-account-button');
     button.disabled = false;
+}
+
+/** Verificam daca exista usernameul pe server  */
+
+function checkIfUsernameExists(username) {
+
+    const URL = 'http://localhost:8051/registerUsername=' + username;
+    const TIME = 2000;
+
+    var ok = true;
+
+    var jsonResult;
+
+    try { // trying to instantiate a XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+    } catch (e) {
+        console.log('XMLHttpRequest cannot be instantiated: ' + e.message);
+    } finally {
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {   // data arrived
+                if (xhr.status === 200) { // response Ok from Web service
+                    //    callback(xhr.responseText.trim());
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    jsonResult = jsonResponse;
+                }
+            }
+        };
+        xhr.open("GET", URL, true); // opening connection
+        xhr.timeout = TIME;         // setting the response time
+        xhr.send();             // sending the HTTP request (no data is provided)
+    }
+
+    console.log(jsonResult);
+    return jsonResult.response;
 }
