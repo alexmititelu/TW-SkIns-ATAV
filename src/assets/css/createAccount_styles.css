@@ -261,3 +261,48 @@ body {
         /* padding-left: 100px; */
     }
 }
+
+
+/* FORM VALIDATOR */
+
+#username-validator {
+    display: none;
+}
+
+#firstname-validator {
+    display: none;
+}
+
+#lastname-validator {
+    display: none;
+}
+
+#phone-validator {
+    display: none;
+}
+
+#email-validator {
+    display: none;
+}
+
+#password-validator {
+    display: none;
+}
+
+#interests-validator {
+    display: none;
+}
+
+.create-account-validator-true {
+    color:rgb(112, 255, 112);
+    /* position: relative; */
+    /* display: inline-block; */
+    /* float: right; */
+}
+
+.invalid-input {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color:rgb(255, 92, 92);
+    /* text-shadow: 1px 1px #ff9a01; */
+    font-weight: 300;
+}
