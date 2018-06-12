@@ -30,7 +30,7 @@ function renderImage(path, response) {
 
     var imagePath = homePath + "/src/assets/images" + path;
 
-    fs.readFile(imagePath, function(error,image) {
+    fs.readFile(imagePath, function (error, image) {
         if (error) {
             response.writeHead(404);
             response.write("Couldn't load Image / not found");
@@ -49,6 +49,26 @@ function renderImage(path, response) {
     // response.sendfile("../src/assets"+path);
 }
 
+
+function renderJS(path, response) {
+
+    var jsPath = homePath + "/src/assets/scripts" + path;
+
+    fs.readFile(jsPath, function (error, jsContent) {
+        if (error) {
+            console.log(error);
+            response.writeHead(404);
+            response.write("Couldn't load script / not found");
+        } else {
+
+            response.writeHead(200, { 'Content-Type': 'text/javascript' })
+            response.write(jsContent);
+        }
+        response.end();
+    });
+}
+
+
 module.exports = {
     handleRequest: function (request, response) {
 
@@ -57,13 +77,18 @@ module.exports = {
         // console.log( './src' + path + '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
         if (path.includes('.css') && request.method === 'GET') {
-                    
-                    renderCSS( path, response);
 
-            
+            renderCSS(path, response);
+
+
         } else if (path.includes('.png') && request.method === 'GET') {
             console.log(path);
             renderImage(path, response);
+        }
+
+        if (path.includes('.js') && request.method === 'GET') {
+            console.log(path);
+            renderJS(path, response);
         }
     }
 }
