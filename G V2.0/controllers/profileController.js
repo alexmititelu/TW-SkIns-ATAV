@@ -30,17 +30,26 @@ module.export = profileHandler = function(req, res, axios, fs)
 	var cookies = new Cookies(req, res, null);
 	
     if(req.method === 'GET' && req.url === '/getFields')
-    {
+    {	
+		var cookie = cookies.get('userToken');
+		
+		
         axios({
-            method : 'get',
-            url : 'http://127.0.0.1:8055/getFields',
+            method : 'post',
+			url : 'http://127.0.0.1:8055/getFields',
+			data: {
+				cookie: cookie
+			  }
         })
         .then(function(responsex){
 
-                    res.write(responsex.data)
-                    res.writeHead(200, {
-                    'Content-Type': 'text/html'
-                    });
+					console.log('##########################################################################')
+					console.log(JSON.stringify( responsex.data))
+					res.writeHead(200, {
+						'Content-Type': 'text/html'
+						});
+					res.write(JSON.stringify( responsex.data))
+                    
                     res.end();
             
                 
