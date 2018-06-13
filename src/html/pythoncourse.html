@@ -147,7 +147,7 @@
 
                 var documentationContainer = document.getElementById('documentationContainer');
 
-                 const URL = 'https://localhost:9000/python/documentation';
+                 const URL = 'https://localhost:8050/python/documentation';
                  const TIME = 2000;
  
             try { // trying to instantiate a XMLHttpRequest object
@@ -160,7 +160,10 @@
                         if (xhr.status === 200) { // response Ok from Web service
                         //    callback(xhr.responseText.trim());
                             var jsonResponse = JSON.parse(xhr.responseText);
-                           documentationContainer.innerHTML = jsonResponse.content;
+                            if(jsonResponse.status === 200) {
+                                jsonData = JSON.parse(jsonResponse.data);
+                                documentationContainer.innerHTML = jsonData.content;
+                            }
                         }
                     }
                 };
