@@ -1,7 +1,16 @@
 <html>
-    <title>
-        Guitar Course
-    </title>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Guitar Course</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <script language="javascript" type="text/javascript" src="../../shared/header.html"></script> -->
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" media = "screen" href="content.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
     <body>
             <div class="header">
                     <div class="center">
@@ -114,14 +123,17 @@
             
                 <!-- <img src="../images/skinsred.png"/> -->
                 <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
-            
-        <select id = "numeTab" name = "tab" onchange = "alert()">
-            <option>Selectati o tabulatura...</option>
-            <option id = "ewan" value = "ewan">Ewan Dobson - Dancing with her 2010</option>
-            <option id = "antoine" value = "antoine">Antoine Dufour - Glimmer of Hope</option>
-            <option id = "srv" value = "srv" >Stevie Ray Vaughan - Let me love you baby</option>
-            <option id = "polyphia" value = "polyphia">Polyphia - The Worst</option>
-        </select>
+    <div style="background-color: #67A3AA;">
+        <div class="selectorTab">
+                    <select id = "numeTab" name = "tab" onchange = "alert()">
+                        <option value="" selected disabled hidden>Selectati o tabulatura...</option>
+                        <option id = "ewan" value = "ewan">Ewan Dobson - Dancing with her 2010</option>
+                        <option id = "antoine" value = "antoine">Antoine Dufour - Glimmer of Hope</option>
+                        <option id = "srv" value = "srv">Stevie Ray Vaughan - Let me love you baby</option>
+                        <option id = "polyphia" value = "polyphia">Polyphia - The Worst</option>
+                    </select>
+        </div>
+    </div>
 
         <iframe id = "frame" width = 100% height = 100% src = ""></iframe>
          <!--footer aici -->
