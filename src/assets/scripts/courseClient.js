@@ -2,8 +2,9 @@
 document.getElementById("searchBar").style.width = "40%";
 
 var xmlhttp = new XMLHttpRequest();
-//var url = "http://127.0.0.1:8050/getAllCourses";
-var url = "http://127.0.0.1:8054/getAllCourses"; //TEST , cel comentat e ok
+xmlhttp.withCredentials = true;
+var url = "https://localhost:8050/getAllCourses";
+//var url = "http://127.0.0.1:8054/getAllCourses"; //TEST , cel comentat e ok
 var coursesJSON;
 
 var willSearch = 0;
@@ -62,6 +63,7 @@ function subscribe(caller){
     var url = "https://127.0.0.1:8050/subscribe";
     var sendForm = document.getElementById(caller.value);
     //sendForm.submit();
+    xmlhttp.withCredentials = true;
     xmlhttp.open("POST", url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.onreadystatechange = function() {

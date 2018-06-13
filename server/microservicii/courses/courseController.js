@@ -23,7 +23,14 @@ module.exports = {
                             connection.close();
                         }
                         console.log(JSON.stringify(queryResult));
-                        response.writeHead(200,{'Content-Type': 'application/json'});
+                        
+                        response.writeHead(200,
+                            {
+                                'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                'Access-Control-Allow-Credentials': 'true',
+                                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                            });
                         response.write(JSON.stringify(queryResult));
                         response.end();
                         connection.close();

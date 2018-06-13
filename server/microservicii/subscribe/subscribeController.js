@@ -95,7 +95,9 @@ module.exports = {
                                     connection.close();
                                 }
                                 console.log("Cursuri cu detalii : " + JSON.stringify(queryResult));
-                                response.writeHead(200,{'Content-Type': 'application/json'});
+                                response.writeHead(200,{
+                                    'Content-Type': 'application/json'
+                                });
                                 response.write(JSON.stringify(queryResult));
                                 response.end();
                                 connection.close();
@@ -160,28 +162,28 @@ module.exports = {
                         // console.log('2222222222222222222')
                         // console.log(newSubscription)
 
-
+                    try{
                         dbConnection.collection("Abonati").insertOne(newSubscription, function(error, success) {
-                            if (error) {
-                                throw error;
-
-                            }
                             console.log("Inserat");
                             response.writeHead(200, {
-                                'Content-Type': 'text/html'
+                                'Content-Type': 'text/html',
+                                'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                'Access-Control-Allow-Credentials': 'true',
+                                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
                                 });
                             response.write('Succesfully inserted !')
                             response.end();
                             
                             
                             connection.close();
-                        })
-                        .catch(error => {
-                            console.log("Existent");
-                            respnose.writeHead(418);
-                            response.write('Already in database.');
-                            response.end();
                         });
+                    }
+                    catch(e) {
+                        console.log("Existent");
+                        respnose.writeHead(418);
+                        response.write('Already in database.');
+                        response.end();
+                    };
                     // });
                 });
             }
