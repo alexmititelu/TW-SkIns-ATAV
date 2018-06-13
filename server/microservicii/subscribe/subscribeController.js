@@ -4,7 +4,7 @@ var qs = require('qs');
 var Cookies = require('cookies');
 const jwt = require('jsonwebtoken');
 const MongoClient = require('mongodb').MongoClient;
-
+const mongo = require('mongodb');
 
 function collectRequestData(request, callback) {
     const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -29,11 +29,26 @@ module.exports = {
         console.log("Path: " + path);
 
         let secret = fs.readFileSync('./../../../secret.txt');
-        var cookies = new Cookies(request,response,null);
+        
 
 
-        if (request.method === "GET") {
+        if (request.method === "POST") {
             if (path === "/getSubscribedCourses") {
+
+                var body = "";
+                var jsonObj;
+                var cookie;
+                request.on('data', function (chunk) {
+                  body += chunk;
+                });
+                request.on('end', function () {
+                  
+                  jsonObj = JSON.parse(body);
+               
+                cookie = jsonObj.cookie;
+                })
+
+
                 MongoClient
                 .connect('mongodb://localhost:27017', function (error, connection) {
                     if (error) {
@@ -43,10 +58,10 @@ module.exports = {
 
                     var dbConnection = connection.db("TW_PROJECT_SkIns");
 
-                    var token = cookies.get('userToken');
-                    var userData = jwt.verify(token,secret);
-                    var userId = userData._id;
-                    //cookie !
+                    
+                    var userData = jwt.verify(cookie,secret);
+                    var userId = new mongo.ObjectID(userData._id);
+                    
 
                     //var emailData = {email : "mititelu.alex@yahoo.com"};
 
@@ -89,13 +104,29 @@ module.exports = {
                         });
                     });
             }
-            else {
-                response.writeHead(404);
-                response.end("Path not found.");
-            }
-        }
-        else if (request.method === "POST"){
+            
+        
             if (path === "/subscribe"){
+
+                console.log('#############################################')
+                var course;
+
+                var body = "";
+                var jsonObj;
+                var cookie;
+                request.on('data', function (chunk) {
+                  body += chunk;
+                });
+                request.on('end', function () {
+                  
+                  jsonObj = JSON.parse(body);
+                    // console.log('2222222222222222222222')
+                    // console.log(jsonObj)
+                cookie = jsonObj.cookie;
+                course = jsonObj.cid.cid;
+                })
+
+
                 MongoClient
                 .connect('mongodb://localhost:27017', function (error, connection) {
                     if (error) {
@@ -105,19 +136,19 @@ module.exports = {
 
                     var dbConnection = connection.db("TW_PROJECT_SkIns");
 
-                    var token = cookies.get('userToken');
-                    var userData = jwt.verify(token,secret);
-                    var contId = userData._id;
+                    
+                    var userData = jwt.verify(cookie,secret);
+                    var contId = new mongo.ObjectID(userData._id);
                     //cookie
 
                     //var contId = "5b16b59065136feeb6a37b1a";
                     
                     //iau asta din REQUEST !
-                    var course;
-                    collectRequestData(request,courseData => {
+                    
+                    // collectRequestData(request,courseData => {
                         
-                        console.log(courseData);
-                        course = courseData._id;
+                        // console.log(courseData);
+                        // course = courseData._id;
                         
                         //var course = "DOAR PENTRU TEST: STERGE DIN DB !";
 
@@ -126,23 +157,29 @@ module.exports = {
                             curs_id : course
                         };
 
+                        // console.log('2222222222222222222')
+                        // console.log(newSubscription)
+
+
                         dbConnection.collection("Abonati").insertOne(newSubscription, function(error, success) {
                             if (error) {
                                 throw error;
 
                             }
                             console.log("Inserat");
-                            response.writeHead(200);
-                            response.end("Succesfully inserted !");
+                            response.writeHead(200, {
+                                'Content-Type': 'text/html'
+                                });
+                            response.write('Succesfully inserted !')
+                            response.end();
+                            
+                            
                             connection.close();
                         });
-                    });
+                    // });
                 });
             }
-            else {
-                response.writeHead(404);
-                response.end("Path not found.");
-            }
+            
         }
         else {
             response.writeHead(404);
