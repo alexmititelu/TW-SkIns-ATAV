@@ -120,8 +120,8 @@ module.exports = {
                 request.on('end', function () {
                   
                   jsonObj = JSON.parse(body);
-                    // console.log('2222222222222222222222')
-                    // console.log(jsonObj)
+                     console.log('2222222222222222222222')
+                    console.log(jsonObj)
                 cookie = jsonObj.cookie;
                 course = jsonObj.cid.cid;
                 })
@@ -175,6 +175,12 @@ module.exports = {
                             
                             
                             connection.close();
+                        })
+                        .catch(error => {
+                            console.log("Existent");
+                            respnose.writeHead(418);
+                            response.write('Already in database.');
+                            response.end();
                         });
                     // });
                 });
