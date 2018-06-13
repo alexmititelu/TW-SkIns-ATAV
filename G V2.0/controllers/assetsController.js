@@ -38,9 +38,13 @@ function renderImage(path, response) {
             response.write("Couldn't load Image / not found");
             response.end();
         } else {
+            var contentType = 'image/jpeg';
 
+            if(String(imageSource).endsWith('.png')) {
+                contentType = 'image/png';
+            }
             console.log('Succes at reading image');
-            response.writeHead(200, { 'Content-Type': 'image/png' })
+            response.writeHead(200, { 'Content-Type': contentType })
             response.end(image);
         }
     });
@@ -83,8 +87,8 @@ module.exports = {
 
             renderCSS(path, response);
 
-
-        } else if (path.includes('.png') && request.method === 'GET') {
+            
+        } else if ((path.includes('.png') || (path.includes('.jpg')) || (path.includes('.jpeg')) ) && request.method === 'GET') {
             console.log(path);
             renderImage(path, response);
         }
