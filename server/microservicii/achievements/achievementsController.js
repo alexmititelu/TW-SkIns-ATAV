@@ -67,7 +67,7 @@ module.exports = {
 							console.log("OBJECTARR: " + JSON.stringify(objectArr));
 							
 							response.writeHead(200,{'Content-Type': 'application/json'});
-							response.write("Array de JSONuri trimis inapoi cu achievementurile din bd: " + JSON.stringify(objectArr));
+							response.write(JSON.stringify(objectArr));
 							response.end();
 							connection.close();
                         });

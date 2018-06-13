@@ -56,40 +56,26 @@ module.export = achievementHandler = function(req, res, axios, fs)
 		
 	}
 
-	if(req.url === '/getAllAchievements' && req.method === 'GET')
+	if(req.url === '/achievements' && req.method === 'GET')
 	{
 
 			
 
-		axios.get('localhost:8052/getAllAchievements')
-		.then(function(res){
+		axios.get('http://127.0.0.1:8052/achievements')
+		.then(function(respondsex){
 
-			this.res.setEncoding('utf8');
-
-		    var body = '';
-
-		    this.res.on('data', function(chunk) {
-		        body += chunk;
-		    });
-
-			this.res.on('end', function(){
-
+			
+			
+			var body = JSON.stringify(respondsex.data[0])
+			console.log(body)
 				
 
-				if( body.result === 'succes')
-				{
-					body.pipe(res);
-				}
-				else if( body.result === 'fail')
-				{
-					res.write(body.result)
 					res.writeHead(404, {
                     'Content-Type': 'text/html'
             		});
-            		res.end();
-				}
+					res.write(body);
+					res.end();
 
-			});
 				
 		})
 		.catch(function(error){
