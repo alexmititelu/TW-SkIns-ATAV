@@ -5,13 +5,15 @@ var url = require('url');
 
 var courseController = require('./courseController');
 
-
+const hostname = '127.0.0.1';
 var serverPort = 8054;
 http.createServer(function (request, response) {
    
     var path = url.parse(request.url).pathname;
-    courseController.handleRequest(request, response);
+    if (path === '/courses'){
+        courseController.handleRequest(request, response);
+    }
 
-
-}).listen(serverPort);
-console.log('Server running at localhost:' + serverPort);
+}).listen(serverPort, hostname, () => {
+    console.log(Server running at http://${hostname}:${serverPort});
+});
