@@ -36,7 +36,7 @@ module.export = achievementHandler = function(req, res, axios, fs)
 		}
 		else
 		{
-			const file = __dirname + '/..' + '/src/html/achievements.html';
+			const file = __dirname + '/../..' + '/src/html/achievements.html';
 
 			var readStream = fs.createReadStream(file);
 
