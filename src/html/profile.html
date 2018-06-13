@@ -134,7 +134,7 @@
     <img src="LOGOPROFILE2.png" class="logo_profile" alt="logo_image">
     <!--<img src="LOGOPROFILE2.png" class="logo_profile">-->
 
-	<form action="/my_profile" method="POST">
+	<!--<form action="/my_profile" method="POST">
         <label>Name: </label>
         <input type="text" name="dname" value="" /><br />
         <label>Email: </label>
@@ -142,14 +142,66 @@
         <label>Address: </label>
         <input type="text" name="daddress" value="" /><br />
         <button>submit</button>
-    </form>
-	
+    </form>-->
+	<script>
+	//document.getElementById("c2").value="plm";
+	//document.getElementById("mybutton").onclick = 
+	function f(){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 ) {
+		if(this.status == 200) {
+		  var jsonRes = JSON.parse(xhttp.responseText);  
+		  console.log(jsonRes);
+		  console.log(JSON.stringify(jsonRes));
+		  
+		  var day = document.getElementById("day");
+		  for(var i, j = 0; i = day.options[j]; j++) {
+		    if(i.value == jsonRes.day) {
+			  day.selectedIndex = j;
+			  break;
+		    }
+          }
+		  
+		  var month = document.getElementById("month");
+		  for(var i, j = 0; i = month.options[j]; j++) {
+		    if(i.value == jsonRes.month) {
+			  month.selectedIndex = j;
+			  break;
+		    }
+          }
+		  
+		  var year = document.getElementById("year");
+		  for(var i, j = 0; i = year.options[j]; j++) {
+		    if(i.value == jsonRes.year) {
+			  year.selectedIndex = j;
+			  break;
+		    }
+          }
+		  document.getElementById("usernameID").value = jsonRes.username;
+		  document.getElementById("passwordID").value = jsonRes.password;
+		  document.getElementById("emailID").value = jsonRes.email;
+		  document.getElementById("first_nameID").value = jsonRes.first_name;
+		  document.getElementById("last_nameID").value = jsonRes.last_name;
+		  document.getElementById("countryID").value = jsonRes.country;
+		  document.getElementById("telefonID").value = jsonRes.telefon;
+		}
+	  }
+	  };
+
+	  console.log("bla");
+	  xhttp.open("GET", "https://localhost:8050/getFields", true);
+	  xhttp.send();
+	};
+
+	f();
+	</script>
     <div class="toate_sectiunile">
         <div class="username">
             <h4>Username</h4>
             <p>You can change your username, which impacts how you sign in.</p>
             <form action="/my_profile" method="POST">
-                <input type="text" name="username" placeholder="Enter your new Username" value="{{someVal}}">
+                <input type="text" name="username" id="usernameID" placeholder="Enter your new Username" value="">
                 <i class="fa fa-user" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -159,7 +211,7 @@
             <h4>Password</h4>
             <p>Choose another password that you like and is easier to remember.</p>
             <form action="/my_profile" method="POST">
-                <input type="password" name="password" placeholder="Enter your new Password" value="{{someVal2}}">
+                <input type="password" name="password" id="passwordID" placeholder="Enter your new Password" value="">
                 <i class="fa fa-unlock-alt" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -170,7 +222,7 @@
             <h4>E-Mail</h4>
             <p>Change your e-mail to continue to receive account updates and newsletters. </p>
             <form action="/my_profile" method="POST">
-                <input type="text" name="email" placeholder="Enter your new Email" value="{{someVal3}}">
+                <input type="text" name="email" id="emailID" placeholder="Enter your new Email" value="">
                 <i class="fa fa-envelope" style="font-size:18px" aria-hidden="true"></i>
                 <input type="submit" value="Update">
             </form>
@@ -181,37 +233,57 @@
             <h4>Personal Data</h4>
             <form action="/my_profile" method="POST">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your First Name" name="first_name" value="{{someVal4}}">
+                <input type="text" placeholder="Enter your First Name" id="first_nameID" name="first_name" value="">
                 <hr color="#032E37">    
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Last Name" name="last_name" value="{{someVal5}}">
+                <input type="text" placeholder="Enter your Last Name" id="last_nameID" name="last_name" value="">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Address" name="address">
+                <!--<input type="text" placeholder="Enter your Address" name="address">
+                <hr color="#032E37">-->
+                <!--<label>First Name</label>-->
+                <input type="text" placeholder="Enter your Country" id="countryID" name="country" value="">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Country" name="country" value="{{someVal6}}">
-                <hr color="#032E37">
-                <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your Phone Number" name="telefon" value="{{someVal7}}">
+                <input type="text" placeholder="Enter your Phone Number" id="telefonID" name="telefon" value="">
                 <hr color="#032E37">
                 <!--<label>First Name</label>-->
                 <div class="wrapper">
-                    <select>
-                        <option>Day</option>
+                    <select id="day">
+                        <option selected="selected">Day</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
-                        <option>6</option>
+                        <option>a</option>
                         <option>7</option>
                         <option>8</option>
                         <option>9</option>
                         <option>10</option>
+						<option>11</option>
+						<option>12</option>
+						<option>13</option>
+						<option>14</option>
+						<option>15</option>
+						<option>16</option>
+						<option>17</option>
+						<option>18</option>
+						<option>19</option>
+						<option>20</option>
+						<option>21</option>
+						<option>22</option>
+						<option>23</option>
+						<option>24</option>
+						<option>25</option>
+						<option>26</option>
+						<option>27</option>
+						<option>28</option>
+						<option>29</option>
+						<option>30</option>
                     </select>
-                    <select>
-                        <option>Month</option>
+                    <select id="month">
+                        <option selected="selected">Month</option>
                         <option>January</option>
                         <option>February</option>
                         <option>March</option>
@@ -225,16 +297,26 @@
                         <option>November</option>
                         <option>December</option>
                     </select>
-                    <select>
-                        <option>Year</option>
+                    <select id="year">
+                        <option selected="selected">Year</option>
                         <option>2000</option>
                         <option>1999</option>
                         <option>1998</option>
                         <option>1997</option>
                         <option>1996</option>
+						<option>1995</option>
+						<option>1994</option>
+						<option>1993</option>
+						<option>1992</option>
+						<option>1991</option>
+						<option>1990</option>
+						<option>1989</option>
+						<option>1988</option>
+						<option>1987</option>
                     </select>
                 </div>
-                
+                        <hr size="1" color="#D9D9D9" style="width: 50%;">
+
                 <input type="submit" value="Save Personal Data">
             </form>
         </div>
@@ -259,6 +341,7 @@
                     <i class="fa fa-shield" style="font-size:18px" aria-hidden="true"></i>
                 </div>
                 <hr color="#032E37">
+				<hr color="#032E37">
                 <input type="submit" value="Save Credit Card">
             </form>
         </div>
