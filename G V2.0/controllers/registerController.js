@@ -137,6 +137,7 @@ module.export = registerHandler = function(req, res, axios, fs)
 						});
 					}
 					else{
+						console.log(responsex);
 						res.writeHead(404);
 						res.write("Microserviciul register a picat");
 						res.end();
