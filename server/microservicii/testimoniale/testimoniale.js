@@ -5,14 +5,15 @@ var url = require('url');
 
 var testimonialeController = require('./testimonialeController');
 
-
-var serverPort = 8052;
+const hostname = '127.0.0.1';
+var serverPort = 8056;
 http.createServer(function (request, response) {
    
-    var path = url.parse(request.url).pathname;
-    if (path === '/testimoniale'){
-        testimonialeController.handleRequest(request, response);
-    }
 
-}).listen(serverPort);
-console.log('Server running at localhost:' + serverPort);
+    
+        testimonialeController.handleRequest(request, response);
+    
+
+}).listen(serverPort, hostname, () => {
+    console.log('Server running at localhost:' + serverPort);
+});
