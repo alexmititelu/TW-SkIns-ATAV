@@ -6,8 +6,8 @@
     <title>All Courses</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script language="javascript" type="text/javascript" src="../../shared/header.html"></script> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="/courses_styles.css" />
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/courses_styles.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -96,7 +96,7 @@
         <div class="search centered">
             <span>Cautati un curs ...</span>
             <!-- <span class="fa fa-search"> -->
-                <input type="text" name="search" placeholder="Search..">
+                <input  id = "searchBtn" type="text" name="search" placeholder="Search..">
             <!-- </span> -->
         </div>
         <div class="tagbar">
@@ -115,149 +115,16 @@
 
     <div class="content">
         <div class="course-content">
-            <div class="main-flex">
+            <div class="main-flex" id = "courseView">
                 <div class="box tilt">
                     <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                    </div>Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
+                    </div>
+                    LOADING...
                     <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/bought.png">
-                        <form action="#curs1">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs1">
-                    Acum ar trebui sa vedem un overlay;1
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/question.png" />
-                    </div>Asta e un curs si asta va fi mai mare decat precedentul pentru ca am pus descriere mai mare
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <form action="#curs2">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs2">
-                    Acum ar trebui sa vedem un overlay;2
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/plane.jpg" />
-                    </div>
-                    Asta e un curs
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <!-- <img class = "more" src = "../images/question.png"></img> -->
-                        <form action="#curs3">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs3">
-                    Acum ar trebui sa vedem un overlay;3
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                    </div>Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/bought.png">
-                        <form action="#curs4">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs4">
-                    Acum ar trebui sa vedem un overlay;4
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/question.png" />
-                    </div>Asta e un curs si asta va fi mai mare decat precedentul pentru ca am pus descriere mai mare
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <form action="#curs5">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs5">
-                    Acum ar trebui sa vedem un overlay;5
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/plane.jpg" />
-                    </div>
-                    Asta e un curs
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <!-- <img class = "more" src = "../images/question.png"></img> -->
-                        <form action="#curs6">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs6">
-                    Acum ar trebui sa vedem un overlay;6
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                    </div>Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/bought.png">
-                        <form action="#curs7">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs7">
-                    Acum ar trebui sa vedem un overlay;7
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/question.png" />
-                    </div>Asta e un curs si asta va fi mai mare decat precedentul pentru ca am pus descriere mai mare
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <form action="#curs8">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
-                    </div>
-                </div>
-                <a href="#_" class="lightbox" id="curs8">
-                    Acum ar trebui sa vedem un overlay;8
-                </a>
-                <div class="box tilt">
-                    <div class="upper">
-                        <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/plane.jpg" />
-                    </div>
-                    Asta e un curs
-                    <div class="bottom">
-                        <span class="price">15 lei</span>
-                        <img alt="Gigele, s-a stricat ceva la casca" class="availability" src="../images/notinlibrary.png">
-                        <!-- <img class = "more" src = "../images/question.png"></img> -->
-                        <form action="#curs9">
-                            <button class="fa fa-question-circle"></button>
-                        </form>
                     </div>
                 </div>
                 <a href="#_" class="lightbox" id="curs9">
-                    Acum ar trebui sa vedem un overlay;9
                 </a>
-
             </div>
         </div>
     </div>
@@ -344,6 +211,7 @@
     <!-- <footer>
         <script language="javascript" type="text/javascript" src="../shared/footer.html"></script>
     </footer> -->
+    <script src = "../assets/scripts/courseClient.js"></script>
 </body>
 
 </html>
