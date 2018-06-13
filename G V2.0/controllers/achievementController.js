@@ -26,7 +26,7 @@ module.export = achievementHandler = function(req, res, axios, fs)
 	{
 		var cookie = cookies.get('userToken');
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
