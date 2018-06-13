@@ -5,6 +5,15 @@ var nodemailer = require('nodemailer');
 const randomstring = require('randomstring');
 const MongoClient = require('mongodb').MongoClient;
 var validator = require('validator');
+const secondValidator = require('validate-data');
+
+const registrationRules = {
+    required: "email username password",
+    email: "email",
+    string: "email name username firstName lastName interests gender",
+    number: "phone",
+    isSubscribed: "boolean"
+};
 
 function sendRegistrationMail(destinationEmail, username, activationLink, success) {
     var transporter = nodemailer.createTransport({
@@ -20,7 +29,7 @@ function sendRegistrationMail(destinationEmail, username, activationLink, succes
         to: destinationEmail,
         subject: 'SkIns Account Registration',
         html: '<h1>Welcome ' + username + '</h1>' +
-            '<p>In order to activate your account click on the following link: <br>localhost:8888/register/' + activationLink + '</p> ' +
+            '<p>In order to activate your account click on the following link: <br>https://localhost:8050/register/' + activationLink + '</p> ' +
             '<br><br> <p>© SkIns</p>'
     }
 
@@ -67,26 +76,35 @@ function renderNotFoundHTML(response) {
 }
 
 
-function validateFormData(formData) {
-    if(isAlpha(form.username)=== false){
+function validateFormData(form) {
+    
+    if(validator.isAlpha(form.username)=== false){
         return false;
     }
 
-    if(isAlpha(form.firstName)=== false){
+    if(validator.isAlpha(form.firstName)=== false){
         return false;
     }
 
-    if(isAlpha(form.lastName)=== false){
+    if(validator.isAlpha(form.lastName)=== false){
         return false;
     }
     
-    if(isDecimal(form.phone)=== false) {
+    if(validator.isDecimal(form.phone)=== false) {
         return false;
     }
 
-    if(isEmail(form.email)=== false){
+    if(validator.isEmail(form.email)=== false){
         return false;
     }
+
+    var lastValidation = secondValidator(form,registrationRules);
+    console.log("Result of validation: " + lastValidation);
+    
+    if(lastValidation === false) {
+        return false;
+    }
+
     return true;
 }
 
