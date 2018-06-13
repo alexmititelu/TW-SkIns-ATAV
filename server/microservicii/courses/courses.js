@@ -9,10 +9,10 @@ const hostname = '127.0.0.1';
 var serverPort = 8054;
 http.createServer(function (request, response) {
    
-    var path = url.parse(request.url).pathname;
-    if (path === '/courses'){
-        courseController.handleRequest(request, response);
-    }
+
+    
+    courseController.handleRequest(request, response);
+    
 
 }).listen(serverPort, hostname, () => {
     console.log(Server running at http://${hostname}:${serverPort});
