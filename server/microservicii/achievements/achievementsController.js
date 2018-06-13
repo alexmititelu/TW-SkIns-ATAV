@@ -1,13 +1,33 @@
 var url = require('url');
 var fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
+const jwt = require('jsonwebtoken');
+const mongo = require('mongodb');
 
 module.exports = {
     handleRequest: function(request, response){
+
+        let secret = fs.readFileSync('./../../../secret.txt');
         var path = url.parse(request.url).pathname;
+
+
         console.log("Path: " + path);
-        if (request.method === "GET" && path.includes(".css") === false) {
+        if (request.method === "POST" && path.includes(".css") === false) {
             if (path === "/achievements") {
+                
+                var body = "";
+                var jsonObj;
+                var cookie;
+                request.on('data', function (chunk) {
+                  body += chunk;
+                });
+                request.on('end', function () {
+                  
+                  jsonObj = body;
+               
+                cookie = jsonObj;
+                })
+                
                 MongoClient
                 .connect('mongodb://localhost:27017', function (error, connection) {
                     if (error) {
@@ -18,19 +38,19 @@ module.exports = {
                     var dbConnection = connection.db("TW_PROJECT_SkIns");
 					console.log("Cautam in achievements");
 					
-					var queryFindAch =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
-                    /*var token = cookie.get('userToken');
-					var cookieData = JSON.parse(jwt.verify(token,'asdkasnd@#@#das');
-					var queryFindAch = {id_cont: cookieData._id};
-					*/
+					//var queryFindAch =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
+                    
+					var cookieData = jwt.verify(cookie,secret);
+					var queryFindAch = {id_cont: new mongo.ObjectID(cookieData._id)};
+					
 					dbConnection.collection("Achievements").find(queryFindAch).toArray( function (err, result) {
 
                         if (err) {
                             throw err;
                         }
 
-                        console.log("Din Achievements: " + result[0].id_curs + " " + result[0].id_achievement + " " + result[0].progres);
-                        console.log(JSON.stringify(result));
+                        // console.log("Din Achievements: " + result[0].id_curs + " " + result[0].id_achievement + " " + result[0].progres);
+                        // console.log(JSON.stringify(result));
 						
 						
 						var queryFindLogo =  { logo_path: "achievement.png" }; //AICI VIN COOKIEURILE
@@ -67,7 +87,9 @@ module.exports = {
 							console.log("OBJECTARR: " + JSON.stringify(objectArr));
 							
 							response.writeHead(200,{'Content-Type': 'application/json'});
-							response.write(JSON.stringify(objectArr));
+                            response.write(JSON.stringify(objectArr));
+                            console.log('22222222222222')
+                            console.log(objectArr)
 							response.end();
 							connection.close();
                         });
@@ -91,9 +113,6 @@ module.exports = {
                         connection.close();
                         });*/
                 });
-            }else {
-                response.writeHead(404);
-                response.write("Couldn't load HTML / not found");
             }
         }
         else{

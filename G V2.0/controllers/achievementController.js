@@ -21,7 +21,7 @@ function collectRequestData(request, callback) {
 module.export = achievementHandler = function(req, res, axios, fs)
 {	
 	var cookies = new Cookies(req, res, null);
-
+	
 	if(req.url === '/src/html/achievements.html' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');
@@ -56,17 +56,22 @@ module.export = achievementHandler = function(req, res, axios, fs)
 		
 	}
 
+	var cookie = cookies.get('userToken');
 	if(req.url === '/achievements' && req.method === 'GET')
 	{
 
 			
 
-		axios.get('http://127.0.0.1:8052/achievements')
+		axios({
+			method : 'post',
+			url : 'http://127.0.0.1:8052/achievements',
+			data: cookie
+		})
 		.then(function(respondsex){
 
 			
 			
-			var body = JSON.stringify(respondsex.data[0])
+			var body = JSON.stringify(respondsex.data)
 			console.log(body)
 				
 
