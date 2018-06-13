@@ -5,7 +5,7 @@
 .colorez{
     background-color: #67A3AA;
 }
-button{
+coursebutton{
     background-color: #F6A83B;
     color: #192638;
     border:none;
@@ -305,7 +305,7 @@ input[type=text]:focus {
     transform: rotate(-2deg);
 }
 
-body > div.header > div.tagbar > div > button{
+body > div.header > div.tagbar > div > coursebutton{
     border-radius: 50%;
     
 }

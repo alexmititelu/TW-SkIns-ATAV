@@ -28,15 +28,19 @@ xmlhttp.send();
 
 
 
-function createHTML(title,details){
+function createHTML(title,details,courseId){
     var html = "<div class=\"box tilt\">\
     Titlu curs : " + title + 
     "<div class=\"bottom\">\
         Detalii curs : " + details + 
     "</div>\
-    </div>";
+    <div id = \"postId\" style = \"display : none\">" + courseId + "</div>" + 
+    "<form action = \"http://127.0.0.1:8050/subscribe\" style = \"display : none\" \
+    id = \"" + courseId + 
+    "\"><input type = text name = \"cid\" value = \"" + courseId + "\"></input></form>"
+    + "<button class = \"coursebutton\" id = \"subscribeBtn\" onclick = \"subscribe(this)\" value = \"" + 
+    courseId + "\">Aboneaza-te</button></div>";
     return html;
-    
 }
 
 function search(index, searchString){
@@ -53,8 +57,33 @@ function sort(sortParam){
     //sortam dupa sortParam
 }
 
-function filter(filterTags){
-    //filtram dupa tagurile alese
+function subscribe(caller){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://127.0.0.1:8050/subscribe";
+    var sendForm = document.getElementById(caller.value);
+    //sendForm.submit();
+    xmlhttp.open("POST", url, true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var buton = document.getElementById("subscribeBtn");
+        buton.innerHTML = "Te-ai abonat";
+        var atr = document.createAttribute("disabled");
+        atr.value = "disabled";
+        buton.setAttributeNode(atr);
+        console.log(this.responseText);
+    }
+    else if (this.readystate == 4 && this.status == 418){
+        var buton = document.getElementById("subscribeBtn");
+        buton.innerHTML = "Esti deja abonat";
+        var atr = document.createAttribute("disabled");
+        atr.value = "disabled";
+        buton.setAttributeNode(atr);
+        console.log(this.responseText);
+    }
+    };
+    xmlhttp.send("cid=" + caller.value);
+
 }
 
 function setSearch(){
@@ -96,22 +125,22 @@ function update(){
         if (searchString != "" && search(i,searchString) != 0){
             if (filterTags.length != 0){
                 if(filterTags.includes(coursesJSON[i].tag))
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
         }
         else if (filterTags.length != 0 && filterTags.includes(coursesJSON[i].tag)){
             if (searchString != ""){
                 if (search(i,searchString) != 0)
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
         }
         else if (searchString == "" && filterTags.length == 0){
             console.log("NU SE FILTREAZA");
-            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere);
+            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
         }
     }
     document.getElementById('courseView').innerHTML = coursesView;

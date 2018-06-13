@@ -27,6 +27,55 @@
     padding: 5px; position: relative;
 }
 
+.logo4 {
+    width:200px; 
+    height:200px; 
+    margin-top:50px;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    border-bottom-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    padding:2px;
+    background: #D9D9D9; position: relative; margin-left:37.5px; margin-right:37.5px;
+    -webkit-transition: All 0.3s ease-in-out;
+}
+.tooltip {
+    display: inline-block;
+    position: relative;
+    border-bottom: 5px dotted black;
+
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+.logo4:hover {
+    width:220px;
+    height:220px;
+}
+
 .logo5 {
     width:200px; 
     height:200px; 
@@ -35,7 +84,7 @@
     border-top-right-radius: 15%;
     border-bottom-left-radius: 40%;
     border-bottom-right-radius: 40%;
-    padding:2px;margin-left:75px; margin-right:75px; 
+    padding:2px;margin-left:37.5px; margin-right:37.5px; 
     background: #D9D9D9; position: relative;
     -webkit-transition: All 0.3s ease-in-out;
 }
@@ -53,7 +102,7 @@
     border-top-right-radius: 15%;
     border-bottom-left-radius: 40%;
     border-bottom-right-radius: 40%;
-    padding:2px;background:#D9D9D9; position: relative;
+    padding:2px;background:#D9D9D9; margin-right:37.5px; margin-left:37.5px;position: relative;
     -webkit-transition: All 0.3s ease-in-out;
 }
 .logo6:hover {
@@ -75,13 +124,21 @@
     width:220px;
     height:220px;
 }
-.level5, .level6, .level8 {
+.level4, .level5, .level6, .level8 {
     position: relative;
 }
-.level5 i.plane {
+
+.level4 i.code {
+	position: absolute;
+    margin-top: -88%;
+    margin-left: -21.5%;
+    color: #D9D9D9;
+}
+
+.level5 i.language {
     position: absolute;
     margin-top: -49%;
-    margin-left: -9%;
+    margin-left: -9.5%;
     color: #D9D9D9;
 }
 
@@ -91,13 +148,19 @@
     margin-left: -11%;
     color: #D9D9D9;
 }
-.level6 i.ambulance {
+.level6 i.music {
     position: absolute;
     margin-top: -86%;
-    margin-left: -23%;
+    margin-left: -19%;
     color: #D9D9D9;
 }
 
+.level4 i.star1{
+    position: absolute;
+    margin-top: -32%;
+    margin-left: -23%;
+    color: #D9D9D9;
+}
 .level5 i.star1{
     position: absolute;
     margin-top: -18%;
@@ -117,6 +180,12 @@
     color: #D9D9D9;
 }
 
+.level4 i.star2 {
+    position: absolute;
+    margin-top: -32%;
+    margin-left: -3%;
+    color: #D9D9D9;
+}
 .level5 i.star2 {
     position: absolute;
     margin-top: -18%;
@@ -136,6 +205,12 @@
     color: #D9D9D9;
 }
 
+.level4 i.star3 {
+    position: absolute;
+    margin-top: -32%;
+    margin-left: 17%;
+    color: #D9D9D9;
+}
 .level5 i.star3 {
     position: absolute;
     margin-top: -18%;
