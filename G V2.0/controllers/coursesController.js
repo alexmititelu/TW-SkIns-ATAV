@@ -127,12 +127,13 @@ module.export = coursesHandler = function(req, res, axios, fs)
 		axios.get('http://127.0.0.1:8054/getAllCourses')
 		.then(function(response){
 
-			
-		
-					res.write(response.data)
+	
 					res.writeHead(200, {
-                    'Content-Type': 'text/html'
-            		});
+						'Content-Type': 'text/html'
+						});
+						
+					res.write(JSON.stringify(response.data))
+					
             		res.end();
 				
 			
