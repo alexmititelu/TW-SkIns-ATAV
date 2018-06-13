@@ -83,29 +83,29 @@ module.export = profileHandler = function(req, res, axios, fs)
 		}
     }
 
-    if(req.method === 'POST' && req.url === '/POST')
-    {
-        collectRequestData(req, userDetails => {
+    // if(req.method === 'POST' && req.url === '/post_course')
+    // {
+    //     collectRequestData(req, userDetails => {
 			
-			console.log(userDetails)
-			axios({
-				method : 'post',
-				url : 'http://127.0.0.1:8051/register',
-				data : userDetails
-			})
-			.then(function(responsex){
+	// 		console.log(userDetails)
+	// 		axios({
+	// 			method : 'post',
+	// 			url : 'http://127.0.0.1:8051/register',
+	// 			data : userDetails
+	// 		})
+	// 		.then(function(responsex){
 
-						res.write(responsex.data)
-						res.writeHead(200, {
-	                    'Content-Type': 'text/html'
-	            		});
-	            		res.end();
+	// 					res.write(responsex.data)
+	// 					res.writeHead(200, {
+	//                     'Content-Type': 'text/html'
+	//             		});
+	//             		res.end();
 				
 					
-			})
-			.catch(function(error){
-				res.end(error.message);
-			})
-		})
-	}
+	// 		})
+	// 		.catch(function(error){
+	// 			res.end(error.message);
+	// 		})
+	// 	})
+	// }
 }
