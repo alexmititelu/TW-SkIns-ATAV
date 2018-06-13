@@ -3,38 +3,59 @@ var fs = require('fs');
 var qs = require('querystring');
 var path = require('path');
 const MongoClient = require('mongodb').MongoClient;
+const jwt = require('jsonwebtoken');
+var Cookies = require('cookies');
+const mongo = require('mongodb');
+// function renderHTML(path, res, fieldValue, fieldValue2, fieldValue3, fieldValue4, fieldValue5, fieldValue6, fieldValue7) {
+//     fs.readFile("../src/html/" + path, function (err, data) {
+//         if (err) {
+//             res.writeHead(404);
+//             res.write("Couldn't load HTML / not found");
+//         } else {
+//             data = data.toString().replace(/\{\{someVal\}\}/, fieldValue);
+//             data = data.toString().replace(/\{\{someVal2\}\}/, fieldValue2);
+//             data = data.toString().replace(/\{\{someVal3\}\}/, fieldValue3);
+//             data = data.toString().replace(/\{\{someVal4\}\}/, fieldValue4);
+//             data = data.toString().replace(/\{\{someVal5\}\}/, fieldValue5);
+//             data = data.toString().replace(/\{\{someVal6\}\}/, fieldValue6);
+//             data = data.toString().replace(/\{\{someVal7\}\}/, fieldValue7);
 
-function renderHTML(path, res, fieldValue, fieldValue2, fieldValue3, fieldValue4, fieldValue5, fieldValue6, fieldValue7) {
-    fs.readFile("../src/html/" + path, function (err, data) {
-        if (err) {
-            res.writeHead(404);
-            res.write("Couldn't load HTML / not found");
-        } else {
-            data = data.toString().replace(/\{\{someVal\}\}/, fieldValue);
-            data = data.toString().replace(/\{\{someVal2\}\}/, fieldValue2);
-            data = data.toString().replace(/\{\{someVal3\}\}/, fieldValue3);
-            data = data.toString().replace(/\{\{someVal4\}\}/, fieldValue4);
-            data = data.toString().replace(/\{\{someVal5\}\}/, fieldValue5);
-            data = data.toString().replace(/\{\{someVal6\}\}/, fieldValue6);
-            data = data.toString().replace(/\{\{someVal7\}\}/, fieldValue7);
-
-            res.writeHead(200, { 'Content-Type': 'text/html' })
-            res.write(data);
-        }
-        res.end();
-    });
-}
+//             res.writeHead(200, { 'Content-Type': 'text/html' })
+//             res.write(data);
+//         }
+//         res.end();
+//     });
+// }
 
 
 module.exports = {
     handleRequest: function (req, res) {
 
+        
         var path = url.parse(req.url).pathname;
         console.log("Path: " + path);
 
-        if (req.method === "GET" && path.includes(".css") === false) {
+        if (req.method === "POST" && path.includes(".css") === false) {
             if (path === "/getFields") {
 
+
+                
+
+                var body = "";
+                var jsonObj;
+                var cookie;
+                req.on('data', function (chunk) {
+                  body += chunk;
+                });
+                req.on('end', function () {
+                  
+                  jsonObj = JSON.parse(body);
+               
+                cookie = jsonObj.cookie;
+                })
+
+                
+                
                 MongoClient
                         .connect('mongodb://localhost:27017', function (err, connection) {
                             if (err) {
@@ -45,11 +66,16 @@ module.exports = {
 
                             console.log("Cautam sa vedem daca gasim in bd useru");
 
-                            var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE DE MAI JOS
-							/*var token = cookie.get('userToken');
-							var cookieData = JSON.parse(jwt.verify(token,'asdkasnd@#@#das');
-							var queryFindConturi = {_id: cookieData._id};
-							*/
+                            //var queryFindConturi = { username: "vladut" }; //AICI VIN COOKIEURILE DE MAI JOS
+                            let secret = fs.readFileSync('./../../../secret.txt');
+                            
+                            
+                            // console.log(cookie)
+                            var cookieData = jwt.verify(cookie,secret);
+                            
+                            var o_id = new mongo.ObjectID(cookieData._id);
+							var queryFindConturi = { _id : o_id };
+							
                             dbConnection.collection("Conturi").findOne(queryFindConturi, function (err, result) {
 
                                 if (err) {
@@ -58,10 +84,10 @@ module.exports = {
 
                                 console.log("Din conturi: " + result.username + " " + result.password + " " + result.email);
 
-                                var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE DE MAI JOS
-								/*
-								var queryFindUtilizatori = {cont_id: conturiData._id};
-								*/
+                                //var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE DE MAI JOS
+								
+								var queryFindUtilizatori = {cont_id : o_id};
+								console.log(queryFindUtilizatori)
                                 dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result2) {
 
                                         if (err) {
@@ -86,7 +112,7 @@ module.exports = {
 										console.log(JSON.stringify(objectGet));
 									
 										res.writeHead(200,{'Content-Type': 'application/json'});
-										res.write("JSONul trimis inapoi cu datele din bd: " + JSON.stringify(objectGet));
+										res.write(JSON.stringify(objectGet));
 										res.end();
                                     });
 

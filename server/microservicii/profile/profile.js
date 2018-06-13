@@ -5,7 +5,7 @@ var profileController = require('./profileController');
 //var assetsControllerVlad = require('./assetsControllerVlad');
 
 
-var port = 8888;
+var port = 8055;
 const hostname = '127.0.0.1';
 
 const server = http.createServer(function (req, res) {
