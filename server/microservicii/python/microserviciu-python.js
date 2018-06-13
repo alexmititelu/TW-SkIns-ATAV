@@ -127,8 +127,9 @@ https.createServer( function (request, response) {
                 var jsonData = {
                     content: data
                 };
-
-
+                console.log("-----------------------");
+                console.log(jsonData);
+                console.log("-----------------------");
                 // console.log(JSON.stringify(jsonData));
                 response.writeHead(200, { 'Content-Type': 'application/json' });
                 response.write(JSON.stringify(jsonData));
