@@ -96,16 +96,18 @@
         <div class="search centered">
             <span>Cautati un curs ...</span>
             <!-- <span class="fa fa-search"> -->
-                <input  id = "searchBtn" type="text" name="search" placeholder="Search..">
+                <input  id = "searchBar" type="text" name="search" placeholder="Search..">
+                <button id = "searchBtn" onclick = "setSearch()">Cauta</button>
             <!-- </span> -->
         </div>
         <div class="tagbar">
             <div class = "tagbar-grid">
                 <div class = "tagbar-element0 tagbar-element-width">Tags</div>
-                <button class = "tagbar-element1 tagbar-element-width">Chitara</button>
-                <button class = "tagbar-element2 tagbar-element-width">Autoaparare</button>
-                <button class = "tagbar-element3 tagbar-element-width">Planorism</button>
-                <button class = "tagbar-element4 tagbar-element-width">MISTER</button>
+                <ul>
+                <li>Chitara<input onclick = "setFilterTags()" type = "checkbox" id = "gtr" class = "tagbar-element1 tagbar-element-width"></input>
+                <li>Python<input onclick = "setFilterTags()" type = "checkbox" id = "python" class = "tagbar-element2 tagbar-element-width"></input>
+                <li>Limbi<input onclick = "setFilterTags()" type = "checkbox" id = "lang" class = "tagbar-element1 tagbar-element-width"></input>
+                </ul>
             </div>
         </div>
     </div>

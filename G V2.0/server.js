@@ -31,7 +31,7 @@ const profileController = require('./controllers/profileController');
 const coursesController = require('./controllers/coursesController');
 
 const pythonCourseController = require('./controllers/pythonCourseController');
-
+const testimonialeController = require('./controllers/testimonialeController');
 // const addOwnCourseController = require('./controllers/addOwnCourseController');
 
 
@@ -70,7 +70,8 @@ const server = https.createServer(certOptions, (req, res) => {
     coursesHandler(req, res, axios, fs);
 
     pythonCourseHandler(req, res, axios, fs);
-
+    
+    testimonialeHandler(req, res, axios, fs);
     // addOwnCourseHandler(req, res, qs, cookies);
 
 
