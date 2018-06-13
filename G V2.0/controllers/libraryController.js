@@ -30,10 +30,12 @@ module.export = libraryHandler = function(req, res, axios, fs)
 {	
 	
 	var cookies = new Cookies(req, res, null);
+	var cookie = cookies.get('userToken');
+
 	
 	if(req.url === '/myLibrary' && req.method === 'GET')
 	{
-		var cookie = cookies.get('userToken');
+		
 
 		if(cookie)
 		{
@@ -65,40 +67,28 @@ module.export = libraryHandler = function(req, res, axios, fs)
 		
 	}
 
-	if(req.url === '/getAllLibrary' && req.method === 'GET')
+	if(req.url === '/getSubscribedCourses' && req.method === 'GET')
 	{
 
 			
 
-		axios.get('localhost:8053/getAllLibrary')
-		.then(function(res){
+		axios(
+			{
+				method : 'post',
+				url : 'http://127.0.0.1:8053/getSubscribedCourses',
+				data: {
+					cookie: cookie
+				  }
+			})
+		.then(function(respondsex){
 
-			this.res.setEncoding('utf8');
-
-		    var body = '';
-
-		    this.res.on('data', function(chunk) {
-		        body += chunk;
-		    });
-
-			this.res.on('end', function(){
-
-				
-
-				if( body.result === 'succes')
-				{
-					body.pipe(res);
-				}
-				else if( body.result === 'fail')
-				{
-					res.write(body.result)
-					res.writeHead(404, {
-                    'Content-Type': 'text/html'
-            		});
-            		res.end();
-				}
-
-			});
+			console.log(respondsex)
+			res.writeHead(200, {
+				'Content-Type': 'text/html'
+				});
+			res.write(JSON.stringify( respondsex.data) )
+			res.end();
+			
 				
 		})
 		.catch(function(error){
@@ -107,6 +97,46 @@ module.export = libraryHandler = function(req, res, axios, fs)
 		
 
 
+		
+	}
+
+	if(req.url === '/subscribe' && req.method === 'POST')
+	{
+
+		var cookie = cookies.get('userToken');	
+		collectRequestData(req, data => {
+
+			
+			console.log({
+				cookie: cookie,
+				data: data
+			});
+			axios(
+				{
+					method : 'post',
+					url : 'http://127.0.0.1:8053/subscribe',
+					data: {
+						cookie: cookie,
+						cid: data
+					}
+				})
+			.then(function(respondsex){
+				
+				
+				console.log(respondsex.data)
+				res.writeHead(200, {
+					'Content-Type': 'text/html'
+					});
+				res.write(respondsex.data)
+				res.end(console.log("gata"));
+				
+					
+			})
+			.catch(function(error){
+				res.end(error.message);
+			})
+		
+		})
 		
 	}
 }
