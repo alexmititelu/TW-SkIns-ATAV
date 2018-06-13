@@ -160,10 +160,11 @@
                         if (xhr.status === 200) { // response Ok from Web service
                         //    callback(xhr.responseText.trim());
                             var jsonResponse = JSON.parse(xhr.responseText);
-                            if(jsonResponse.status === 200) {
-                                jsonData = JSON.parse(jsonResponse.data);
-                                documentationContainer.innerHTML = jsonData.content;
-                            }
+                            // if(jsonResponse.status === 200) {
+                            // var   jsonData = JSON.parse(jsonResponse.data);
+                                // documentationContainer.textContent = jsonData.content;
+                                documentationContainer.textContent = jsonResponse;
+                            // }
                         }
                     }
                 };
