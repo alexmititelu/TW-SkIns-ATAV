@@ -6,13 +6,12 @@ var url = require('url');
 var courseController = require('./courseController');
 
 
-var serverPort = 8052;
+var serverPort = 8054;
 http.createServer(function (request, response) {
    
     var path = url.parse(request.url).pathname;
-    if (path === '/courses'){
-        courseController.handleRequest(request, response);
-    }
+    courseController.handleRequest(request, response);
+
 
 }).listen(serverPort);
 console.log('Server running at localhost:' + serverPort);
