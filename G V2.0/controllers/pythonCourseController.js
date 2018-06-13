@@ -1,7 +1,7 @@
 var qs = require('querystring');
 var Cookies = require('cookies');
 var pathResolver = require('path');
-
+var randomstring = require("randomstring");
 var PythonShell = require('python-shell');
 var formidable = require('formidable');
 const MongoClient = require('mongodb').MongoClient;
@@ -24,8 +24,8 @@ function renderScriptResultPage(objectResult, response) {
     // response.writeHead(200, { 'Content-type': 'text/html' });
     // // response.write(results[0]);
     // response.end('<html><body bgcolor=\'#E6E6FA\'>' + JSON.stringify(jsonResult) + '</body></html>');
-    switch(objectResult.status) {
-        case 200:
+    if(objectResult.status===200) {
+        
             response.writeHead(200, { 'Content-type': 'text/html' });
 
             var finalMessage = '';
@@ -54,17 +54,13 @@ function renderScriptResultPage(objectResult, response) {
             '</html>'
             response.write(htmlResponse);
             response.end();
-            break;
-        case 500:
+	} else {
+        
             response.writeHead(500, { 'Content-type': 'text/html' });
             response.write('Internal error at server');
             response.end();
-            break;
-        default:
-            response.writeHead(500, { 'Content-type': 'text/html' });
-            response.write('Default error');
-            response.end();
-    }
+	}
+		
 
 }
 
@@ -204,7 +200,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		}
 		else
 		{
-            console.log(new Date());
+            // console.log(new Date());
 			axios({
                 method : 'GET',
                 // "rejectUnauthorized": false, 
@@ -213,21 +209,30 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 			.then(function(responsex){
 
                         console.log('--------------------');
-                        console.log(responsex)
-                        console.log(new Date());
+                        // console.log(responsex)
+                        // console.log(new Date());
 
-                        jsonResponse = {
-                            status : responsex.status,
-                            statusText : responsex.statusText,
-                            data : responsex.data
-                        }
+                      
 
-                        if(jsonResponse.status !== 200) {
-                            jsonResponse.statusText = 'Microserviciul a picat';
-                        }
+                        // if(jsonResponse.status !== 200) {
+                        //     jsonResponse.statusText = 'Microserviciul a picat';
+                        // }
 						// res.write(responsex.data)
+						// var jsonResponsex = JSON.parse(responsex);
+						console.log("-----------------------");
+						console.log(responsex.data.content);
+						console.log("-----------------------");
+
+						// jsonResponse = {
+                        //     status : responsex.status,
+                        //     statusText : responsex.statusText,
+                        //     data : responsex.data.content
+                        // }
+						// console.log(responsex.content);
+						// console.log("-----------------------");
                         res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.write(JSON.stringify(jsonResponse));
+						// res.write(JSON.stringify(jsonResponse));
+						res.write(JSON.stringify(responsex.data.content));
                         res.end();
                    
             })
@@ -370,8 +375,10 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 			};
 
 			var oldpath = files.filetoupload.path;
-			var newpath = 'username2.py'; // de pus usernameu la fraer
-			fs.rename(oldpath, newpath, function (error) {
+			var newFileName = randomstring.generate(50)+".py";
+			var newpath = newFileName; 
+			// var newpath = __dirname + "/../server/microservicii/python/uploaded-user-files/"+newFileName; // de pus usernameu la fraer
+			fs.rename(oldpath,newpath, function (error) {
 				if (error) {
 					console.log(error);
 					jsonResult.message = 'Internal error';
@@ -380,7 +387,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 					// throw error;
 				}
 				console.log("Director: " + __dirname);
-				PythonShell.run('/./../username2.py', { scriptPath: __dirname },function (shellError, results) {
+				PythonShell.run("/./../"+newFileName, { scriptPath: __dirname },function (shellError, results) {
 					if (shellError) {
 						console.log("TEST");	
 						console.log(shellError);
