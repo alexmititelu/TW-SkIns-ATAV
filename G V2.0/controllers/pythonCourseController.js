@@ -2,11 +2,71 @@ var qs = require('querystring');
 var Cookies = require('cookies');
 var pathResolver = require('path');
 
+var PythonShell = require('python-shell');
+var formidable = require('formidable');
+const MongoClient = require('mongodb').MongoClient;
+
 var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
 pathElements.pop();
 var homePath = pathElements.join(pathResolver.sep);
             
+
+function renderScriptResultPage(objectResult, response) {
+    /**
+     * Legenda pt status codes:
+     *  - 200, success
+     *  - 500, internal error la server
+     *  - 501, eroare la rularea fisierului pythone (poate de compilare)
+     *  - 502, internal error la baza de date
+     *  - 503, niciun rezultat asociat exercitiului ala
+     */
+    // response.writeHead(200, { 'Content-type': 'text/html' });
+    // // response.write(results[0]);
+    // response.end('<html><body bgcolor=\'#E6E6FA\'>' + JSON.stringify(jsonResult) + '</body></html>');
+    switch(objectResult.status) {
+        case 200:
+            response.writeHead(200, { 'Content-type': 'text/html' });
+
+            var finalMessage = '';
+
+            if(objectResult.userScriptResult === objectResult.expectedScriptResult) {
+                finalMessage = 'Congratulations!'
+            } else {
+                finalMessage = 'Don\'t give up! You can do it.'
+            }
+
+            var htmlResponse = '<html>'+
+            '<style>' +
+            ' p { color : #fff5c6 }' +
+            ' h4 { color : #f2d013 }' +
+            '</style>' +
+            '<body bgcolor=\'#002156\'>' +
+            '<h4> Input: </h4>' +
+            '<p>' + objectResult.input + '</p>' +
+            '<h4>Output:</h4>' +
+            '<p>' + objectResult.userScriptResult + '</p>' +
+            '<h4>Expected Output: </h4>' +
+            '<p>' + objectResult.expectedScriptResult + '</p>' +
+            '<br>' +
+            '<h4>' + finalMessage + '</h4>' +
+            '</body>'+
+            '</html>'
+            response.write(htmlResponse);
+            response.end();
+            break;
+        case 500:
+            response.writeHead(500, { 'Content-type': 'text/html' });
+            response.write('Internal error at server');
+            response.end();
+            break;
+        default:
+            response.writeHead(500, { 'Content-type': 'text/html' });
+            response.write('Default error');
+            response.end();
+    }
+
+}
 
 
 
@@ -291,51 +351,121 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 
 	if(req.url === '/python/fileupload' && req.method === 'POST')
 	{
-		collectRequestData(req, uploadedFile => {
-			
-			console.log(userDetails)
-			axios({
-				method : 'post',
-				url : 'http://127.0.0.1:9000/python/fileupload',
-				data : uploadedFile
-			})
-			.then(function(responsex){
+		
+		var form = new formidable.IncomingForm();
+		// console.log(form);
+		form.parse(req, function (error, fields, files) {
+			// console.log('----------\n' + fields  );
+			// console.log(fields.textFromForm +'\n-----------');
+			// console.log(fields.uploadedEx +'\n-----------');
+			// 
+			var nrExercitiuIncarcat = fields.uploadedEx;
+
+			var jsonResult = {
+				"input": '',
+				"userScriptResult": '',
+				"expectedScriptResult": '',
+				"message": '',
+				"status": 200
+			};
+
+			var oldpath = files.filetoupload.path;
+			var newpath = 'username2.py'; // de pus usernameu la fraer
+			fs.rename(oldpath, newpath, function (error) {
+				if (error) {
+					console.log(error);
+					jsonResult.message = 'Internal error';
+					jsonResult.status = 500;
+					renderScriptResultPage(jsonResult, res);
+					// throw error;
+				}
+				console.log("Director: " + __dirname);
+				PythonShell.run('/./../username2.py', { scriptPath: __dirname },function (shellError, results) {
+					if (shellError) {
+						console.log("TEST");	
+						console.log(shellError);
+						// response.writeHead(404, { 'content-type': 'text/html' });
+						// response.end("Error at runtime");
+						jsonResult.message = 'Error at runtime';
+						jsonResult.status = 501;
+						renderScriptResultPage(jsonResult, res);
+					} else {
+
+						jsonResult.userScriptResult = results;
+
+						/** Acum verificam ce rezultat trebuia sa obtinem de la server */
 
 
-						console.log(responsex.data);
-						// res.write(responsex.data)
-						// res.writeHead(200, {
-						// 'Content-Type': 'text/html; charset=UTF-8',
-						// 'Transfer-Encoding': 'chunked'
-	            		// });
-                        
-                        var fileUploadedResult = responsex.data;
+						MongoClient
+							.connect('mongodb://localhost:27017', function (error, connection) {
+								if (error) {
+									jsonResult.expectedScriptResult = 'Internal error';
+									jsonResult.status = 502;
+									renderScriptResultPage(jsonResult,res);
+									// throw error;
+									console.log(error);
+								} else {
 
-                        if(responsex.status !== 200) {
-                            fileUploadedResult.statusText = 'Microserviciul a picat'
-                        }
-						// res.write(responsex.data)
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.write(JSON.stringify(fileUploadedResult));
-                        res.end();
+									var dbConnection = connection.db("TW_PROJECT_SkIns");
+									var collection = dbConnection.collection("Python_Exercises");
 
-					// if(responsex.data === 'succes')	
-					// {
-						
-					// }
-					// else{
-					// 	res.writeHead(404);
-					// 	res.write("Microserviciul register a picat");
-					// 	res.end();
-					// }
+									var query = {
+										nrExercitiu: parseFloat(nrExercitiuIncarcat)
+									};
 
-					
-			})
-			.catch(function(error){
-				res.end(error.message);
-			})
-		})
+									var cursor = collection.find(query);
+									var index = 0;
+									cursor.forEach(
+										function (doc) {
+											console.log(doc);
+											// console.log(doc.enunt);
+											jsonResult.input = doc.input;
+											jsonResult.expectedScriptResult = doc.rezultat;
+											index++;
+											// console.log(exercises);
+										},
+										function (err) {
+											// dbConnection.close();
+											console.log("error");
+											if (index === 0) {
+												jsonResult.message = 'Internal error';
+												jsonResult.status = 503;
+											}
+											renderScriptResultPage(jsonResult,res);
+											console.log('------------JSON UL FINAL --------------')
+											console.log(jsonResult);
+											console.log('------------JSON UL FINAL --------------')
+											// console.log(exercises[0]);
 
+											// var jsonData = {
+											//     data: exercises[0]
+											// };
+
+											// console.log(JSON.stringify(jsonData));
+											// response.writeHead(200, { 'Content-Type': 'application/json' });
+											// response.write(JSON.stringify(jsonData));
+											// response.end();
+
+										}
+
+									);
+
+								}
+
+							});
+
+						/** Am terminat si cu rezultatul de la server */
+
+						// response.writeHead(200, { 'Content-type': 'text/html' });
+						// // response.write(results[0]);
+						// response.end('<html><body bgcolor=\'#E6E6FA\'>' + JSON.stringify(jsonResult) + '</body></html>');
+					}
+				});
+
+				//   response.write('File uploaded and moved!');
+				//   response.end();
+			});
+		});
 
 		
 	}
