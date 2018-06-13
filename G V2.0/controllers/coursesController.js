@@ -74,7 +74,7 @@ module.export = coursesHandler = function(req, res, axios, fs)
 
 		collectRequestData(req, courseDetails => {
 			
-			axios.post('localhost:8051/postCourse', courseDetails)
+			axios.post('localhost:8054/postCourse', courseDetails)
 			.then(function(response){
 
 				response.setEncoding('utf8');
@@ -120,44 +120,22 @@ module.export = coursesHandler = function(req, res, axios, fs)
 
 	if(req.url === '/getAllCourses' && req.method === 'GET')
 	{
-		
-
+	
 
 		
 			
-		axios.post('localhost:8051/postCourse', courseDetails)
+		axios.get('http://127.0.0.1:8054/getAllCourses')
 		.then(function(response){
 
-			response.setEncoding('utf8');
-
-		    var body = '';
-
-		    response.on('data', function(chunk) {
-		        body += chunk;
-		    });
-
-			response.on('end', function(){
-
-				body = JSON.parse(body);
-
-				if( body.result === 'succes')
-				{
-					url = 'https://localhost:8050/index.html'
-					res.writeHead(302, {Location: url});
-					res.end();
-				}
-				else if( body.result === 'fail')
-				{
-					res.write(response)
+			
+		
+					res.write(response.data)
 					res.writeHead(200, {
                     'Content-Type': 'text/html'
             		});
             		res.end();
-				}
-				else{
-
-				}
-			});
+				
+			
 				
 		})
 		.catch(function(error){
