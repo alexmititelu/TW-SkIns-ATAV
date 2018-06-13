@@ -51,10 +51,12 @@ function renderScriptResultPage(objectResult, response) {
             ' h4 { color : #f2d013 }' +
             '</style>' +
             '<body bgcolor=\'#002156\'>' +
+            '<h4> Input: </h4>' +
+            '<p>' + objectResult.input + '</p>' +
             '<h4>Output:</h4>' +
-            '<p>' + objectResult.userScriptResult + '/p' +
+            '<p>' + objectResult.userScriptResult + '</p>' +
             '<h4>Expected Output: </h4>' +
-            '<p>' + objectResult.expectedScriptResult + '/p' +
+            '<p>' + objectResult.expectedScriptResult + '</p>' +
             '<br>' +
             '<h4>' + finalMessage + '</h4>' +
             '</body>'+
@@ -75,6 +77,23 @@ function renderScriptResultPage(objectResult, response) {
 
 }
 
+
+function renderNotFoundHTML(response) {
+    console.log(__dirname);
+    fs.readFile(__dirname + "/../../../src/html/pageNotFound.html", function (error, htmlContent) {
+        
+        if (error) {
+            response.writeHead(404);
+            
+            response.write("Couldn't load HTML / not found");
+        } else {
+            console.log('ERROR');
+            response.writeHead(200, { 'Content-Type': 'text/html' })
+            response.write(htmlContent);
+        }
+        response.end();
+    });
+}
 
 var certOptions = {
     key: fs.readFileSync(path.resolve('./server.key')),
@@ -256,9 +275,7 @@ https.createServer(certOptions, function (request, response) {
 
             } else {
 
-                response.writeHead(404, { 'Content-type': 'text/html' })
-                // response.write(results[0]);
-                response.end("Page not found");
+                renderNotFoundHTML(response);
             }
         }
     } else {
@@ -318,6 +335,7 @@ https.createServer(certOptions, function (request, response) {
                     var nrExercitiuIncarcat = fields.uploadedEx;
 
                     var jsonResult = {
+                        "input": '',
                         "userScriptResult": '',
                         "expectedScriptResult": '',
                         "message": '',
@@ -371,8 +389,9 @@ https.createServer(certOptions, function (request, response) {
                                             var index = 0;
                                             cursor.forEach(
                                                 function (doc) {
-                                                    // console.log(doc);
+                                                    console.log(doc);
                                                     // console.log(doc.enunt);
+                                                    jsonResult.input = doc.input;
                                                     jsonResult.expectedScriptResult = doc.rezultat;
                                                     index++;
                                                     // console.log(exercises);

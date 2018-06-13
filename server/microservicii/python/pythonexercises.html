@@ -163,7 +163,7 @@
         <div id ="displayedExercise">
 
         </div>
-
+        <br>
         <div id="submitSolutionContainer">
 
         </div>
@@ -418,10 +418,18 @@
             uploadedEx.style = 'display:none';
 
             var inputButton = document.createElement('input');
+            inputButton.id = 'filetoupload';
+            inputButton.classList.add('submit-button');
             inputButton.type = 'file';
             inputButton.name = 'filetoupload';
-            
+
+            // var label = document.createElement('label');
+            // label.htmlFor = 'filetoupload';
+            // label.className = 'custom-file-upload';
+            // label.textContent = 'Custom Upload';
+
             var submitButton = document.createElement('input');
+            submitButton.classList.add('submit-button');
             submitButton.type = 'submit';
 
             // submitForm.appendChild(inputText);
@@ -445,7 +453,7 @@
             container.appendChild(br2);
             container.appendChild(iframe);
 
-            // container.style = 'display:none;border:1px solid black;background-color:red;';
+            container.style = 'display:none';
             
         };
 
@@ -460,7 +468,8 @@ function addEventWhenSubmitingForm() {
 
     form.onsubmit = function () {
         var iframe = document.getElementById('solutionOutput');
-        iframe.style = 'display:block';
+        // iframe.style = 'display:block';
+        iframe.setAttribute("style","display: inline-block;align:middle;width:60%;");
         console.log('Am afisat iframeul');
     };
 
