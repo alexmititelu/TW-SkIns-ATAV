@@ -28,18 +28,25 @@ function renderCSS(path, response) {
 
 function renderImage(path, response) {
 
-    var imagePath = homePath + "/src/assets/images" + path;
+    var imageSource = path.split("/").pop();
+
+    var imagePath = homePath + "/src/assets/images/" + imageSource;
 
     fs.readFile(imagePath, function (error, image) {
         if (error) {
             response.writeHead(404);
             response.write("Couldn't load Image / not found");
+            response.end();
         } else {
+            var contentType = 'image/jpeg';
+
+            if(String(imageSource).endsWith('.png')) {
+                contentType = 'image/png';
+            }
             console.log('Succes at reading image');
-            response.writeHead(200, { 'Content-Type': 'image/gif' })
-            response.write('test');
+            response.writeHead(200, { 'Content-Type': contentType })
+            response.end(image);
         }
-        response.end();
     });
     // var file = fs.createReadStream("../src/assets" + path);
     // file.on('open', function () {
@@ -80,8 +87,8 @@ module.exports = {
 
             renderCSS(path, response);
 
-
-        } else if (path.includes('.png') && request.method === 'GET') {
+            
+        } else if ((path.includes('.png') || (path.includes('.jpg')) || (path.includes('.jpeg')) ) && request.method === 'GET') {
             console.log(path);
             renderImage(path, response);
         }

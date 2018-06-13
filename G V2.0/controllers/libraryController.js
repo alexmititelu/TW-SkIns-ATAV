@@ -104,6 +104,7 @@ module.export = libraryHandler = function(req, res, axios, fs)
 	{
 
 		var cookie = cookies.get('userToken');	
+		console.log("TEST COOKIE : " + cookie);
 		collectRequestData(req, data => {
 
 			
@@ -125,7 +126,10 @@ module.export = libraryHandler = function(req, res, axios, fs)
 				
 				console.log(respondsex.data)
 				res.writeHead(200, {
-					'Content-Type': 'text/html'
+					'Content-Type': 'text/html',
+					'Access-Control-Allow-Origin': 'https://localhost:8050',
+                    'Access-Control-Allow-Credentials': 'true',
+                    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
 					});
 				res.write(respondsex.data)
 				res.end(console.log("gata"));
