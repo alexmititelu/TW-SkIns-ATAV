@@ -136,7 +136,7 @@
     <img src="../images/achievements_images/LOGOACH2-BIG.png" class="logo_achievement">
     <hr color="#032E37" style="margin-top:4%; width: 100%">
 
-    <div class="first_row">
+    <!--<div class="first_row">
         <div class="atribute_achievement tilt achievement_unlocked">
             <img class="ne_deblocate" src="../images/achievements_images/1.JPG" alt="Level 1" 
                 >
@@ -155,22 +155,98 @@
                     <div class="text">You have<br>scored<br>1000<br>points</div>
                 </div>
         </div>
-    </div>
+    </div>-->
     
+	<script>
+	//document.getElementById("c2").value="plm";
+	//document.getElementById("mybutton").onclick = 
+	function f(){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 ) {
+		if(this.status == 200) {
+		  var jsonRes = JSON.parse(xhttp.responseText);
+		  console.log(jsonRes);
+		  console.log(JSON.stringify(jsonRes));
+		  console.log("@@@@@@@@");
+		  for(var i=0; i <=jsonRes.length; i++) {
+			if(jsonRes[0].id_achievement == "1") { //adica cursul 1(codat)
+				var div = document.createElement("div");
+				div.setAttribute('class', 'level4');
+				
+				var img = document.createElement("img");
+				img.setAttribute('class', 'logo4');
+				img.setAttribute('src', '../images/achievements_images/LOGOacivement.PNG');
+				img.setAttribute('alt', 'Level 4');
+				
+				div.appendChild(img);
+				
+				var i_code = document.createElement("i");
+				i_code.setAttribute('class', 'fa fa-code code');
+				i_code.setAttribute('style', 'font-size: 90px');
+				i_code.setAttribute('aria-hidden', 'true');
+
+				var i_star1 = document.createElement("i");
+				i_star1.setAttribute('class', 'fa fa-star star');
+				i_star1.setAttribute('style', 'font-size: 22px');
+				i_star1.setAttribute('aria-hidden', 'true');
+
+				var i_star2 = document.createElement("i");
+				i_star2.setAttribute('class', 'fa fa-star star');
+				i_star2.setAttribute('style', 'font-size: 22px');
+				i_star2.setAttribute('aria-hidden', 'true');
+
+				var i_star3 = document.createElement("i");
+				i_star3.setAttribute('class', 'fa fa-star star');
+				i_star3.setAttribute('style', 'font-size: 22px');
+				i_star3.setAttribute('aria-hidden', 'true');
+				
+				div.appendChild(i_code);
+				div.appendChild(i_star1);
+				div.appendChild(i_star2);
+				div.appendChild(i_star3);
+
+				var element = document.getElementById("ach1");
+				element.appendChild(div);
+			} //if
+		} //for
+	  } //if
+	} //if
+}; //function onreadystatechange
+
+	  console.log("bla");
+	  xhttp.open("GET", "https://localhost:8050/getAchievements", true);
+	  xhttp.send();
+}; //function
+
+	f();
+	</script>
+	
     <div class="second_row">
-        <div class="atribute_achievement achievement_locked">
-            <img class="deblocate2 image_effect"src="../images/achievements_images/4.JPG" alt="Level 4" 
+        <div class="atribute_achievement">
+            <!--<img class="deblocate2 image_effect"src="../images/achievements_images/4.JPG" alt="Level 4" 
                 >
                 <div class="middle">
                     <div class="text">You have<br>scored<br>2500<br>points</div>
-                </div>
+                </div>-->
+			<div class="level4">
+			<!--<div class="tooltip">asd
+							<span class="tooltiptext">blacasa</span></div>-->
+
+                <img class="logo4" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 4"
+                >
+                <i class="fa fa fa-code code" style="font-size: 90px" aria-hidden="true"></i>
+                <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
+                <i class="fa fa-star star2" style="font-size: 22px" aria-hidden="true"></i>
+                <i class="fa fa-star star3" style="font-size: 22px" aria-hidden="true"></i>
+            </div>	
         </div>
   
         <div class="atribute_achievement">
             <div class="level5">
                 <img class="logo5" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 5"
                 >
-                <i class="fa fa-plane plane" style="font-size: 90px" aria-hidden="true"></i>
+                <i class="fa fa-language language" style="font-size: 90px" aria-hidden="true"></i>
                 <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star star2" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star star3" style="font-size: 22px" aria-hidden="true"></i>
@@ -180,7 +256,7 @@
             <div class="level6">
             <img class="logo6" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 6"                
                 >
-                <i class="fa fa-ambulance ambulance" style="font-size: 90px" aria-hidden="true"></i>
+                <i class="fa fa-music music" style="font-size: 90px" aria-hidden="true"></i>
                 <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star-o star2" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star-o star3" style="font-size: 22px" aria-hidden="true"></i>
@@ -188,7 +264,7 @@
         </div>
     </div>
     
-    <div class="third_row">
+    <!--<div class="third_row">
         <div class="atribute_achievement tilt achievement_unlocked">
              <img class="ne_deblocate" class="ne_deblocate" src="../images/achievements_images/7.JPG" alt="Level 7" 
                 >
@@ -207,11 +283,14 @@
             <img class="ne_deblocate" src="../images/achievements_images/9.JPG" alt="Level 9" 
                 >
         </div>
-    </div>
+    </div>-->
     
     <hr color="#032E37">
     <hr color="#032E37">
     <hr color="#032E37">
+    <hr color="#032E37">
+    <hr color="#032E37">
+	<hr color="#032E37">
     <hr color="#032E37">
     <hr color="#032E37">
 
