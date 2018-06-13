@@ -268,7 +268,7 @@
 
 
         function displayExercise(exerciseToDisplay) {
-            const URL = 'https://localhost:9000/python/getExercise/'+exerciseToDisplay;
+            const URL = 'https://localhost:8050/python/getExercise/'+exerciseToDisplay;
             const TIME = 5000;
 
             var displayedExerciseContainer = document.getElementById('displayedExercise');
@@ -496,7 +496,7 @@ window.onload = function(){
 
         var exercisesContainer = document.getElementById("exercisesContainer");
 
-        const URL = 'https://localhost:9000/python/getExercises';
+        const URL = 'https://localhost:8050/python/getExercises';
         const TIME = 5000;
 
         try { // trying to instantiate a XMLHttpRequest object
