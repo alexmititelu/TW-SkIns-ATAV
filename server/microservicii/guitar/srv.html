@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Guitar Course</title>
+
+    <!-- Including alphaTab -->
+    <script type="text/javascript" src="js/AlphaTab.js"></script>
+
+    <!-- jQuery Plugin -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.alphaTab.js"></script>
+
+    <!-- Including alphaSynth -->
+    <script type="text/javascript" src="js/swfobject.js"></script>
+    <script type="text/javascript" src="js/AlphaSynth.js"></script>
+
+    <!-- alphaSynth Plugin -->
+    <script type="text/javascript" src="js/jquery.alphaTab.alphaSynth.js"></script>
+
+    <!-- Styles used during the reproduction of the MIDI melody -->
+    <style type="text/css">
+        .barCursor {
+            opacity: 0.15;
+            background: #FFF200;
+        }
+        
+        .beatCursor {
+            opacity: 0.75;
+            background: #0078ff;
+        }
+        
+        .selectionWrapper div {
+            opacity: 0.1;
+            background: #4040FF;
+        }
+        
+        .atHighlight * {
+            fill: #0078ff;
+        }
+        
+        .alphaTabSurface {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            background: #FFF;
+            border-radius: 3px;
+        }
+        
+        #alphaTab {
+            width: 95%;
+            display: block;
+            margin: auto;
+        }
+        
+        #wrapper {
+            position: absolute;
+            top: 100px;
+            background: blue;
+            height: 600px;
+            width: 80%;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- START CONTROLS AND INFORMATION -->
+    <div>
+        <div style="display: inline-block; margin: 1em;">
+            <!-- The action button to play or pause the tab -->
+            <input type="button" position = "fixed" id="playPause" value="Loading ... " disabled="disabled" />
+            <input type="button" id="stopBtn" value="Stop" disabled="disabled" />
+        </div>
+        <div style="display: inline-block; margin: 1em;">
+            <!-- The basic information of the gp file will be shown here -->
+            <div id="file-info"></div>
+        </div>
+        <div style="display: inline-block;margin: 1em;">
+            <!-- The track filter will be rendered in this div-->
+            <div id="trackList"></div>
+        </div>
+    </div>
+    <!-- END CONTROLS AND INFORMATION -->
+
+
+    <!-- START DYNAMIC MUSIC SHEET -->
+
+    <!-- 
+        The data-tracks defines which track of the gp file should be initially used 
+        Note: change the data-file property according to the URL of your guitar tab file
+    -->
+    <div id="alphaTab" data-file="tabs/Stevie.gp4" data-tracks="1">
+        <!-- This loading div is removed once the gp file is loaded -->
+        <div id="loading-div">
+        </div>
+    </div>
+
+    <!-- END DYNAMIC MUSIC SHEET -->
+
+    <script> 
+        var playerReady = false;
+        var playerState = 0;
+        var at = $('#alphaTab');
+
+    
+        // 1. Register resize event 
+        // we do this before initializing to receive the initial resize event
+        $(at).on('resize', function (e) {
+            var info = e.originalEvent.detail;
+            var newSize = info.NewWidth;
+
+            if (newSize < 700) {
+                console.log(info.NewWidth, 'horizontal');
+                info.Settings.Layout.Mode = "horizontal";
+            } else {
+                console.log(info.NewWidth, 'page');
+                info.Settings.Layout.Mode = "page";
+                delete info.Settings.Layout.AdditionalSettings['barsPerRow'];
+            }
+        });
+
+        //
+        // 2. Load alphaTab
+        at.alphaTab({
+            width: -1, // negative width enables auto sizing
+            useWorker: true
+        });
+
+        //
+        // 1. Initialize track selector
+        // Note that in this example we allow to render multiple tracks in the view
+        // You can simply create a select box that displays only 1 track at time
+        var tracks = [];
+        at.on("loaded", function (e) {
+            console.log("[TRACKS] Generating track list...");
+            var score = e.originalEvent.detail;
+            var trackList = $('#trackList');
+            trackList.empty();
+
+            // Loop through the tracks of the file and add the tracks filter
+            for (var i = 0; i < score.Tracks.length; i++) {
+                // build list item for track
+                var li = $('<li></li>');
+                var a = $('<a href="#"></a>')
+                    .data('track', score.Tracks[i].Index)
+                    .append('<input type="checkbox" />')
+                    .append(score.Tracks[i].Name)
+
+                    // here we build the new track list and render it
+                    .on('click', function (e) {
+                        var track = $(this).data('track');
+                        var index = tracks.indexOf(track);
+                        if (index > -1) {
+                            tracks.splice(index, 1);
+                            $(this).find('input').prop('checked', false);
+                        } else {
+                            tracks.push(track);
+                            tracks.sort(),
+                                $(this).find('input').prop('checked', true);
+                        }
+
+                        // render new tracks
+                        at.alphaTab('tracks', tracks);
+
+                        $(e.target).blur();
+
+                        return false;
+                    });
+
+                li.append(a);
+
+                trackList.append(li);
+            }
+
+
+            // Add only the name of the tracks for information: 
+            
+            var info = jQuery('#file-info');
+            info.html('');
+            info.append('<p><b>Title:</b> ' + score.Title + '</p>');
+            info.append('<p><b>Subtitle:</b> ' + score.Subtitle + '</p>');
+            info.append('<p><b>Album:</b> ' + score.Album + '</p>');
+            info.append('<p><b>Tempo:</b> ' + score.Tempo + '</p>');
+            info.append('<p><b>Bars:</b> ' + score.MasterBars.length + '</p>');
+            info.append('<p><b>Tracks:</b> (' + score.Tracks.length + ')</p>');
+            var tracksHTML = $('<ul></ul>');
+
+            for (var i = 0; i < score.Tracks.length; i++) {
+                tracksHTML.append('<li> (#' + i + ') ' + score.Tracks[i].Name + '</li>');
+            }
+
+            info.append(tracksHTML);
+            console.log("Removing loading div...");
+            $("#loading-div").remove();
+        });
+
+
+        // 3. Initialize Player and Setup Player UI
+        var as = at.alphaTab('playerInit'); // init alphaSynth
+
+        as.On('ready', function (r) {
+            // Load sound data (used to play sound, not the song itself)
+            as.LoadSoundFont("tabs/default.sf2");
+        });
+
+
+
+        as.On('soundFontLoad', function (loaded, full) {
+            var percentage = ((loaded / full) * 100) | 0;
+
+            console.log("Percentage sound loaded ", percentage + '%');
+        });
+
+
+        as.On('soundFontLoaded', function () {
+            playerReady = 1;
+            updateControls();
+            console.log("The sound source has been loaded");
+        });
+
+
+        as.On('readyForPlayback', function (r) {
+            console.log("READY !");
+            playerReady = r;
+            updateControls();
+        });
+
+        as.On('playerStateChanged', function (s) {
+            console.log("STATE CHANGED ! State is now : " + s.state);
+            playerState = s.state;
+            updateControls();
+        });
+
+        $('#playPause').click(function () {
+            if (playerState == 1) {
+                as.Pause();
+            } else {
+                as.Play();
+                $("#stopBtn").removeAttr('disabled');
+            }
+        });
+
+        $("#stopBtn").click(function () {
+            as.Stop();
+            // Disable stop btn
+            $(this).attr("disabled", "disabled");
+        });
+
+        function updateControls() {
+            if (playerReady) {
+                $('#playPause').prop('disabled', false);
+                $('#playPause').removeAttr('disabled');
+
+                switch (playerState) {
+                    case 0: // stopped
+                        $("#playPause").val("Play");
+                        break;
+
+                    case 1: // playing
+                        $("#playPause").val("Pause");
+                        $('#stopBtn').removeAttr('disabled').removeClass('disabled');
+                        break;
+
+                    case 2: // paused
+                        $("#playPause").val("Play");
+                        $('#stopBtn').removeAttr('disabled').removeClass('disabled');
+                        break;
+                }
+            }
+        }
+
+        // 3. Add cursors (optional, displays the current position of the playback etc)
+        at.alphaTab('playerCursor');
+         
+    </script>
+</body>
+
+</html>
