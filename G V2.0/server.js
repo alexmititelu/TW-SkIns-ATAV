@@ -30,6 +30,8 @@ const libraryController = require('./controllers/libraryController');
 const profileController = require('./controllers/profileController');
 const coursesController = require('./controllers/coursesController');
 
+const pythonCourseController = require('./controllers/pythonCourseController');
+
 // const addOwnCourseController = require('./controllers/addOwnCourseController');
 
 
@@ -46,7 +48,7 @@ const port = process.env.PORT || 8050;
 var certOptions = {
     key: fs.readFileSync(path.resolve('./server.key')),
     cert: fs.readFileSync(path.resolve('./server.crt'))
-  }
+}
 
 const server = https.createServer(certOptions, (req, res) => {
 
@@ -67,10 +69,12 @@ const server = https.createServer(certOptions, (req, res) => {
     profileHandler(req, res, axios, fs);
     coursesHandler(req, res, axios, fs);
 
+    pythonCourseHandler(req, res, axios, fs);
+
     // addOwnCourseHandler(req, res, qs, cookies);
 
 
-       
+
 });
 
 server.listen(port, hostname, () => {
