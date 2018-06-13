@@ -4,6 +4,7 @@ var qs = require('querystring');
 var nodemailer = require('nodemailer');
 const randomstring = require('randomstring');
 const MongoClient = require('mongodb').MongoClient;
+var validator = require('validator');
 
 function sendRegistrationMail(destinationEmail, username, activationLink, success) {
     var transporter = nodemailer.createTransport({
@@ -47,6 +48,47 @@ function renderHTML(path, response) {
     });
 }
 
+
+function renderNotFoundHTML(response) {
+    console.log(__dirname);
+    fs.readFile(__dirname + "/../../../src/html/pageNotFound.html", function (error, htmlContent) {
+        
+        if (error) {
+            response.writeHead(404);
+            
+            response.write("Couldn't load HTML / not found");
+        } else {
+            console.log('ERROR');
+            response.writeHead(200, { 'Content-Type': 'text/html' })
+            response.write(htmlContent);
+        }
+        response.end();
+    });
+}
+
+
+function validateFormData(formData) {
+    if(isAlpha(form.username)=== false){
+        return false;
+    }
+
+    if(isAlpha(form.firstName)=== false){
+        return false;
+    }
+
+    if(isAlpha(form.lastName)=== false){
+        return false;
+    }
+    
+    if(isDecimal(form.phone)=== false) {
+        return false;
+    }
+
+    if(isEmail(form.email)=== false){
+        return false;
+    }
+    return true;
+}
 
 function sendJSON(objectResult, response) {
 
@@ -177,6 +219,9 @@ module.exports = {
                 request.on('end', function () {
                     var formData = JSON.parse(requestBody);
 
+                    var valid = validateFormData(formData);
+
+                    if(valid===true) {
                     console.log(formData)
                     MongoClient
                         .connect('mongodb://localhost:27017', function (error, connection) {
@@ -275,7 +320,11 @@ module.exports = {
                                 });
                             });
                         });
+                    } else {
+                        renderNotFoundHTML(response);
+                    }
                 });
+                
 
             } else {
                 response.writeHead(404, 'Resource Not Found', { 'Content-Type': 'text/html' });

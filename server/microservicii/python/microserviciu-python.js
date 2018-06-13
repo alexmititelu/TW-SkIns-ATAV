@@ -10,13 +10,13 @@ var path = require('path');
 function renderPythonPage(path, response) {
     fs.readFile(path, function (error, htmlContent) {
         if (error) {
-            response.writeHead(404);
-            response.write("Couldn't load HTML / not found");
+            renderNotFoundHTML(response);
         } else {
             response.writeHead(200, { 'Content-Type': 'text/html' })
             response.write(htmlContent);
+            response.end();
         }
-        response.end();
+        
     });
 }
 
@@ -106,7 +106,8 @@ https.createServer( function (request, response) {
 
     if (request.method === 'GET') {
         if (request.url === '/python') {
-            renderPythonPage("./pythoncourse.html", response);
+            console.log("PYTHON");
+            renderPythonPage("/pythoncourse.html", response);
 
             // response.writeHead(200, { 'Content-Type': 'text/html' });
             // response.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
@@ -140,7 +141,7 @@ https.createServer( function (request, response) {
 
         } else if (request.url === '/python/exercises') {
 
-            renderPythonPage("./pythonexercises.html", response);
+            renderPythonPage("/pythonexercises.html", response);
 
         }
         else if (request.url === '/python/getExercises') {
