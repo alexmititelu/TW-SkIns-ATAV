@@ -39,8 +39,6 @@ module.exports = {
             if (path === "/getFields") {
 
 
-                
-
                 var body = "";
                 var jsonObj;
                 var cookie;
@@ -52,6 +50,9 @@ module.exports = {
                   jsonObj = JSON.parse(body);
                
                 cookie = jsonObj.cookie;
+                })
+
+                console.log(cookie)
                 
                 
                 MongoClient
@@ -72,8 +73,8 @@ module.exports = {
                             var cookieData = jwt.verify(cookie,secret);
                             
                             var o_id = new mongo.ObjectID(cookieData._id);
-							var queryFindConturi = { _id : o_id };
-							
+                            var queryFindConturi = { _id : o_id };
+                            
                             dbConnection.collection("Conturi").findOne(queryFindConturi, function (err, result) {
 
                                 if (err) {
@@ -83,49 +84,46 @@ module.exports = {
                                 console.log("Din conturi: " + result.username + " " + result.password + " " + result.email);
 
                                 //var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE DE MAI JOS
-								
-								var queryFindUtilizatori = {cont_id : o_id};
-								console.log(queryFindUtilizatori)
+                                
+                                var queryFindUtilizatori = {cont_id : o_id};
+                                console.log(queryFindUtilizatori)
                                 dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result2) {
 
                                         if (err) {
                                             throw err;
                                         }
 
-                                        console.log("Din Utilizatori: " + result2.first_name + " " + result2.last_name + " " + result2.country + " " + result2.telefon);
+                                       // console.log("Din Utilizatori: " + result2.first_name + " " + result2.last_name + " " + result2.country + " " + result2.telefon);
 
-										var objectGet = {};
-										for (var key in result) {                  
-											
-											var value = result[key];
-											objectGet[key] = value;
-										}
-										
-										for (var key in result2) {                 
-											
-											var value = result2[key];
-											objectGet[key] = value;
-										}
-									
-										console.log(JSON.stringify(objectGet));
-									
-										res.writeHead(200,{'Content-Type': 'application/json'});
-										res.write(JSON.stringify(objectGet));
-										res.end();
+                                        var objectGet = {};
+                                        for (var key in result) {                  
+                                            
+                                            var value = result[key];
+                                            objectGet[key] = value;
+                                        }
+                                        
+                                        for (var key in result2) {                 
+                                            
+                                            var value = result2[key];
+                                            objectGet[key] = value;
+                                        }
+                                    
+                                        console.log(JSON.stringify(objectGet));
+                                    
+                                        res.writeHead(200,{'Content-Type': 'application/json'});
+                                        res.write(JSON.stringify(objectGet));
+                                        res.end();
                                     });
 
                             });
 
                         });
-                    });
                         
             }
-		
-        }
-         if (req.method === "POST") {
-            console.log("Post method call");
-            if (path === "/my_profile") {
-                
+
+            else if (path === "/my_profile") {
+                            console.log("Post method call");
+
                 var body = "";
                 var jsonObj;
                 var cookie;
@@ -147,7 +145,7 @@ module.exports = {
 
                 cookie = jsonObj.cookie;
                 formData = jsonObj.data;
-                })
+                });
                 
                     
                     MongoClient
