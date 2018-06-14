@@ -9,132 +9,183 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
     <link rel="stylesheet" type="text/css" media="screen" href="/profile_styles.css" />
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/index_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    
 </head>
 
 <body bgcolor="#032E37">
 
     <!--header aici -->
-<div class="header">
-                <div class="center">
-                    <h1>Skillz'
-                        <span>o</span>'Skillz</h1>
-                    <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
-        
-                    <nav class="menu">
-                        <div>
-                            <a href="../../index.html">Home</a>
-                        </div>
-                        <div>
-                            <a href="../html/courses.html">Free</a>
-                        </div>
-                        <div>
-                            <a href="../html/courses.html">Paid</a>
-                        </div>
-                        <div>
-                            <a href="../html/achievements.html">My Achivements</a>
-                        </div>
-                        <div>
-                            <a href="../html/library.html">My Library</a>
-                        </div>
-                        <!-- </li> -->
-                        <!-- PT BUTON LOGIN DE AICI -->
-        
-                        <!-- pana aici!!!!  -->
-                        <!-- <li>
-                                                    <a href="#">
-                                                        <i class="fa fa-gear fa-2x gear"></i>
-                                                    </a>
-                                                </li> -->
-                        <!-- <li> -->
-                        <div>
-                            <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@LOGIN@@@@@@@@@@@@@@@@@@@@@@@ -->
-                            <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-        
-        <div id="id01" class="modal">
-          
-          <form class="modal-content animate" action="/action_page.php">
-            <div class="imgcontainer">
-              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-              <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg" alt="Avatar" class="avatar">
-            </div>
-        
-            <div class="container">
-              <label for="uname"><b>Username</b></label>
-              <input type="text" placeholder="Enter Username" name="uname" required>
-        
-              <label for="psw"><b>Password</b></label>
-              <input type="password" placeholder="Enter Password" name="psw" required>
-                
-              <button type="submit">Login</button>
-              <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-              </label>
-            </div>
-        
-            <div class="container" >
-              <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-              <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
-          </form>
-        </div>
-        
-        
-                                <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@LOGIN_END@@@@@@@@@@@@@@@@@@@@@@@@@@@@22 -->
-                                
-                        </div>
-        
-                        <div>
-                            <button class="settings" >
-                                <i class="fa fa-gear fa-2x gear"></i>
-                            </button>
-        
-                            <nav class="submenu" id="dropdownSettings">
-                                <div>
-                                    <a href="../html/profile.html">Profil</a>
+
+
+    <div class="header">
+        <div class="center">
+            <h1>Skillz'
+                <span>o</span>'Skillz</h1>
+
+            <ul class="menu">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="courses">Courses</a>
+                </li>
+                <li>
+                    <a href="achievements">My Achivements</a>
+                </li>
+                <li>
+                    <a href="myLibrary">My Library</a>
+                </li>
+                <li>
+                    <div>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
+
+                        <div id="id01" class="modal">
+
+                            <form class="modal-content animate" action="/signin" method="POST">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
+                                        alt="Avatar" class="avatar">
                                 </div>
-                                <div>
-                                    <a href="#">Payment method</a>
+
+                                <div class="container">
+                                    <label for="email">
+                                        <b>Username</b>
+                                    </label>
+                                    <input type="text" placeholder="Enter Username" name="email" required>
+
+                                    <label for="password">
+                                        <b>Password</b>
+                                    </label>
+                                    <input type="password" placeholder="Enter Password" name="password" required>
+
+                                    <button type="submit" class="button1">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
                                 </div>
-                                <div>
-                                    <a href="#">Something</a>
+
+                                <div class="container">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                    <span class="psw">Forgot
+                                        <a href="#">password?</a>
+                                    </span>
                                 </div>
-                                <div>
-                                    <a href="#">Logout</a>
-                                </div>
-                            </nav>
+                            </form>
                         </div>
-                    </nav>
-                    <div class="clear"></div>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-gear fa-2x gear"></i>
+                    </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="Profile">Profil</a>
+                        </li>
+                        <li>
+                            <a href="register">Register</a>
+                        </li>
+                        <li>
+                            <a href="/sign-out">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="dropdown">
+                <!-- <button class="dropbtn">Dropdown</button> -->
+                <div class="container dropbtn" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <div class="dropdown-content">
+                    <a href="index.html">Home</a>
+                    <a href="courses">Courses</a>
+                    <a href="achievements">My Achivements</a>
+                    <a href="myLibrary">My Library</a>
+                    <div>
+
+                        <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
+
+                        <div id="id02" class="modal">
+
+                            <form class="modal-content animate" action="/signin" method="POST">
+                                <div class="imgcontainer">
+                                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                    <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
+                                        alt="Avatar" class="avatar">
+                                </div>
+
+                                <div class="container">
+                                    <label for="email">
+                                        <b>Username</b>
+                                    </label>
+                                    <input type="text" placeholder="Enter Username" name="email" required>
+
+                                    <label for="password">
+                                        <b>Password</b>
+                                    </label>
+                                    <input type="password" placeholder="Enter Password" name="password" required>
+
+                                    <button type="submit" class="button1">Login</button>
+                                    <label>
+                                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                                    </label>
+                                </div>
+
+                                <div class="container">
+                                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                                    <span class="psw">Forgot
+                                        <a href="#">password?</a>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <button class="accordion">Settings</button>
+                    <div class="panel">
+                        <a href="Profile">Profil</a>
+
+                        <a href="/sign-out">Logout</a>
+                    </div>
+                    <script>
+                        var acc = document.getElementsByClassName("accordion");
+                        var i;
+
+                        for (i = 0; i < acc.length; i++) {
+                            acc[i].addEventListener("click", function () {
+                                this.classList.toggle("active");
+                                var panel = this.nextElementSibling;
+                                if (panel.style.display === "block") {
+                                    panel.style.display = "none";
+                                } else {
+                                    panel.style.display = "block";
+                                }
+                            });
+                        }
+                    </script>
+                    </button>
                 </div>
             </div>
-        
-            <!-- script button -->
-            <!-- 
-                            <script>
-                        
-                                function myFunction() {
-                                    var x = document.getElementById("dropdownSettings");
-                                    if (x.style.display === "none") {
-                                        x.style.display = "block";
-                                    } else {
-                                        x.style.display = "none";
-                                    }
-                                }
-                            </script> -->
-        
-        
-            <!-- <img src="../images/skinsred.png"/> -->
-            <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
-        
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/header.js"></script>
+
+    <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+
     <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
     <!-- Body-ul din pagina de My Profile-->
     <hr color="#032E37" style="margin-top:7%; width: 100%">
     <img src="LOGOPROFILE2.png" class="logo_profile" alt="logo_image">
     <!--<img src="LOGOPROFILE2.png" class="logo_profile">-->
 
-	<!--<form action="/my_profile" method="POST">
+    <!--<form action="/my_profile" method="POST">
         <label>Name: </label>
         <input type="text" name="dname" value="" /><br />
         <label>Email: </label>
@@ -143,94 +194,94 @@
         <input type="text" name="daddress" value="" /><br />
         <button>submit</button>
     </form>-->
-	<script>
-	//document.getElementById("c2").value="plm";
-	//document.getElementById("mybutton").onclick = 
-	function f(){
-	  var xhttp = new XMLHttpRequest();
-	  xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 ) {
-		if(this.status == 200) {
-		  var jsonRes = JSON.parse(xhttp.responseText);  
-		  console.log(jsonRes);
-		  console.log(JSON.stringify(jsonRes));
-		  
-		  var day = document.getElementById("day");
-		  for(var i, j = 0; i = day.options[j]; j++) {
-		    if(i.value == jsonRes.day) {
-			  day.selectedIndex = j;
-			  break;
-		    }
-          }
-		  
-		  var month = document.getElementById("month");
-		  for(var i, j = 0; i = month.options[j]; j++) {
-		    if(i.value == jsonRes.month) {
-			  month.selectedIndex = j;
-			  break;
-		    }
-          }
-		  
-		  var year = document.getElementById("year");
-		  for(var i, j = 0; i = year.options[j]; j++) {
-		    if(i.value == jsonRes.year) {
-			  year.selectedIndex = j;
-			  break;
-		    }
-          }
-		  document.getElementById("usernameID").value = jsonRes.username;
-		  document.getElementById("passwordID").value = jsonRes.password;
-		  document.getElementById("emailID").value = jsonRes.email;
-		  document.getElementById("first_nameID").value = jsonRes.first_name;
-		  document.getElementById("last_nameID").value = jsonRes.last_name;
-		  document.getElementById("countryID").value = jsonRes.country;
-		  document.getElementById("telefonID").value = jsonRes.telefon;
-		}
-	  }
-	  };
+    <script>
+        //document.getElementById("c2").value="plm";
+        //document.getElementById("mybutton").onclick = 
+        function f() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        var jsonRes = JSON.parse(xhttp.responseText);
+                        console.log(jsonRes);
+                        console.log(JSON.stringify(jsonRes));
 
-	  console.log("bla");
-	  xhttp.open("GET", "https://localhost:8050/getFields", true);
-	  xhttp.send();
-	};
+                        var day = document.getElementById("day");
+                        for (var i, j = 0; i = day.options[j]; j++) {
+                            if (i.value == jsonRes.day) {
+                                day.selectedIndex = j;
+                                break;
+                            }
+                        }
 
-	f();
+                        var month = document.getElementById("month");
+                        for (var i, j = 0; i = month.options[j]; j++) {
+                            if (i.value == jsonRes.month) {
+                                month.selectedIndex = j;
+                                break;
+                            }
+                        }
 
-	function validateFirstname() {
-    var firstname = document.getElementById('first_nameID').value;
-    var firstnameValidator = document.getElementById('firstname-validator');
-    var firstnameValidatorMessage = document.getElementById('firstname-validator-message');
+                        var year = document.getElementById("year");
+                        for (var i, j = 0; i = year.options[j]; j++) {
+                            if (i.value == jsonRes.year) {
+                                year.selectedIndex = j;
+                                break;
+                            }
+                        }
+                        document.getElementById("usernameID").value = jsonRes.username;
+                        document.getElementById("passwordID").value = jsonRes.password;
+                        document.getElementById("emailID").value = jsonRes.email;
+                        document.getElementById("first_nameID").value = jsonRes.first_name;
+                        document.getElementById("last_nameID").value = jsonRes.last_name;
+                        document.getElementById("countryID").value = jsonRes.country;
+                        document.getElementById("telefonID").value = jsonRes.telefon;
+                    }
+                }
+            };
 
-    firstnameValidator.style = 'display:none';
-    enableCreateAccountButton();
+            console.log("bla");
+            xhttp.open("GET", "https://localhost:8050/getFields", true);
+            xhttp.send();
+        };
 
-    var regexp = new RegExp("^([a-zA-Z]+[ ]?[a-zA-Z]+)*");
+        f();
 
-    if (firstname.length < 1) {
-        firstnameValidatorMessage.textContent = 'First Name must contain at least one character.';
-        firstnameValidator.style = 'display:block';
-        disableCreateAccountButton();
+        function validateFirstname() {
+            var firstname = document.getElementById('first_nameID').value;
+            var firstnameValidator = document.getElementById('firstname-validator');
+            var firstnameValidatorMessage = document.getElementById('firstname-validator-message');
 
-    } else if (!regexp.test(firstname)) {
+            firstnameValidator.style = 'display:none';
+            enableCreateAccountButton();
 
-        firstnameValidatorMessage.textContent = 'First Name must contain only alphabetical letters';
-        firstnameValidator.style = 'display:block';
-        disableCreateAccountButton();
+            var regexp = new RegExp("^([a-zA-Z]+[ ]?[a-zA-Z]+)*");
 
-    }
-}
-function disableCreateAccountButton() {
-    var button = document.getElementById('personalDataSubmit');
-    button.disabled = true;
-}
+            if (firstname.length < 1) {
+                firstnameValidatorMessage.textContent = 'First Name must contain at least one character.';
+                firstnameValidator.style = 'display:block';
+                disableCreateAccountButton();
+
+            } else if (!regexp.test(firstname)) {
+
+                firstnameValidatorMessage.textContent = 'First Name must contain only alphabetical letters';
+                firstnameValidator.style = 'display:block';
+                disableCreateAccountButton();
+
+            }
+        }
+        function disableCreateAccountButton() {
+            var button = document.getElementById('personalDataSubmit');
+            button.disabled = true;
+        }
 
 
-function enableCreateAccountButton() {
-    var button = document.getElementById('personalDataSubmit');
-    button.disabled = false;
-}
+        function enableCreateAccountButton() {
+            var button = document.getElementById('personalDataSubmit');
+            button.disabled = false;
+        }
 
-	</script>
+    </script>
     <div class="toate_sectiunile">
         <div class="username">
             <h4>Username</h4>
@@ -263,18 +314,22 @@ function enableCreateAccountButton() {
             </form>
         </div>
         <hr size="1" color="#D9D9D9" style="width: 50%;">
-<!-- <p>First name</p>
+        <!-- <p>First name</p>
             <input class="new-account-input" id="firstname" name="firstName" type="text" onfocusout="validateFirstname()" required/>
             <p id='firstname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="firstname-validator-message">&nbsp </span></p>-->
         <div class="personalData">
             <h4>Personal Data</h4>
             <form action="/my_profile" method="POST">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your First Name" id="first_nameID" onfocusout="validateFirstname()" name="first_name" value="">
-                <p id='firstname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="firstname-validator-message">&nbsp </span></p>
+                <input type="text" placeholder="Enter your First Name" id="first_nameID" onfocusout="validateFirstname()" name="first_name"
+                    value="">
+                <p id='firstname-validator' class="invalid-input">
+                    <i class="fa fa-ban fa-lg"></i>
+                    <span id="firstname-validator-message">&nbsp </span>
+                </p>
 
-                
-                <hr color="#032E37">    
+
+                <hr color="#032E37">
                 <!--<label>First Name</label>-->
                 <input type="text" placeholder="Enter your Last Name" id="last_nameID" name="last_name" value="">
                 <hr color="#032E37">
@@ -301,26 +356,26 @@ function enableCreateAccountButton() {
                         <option>8</option>
                         <option>9</option>
                         <option>10</option>
-						<option>11</option>
-						<option>12</option>
-						<option>13</option>
-						<option>14</option>
-						<option>15</option>
-						<option>16</option>
-						<option>17</option>
-						<option>18</option>
-						<option>19</option>
-						<option>20</option>
-						<option>21</option>
-						<option>22</option>
-						<option>23</option>
-						<option>24</option>
-						<option>25</option>
-						<option>26</option>
-						<option>27</option>
-						<option>28</option>
-						<option>29</option>
-						<option>30</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
                     </select>
                     <select id="month">
                         <option selected="selected">Month</option>
@@ -344,18 +399,18 @@ function enableCreateAccountButton() {
                         <option>1998</option>
                         <option>1997</option>
                         <option>1996</option>
-						<option>1995</option>
-						<option>1994</option>
-						<option>1993</option>
-						<option>1992</option>
-						<option>1991</option>
-						<option>1990</option>
-						<option>1989</option>
-						<option>1988</option>
-						<option>1987</option>
+                        <option>1995</option>
+                        <option>1994</option>
+                        <option>1993</option>
+                        <option>1992</option>
+                        <option>1991</option>
+                        <option>1990</option>
+                        <option>1989</option>
+                        <option>1988</option>
+                        <option>1987</option>
                     </select>
                 </div>
-                        <hr size="1" color="#D9D9D9" style="width: 50%;">
+                <hr size="1" color="#D9D9D9" style="width: 50%;">
 
                 <input type="submit" value="Save Personal Data" id="personalDataSubmit">
             </form>
@@ -381,7 +436,7 @@ function enableCreateAccountButton() {
                     <i class="fa fa-shield" style="font-size:18px" aria-hidden="true"></i>
                 </div>
                 <hr color="#032E37">
-				<hr color="#032E37">
+                <hr color="#032E37">
                 <input type="submit" value="Save Credit Card">
             </form>
         </div>
@@ -389,44 +444,44 @@ function enableCreateAccountButton() {
         <hr color="#032E37">
         <hr color="#032E37">
         <!-- end of Body -->
-        
-            <!--footer aici -->
-<footer class="container-footer">
-                <!--           
+
+        <!--footer aici -->
+        <footer class="container-footer">
+            <!--           
                             <h4>Copyright 2018, ATAV
                                 <br>All Rights Reserved</h4> -->
-        
-                <div class="flex-footer-container">
-                    <!--lefct center right footers -->
-                    <div class="lcr-footer-element" id="leftFooter">
-                        <p>Phone number: 0747 815 389</p>
-                        <p>Email: contact@skin.com </p>
-                        <p>Fax: 0232 264 385</p>
-                        <div class="socialIcons">
-                                <a href="https://www.facebook.com/">
-                                    <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
-                                </a>
-                                <a href="https://www.instagram.com/">
-                                    <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
-                                </a>
-                                <a href="https://www.youtube.com/">
-                                    <i class="fa fa-youtube fa-2x" style="color:red;"></i>
-                                </a>
-                                </div>
+
+            <div class="flex-footer-container">
+                <!--lefct center right footers -->
+                <div class="lcr-footer-element" id="leftFooter">
+                    <p>Phone number: 0747 815 389</p>
+                    <p>Email: contact@skin.com </p>
+                    <p>Fax: 0232 264 385</p>
+                    <div class="socialIcons">
+                        <a href="https://www.facebook.com/">
+                            <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
+                        </a>
+                        <a href="https://www.instagram.com/">
+                            <i class="fa fa-instagram fa-2x" style="color:salmon;"></i>
+                        </a>
+                        <a href="https://www.youtube.com/">
+                            <i class="fa fa-youtube fa-2x" style="color:red;"></i>
+                        </a>
                     </div>
-        
-        
-        
-                    <div class="lcr-footer-element" id="centralFooter">
-                            <ul class="socialMedia">
-                                <li style="display: block">
-                                    <h4>Copyright 2018, ATAV
-                                        <br>All Rights Reserved</h4>
-        
-                                </li>
-                                
-                                <li>
-                                    <!-- <div class="socialIcons">
+                </div>
+
+
+
+                <div class="lcr-footer-element" id="centralFooter">
+                    <ul class="socialMedia">
+                        <li style="display: block">
+                            <h4>Copyright 2018, ATAV
+                                <br>All Rights Reserved</h4>
+
+                        </li>
+
+                        <li>
+                            <!-- <div class="socialIcons">
                                     <a href="https://www.facebook.com/">
                                         <i class="fa fa-facebook-square fa-2x" style="color:royalblue;"></i>
                                     </a>
@@ -437,36 +492,36 @@ function enableCreateAccountButton() {
                                         <i class="fa fa-youtube fa-2x" style="color:red;"></i>
                                     </a>
                                     </div> -->
-                                </li>
-                            </ul>
-                    </div>
-        
-                    <div class="lcr-footer-element" id="rightFooter">
-                        <p>Address:</p>
-                        <div id="map"></div>
-                        <script>
-                            function initMap() {
-                                var uluru = { lat: 47.175240, lng: 27.575136 };
-                                var map = new google.maps.Map(document.getElementById('map'), {
-                                    zoom: 15,
-                                    center: uluru
-                                });
-                                var marker = new google.maps.Marker({
-                                    position: uluru,
-                                    map: map
-                                });
-                            }
-                        </script>
-                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
-                        </script>
-        
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-        
-        
-        
-            </footer>
+
+                <div class="lcr-footer-element" id="rightFooter">
+                    <p>Address:</p>
+                    <div id="map"></div>
+                    <script>
+                        function initMap() {
+                            var uluru = { lat: 47.175240, lng: 27.575136 };
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 15,
+                                center: uluru
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                            });
+                        }
+                    </script>
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.176928991033!2d27.572722415283028!3d47.17397237915843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40cafb6227e846bd%3A0x193e4b6864504e2c!2sFacultatea+de+Informatic%C4%83!5e0!3m2!1sro!2sro!4v1521408940987" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDslzbScv42DBB1SKmpdIM9A39VMRYuz8s&callback=initMap">
+                    </script>
+
+                </div>
+            </div>
+
+
+
+        </footer>
 
 
     </div>

@@ -41,3 +41,7 @@
     color: #192638;
     font-weight: bolder;
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+}

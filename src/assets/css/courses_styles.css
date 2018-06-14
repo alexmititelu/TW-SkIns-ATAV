@@ -317,3 +317,7 @@ body > div.header > div.tagbar > div{
 footer {
     visibility: hidden;
 }
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
