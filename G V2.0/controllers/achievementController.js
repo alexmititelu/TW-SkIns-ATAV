@@ -75,8 +75,8 @@ module.export = achievementHandler = function(req, res, axios, fs)
 			console.log(body)
 				
 
-					res.writeHead(404, {
-                    'Content-Type': 'text/html'
+					res.writeHead(200, {
+                    'Content-Type': 'application/json'
             		});
 					res.write(body);
 					res.end();

@@ -156,7 +156,7 @@
 
         f();
 
-        function validateFirstname() {
+        /*function validateFirstname() {
             var firstname = document.getElementById('first_nameID').value;
             var firstnameValidator = document.getElementById('firstname-validator');
             var firstnameValidatorMessage = document.getElementById('firstname-validator-message');
@@ -189,7 +189,7 @@
             var button = document.getElementById('personalDataSubmit');
             button.disabled = false;
         }
-
+*/
     </script>
     <div class="toate_sectiunile">
         <div class="username">
@@ -225,17 +225,20 @@
         <hr size="1" color="#D9D9D9" style="width: 50%;">
         <!-- <p>First name</p>
             <input class="new-account-input" id="firstname" name="firstName" type="text" onfocusout="validateFirstname()" required/>
-            <p id='firstname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="firstname-validator-message">&nbsp </span></p>-->
+            <p id='firstname-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="firstname-validator-message">&nbsp </span></p>
+
+
+             PUN METODA onfocusout="validateFirstname()" IN INPUT LA FIRST NAME CA ATRIBUT-->
         <div class="personalData">
             <h4>Personal Data</h4>
             <form action="/my_profile" method="POST">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your First Name" id="first_nameID" onfocusout="validateFirstname()" name="first_name"
+                <input type="text" placeholder="Enter your First Name" id="first_nameID" name="first_name"
                     value="">
-                <p id='firstname-validator' class="invalid-input">
+                <!--<p id='firstname-validator' class="invalid-input">
                     <i class="fa fa-ban fa-lg"></i>
                     <span id="firstname-validator-message">&nbsp </span>
-                </p>
+                </p>-->
 
 
                 <hr color="#032E37">
