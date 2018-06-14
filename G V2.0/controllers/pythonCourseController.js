@@ -68,7 +68,7 @@ function renderScriptResultPage(objectResult, response) {
 
 function renderNotFoundHTML(response) {
     console.log(__dirname);
-    fs.readFile(__dirname + "/../../../src/html/pageNotFound.html", function (error, htmlContent) {
+    fs.readFile(__dirname + "/../../src/html/pageNotFound.html", function (error, htmlContent) {
         
         if (error) {
             response.writeHead(404);
@@ -115,7 +115,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		console.log(cookie)
 		
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -153,7 +153,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		console.log(cookie)
 		
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -179,7 +179,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 			res.writeHead(200, {
                     'Content-Type': 'text/html'
             });
-		}	
+		}
     }
 
 
@@ -190,7 +190,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		console.log(cookie)
 		
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -253,7 +253,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		console.log(cookie)
 		
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -306,7 +306,7 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		console.log(cookie)
 		
 
-		if(cookie)
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
