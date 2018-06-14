@@ -7,91 +7,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script language="javascript" type="text/javascript" src="../../shared/header.html"></script> -->
     <link rel="stylesheet" type="text/css" media="screen" href="/courses_styles.css" />
-    <link rel="stylesheet" type="text/css" href="/index_styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body class = "colorez">
 
-  
-        <div class="header">
-                <div class="center">
-                    <h1>Skillz'
-                        <span>o</span>'Skillz</h1>
-        
-                    <ul class="menu">
-                        <li>
+    <div class="header">
+        <div class="center">
+            <h1>Skillz'
+                <span>o</span>'Skillz</h1>
+            <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
+
+            <nav class="menu">
+                    <div>
                             <a href="/index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="/courses">Courses</a>
-                        </li>
-                        <li>
-                            <a href="/achievements">My Achivements</a>
-                        </li>
-                        <li>
-                            <a href="/myLibrary">My Library</a>
-                        </li>
-                        
-                        <li>
-                            <a href="#" disabled>
-                                <i class="fa fa-gear fa-2x gear"></i>
-                            </a>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="/Profile">Profil</a>
-                                </li>
-                               
-                                <li>
-                                    <a href="/sign-out">Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="dropdown">
-                        <!-- <button class="dropbtn">Dropdown</button> -->
-                        <div class="container dropbtn" onclick="myFunction(this)">
-                            <div class="bar1"></div>
-                            <div class="bar2"></div>
-                            <div class="bar3"></div>
                         </div>
-                        <div class="dropdown-content">
-                            <a href="/index.html">Home</a>
+                        <div>
                             <a href="/courses">Courses</a>
-                            <a href="/achievements">My Achivements</a>
-                            <a href="/myLibrary">My Library</a>
-                            <button class="accordion">Settings</button>
-                            <div class="panel">
-                                <a href="Profile">Profil</a>
-        
-                                <a href="/sign-out">Logout</a>
-                            </div>
-                            <script>
-                                var acc = document.getElementsByClassName("accordion");
-                                var i;
-        
-                                for (i = 0; i < acc.length; i++) {
-                                    acc[i].addEventListener("click", function () {
-                                        this.classList.toggle("active");
-                                        var panel = this.nextElementSibling;
-                                        if (panel.style.display === "block") {
-                                            panel.style.display = "none";
-                                        } else {
-                                            panel.style.display = "block";
-                                        }
-                                    });
-                                }
-                            </script>
-                            </button>
                         </div>
-                    </div>
-                    <div class="clear"></div>
+                        <div>
+                            <a href="/achievements">My Achivements</a>
+                        </div>
+                        <div>
+                            <a href="/myLibrary">My Library</a>
+                        </div>
+                        <!-- </li> -->
+                        <!-- PT BUTON LOGIN DE AICI -->
+        
+                        <!-- pana aici!!!!  -->
+                        <!-- <li>
+                                                <a href="#">
+                                                    <i class="fa fa-gear fa-2x gear"></i>
+                                                </a>
+                                            </li> -->
+                        <!-- <li> -->
+                        <div>
+                            <a href="/signout">LOGOUT</a>
+                        </div>
+                <div>
+                    <button class="settings" onclick="myFunction()">
+                        <i class="fa fa-gear fa-2x gear"></i>
+                    </button>
+
+                    <nav class="submenu" id="dropdownSettings">
+                        <div>
+                            <a href="../html/profile.html">Profil</a>
+                        </div>
+                        <div>
+                            <a href="#">Payment method</a>
+                        </div>
+                        <div>
+                            <a href="#">Something</a>
+                        </div>
+                        <div>
+                            <a href="#">Logout</a>
+                        </div>
+                    </nav>
                 </div>
-            </div>
-        
+            </nav>
+            <div class="clear"></div>
+        </div>
+
+
+        <!-- script button -->
+        <!-- 
+                <script>
             
-                <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
+                    function myFunction() {
+                        var x = document.getElementById("dropdownSettings");
+                        if (x.style.display === "none") {
+                            x.style.display = "block";
+                        } else {
+                            x.style.display = "none";
+                        }
+                    }
+                </script> -->
+
+
+        <!-- <img src="../images/skinsred.png"/> -->
+        <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
 
         <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
         <div class="search centered">
@@ -117,20 +112,18 @@
 
 
     <div class="content">
-        <div class="course-content">
-            <div class="main-flex" id = "courseView">
-                <div class="box tilt">
-                    <div class="upper">
-                    </div>
-                    LOADING...
-                    <div class="bottom">
+            <div class="course-content">
+                <div class="main-flex" id = "courseView">
+                    <div class="box tilt">
+                        <div class="upper">
+                        </div>
+                        LOADING...
+                        <div class="bottom">
+                        </div>
                     </div>
                 </div>
-                <a href="#_" class="lightbox" id="curs9">
-                </a>
             </div>
         </div>
-    </div>
 
 
 
