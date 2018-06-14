@@ -41,7 +41,7 @@ module.exports = {
 					//var queryFindAch =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
                     
 					var cookieData = jwt.verify(cookie,secret);
-					var queryFindAch = {id_cont: new mongo.ObjectID(cookieData._id)};
+					var queryFindAch = {id_cont: cookieData._id};
 					
 					dbConnection.collection("Achievements").find(queryFindAch).toArray( function (err, result) {
 
