@@ -92,29 +92,44 @@ module.export = profileHandler = function(req, res, axios, fs)
 		}
     }
 
-    // if(req.method === 'POST' && req.url === '/post_course')
-    // {
-    //     collectRequestData(req, userDetails => {
-			
-	// 		console.log(userDetails)
-	// 		axios({
-	// 			method : 'post',
-	// 			url : 'http://127.0.0.1:8051/register',
-	// 			data : userDetails
-	// 		})
-	// 		.then(function(responsex){
 
-	// 					res.write(responsex.data)
-	// 					res.writeHead(200, {
-	//                     'Content-Type': 'text/html'
-	//             		});
-	//             		res.end();
+	if(req.url === '/my_profile' && req.method === 'POST')
+	{
+
+		var cookie = cookies.get('userToken');	
+		collectRequestData(req, data => {
+
+			
+			console.log({
+				cookie: cookie,
+				data: data
+			});
+			axios(
+				{
+					method : 'post',
+					url : 'http://127.0.0.1:8055/my_profile',
+					data: {
+						cookie: cookie,
+						data: data
+					}
+				})
+			.then(function(respondsex){
+				
+				
+				console.log(respondsex.data)
+				res.writeHead(200, {
+					'Content-Type': 'text/html'
+					});
+				res.write(respondsex.data)
+				res.end(console.log("gata"));
 				
 					
-	// 		})
-	// 		.catch(function(error){
-	// 			res.end(error.message);
-	// 		})
-	// 	})
-	// }
+			})
+			.catch(function(error){
+				res.end(error.message);
+			})
+		
+		})
+		
+	}
 }

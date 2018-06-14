@@ -48,6 +48,7 @@ const port = process.env.PORT || 8050;
 var certOptions = {
     key: fs.readFileSync(path.resolve('./server.key')),
     cert: fs.readFileSync(path.resolve('./server.crt'))
+
 }
 
 const server = https.createServer(certOptions, (req, res) => {

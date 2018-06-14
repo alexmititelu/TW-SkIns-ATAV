@@ -5,6 +5,7 @@ var Cookies = require('cookies');
 const jwt = require('jsonwebtoken');
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
+var ObjectID = require('mongodb').ObjectId;
 
 function collectRequestData(request, callback) {
     const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -85,23 +86,58 @@ module.exports = {
                             courseArr.push(queryResult[courseObj].curs_id);
                         });
                         console.log("Cursuri gasite : " + courseArr);
-                            
-                        var tempQuery = JSON.stringify({_id : {$in : courseArr}});
-                        
-                        dbConnection.collection('Cursuri').find(tempQuery).toArray(function (queryError, queryResult) {
+                        if (courseArr.length != 0){
+                            var obj_ids = [];
+                            for (var i = 0; i < courseArr.length; i++) {
+                                obj_ids.push(new ObjectID(courseArr[i]));    
+                            }
+                            var tempQuery = JSON.stringify({"_id" : {"\$in" : obj_ids}});
+                            console.log("QUERY : " + tempQuery);
+                            try{
+                            dbConnection.collection('Cursuri').find(tempQuery).toArray(function (queryError, queryResult) {
 
-                                if (queryError) {
-                                    throw queryError;
+                                    if (queryError) {
+                                        throw queryError;
+                                        connection.close();
+                                    }
+                                    console.log("Cursuri cu detalii : " + JSON.stringify(queryResult));
+                                    response.writeHead(200,{
+                                        'Content-Type': 'application/json',
+                                        'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                        'Access-Control-Allow-Credentials': 'true',
+                                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                                    });
+                                    response.write(JSON.stringify(queryResult));
+                                    response.end();
                                     connection.close();
-                                }
-                                console.log("Cursuri cu detalii : " + JSON.stringify(queryResult));
-                                response.writeHead(200,{'Content-Type': 'application/json'});
-                                response.write(JSON.stringify(queryResult));
-                                response.end();
-                                connection.close();
-                                console.log("Am trimis raspuns.");
+                                    console.log("Am trimis raspuns.");
+                                })
+                                }catch(e){
+                                    console.log("EROARE LA FETCH CURSURI");
+                                    response.writeHead(418,{
+                                        'Content-Type': 'text/html',
+                                        'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                        'Access-Control-Allow-Credentials': 'true',
+                                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
+                                    });
+                                    response.end();
+                                    connection.close();
+                                };
+                        }
+                        else{
+                            console.log("Array vid !");
+                            response.writeHead(200,{
+                                'Content-Type': 'application/json',
+                                'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                'Access-Control-Allow-Credentials': 'true',
+                                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
                             });
+                            response.end();
+                            connection.close();
+                            console.log("Am trimis raspuns.");
+                        }
                         });
+
                     });
             }
             
@@ -160,28 +196,28 @@ module.exports = {
                         // console.log('2222222222222222222')
                         // console.log(newSubscription)
 
-
+                    try{
                         dbConnection.collection("Abonati").insertOne(newSubscription, function(error, success) {
-                            if (error) {
-                                throw error;
-
-                            }
                             console.log("Inserat");
                             response.writeHead(200, {
-                                'Content-Type': 'text/html'
+                                'Content-Type': 'text/html',
+                                'Access-Control-Allow-Origin': 'https://localhost:8050',
+                                'Access-Control-Allow-Credentials': 'true',
+                                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
                                 });
                             response.write('Succesfully inserted !')
                             response.end();
                             
                             
                             connection.close();
-                        })
-                        .catch(error => {
-                            console.log("Existent");
-                            respnose.writeHead(418);
-                            response.write('Already in database.');
-                            response.end();
                         });
+                    }
+                    catch(e) {
+                        console.log("Existent");
+                        respnose.writeHead(418);
+                        response.write('Already in database.');
+                        response.end();
+                    };
                     // });
                 });
             }

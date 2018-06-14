@@ -31,7 +31,7 @@ const mongo = require('mongodb');
 module.exports = {
     handleRequest: function (req, res) {
 
-        
+        let secret = fs.readFileSync('./../../../secret.txt');
         var path = url.parse(req.url).pathname;
         console.log("Path: " + path);
 
@@ -121,24 +121,36 @@ module.exports = {
                         });
                         
             }
-			else {
-                res.writeHead(404);
-                res.write("Couldn't load HTML / not found");
-            }
+		
         }
-        else if (req.method === "POST") {
+         if (req.method === "POST") {
             console.log("Post method call");
             if (path === "/my_profile") {
-                var reqBody = '';
+                
+                var body = "";
+                var jsonObj;
+                var cookie;
+                var formData;
 
-                req.on('data', function (data) {
-                    reqBody += data;
+                
+                req.on('data', function (chunk) {
+                  body += chunk;
+                  console.log('%%%%%%%%%%%%%%%%%%%%%%%%%')
                 });
-
                 req.on('end', function () {
-                    var formData = qs.parse(reqBody);
-                    console.log(formData);
+                
+                    console.log(body)
+                  jsonObj = JSON.parse(body);
 
+                    
+                     console.log('2222222222222222222222')
+                    console.log(jsonObj)
+
+                cookie = jsonObj.cookie;
+                formData = jsonObj.data;
+                })
+                
+                    
                     MongoClient
                         .connect('mongodb://localhost:27017', function (err, connection) {
                             if (err) {
@@ -162,7 +174,11 @@ module.exports = {
                             console.log("ASTA E NOUL OBIECT: " + JSON.stringify(objectUpdate));
                             
                             if(searchTable == 'Utilizatori') {
-                                var queryUpdate = {last_name: "Mititelu"}; //AICI VIN COOKIEURILE
+
+                                var userData = jwt.verify(cookie,secret);
+                                var userId = new mongo.ObjectID(userData._id);
+
+                                var queryUpdate = {cont_id: userId}; //AICI VIN COOKIEURILE
                                 
                                 dbConnection.collection("Utilizatori").updateOne(queryUpdate, { $set: objectUpdate }, function (err, success) {
                                     if (err) {
@@ -173,7 +189,10 @@ module.exports = {
                                 });
                             }
                             else { //if searchTable = 'Conturi' (default)
-                                var queryUpdate = {username: "vladut"}; //AICI VIN COOKIEURILE
+                                var userData = jwt.verify(cookie,secret);
+                                var userId = new mongo.ObjectID(userData._id);
+
+                                var queryUpdate = {_id: userId}; //AICI VIN COOKIEURILE
 
                                 dbConnection.collection("Conturi").updateOne(queryUpdate, { $set: objectUpdate }, function (err, success) {
                                     if (err) {
@@ -222,7 +241,7 @@ module.exports = {
                             });*/
 
                         });
-                });
+                
 
             }
             else {
