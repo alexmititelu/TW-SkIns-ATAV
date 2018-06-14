@@ -87,27 +87,33 @@ module.exports = {
                         });
                         console.log("Cursuri gasite : " + courseArr);
                         if (courseArr.length != 0){
-                            var obj_ids = [];
-                            for (var i = 0; i < courseArr.length; i++) {
-                                obj_ids.push(new ObjectID(courseArr[i]));    
-                            }
-                            var tempQuery = JSON.stringify({"_id" : {"\$in" : obj_ids}});
+                            var tempQuery = JSON.stringify({"_id" : {"\$in" : courseArr}});
                             console.log("QUERY : " + tempQuery);
                             try{
                             dbConnection.collection('Cursuri').find(tempQuery).toArray(function (queryError, queryResult) {
-
+                                    console.log("@@@@" + courseArr)
                                     if (queryError) {
                                         throw queryError;
                                         connection.close();
                                     }
+                                    var actualArr = [];
+                                    var temp = JSON.stringify(queryResult);                                    console.log("Cursuri cu detalii : " + JSON.stringify(actualArr));
                                     console.log("Cursuri cu detalii : " + JSON.stringify(queryResult));
+
+                                    for (var i = 0; i < queryResult.length; i++){
+                                        if (courseArr.includes(queryResult[i]._id.toString())){
+                                            actualArr.push(queryResult[i]);
+                                        }
+                                    }
+                                    console.log("ACTUAL Cursuri cu detalii : " + JSON.stringify(actualArr));
+
                                     response.writeHead(200,{
                                         'Content-Type': 'application/json',
                                         'Access-Control-Allow-Origin': 'https://localhost:8050',
                                         'Access-Control-Allow-Credentials': 'true',
                                         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
                                     });
-                                    response.write(JSON.stringify(queryResult));
+                                    response.write(JSON.stringify(actualArr));
                                     response.end();
                                     connection.close();
                                     console.log("Am trimis raspuns.");
