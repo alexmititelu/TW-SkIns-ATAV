@@ -3,7 +3,7 @@ document.getElementById("searchBar").style.width = "40%";
 
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.withCredentials = true;
-var url = "https://localhost:8050/getAllCourses";
+var url = "https://localhost:8050/getSubscribedCourses";
 //var url = "http://127.0.0.1:8054/getAllCourses"; //TEST , cel comentat e ok
 var coursesJSON;
 
@@ -39,7 +39,7 @@ function createHTML(title,details,courseId){
     "<form action = \"http://127.0.0.1:8050/subscribe\" style = \"display : none\" \
     id = \"" + courseId + 
     "\"><input type = text name = \"cid\" value = \"" + courseId + "\"></input></form>"
-    + "<button class = \"coursebutton\" id = \"subscribeBtn\" onclick = \"subscribe(this)\" value = \"" + 
+    + "<button style = \"display : none\" class = \"coursebutton\" id = \"subscribeBtn\" onclick = \"subscribe(this)\" value = \"" + 
     courseId + "\">Aboneaza-te</button></div>";
     return html;
 }
@@ -56,36 +56,6 @@ function search(index, searchString){
 
 function sort(sortParam){
     //sortam dupa sortParam
-}
-
-function subscribe(caller){
-    var xmlhttp = new XMLHttpRequest();
-    var url = "https://127.0.0.1:8050/subscribe";
-    var sendForm = document.getElementById(caller.value);
-    //sendForm.submit();
-    xmlhttp.withCredentials = true;
-    xmlhttp.open("POST", url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var buton = document.getElementById("subscribeBtn");
-        buton.innerHTML = "Te-ai abonat";
-        var atr = document.createAttribute("disabled");
-        atr.value = "disabled";
-        buton.setAttributeNode(atr);
-        console.log(this.responseText);
-    }
-    else if (this.readystate == 4 && this.status == 418){
-        var buton = document.getElementById("subscribeBtn");
-        buton.innerHTML = "Esti deja abonat";
-        var atr = document.createAttribute("disabled");
-        atr.value = "disabled";
-        buton.setAttributeNode(atr);
-        console.log(this.responseText);
-    }
-    };
-    xmlhttp.send("cid=" + caller.value);
-
 }
 
 function setSearch(){
