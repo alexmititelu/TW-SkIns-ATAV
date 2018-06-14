@@ -139,6 +139,7 @@ nextExercise.onclick = e => {
     } catch (e) {
       exercitiuCurent.textContent = 'XMLHttpRequest cannot be instantiated: ' + e.message;
     } finally {
+      xhr.withCredentials = true;
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4) {   // data arrived
               if (xhr.status === 200) { // response Ok from Web service

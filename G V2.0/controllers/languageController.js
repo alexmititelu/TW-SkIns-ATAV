@@ -109,7 +109,10 @@ module.export = languageHandler = function(req, res, axios, fs)
                             
 
                            
-                            res.writeHead(200, {'Content-type' : 'text/html'});
+                            res.writeHead(200, {'Content-type' : 'text/html',
+                            'Access-Control-Allow-Origin': 'https://localhost:8050',
+                            'Access-Control-Allow-Credentials': 'true',
+                            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'});
                             res.write(result.text);
                             res.end(console.log('am terminat'));
                             client.close();
