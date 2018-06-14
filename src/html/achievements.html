@@ -87,7 +87,7 @@
     <!-- Body-ul din pagina de Achievements-->
 
 
-    <hr color="#032E37" style="margin-top:5%; width: 100%">
+    <!--<hr color="#032E37" style="margin-top:5%; width: 100%"-->
     <img src="/LOGOACH2-BIG.png" class="logo_achievement">
     <hr color="#032E37" style="margin-top:4%; width: 100%">
 
@@ -112,7 +112,7 @@
         </div>
     </div>-->
     
-	<script>
+	<!--<script>
 	//document.getElementById("c2").value="plm";
 	//document.getElementById("mybutton").onclick = 
 	function f(){
@@ -124,37 +124,39 @@
 		  console.log(jsonRes);
 		  console.log(JSON.stringify(jsonRes));
 		  console.log("@@@@@@@@");
-		  for(var i=0; i <=jsonRes.length; i++) {
+		  for(var i=0; i <=jsonRes.length-1; i++) {
 			if(jsonRes[0].id_achievement == "1") { //adica cursul 1(codat)
 				var div = document.createElement("div");
 				div.setAttribute('class', 'level4');
 				
 				var img = document.createElement("img");
-				img.setAttribute('class', 'logo4');
-				img.setAttribute('src', '../images/achievements_images/LOGOacivement.PNG');
-				img.setAttribute('alt', 'Level 4');
+				img.setAttribute("class", "logo4");
+				img.setAttribute("src", "/LOGOacivement.png");
+				img.setAttribute("alt", "Level 4");
 				
 				div.appendChild(img);
 				
 				var i_code = document.createElement("i");
-				i_code.setAttribute('class', 'fa fa-code code');
-				i_code.setAttribute('style', 'font-size: 90px');
-				i_code.setAttribute('aria-hidden', 'true');
+				i_code.setAttribute("class", "fa fa-code code");
+				i_code.setAttribute("style", "font-size: 90px");
+				i_code.setAttribute("aria-hidden", "true");
+                i_code.setAttribute("style","position: absolute; margin-top: -65%; margin-left: -17%; color: #D9D9D9;");
+
 
 				var i_star1 = document.createElement("i");
-				i_star1.setAttribute('class', 'fa fa-star star');
-				i_star1.setAttribute('style', 'font-size: 22px');
-				i_star1.setAttribute('aria-hidden', 'true');
+				i_star1.setAttribute("class", "fa fa-star star");
+                i_star1.setAttribute("style", "font-size: 22px");
+                i_star1.setAttribute("aria-hidden", "true");
 
 				var i_star2 = document.createElement("i");
-				i_star2.setAttribute('class', 'fa fa-star star');
-				i_star2.setAttribute('style', 'font-size: 22px');
-				i_star2.setAttribute('aria-hidden', 'true');
+				i_star2.setAttribute("class", "fa fa-star star");
+                i_star2.setAttribute("style", "font-size: 22px");
+                i_star2.setAttribute("aria-hidden", "true");
 
 				var i_star3 = document.createElement("i");
-				i_star3.setAttribute('class', 'fa fa-star star');
-				i_star3.setAttribute('style', 'font-size: 22px');
-				i_star3.setAttribute('aria-hidden', 'true');
+				i_star3.setAttribute("class", "fa fa-star star");
+                i_star3.setAttribute("style", "font-size: 22px");
+                i_star3.setAttribute("aria-hidden", "true");
 				
 				div.appendChild(i_code);
 				div.appendChild(i_star1);
@@ -170,15 +172,15 @@
 }; //function onreadystatechange
 
 	  console.log("bla");
-	  xhttp.open("GET", "https://localhost:8050/getAchievements", true);
+	  xhttp.open("GET", "https://localhost:8050/achievements", true);
 	  xhttp.send();
 }; //function
 
 	f();
-	</script>
+	</script>-->
 	
     <div class="second_row">
-        <div class="atribute_achievement">
+        <div class="atribute_achievement" id="ach1">
             <!--<img class="deblocate2 image_effect"src="../images/achievements_images/4.JPG" alt="Level 4" 
                 >
                 <div class="middle">
@@ -187,20 +189,20 @@
 
                 <!--<div class="tooltip">asd
                             <span class="tooltiptext">blacasa</span></div>-->
-			<!--<div class="level4">
+			<div class="level4" title="Programare">
 
-                <img class="logo4" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 4"
+                <img class="logo4" src="/LOGOacivement.png" alt="Level 4"
                 >
-                <i class="fa fa fa-code code" style="font-size: 90px" aria-hidden="true"></i>
+                <i class="fa fa-code code" style="font-size: 90px" aria-hidden="true"></i>
                 <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star star2" style="font-size: 22px" aria-hidden="true"></i>
                 <i class="fa fa-star star3" style="font-size: 22px" aria-hidden="true"></i>
-            </div>	-->
+            </div>
         </div>
   
-        <div class="atribute_achievement">
+        <div class="atribute_achievement" title="Duoliongo" id="ach2">
             <div class="level5">
-                <img class="logo5" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 5"
+                <img class="logo5" src="/LOGOacivement.png" alt="Level 5"
                 >
                 <i class="fa fa-language language" style="font-size: 90px" aria-hidden="true"></i>
                 <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
@@ -208,9 +210,10 @@
                 <i class="fa fa-star star3" style="font-size: 22px" aria-hidden="true"></i>
             </div>
         </div>
-        <div class="atribute_achievement">
+
+        <div class="atribute_achievement" title="Chitara" id="ach3">
             <div class="level6">
-            <img class="logo6" src="../images/achievements_images/LOGOacivement.PNG" alt="Level 6"                
+            <img class="logo6" src="/LOGOacivement.png" alt="Level 6"                
                 >
                 <i class="fa fa-music music" style="font-size: 90px" aria-hidden="true"></i>
                 <i class="fa fa-star star1" style="font-size: 22px" aria-hidden="true"></i>
@@ -247,6 +250,8 @@
     <hr color="#032E37">
     <hr color="#032E37">
 	<hr color="#032E37">
+    <hr color="#032E37">
+    <hr color="#032E37">
     <hr color="#032E37">
     <hr color="#032E37">
 
