@@ -52,8 +52,6 @@ module.exports = {
                   jsonObj = JSON.parse(body);
                
                 cookie = jsonObj.cookie;
-                })
-
                 
                 
                 MongoClient
@@ -119,6 +117,7 @@ module.exports = {
                             });
 
                         });
+                    });
                         
             }
 		

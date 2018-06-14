@@ -23,7 +23,7 @@ module.export = testimonialeHandler = function(req, res, axios, fs)
     var cookies = new Cookies(req, res, null);
     var cookie = cookies.get('userToken');
 
-    if(req.url === '/testimoniale' && req.method === 'GET')
+    if(req.url === '/testimoniale.html' && req.method === 'GET')
 	{
 
 			
@@ -37,8 +37,8 @@ module.export = testimonialeHandler = function(req, res, axios, fs)
 		.then(function(respondsex){
 
 
-					res.writeHead(404, {
-                    'Content-Type': 'text/html'
+					res.writeHead(200, {
+                    'Content-Type': 'application/json'
             		});
 					res.write(JSON.stringify(respondsex.data));
 					res.end();
