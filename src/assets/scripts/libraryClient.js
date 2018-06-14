@@ -29,10 +29,10 @@ xmlhttp.send();
 
 
 
-function createHTML(title,details,courseId){
+function createHTML(title,details,courseId,path){
     var html = "<div class=\"box tilt\">\
-    Titlu curs : " + title + 
-    "<div class=\"bottom\">\
+    <a href = \"" + path + "\">Titlu curs : " + title + 
+    "</a><div class=\"bottom\">\
         Detalii curs : " + details + 
     "</div>\
     <div id = \"postId\" style = \"display : none\">" + courseId + "</div>" + 
@@ -97,22 +97,22 @@ function update(){
         if (searchString != "" && search(i,searchString) != 0){
             if (filterTags.length != 0){
                 if(filterTags.includes(coursesJSON[i].tag))
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
         else if (filterTags.length != 0 && filterTags.includes(coursesJSON[i].tag)){
             if (searchString != ""){
                 if (search(i,searchString) != 0)
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
         else if (searchString == "" && filterTags.length == 0){
             console.log("NU SE FILTREAZA");
-            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
     }
     document.getElementById('courseView').innerHTML = coursesView;

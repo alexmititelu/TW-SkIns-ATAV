@@ -29,17 +29,17 @@ xmlhttp.send();
 
 
 
-function createHTML(title,details,courseId){
+function createHTML(title,details,courseId,path){
     var html = "<div class=\"box tilt\">\
-    Titlu curs : " + title + 
-    "<div class=\"bottom\">\
+    <a href = \"" + path + "\">Titlu curs : " + title + 
+    "</a><div class=\"bottom\">\
         Detalii curs : " + details + 
     "</div>\
     <div id = \"postId\" style = \"display : none\">" + courseId + "</div>" + 
     "<form action = \"http://127.0.0.1:8050/subscribe\" style = \"display : none\" \
     id = \"" + courseId + 
     "\"><input type = text name = \"cid\" value = \"" + courseId + "\"></input></form>"
-    + "<button class = \"coursebutton\" id = \"subscribeBtn\" onclick = \"subscribe(this)\" value = \"" + 
+    + "<button style = \"\" class = \"coursebutton\" onclick = \"subscribe(this)\" value = \"" + 
     courseId + "\">Aboneaza-te</button></div>";
     return html;
 }
@@ -68,19 +68,7 @@ function subscribe(caller){
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        var buton = document.getElementById("subscribeBtn");
-        buton.innerHTML = "Te-ai abonat";
-        var atr = document.createAttribute("disabled");
-        atr.value = "disabled";
-        buton.setAttributeNode(atr);
-        console.log(this.responseText);
-    }
-    else if (this.readystate == 4 && this.status == 418){
-        var buton = document.getElementById("subscribeBtn");
-        buton.innerHTML = "Esti deja abonat";
-        var atr = document.createAttribute("disabled");
-        atr.value = "disabled";
-        buton.setAttributeNode(atr);
+        caller.setAttribute("style","display:none")
         console.log(this.responseText);
     }
     };
@@ -127,22 +115,22 @@ function update(){
         if (searchString != "" && search(i,searchString) != 0){
             if (filterTags.length != 0){
                 if(filterTags.includes(coursesJSON[i].tag))
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
         else if (filterTags.length != 0 && filterTags.includes(coursesJSON[i].tag)){
             if (searchString != ""){
                 if (search(i,searchString) != 0)
-                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                    coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
             }
             else
-                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+                coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
         else if (searchString == "" && filterTags.length == 0){
             console.log("NU SE FILTREAZA");
-            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id);
+            coursesView += createHTML(coursesJSON[i].titlu_curs,coursesJSON[i].descriere,coursesJSON[i]._id,coursesJSON[i].path);
         }
     }
     document.getElementById('courseView').innerHTML = coursesView;
