@@ -2,6 +2,7 @@ var url = require('url');
 var fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 const jwt = require('jsonwebtoken');
+const cookies = require('cookies');
 const mongo = require('mongodb');
 
 module.exports = {
@@ -23,6 +24,8 @@ module.exports = {
                 request.on('end', function () {
                   
                   jsonObj = body;
+                    
+
                     
                 cookie = jsonObj;
                 })
@@ -46,7 +49,7 @@ module.exports = {
                     
 					var queryFindTest = {id_cont: new mongo.ObjectID(cookieData._id)};
 					
-					dbConnection.collection("Testimoniale").find(queryFindTest).toArray( function (err, result) {
+					dbConnection.collection("Testimoniale").find({}).limit(3).toArray( function (err, result) {
 
                         if (err) {
                             throw err;
@@ -54,7 +57,7 @@ module.exports = {
 
                         // console.log("Din Testimoniale: " + result[0].id_cont + " " + result[0].id_curs + " " + result[0].feedback);
                         // console.log(JSON.stringify(result));
-						
+						console.log(result)
 						response.writeHead(200,{'Content-Type': 'application/json'});
                         response.write(JSON.stringify(result)); //result e array de jsonuri
                         response.end();
