@@ -7,7 +7,22 @@ pathElements.pop();
 pathElements.pop();
 var homePath = pathElements.join(pathResolver.sep);
             
-
+function renderNotFoundHTML(response) {
+    console.log(__dirname);
+    fs.readFile(__dirname + "/../../src/html/pageNotFound.html", function (error, htmlContent) {
+        
+        if (error) {
+            response.writeHead(404);
+            
+            response.write("Couldn't load HTML / not found");
+        } else {
+            console.log('ERROR');
+            response.writeHead(200, { 'Content-Type': 'text/html' })
+            response.write(htmlContent);
+        }
+        response.end();
+    });
+}
 
 function collectRequestData(request, callback) {
 	    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -138,9 +153,7 @@ module.export = registerHandler = function(req, res, axios, fs)
 					}
 					else{
 						console.log(responsex);
-						res.writeHead(404);
-						res.write("Microserviciul register a picat");
-						res.end();
+						renderNotFoundHTML(res);
 					}
 
 						

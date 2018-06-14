@@ -68,7 +68,7 @@ function renderScriptResultPage(objectResult, response) {
 
 function renderNotFoundHTML(response) {
     console.log(__dirname);
-    fs.readFile(__dirname + "/../../../src/html/pageNotFound.html", function (error, htmlContent) {
+    fs.readFile(__dirname + "/../../src/html/pageNotFound.html", function (error, htmlContent) {
         
         if (error) {
             response.writeHead(404);

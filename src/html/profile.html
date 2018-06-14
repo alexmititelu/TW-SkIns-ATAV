@@ -190,6 +190,41 @@
             button.disabled = false;
         }
 */
+
+/*function validatePassword() {
+    var password = document.getElementById('passwordID').value;
+    var passwordValidator = document.getElementById('password-validator');
+    var passwordValidatorMessage = document.getElementById('password-validator-message');
+
+    passwordValidator.style = 'display:none';
+    enableCreateAccountButton();
+
+    var regexp = new RegExp("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}");
+
+    if (password.length < 6) {
+
+        passwordValidatorMessage.textContent = 'Password must contain at least 6 characters.';
+        passwordValidator.style = 'display:block';
+        disableCreateAccountButton();
+
+    } else if (!regexp.test(password)) {
+
+        passwordValidatorMessage.textContent = 'Password must contain lower case, upper case and special characters.';
+        passwordValidator.style = 'display:block';
+        disableCreateAccountButton();
+
+    }
+}
+function disableCreateAccountButton() {
+    var button = document.getElementById('passwordSubmit');
+    button.disabled = true;
+}
+
+
+function enableCreateAccountButton() {
+    var button = document.getElementById('passwordSubmit');
+    button.disabled = false;
+}*/
     </script>
     <div class="toate_sectiunile">
         <div class="username">
@@ -208,7 +243,15 @@
             <form action="/my_profile" method="POST">
                 <input type="password" name="password" id="passwordID" placeholder="Enter your new Password" value="">
                 <i class="fa fa-unlock-alt" style="font-size:18px" aria-hidden="true"></i>
-                <input type="submit" value="Update">
+                <input type="submit" value="Update" id="passwordSubmit">
+
+
+                <!--<hr color="#032E37">
+                <hr color="#032E37">
+                <hr color="#032E37">-->
+
+
+                <!--<p id='password-validator' class="invalid-input"><i class="fa fa-ban fa-lg"></i> <span id="password-validator-message">&nbsp </span></p>-->
             </form>
         </div>
         <hr size="1" color="#D9D9D9" style="width: 50%;">
@@ -233,8 +276,7 @@
             <h4>Personal Data</h4>
             <form action="/my_profile" method="POST">
                 <!--<label>First Name</label>-->
-                <input type="text" placeholder="Enter your First Name" id="first_nameID" name="first_name"
-                    value="">
+                <input type="text" placeholder="Enter your First Name" id="first_nameID" name="first_name" value="">
                 <!--<p id='firstname-validator' class="invalid-input">
                     <i class="fa fa-ban fa-lg"></i>
                     <span id="firstname-validator-message">&nbsp </span>
@@ -254,6 +296,8 @@
                 <!--<label>First Name</label>-->
                 <input type="text" placeholder="Enter your Phone Number" id="telefonID" name="telefon" value="">
                 <hr color="#032E37">
+                <hr color="#032E37">
+
                 <!--<label>First Name</label>-->
                 <div class="wrapper">
                     <select id="day">
