@@ -1,9 +1,10 @@
 var Cookies = require('cookies');
+var pathResolver = require('path');
 
-var pathElements = __dirname.split('\\');
+var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join('\\');
+var homePath = pathElements.join(pathResolver.sep);
 
 
 
@@ -17,7 +18,7 @@ module.export = mainHandler = function(req, res, fs)
 
         res.writeHead(200, {'Content-type' : 'text/html'})
 
-        var pathElements = __dirname.split('\\');
+        var pathElements = __dirname.split(pathResolver.sep);
 
         pathElements.pop();
         pathElements.pop();
