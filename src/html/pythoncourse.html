@@ -8,124 +8,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
     <link rel="stylesheet" type="text/css" media="screen" href="/coursePageExample.css" />
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/index_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     
 </head>
 
 <body>
 
 
-    <div class="header">
-        <div class="center">
-            <h1>Skillz'
-                <span>o</span>'Skillz</h1>
-            <!-- <img class="logo-image" src="../shared/skinslogo_v2.png"/> -->
-
-            <nav class="menu">
-                <div>
-                    <a href="../../index.html">Home</a>
-                </div>
-                <div>
-                    <a href="../html/courses.html">Free</a>
-                </div>
-                <div>
-                    <a href="../html/courses.html">Paid</a>
-                </div>
-                <div>
-                    <a href="../html/achievements.html">My Achivements</a>
-                </div>
-                <div>
-                    <a href="../html/library.html">My Library</a>
-                </div>
-                <!-- </li> -->
-                <!-- PT BUTON LOGIN DE AICI -->
-
-                <!-- pana aici!!!!  -->
-                <!-- <li>
-                                            <a href="#">
-                                                <i class="fa fa-gear fa-2x gear"></i>
-                                            </a>
-                                        </li> -->
-                <!-- <li> -->
-                <div>
-                    <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@LOGIN@@@@@@@@@@@@@@@@@@@@@@@ -->
-                    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+    
+        <div class="header">
+                <div class="center">
+                    <h1>Skillz'
+                        <span>o</span>'Skillz</h1>
         
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" >
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-
-                        <!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@LOGIN_END@@@@@@@@@@@@@@@@@@@@@@@@@@@@22 -->
-                        
+                    <ul class="menu">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="courses">Courses</a>
+                        </li>
+                        <li>
+                            <a href="achievements">My Achivements</a>
+                        </li>
+                        <li>
+                            <a href="myLibrary">My Library</a>
+                        </li>
+                        <li>
+                            <div>
+                                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
+        
+                                <div id="id01" class="modal">
+        
+                                    <form class="modal-content animate" action="/signin" method="POST">
+                                        <div class="imgcontainer">
+                                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                            <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
+                                                alt="Avatar" class="avatar">
+                                        </div>
+        
+                                        <div class="container">
+                                            <label for="email">
+                                                <b>Username</b>
+                                            </label>
+                                            <input type="text" placeholder="Enter Username" name="email" required>
+        
+                                            <label for="password">
+                                                <b>Password</b>
+                                            </label>
+                                            <input type="password" placeholder="Enter Password" name="password" required>
+        
+                                            <button type="submit" class="button1">Login</button>
+                                            <label>
+                                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                                            </label>
+                                        </div>
+        
+                                        <div class="container">
+                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                            <span class="psw">Forgot
+                                                <a href="#">password?</a>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-gear fa-2x gear"></i>
+                            </a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="Profile">Profil</a>
+                                </li>
+                                <li>
+                                    <a href="register">Register</a>
+                                </li>
+                                <li>
+                                    <a href="/sign-out">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="dropdown">
+                        <!-- <button class="dropbtn">Dropdown</button> -->
+                        <div class="container dropbtn" onclick="myFunction(this)">
+                            <div class="bar1"></div>
+                            <div class="bar2"></div>
+                            <div class="bar3"></div>
+                        </div>
+                        <div class="dropdown-content">
+                            <a href="index.html">Home</a>
+                            <a href="courses">Courses</a>
+                            <a href="achievements">My Achivements</a>
+                            <a href="myLibrary">My Library</a>
+                            <div>
+        
+                                <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
+        
+                                <div id="id02" class="modal">
+        
+                                    <form class="modal-content animate" action="/signin" method="POST">
+                                        <div class="imgcontainer">
+                                            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                                            <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
+                                                alt="Avatar" class="avatar">
+                                        </div>
+        
+                                        <div class="container">
+                                            <label for="email">
+                                                <b>Username</b>
+                                            </label>
+                                            <input type="text" placeholder="Enter Username" name="email" required>
+        
+                                            <label for="password">
+                                                <b>Password</b>
+                                            </label>
+                                            <input type="password" placeholder="Enter Password" name="password" required>
+        
+                                            <button type="submit" class="button1">Login</button>
+                                            <label>
+                                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                                            </label>
+                                        </div>
+        
+                                        <div class="container">
+                                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+                                            <span class="psw">Forgot
+                                                <a href="#">password?</a>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <button class="accordion">Settings</button>
+                            <div class="panel">
+                                <a href="Profile">Profil</a>
+        
+                                <a href="/sign-out">Logout</a>
+                            </div>
+                            <script>
+                                var acc = document.getElementsByClassName("accordion");
+                                var i;
+        
+                                for (i = 0; i < acc.length; i++) {
+                                    acc[i].addEventListener("click", function () {
+                                        this.classList.toggle("active");
+                                        var panel = this.nextElementSibling;
+                                        if (panel.style.display === "block") {
+                                            panel.style.display = "none";
+                                        } else {
+                                            panel.style.display = "block";
+                                        }
+                                    });
+                                }
+                            </script>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </div>
+            </div>
+        
+            <script type="text/javascript" src="/header.js"></script>
 
-                <div>
-                    <button class="settings" >
-                        <i class="fa fa-gear fa-2x gear"></i>
-                    </button>
-
-                    <nav class="submenu" id="dropdownSettings">
-                        <div>
-                            <a href="../html/profile.html">Profil</a>
-                        </div>
-                        <div>
-                            <a href="#">Payment method</a>
-                        </div>
-                        <div>
-                            <a href="#">Something</a>
-                        </div>
-                        <div>
-                            <a href="#">Logout</a>
-                        </div>
-                    </nav>
-                </div>
-            </nav>
-            <div class="clear"></div>
-        </div>
-    </div>
-
-    <!-- script button -->
-    <!-- 
-                    <script>
-                
-                        function myFunction() {
-                            var x = document.getElementById("dropdownSettings");
-                            if (x.style.display === "none") {
-                                x.style.display = "block";
-                            } else {
-                                x.style.display = "none";
-                            }
-                        }
-                    </script> -->
-
-
-    <!-- <img src="../images/skinsred.png"/> -->
     <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
 
     <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
