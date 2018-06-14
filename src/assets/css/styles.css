@@ -985,3 +985,8 @@ span.psw a:visited {
 .socialIcons a i {
     font-size: 190%;
 }
+
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
