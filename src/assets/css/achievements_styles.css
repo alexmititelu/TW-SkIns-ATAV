@@ -130,15 +130,22 @@
 
 .level4 i.code {
 	position: absolute;
-    margin-top: -88%;
-    margin-left: -21.5%;
+    margin-top: -65%;
+    margin-left: -17%;
     color: #D9D9D9;
 }
 
 .level5 i.language {
     position: absolute;
-    margin-top: -49%;
-    margin-left: -9.5%;
+    margin-top: -62%;
+    margin-left: -12.5%;
+    color: #D9D9D9;
+}
+
+.level6 i.music {
+    position: absolute;
+    margin-top: -64%;
+    margin-left: -15%;
     color: #D9D9D9;
 }
 
@@ -148,29 +155,23 @@
     margin-left: -11%;
     color: #D9D9D9;
 }
-.level6 i.music {
-    position: absolute;
-    margin-top: -86%;
-    margin-left: -19%;
-    color: #D9D9D9;
-}
 
 .level4 i.star1{
     position: absolute;
-    margin-top: -32%;
-    margin-left: -23%;
+    margin-top: -24%;
+    margin-left: -19%;
     color: #D9D9D9;
 }
 .level5 i.star1{
     position: absolute;
-    margin-top: -18%;
-    margin-left: -14%;
+    margin-top: -23%;
+    margin-left: -18%;
     color: #D9D9D9;
 }
 .level6 i.star1{
     position: absolute;
-    margin-top: -31%;
-    margin-left: -25%;
+    margin-top: -23%;
+    margin-left: -19%;
     color: #D9D9D9;
 }
 .level8 i.star1 {
@@ -182,20 +183,20 @@
 
 .level4 i.star2 {
     position: absolute;
-    margin-top: -32%;
+    margin-top: -24%;
     margin-left: -3%;
     color: #D9D9D9;
 }
 .level5 i.star2 {
     position: absolute;
-    margin-top: -18%;
-    margin-left: -2%;
+    margin-top: -23%;
+    margin-left: -3%;
     color: #D9D9D9;
 }
 .level6 i.star2 {
     position: absolute;
-    margin-top: -31%;
-    margin-left: -4%;
+    margin-top: -23%;
+    margin-left: -3%;
     color: #D9D9D9;
 }
 .level8 i.star2 {
@@ -207,20 +208,20 @@
 
 .level4 i.star3 {
     position: absolute;
-    margin-top: -32%;
-    margin-left: 17%;
+    margin-top: -24%;
+    margin-left: 12%;
     color: #D9D9D9;
 }
 .level5 i.star3 {
     position: absolute;
-    margin-top: -18%;
-    margin-left: 10%;
+    margin-top: -23%;
+    margin-left: 12%;
     color: #D9D9D9;
 }
 .level6 i.star3 {
     position: absolute;
-    margin-top: -31%;
-    margin-left: 17%;
+    margin-top: -23%;
+    margin-left: 13%;
     color: #D9D9D9;
 }
 .level8 i.star3 {
