@@ -34,10 +34,11 @@ module.export = coursesHandler = function(req, res, axios, fs)
 
 	if(req.url === '/courses' && req.method === 'GET')
 	{
-		console.log("TEST");
 		var cookie = cookies.get('userToken');
+		console.log("TEST " + cookie);
 
-		if(cookie)
+
+		if(!cookie)
 		{
 			var url = 'https://localhost:8050/index.html';
 
@@ -61,7 +62,10 @@ module.export = coursesHandler = function(req, res, axios, fs)
 			});
 
 			res.writeHead(200, {
-                    'Content-Type': 'text/html'
+					'Content-Type': 'text/html',
+					'Access-Control-Allow-Origin': 'https://localhost:8050/',
+					'Access-Control-Allow-Credentials': 'true',
+					'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
             });
 		}
 		
@@ -129,9 +133,12 @@ module.export = coursesHandler = function(req, res, axios, fs)
 
 	
 					res.writeHead(200, {
-						'Content-Type': 'text/html'
+						'Content-Type': 'text/html',
+						'Access-Control-Allow-Origin': 'https://localhost:8050',
+                        'Access-Control-Allow-Credentials': 'true',
+                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE'
 						});
-						
+					
 					res.write(JSON.stringify(response.data))
 					
             		res.end();
