@@ -1,0 +1,287 @@
+<!DOCTYPE HTML><html><head><title>Academic Recommender API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/raml2html/raml2html 7.1.0"><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script><script type="text/javascript">
+      $(document).ready(function() {
+        $('.page-header pre code, .top-resource-description pre code, .modal-body pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
+
+        $('[data-toggle]').click(function() {
+          var selector = $(this).data('target') + ' pre code';
+          $(selector).each(function(i, block) {
+            hljs.highlightBlock(block);
+          });
+        });
+
+        // open modal on hashes like #_action_get
+        $(window).bind('hashchange', function(e) {
+          var anchor_id = document.location.hash.substr(1); //strip #
+          var element = $('#' + anchor_id);
+
+          // do we have such element + is it a modal?  --> show it
+          if (element.length && element.hasClass('modal')) {
+            element.modal('show');
+          }
+        });
+
+        // execute hashchange on first page load
+        $(window).trigger('hashchange');
+
+        // remove url fragment on modal hide
+        $('.modal').on('hidden.bs.modal', function() {
+          try {
+            if (history && history.replaceState) {
+                history.replaceState({}, '', '#');
+            }
+          } catch(e) {}
+        });
+      });
+    </script><style>
+      .hljs {
+        background: transparent;
+      }
+      .parent {
+        color: #999;
+      }
+      .list-group-item > .badge {
+        float: none;
+        margin-right: 6px;
+      }
+      .panel-title > .methods {
+        float: right;
+      }
+      .badge {
+        border-radius: 0;
+        text-transform: uppercase;
+        width: 70px;
+        font-weight: normal;
+        color: #f3f3f6;
+        line-height: normal;
+      }
+      .badge_get {
+        background-color: #63a8e2;
+      }
+      .badge_post {
+        background-color: #6cbd7d;
+      }
+      .badge_put {
+        background-color: #22bac4;
+      }
+      .badge_delete {
+        background-color: #d26460;
+      }
+      .badge_patch {
+        background-color: #ccc444;
+      }
+      .list-group, .panel-group {
+        margin-bottom: 0;
+      }
+      .panel-group .panel+.panel-white {
+        margin-top: 0;
+      }
+      .panel-group .panel-white {
+        border-bottom: 1px solid #F5F5F5;
+        border-radius: 0;
+      }
+      .panel-white:last-child {
+        border-bottom-color: white;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      .panel-white .panel-heading {
+        background: white;
+      }
+      .tab-pane ul {
+        padding-left: 2em;
+      }
+      .tab-pane h1 {
+        font-size: 1.3em;
+      }
+      .tab-pane h2 {
+        font-size: 1.2em;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #ddd;
+      }
+      .tab-pane h3 {
+        font-size: 1.1em;
+      }
+      .tab-content {
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+      }
+      #sidebar {
+        margin-top: 30px;
+        padding-right: 5px;
+        overflow: auto;
+        height: 90%;
+      }
+      .top-resource-description {
+        border-bottom: 1px solid #ddd;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description {
+        border-bottom: 1px solid #fcfcfc;
+        background: #fcfcfc;
+        padding: 15px 15px 0 15px;
+        margin: -15px -15px 10px -15px;
+      }
+      .resource-description p:last-child {
+        margin: 0;
+      }
+      .list-group .badge {
+        float: left;
+      }
+      .method_description {
+        margin-left: 85px;
+      }
+      .method_description p:last-child {
+        margin: 0;
+      }
+      .list-group-item {
+        cursor: pointer;
+      }
+      .list-group-item:hover {
+        background-color: #f5f5f5;
+      }
+      pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+      }
+      .items {
+        background: #f5f5f5;
+        color: #333;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        font-size: 13px;
+        line-height: 1.42857143;
+      }
+      .examples {
+        margin-left: 0.5em;
+      }
+      .resource-modal li > ul {
+        margin-bottom: 1em;
+      }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>Academic Recommender API documentation <small>version v1</small></h1><p>http://localhost:8082/login {version}</p><ul><li><strong>version</strong>: <em>required (v1)</em></li></ul></div><div class="panel panel-default"><div class="panel-heading"><h3 id="login" class="panel-title">/login</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_login"><span class="parent"></span>/login</a> <span class="methods"><a href="#login_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_login" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#login_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Login to AcaR</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="login_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/login</h4></div><div class="modal-body"><div class="alert alert-info"><p>Login to AcaR</p></div><ul class="nav nav-tabs"><li class="active"><a href="#login_post_request" data-toggle="tab">Request</a></li><li><a href="#login_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="login_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "username": "Serban",
+  "password": "ciocolata"
+}	
+</code></pre></div></div><div class="tab-pane" id="login_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid ,
+  "message": "Tokenul sesiunii a fost generat cu succes!" ,
+  "sessionId": "123nsjdA341n341AczxcZ41512eD"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error,
+  "message": "Numele de utilizator sau parola sunt gresite!"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="register_matricol" class="panel-title">/register-matricol</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_register_matricol"><span class="parent"></span>/register-matricol</a> <span class="methods"><a href="#register_matricol_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_register_matricol" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#register_matricol_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Inregistrarea cu numar matricol</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="register_matricol_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/register-matricol</h4></div><div class="modal-body"><div class="alert alert-info"><p>Inregistrarea cu numar matricol</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register_matricol_post_request" data-toggle="tab">Request</a></li><li><a href="#register_matricol_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register_matricol_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "nrMatricol": "31090104SL161205"
+}	
+</code></pre></div></div><div class="tab-pane" id="register_matricol_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Numarul matricol este valid, vei primi in scurt timp un mesaj pe emailul asociat acestui numar matricol ce contine detalii despre pasii urmatori ai inregistrarii!"
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Numarul matricol nu exista sau un cont este deja inregistrat cu acest numar matricol!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="register" class="panel-title">/register</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_register"><span class="parent"></span>/register</a> <span class="methods"><a href="#register_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_register" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#register_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Inregistrarea contului</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="register_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/register</h4></div><div class="modal-body"><div class="alert alert-info"><p>Inregistrarea contului</p></div><ul class="nav nav-tabs"><li class="active"><a href="#register_post_request" data-toggle="tab">Request</a></li><li><a href="#register_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="register_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "registerToken": "123nsjdA341n341AczxcZ41512eD" ,
+  "username": "codrin" ,
+  "password": "ciao1234"
+}	
+</code></pre></div></div><div class="tab-pane" id="register_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Contul s-a creat cu succes!"
+}    
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Codul de inregistrare este invalid!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="questions" class="panel-title">/questions</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_questions"><span class="parent"></span>/questions</a> <span class="methods"><a href="#questions_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_questions" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#questions_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Formular intrebari dupa inregistrare</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="questions_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/questions</h4></div><div class="modal-body"><div class="alert alert-info"><p>Formular intrebari dupa inregistrare</p></div><ul class="nav nav-tabs"><li class="active"><a href="#questions_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="questions_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Intrebarile au fost preluate cu succes din baza de date!" ,
+  "questions": ["Intrebarea 1","Intrebarea 2"]
+}  
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu ai specificat un token de logare in cerere!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="answers" class="panel-title">/answers</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_answers"><span class="parent"></span>/answers</a> <span class="methods"><a href="#answers_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_answers" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#answers_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Trimiterea raspunsurilor din formular.Array[i]=raspunsul la intrebarea i+1</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="answers_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/answers</h4></div><div class="modal-body"><div class="alert alert-info"><p>Trimiterea raspunsurilor din formular.Array[i]=raspunsul la intrebarea i+1</p></div><ul class="nav nav-tabs"><li class="active"><a href="#answers_post_request" data-toggle="tab">Request</a></li><li><a href="#answers_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="answers_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "array": [3,4,1,5,4,2] 
+}	
+</code></pre></div></div><div class="tab-pane" id="answers_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Rezultatele au fost inregistrate cu succes!"
+}   
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Deja ati completat acest formular!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="subjects__subject_" class="panel-title">/subjects/{subject}</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_subjects__subject_"><span class="parent"></span>/subjects/{subject}</a> <span class="methods"><a href="#subjects__subject__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_subjects__subject_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#subjects__subject__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Informatii despre o anumita materie</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="subjects__subject__get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/subjects/{subject}</h4></div><div class="modal-body"><div class="alert alert-info"><p>Informatii despre o anumita materie</p></div><ul class="nav nav-tabs"><li class="active"><a href="#subjects__subject__get_request" data-toggle="tab">Request</a></li><li><a href="#subjects__subject__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="subjects__subject__get_request"><h3>URI Parameters</h3><ul><li><strong>subject</strong>: <em>required (string)</em></li></ul></div><div class="tab-pane" id="subjects__subject__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Informatiile au fost preluate cu succes din baza de date!" ,
+  "titlu": "TW",
+  "an": 2,
+  "semestru": 2,
+  "paginaCursului": "link",
+  "titular": "" ,
+  "paginaTitular": "" 
+} 
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu s-a putut contacta serviciul de administrare a materiilor!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="subjects" class="panel-title">/subjects</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_subjects"><span class="parent"></span>/subjects</a> <span class="methods"><a href="#subjects_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_subjects" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#subjects_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Afisarea tuturor materiilor</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="subjects_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/subjects</h4></div><div class="modal-body"><div class="alert alert-info"><p>Afisarea tuturor materiilor</p></div><ul class="nav nav-tabs"><li class="active"><a href="#subjects_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="subjects_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Materiile au fost preluate cu succes din baza de date!" 
+}     
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "A aparut o eroare interna, va rugam reincercati mai tarziu iar daca eroarea persista contactati un administrator!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="subjects__subject_books__page" class="panel-title">/subjects/:subject/books/:page</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_subjects__subject_books__page"><span class="parent"></span>/subjects/:subject/books/:page</a> <span class="methods"><a href="#subjects__subject_books__page_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_subjects__subject_books__page" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#subjects__subject_books__page_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Pagina cu cartile pentru o anumita materie</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="subjects__subject_books__page_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/subjects/:subject/books/:page</h4></div><div class="modal-body"><div class="alert alert-info"><p>Pagina cu cartile pentru o anumita materie</p></div><ul class="nav nav-tabs"><li class="active"><a href="#subjects__subject_books__page_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="subjects__subject_books__page_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "S-au extras datele din baza de date cu succes!" ,
+  "resources": resourcePage
+}     
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu a fost specificat o pagina!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="subjects__subject_books__page_recommendations" class="panel-title">/subjects/:subject/books/:page/recommendations</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_subjects__subject_books__page_recommendations"><span class="parent"></span>/subjects/:subject/books/:page/recommendations</a> <span class="methods"><a href="#subjects__subject_books__page_recommendations_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_subjects__subject_books__page_recommendations" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#subjects__subject_books__page_recommendations_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Pagina cu cartile recomandate pentru o anumita materie</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="subjects__subject_books__page_recommendations_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/subjects/:subject/books/:page/recommendations</h4></div><div class="modal-body"><div class="alert alert-info"><p>Pagina cu cartile recomandate pentru o anumita materie</p></div><ul class="nav nav-tabs"><li class="active"><a href="#subjects__subject_books__page_recommendations_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="subjects__subject_books__page_recommendations_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "S-au extras datele din baza de date cu succes!" ,
+  "resources": resourcePage
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu a fost specificat o pagina!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="is_auth" class="panel-title">/is-auth</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_is_auth"><span class="parent"></span>/is-auth</a> <span class="methods"><a href="#is_auth_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_is_auth" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#is_auth_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Specifica daca userul este logat</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="is_auth_post"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_post">post</span> <span class="parent"></span>/is-auth</h4></div><div class="modal-body"><div class="alert alert-info"><p>Specifica daca userul este logat</p></div><ul class="nav nav-tabs"><li class="active"><a href="#is_auth_post_request" data-toggle="tab">Request</a></li><li><a href="#is_auth_post_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="is_auth_post_request"><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "sessionId": "sessionId" 
+}	
+</code></pre></div></div><div class="tab-pane" id="is_auth_post_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Tokenul este valid!" ,
+  "username": body.username		
+}
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu s-a putut contacta serviciul de administrare a sesiunilor!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="answered_questions" class="panel-title">/answered-questions</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white resource-modal"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_answered_questions"><span class="parent"></span>/answered-questions</a> <span class="methods"><a href="#answered_questions_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel_answered_questions" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#answered_questions_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Specifica daca utilizatorul a raspuns la formularul de intrebari</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="answered_questions_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/answered-questions</h4></div><div class="modal-body"><div class="alert alert-info"><p>Specifica daca utilizatorul a raspuns la formularul de intrebari</p></div><ul class="nav nav-tabs"><li class="active"><a href="#answered_questions_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="answered_questions_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": valid,
+  "message": "Verificarea intrebarilor pentru utilizator s-a terminat cu succes!" ,
+  "userCompletedQuestions": false
+}  
+</code></pre></div><h2>HTTP status code <a href="http://httpstatus.es/400" target="_blank">400</a></h2><h3>Body</h3><p><strong>Media type</strong>: application/json</p><p><strong>Type</strong>: object</p><p><strong>Example</strong>:</p><div class="examples"><pre><code>{
+  "status": error ,
+  "message": "Nu s-a putut contacta serviciul de administrare a conturilor!" 
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#login">/login</a></li><li><a href="#register_matricol">/register-matricol</a></li><li><a href="#register">/register</a></li><li><a href="#questions">/questions</a></li><li><a href="#answers">/answers</a></li><li><a href="#subjects__subject_">/subjects/{subject}</a></li><li><a href="#subjects">/subjects</a></li><li><a href="#subjects__subject_books__page">/subjects/:subject/books/:page</a></li><li><a href="#subjects__subject_books__page_recommendations">/subjects/:subject/books/:page/recommendations</a></li><li><a href="#is_auth">/is-auth</a></li><li><a href="#answered_questions">/answered-questions</a></li></ul></div></div></div></div></body></html>

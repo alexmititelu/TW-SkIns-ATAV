@@ -1,0 +1,270 @@
+#%RAML 1.0
+---
+title: Academic Recommender
+baseUri: http://localhost:8082/login {version}
+version: v1
+/login:
+  post:
+    description: Login to AcaR
+    body:
+      application/json:
+         example: |
+           {
+             "username": "Serban",
+             "password": "ciocolata"
+           }	
+    responses:
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid ,
+                  "message": "Tokenul sesiunii a fost generat cu succes!" ,
+                  "sessionId": "123nsjdA341n341AczxcZ41512eD"
+                }
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error,
+                  "message": "Numele de utilizator sau parola sunt gresite!"
+                }
+/register-matricol:
+  post:
+    description: Inregistrarea cu numar matricol
+    body:
+      application/json:
+         example: |
+           {
+             "nrMatricol": "31090104SL161205"
+           }	
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Numarul matricol nu exista sau un cont este deja inregistrat cu acest numar matricol!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Numarul matricol este valid, vei primi in scurt timp un mesaj pe emailul asociat acestui numar matricol ce contine detalii despre pasii urmatori ai inregistrarii!"
+                }
+/register:
+  post:
+    description: Inregistrarea contului 
+    body:
+      application/json:
+         example: |
+           {
+             "registerToken": "123nsjdA341n341AczxcZ41512eD" ,
+             "username": "codrin" ,
+             "password": "ciao1234"
+           }	
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Codul de inregistrare este invalid!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Contul s-a creat cu succes!"
+                }    
+/questions:
+  get:
+    description: Formular intrebari dupa inregistrare
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu ai specificat un token de logare in cerere!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Intrebarile au fost preluate cu succes din baza de date!" ,
+                  "questions": ["Intrebarea 1","Intrebarea 2"]
+                }  
+/answers:
+  post:
+    description: Trimiterea raspunsurilor din formular.Array[i]=raspunsul la intrebarea i+1
+    body:
+      application/json:
+         example: |
+           {
+             "array": [3,4,1,5,4,2] 
+           }	
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Deja ati completat acest formular!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Rezultatele au fost inregistrate cu succes!"
+                }   
+/subjects/{subject}:
+  get:
+    description: Informatii despre o anumita materie
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu s-a putut contacta serviciul de administrare a materiilor!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Informatiile au fost preluate cu succes din baza de date!" ,
+                  "titlu": "TW",
+                  "an": 2,
+                  "semestru": 2,
+                  "paginaCursului": "link",
+                  "titular": "" ,
+                  "paginaTitular": "" 
+                } 
+/subjects:
+  get:
+    description: Afisarea tuturor materiilor
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "A aparut o eroare interna, va rugam reincercati mai tarziu iar daca eroarea persista contactati un administrator!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Materiile au fost preluate cu succes din baza de date!" 
+                }     
+/subjects/:subject/books/:page:
+  get:
+    description: Pagina cu cartile pentru o anumita materie
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu a fost specificat o pagina!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "S-au extras datele din baza de date cu succes!" ,
+                  "resources": resourcePage
+                }     
+/subjects/:subject/books/:page/recommendations:
+  get:
+    description: Pagina cu cartile recomandate pentru o anumita materie
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu a fost specificat o pagina!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "S-au extras datele din baza de date cu succes!" ,
+                  "resources": resourcePage
+                }
+/is-auth:
+  post:
+    description: Specifica daca userul este logat
+    body:
+      application/json:
+         example: |
+           {
+             "sessionId": "sessionId" 
+           }	
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu s-a putut contacta serviciul de administrare a sesiunilor!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Tokenul este valid!" ,
+                  "username": body.username		
+                }
+/answered-questions:
+  get:
+    description: Specifica daca utilizatorul a raspuns la formularul de intrebari
+    responses:
+        400:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": error ,
+                  "message": "Nu s-a putut contacta serviciul de administrare a conturilor!" 
+                }
+        200:
+          body:
+            application/json:
+              example: |
+                {
+                  "status": valid,
+                  "message": "Verificarea intrebarilor pentru utilizator s-a terminat cu succes!" ,
+                  "userCompletedQuestions": false
+                }  
