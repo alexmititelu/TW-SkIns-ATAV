@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/index_styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script language="javascript" type="text/javascript" src="/indexJSF.js"></script>
+
+
     <script>
         function myFunction(x) {
             x.classList.toggle("change");
@@ -35,13 +38,13 @@
                 <li>
                     <a href="courses">Courses</a>
                 </li>
-                <li>
+                <li id = "ach"> 
                     <a href="achievements">My Achivements</a>
                 </li>
-                <li>
+                <li id = "lib">
                     <a href="myLibrary">My Library</a>
                 </li>
-                <li>
+                <li id = "log">
                     <div>
                         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
 
@@ -86,10 +89,10 @@
                         <i class="fa fa-gear fa-2x gear"></i>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li id="profilus">
                             <a href="Profile">Profil</a>
                         </li>
-                        <li>
+                        <li id="registerus">
                             <a href="register">Register</a>
                         </li>
                         <li>
@@ -108,9 +111,9 @@
                 <div class="dropdown-content">
                     <a href="index.html">Home</a>
                     <a href="courses">Courses</a>
-                    <a href="achievements">My Achivements</a>
-                    <a href="myLibrary">My Library</a>
-                    <div>
+                    <a href="achievements" id="ach2">My Achivements</a>
+                    <a href="myLibrary" id = "lib2">My Library</a>
+                    <div id = "log2">
 
                         <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
 
@@ -151,7 +154,7 @@
                     </div>
                     <button class="accordion">Settings</button>
                     <div class="panel">
-                        <a href="Profile">Profil</a>
+                        <a href="Profile" id ="profilus2" >Profil</a>
 
                         <a href="/sign-out">Logout</a>
                     </div>
