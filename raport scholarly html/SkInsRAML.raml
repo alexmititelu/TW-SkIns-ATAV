@@ -1,270 +1,231 @@
 #%RAML 1.0
 ---
-title: Academic Recommender
-baseUri: http://localhost:8082/login {version}
-version: v1
-/login:
+title: Skill Instructor
+baseUri: http://localhost:8050
+/signin:
   post:
-    description: Login to AcaR
+    description: Login to SkIns
     body:
       application/json:
          example: |
            {
-             "username": "Serban",
-             "password": "ciocolata"
+             "email": "mititelu.alex@gmail.com",
+             "password": "mititelualex1"
            }	
     responses:
-        200:
+        302:
+          body:
+            text/html:
+              example: |
+        404:
           body:
             application/json:
-              example: |
-                {
-                  "status": valid ,
-                  "message": "Tokenul sesiunii a fost generat cu succes!" ,
-                  "sessionId": "123nsjdA341n341AczxcZ41512eD"
-                }
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error,
-                  "message": "Numele de utilizator sau parola sunt gresite!"
-                }
-/register-matricol:
-  post:
-    description: Inregistrarea cu numar matricol
-    body:
-      application/json:
-         example: |
-           {
-             "nrMatricol": "31090104SL161205"
-           }	
-    responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Numarul matricol nu exista sau un cont este deja inregistrat cu acest numar matricol!" 
-                }
-        200:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": valid,
-                  "message": "Numarul matricol este valid, vei primi in scurt timp un mesaj pe emailul asociat acestui numar matricol ce contine detalii despre pasii urmatori ai inregistrarii!"
-                }
+
 /register:
   post:
-    description: Inregistrarea contului 
+    description: Register
     body:
       application/json:
          example: |
            {
-             "registerToken": "123nsjdA341n341AczxcZ41512eD" ,
-             "username": "codrin" ,
-             "password": "ciao1234"
+             "username": "miti",
+             "password": "steaua",
+             "email": "mititelu.alex@gmail.com",
+             "firstname": "Alexandru",
+             "lastname": "Mititelu",
+             "phone": "0232112112",
+             "gender": "female",
+             "interests": "weightlifting"
            }	
     responses:
-        400:
+        404:
           body:
-            application/json:
+            text/html:
               example: |
-                {
-                  "status": error ,
-                  "message": "Codul de inregistrare este invalid!" 
-                }
+                "Microserviciul register a picat"
         200:
           body:
-            application/json:
+            text/html:
               example: |
-                {
-                  "status": valid,
-                  "message": "Contul s-a creat cu succes!"
-                }    
-/questions:
+                "createdAccount page"
+/getAllCourses:
   get:
-    description: Formular intrebari dupa inregistrare
+    description: Fetches all available courses
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Nu ai specificat un token de logare in cerere!" 
-                }
         200:
           body:
             application/json:
               example: |
-                {
-                  "status": valid,
-                  "message": "Intrebarile au fost preluate cu succes din baza de date!" ,
-                  "questions": ["Intrebarea 1","Intrebarea 2"]
-                }  
-/answers:
+                [
+                  {
+                  "_id":"5b16b94065136feeb6a37b22",
+                  "path":"/path/to/course",
+                  "titlu_curs":"TITLE",
+                  "tag":"python",
+                  "descriere":"Descriere"
+                  },
+                  {
+                    "_id":"5b186ce2b46d674fa355e797",
+                    "path":"/src/guitar",
+                    "titlu_curs":"Chitara",
+                    "tag":"gtr",
+                    "descriere":"Am descris ceva"
+                  }
+                ]
+
+        404:
+          body:
+            text/html:
+              example: |
+                "Couldn't find specified path"
+/subscribe:
   post:
-    description: Trimiterea raspunsurilor din formular.Array[i]=raspunsul la intrebarea i+1
-    body:
-      application/json:
-         example: |
-           {
-             "array": [3,4,1,5,4,2] 
-           }	
+    description: Subscribes to a course (adds to the users' library)
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Deja ati completat acest formular!" 
-                }
         200:
           body:
-            application/json:
+            text/html:
               example: |
-                {
-                  "status": valid,
-                  "message": "Rezultatele au fost inregistrate cu succes!"
-                }   
-/subjects/{subject}:
+                "Succesfully inserted!"
+        404:
+          body:
+            text/html:
+              example: |
+                "Couldn't find specified path"
+/getSubscribedCourses:
   get:
-    description: Informatii despre o anumita materie
+    description: Fetches all the courses the user is subscribed to.
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Nu s-a putut contacta serviciul de administrare a materiilor!" 
-                }
         200:
           body:
             application/json:
               example: |
-                {
-                  "status": valid,
-                  "message": "Informatiile au fost preluate cu succes din baza de date!" ,
-                  "titlu": "TW",
-                  "an": 2,
-                  "semestru": 2,
-                  "paginaCursului": "link",
-                  "titular": "" ,
-                  "paginaTitular": "" 
-                } 
-/subjects:
+                [
+                  {
+                  "_id":"5b16b94065136feeb6a37b22",
+                  "path":"/path/to/course",
+                  "titlu_curs":"TITLE",
+                  "tag":"python",
+                  "descriere":"Descriere"
+                  }
+                ]
+
+        404:
+          body:
+            text/html:
+              example: |
+                "Couldn't find specified path"
+/python:
+  description: Calls the python course microservice.
+  /documentation:
+    get:
+     description: Fetches the documentation
+     responses:
+      200:
+        body:
+          application/json:
+  /getExercise:
+    get:
+     description: Gets a single exercise.
+     responses:
+      200:
+        body:
+          application/json:
+            example: |
+              { 
+                "_id" : ObjectId("5b1e689ddf04711392dfdbe0"), 
+                "nrExercitiu" : 4.0, 
+                "enunt" : "List Remove Duplicates\n    \tWrite a program (function!) that takes a list and returns a new list that contains all the elements of the first list minus all the duplicates.\n\nExtras:\n\nWrite two different functions to do this - one using a loop and constructing a list, and another using sets.\nDiscussion\n\nConcepts for this week:\n\nSets\nSets\n\nIn mathematics, a set is a collection of elements where no element is repeated. This becomes useful because if you know your data is stored in a set, you are guaranteed to have unique elements.\n\nFeatures of sets\n\nSets are not ordered. This means that there is no “first element” or “last element.” There are just “elements”. You cannot ask a set for it’s “next element”.\nThere are no repeat elements in sets.\nYou can convert between sets and lists very easily.\nIn Python\n\nIn Python, you make and use a set with the set() keyword. For example:\n\n  names = set()\n  names.add('Michele')\n  names.add('Robin')\n  names.add('Michele')\n  print(names)\nAnd the output will be;\n\n  set(['Michele', 'Robin'])\nYou can do to a set almost anything you can do to a list (except ask for things like “the third element”). See the Python documentation about sets to get a full list of things you can do to sets.\n\nYou can convert from a list to a set and a set to a list pretty easily:\n\n  names = ['Michele', 'Robin', 'Sara', 'Michele']\n  names = set(names)\n  names = list(names)\n  print(names)\nAnd the result of this will be:\n\n  ['Michele', 'Robin', 'Sara']\nHappy coding!\n    ", 
+                "input" : "[1, 2, 3, 4, 3, 2, 1, 10, 4, 5, 2, 10, 1, 8]", 
+                "rezultat" : "[1, 2, 3, 4, 5, 8, 10]"
+              }
+  /getExercises:
+    get:
+     description: Returns an array of exercises. Makes use of the getExercise path.
+     responses:
+      200:
+        body:
+          application/json:
+
+  /fileUpload:
+    post:
+     description: Uploads file to the server. It will be interpreted and compared to the correct output.
+     responses:
+      200:
+        body:
+          application/json:
+            example: |
+            {
+              "status": scriptStatus,
+              "input": value,
+              "expectedOutput": theCorrectAnswer,
+              "uploadedScriptOutput": theAnswerForTheUploadedScript,
+              "message": message
+            }
+/guitar:
+  description: Calls the guitar course microservice.
   get:
-    description: Afisarea tuturor materiilor
+    description: A page with a guitar tabulature chooser.
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "A aparut o eroare interna, va rugam reincercati mai tarziu iar daca eroarea persista contactati un administrator!" 
-                }
-        200:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": valid,
-                  "message": "Materiile au fost preluate cu succes din baza de date!" 
-                }     
-/subjects/:subject/books/:page:
+      200:
+        body:
+          text/html:
+      404:
+        body:
+          text/html:
+/getFields:
   get:
-    description: Pagina cu cartile pentru o anumita materie
+    description: 
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Nu a fost specificat o pagina!" 
-                }
         200:
           body:
             application/json:
               example: |
                 {
-                  "status": valid,
-                  "message": "S-au extras datele din baza de date cu succes!" ,
-                  "resources": resourcePage
-                }     
-/subjects/:subject/books/:page/recommendations:
+                  "username": "miti",
+                  "password": "...",
+                  "email": "mititelu.alex@gmail.com",
+                  "firstname": "Alexandru",
+                  "lastname": "Mititelu",
+                  "phone": "0232112112",
+                  "gender": "female",
+                  "interests": "weightlifting"
+                }
+
+        404:
+          body:
+            text/html:
+              example: |
+/getLang:
   get:
-    description: Pagina cu cartile recomandate pentru o anumita materie
+    description: Calls the language microservice.
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Nu a fost specificat o pagina!" 
-                }
         200:
           body:
             application/json:
               example: |
-                {
-                  "status": valid,
-                  "message": "S-au extras datele din baza de date cu succes!" ,
-                  "resources": resourcePage
-                }
-/is-auth:
-  post:
-    description: Specifica daca userul este logat
-    body:
-      application/json:
-         example: |
-           {
-             "sessionId": "sessionId" 
-           }	
-    responses:
-        400:
+                
+
+        404:
           body:
-            application/json:
+            text/html:
               example: |
-                {
-                  "status": error ,
-                  "message": "Nu s-a putut contacta serviciul de administrare a sesiunilor!" 
-                }
-        200:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": valid,
-                  "message": "Tokenul este valid!" ,
-                  "username": body.username		
-                }
-/answered-questions:
+/courses:
   get:
-    description: Specifica daca utilizatorul a raspuns la formularul de intrebari
+    description: Fetches the courses page and loads the data dynamically, using getAllCourses.
     responses:
-        400:
-          body:
-            application/json:
-              example: |
-                {
-                  "status": error ,
-                  "message": "Nu s-a putut contacta serviciul de administrare a conturilor!" 
-                }
         200:
           body:
-            application/json:
-              example: |
-                {
-                  "status": valid,
-                  "message": "Verificarea intrebarilor pentru utilizator s-a terminat cu succes!" ,
-                  "userCompletedQuestions": false
-                }  
+            text/html:
+/myLibrary:
+  get:
+    description: Fetches the library page and loads the data dinamically, using getSubscribedCourses.
+    responses:
+        200:
+          body:
+            text/html:
+
+
+
+
+
