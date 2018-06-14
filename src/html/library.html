@@ -93,99 +93,40 @@
 
         <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
         <div class="search centered">
-            <span>Cautati un curs ...</span>
-            <!-- <span class="fa fa-search"> -->
-                <input type="text" name="search" placeholder="Search..">
-            <!-- </span> -->
-            <div class="dropdown">
-                <span>Sort by ...</span>
-                <div class="dropdown-content">
-                  <button>Name</button>
-                  <button>Type</button>
-                  <button>% completed</button>
-                </div>
-              </div>
-        </div>
-        <div class="tagbar">
-            <div class = "tagbar-grid">
-                <div class = "tagbar-element0 tagbar-element-width">Tags</div>
-                <button class = "tagbar-element1 tagbar-element-width">Chitara</button>
-                <button class = "tagbar-element2 tagbar-element-width">Autoaparare</button>
-                <button class = "tagbar-element3 tagbar-element-width">Planorism</button>
-                <button class = "tagbar-element4 tagbar-element-width">MISTER</button>
+                <span>Cautati un curs ...</span>
+                <!-- <span class="fa fa-search"> -->
+                    <input  id = "searchBar" type="text" name="search" placeholder="Search..">
+                    <button id = "searchBtn" onclick = "setSearch()">Cauta</button>
+                <!-- </span> -->
             </div>
-        </div>
+            <div class="tagbar">
+                    <div class = "tagbar-grid">
+                        <div class = "tagbar-element0 tagbar-element-width">Tags</div>
+                        <ul>
+                        <li>Chitara<input onclick = "setFilterTags()" type = "checkbox" id = "gtr" class = "tagbar-element1 tagbar-element-width"></input>
+                        <li>Python<input onclick = "setFilterTags()" type = "checkbox" id = "python" class = "tagbar-element2 tagbar-element-width"></input>
+                        <li>Limbi<input onclick = "setFilterTags()" type = "checkbox" id = "lang" class = "tagbar-element1 tagbar-element-width"></input>
+                        </ul>
+                    </div>
+            </div>
     </div>
 
-        <div class="content">
-                <div class="course-content">
-                    <div class="main-flex">
-                        <div class="box tilt">
-                            <div class = "box-content">
-                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                                <form action="coursePageExample.htmls">
-                                    <button class="fa fa-arrow-right"></button>
-                                </form>
-                                </div>
-                            </div>
-                        <!-- <a href="#_" class="lightbox" id="curs1">
-                            Acum ar trebui sa vedem un overlay;1
-                        </a> -->
-                        <div class="box tilt">
-                            <div class = "box-content">
-                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                                <form action="#curs2">
-                                    <button class="fa fa-arrow-right"></button>
-                                </form>
-                                </div>
-                            </div>
-                        <a href="#_" class="lightbox" id="curs2">
-                            Acum ar trebui sa vedem un overlay;2
-                        </a>
-                        <div class="box tilt">
-                            <div class = "box-content">
-                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                                <form action="#curs3">
-                                    <button class="fa fa-arrow-right"></button>
-                                </form>
-                                </div>
-                            </div>
-                        <a href="#_" class="lightbox" id="curs3">
-                            Acum ar trebui sa vedem un overlay;3
-                        </a>
-                        <div class="box tilt">
-                            <div class = "box-content">
-                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                                <form action="#curs4">
-                                    <button class="fa fa-arrow-right"></button>
-                                </form>
-                                </div>
-                            </div>
-                        <a href="#_" class="lightbox" id="curs4">
-                            Acum ar trebui sa vedem un overlay;4
-                        </a>
-                        <div class="box tilt">
-                            <div class = "box-content">
-                                <img alt="Gigele, s-a stricat ceva la casca" class="image" src="../images/guitar.jpg">
-                                Asta e un curs si aici o sa scriu mai mult ca sa vad daca merge
-                                <form action="#curs5">
-                                    <button class="fa fa-arrow-right"></button>
-                                </form>
-                                </div>
-                            </div>
-                        <a href="#_" class="lightbox" id="curs5">
-                            Acum ar trebui sa vedem un overlay;5
-                        </a>
+    <div class="content">
+            <div class="course-content">
+                <div class="main-flex" id = "courseView">
+                    <div class="box tilt">
+                        <div class="upper">
+                        </div>
+                        LOADING...
+                        <div class="bottom">
+                        </div>
                     </div>
+                    <a href="#_" class="lightbox" id="curs9">
+                    </a>
                 </div>
             </div>
-
-
-            
+        </div>
+            <script src = "/libraryClient.js"></script>
 
 </body>
 
