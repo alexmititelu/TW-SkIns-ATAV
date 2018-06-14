@@ -34,6 +34,9 @@ const pythonCourseController = require('./controllers/pythonCourseController');
 const testimonialeController = require('./controllers/testimonialeController');
 
 const guitarCourseController = require('./controllers/guitarCourseController');
+
+const languageController = require('./controllers/languageController');
+
 // const addOwnCourseController = require('./controllers/addOwnCourseController');
 
 
@@ -77,6 +80,8 @@ const server = https.createServer(certOptions, (req, res) => {
     testimonialeHandler(req, res, axios, fs);
 
     guitarCourseHandler(req,res,axios,fs);
+
+    languageHandler(req,res,axios,fs);
     // addOwnCourseHandler(req, res, qs, cookies);
 
 
