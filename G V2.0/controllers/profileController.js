@@ -120,8 +120,13 @@ module.export = profileHandler = function(req, res, axios, fs)
 				res.writeHead(200, {
 					'Content-Type': 'text/html'
 					});
-				res.write(respondsex.data)
-				res.end(console.log("gata"));
+				/*res.write(respondsex.data)
+				res.end(console.log("gata"));*/
+				var url = 'https://localhost:8050/Profile';
+
+				res.writeHead(302, {Location: url});
+
+				res.end();
 				
 					
 			})
