@@ -153,12 +153,36 @@
     
     <!-- ~~~~~~~~~~~~~~~~~~~ BODY ~~~~~~~~~~~~~~~~~~~~~~-->
 
+	<!-- Body-ul din pagina de HOME-->
+    <!--<script>
+	//document.getElementById("c2").value="plm";
+	//document.getElementById("mybutton").onclick = 
+	function f(){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 ) {
+		if(this.status == 200) {
+		  var jsonRes = JSON.parse(xhttp.responseText);
+		  document.getElementById("test1").value = jsonRes[0].feedback;
+		  //document.getElementById("test2").value = jsonRes[2].feedback;
+		  //document.getElementById("test3").value = jsonRes[3].feedback;
+		}
+	  }
+	  };
+
+	  console.log("bla");
+	  xhttp.open("GET", "https://localhost:8050/testimoniale.html", true);
+	  xhttp.send();
+	};
+
+	f();
+	</script>-->
 
     <!-- Body-ul din pagina de HOME-->
     
     <div class="desc">
         <div class="center">
-            <span class="up">Courses for validation of skills </span><br>
+            <span class="up">Courses for validation of skillsz </span><br>
             <span class="down">And payment multiplication </span>
             <div class="clear"></div>
         </div>
@@ -280,17 +304,17 @@
                 <ul class="T">
                     <li>
                         <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                        <span id="test1">salguresdgfasdgsa  sdga sdsft</span>
                     </li>
     
                     <li>
                         <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                        <span id="test2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
                     </li>
     
                     <li>
                         <img src="http://img.acordtravel.md/get.php?h=300&w=300&type=crop&q=90&img=http%3A%2F%2Facordtravel.ro%2Fwp-content%2Fuploads%2F2018%2F01%2F26195984_123573001779841_6468424833791913803_n.jpg">
-                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
+                        <span id="test3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</span>
                     </li>
                 </ul>
     
