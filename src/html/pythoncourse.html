@@ -7,7 +7,7 @@
     <title>Python Course</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script language="javascript" type="text/javascript" src="../shared/header.html"></script> -->
-    <link rel="stylesheet" type="text/css" media="screen" href="/coursePageExample.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/pythonpage.css" />
     <link rel="stylesheet" type="text/css" href="/index_styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -17,7 +17,6 @@
 <body>
 
 
-    
         <div class="header">
                 <div class="center">
                     <h1>Skillz'
@@ -25,68 +24,27 @@
         
                     <ul class="menu">
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="/index.html">Home</a>
                         </li>
                         <li>
-                            <a href="courses">Courses</a>
+                            <a href="/courses">Courses</a>
                         </li>
                         <li>
-                            <a href="achievements">My Achivements</a>
+                            <a href="/achievements">My Achivements</a>
                         </li>
                         <li>
-                            <a href="myLibrary">My Library</a>
+                            <a href="/myLibrary">My Library</a>
                         </li>
+                        
                         <li>
-                            <div>
-                                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
-        
-                                <div id="id01" class="modal">
-        
-                                    <form class="modal-content animate" action="/signin" method="POST">
-                                        <div class="imgcontainer">
-                                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                            <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
-                                                alt="Avatar" class="avatar">
-                                        </div>
-        
-                                        <div class="container">
-                                            <label for="email">
-                                                <b>Username</b>
-                                            </label>
-                                            <input type="text" placeholder="Enter Username" name="email" required>
-        
-                                            <label for="password">
-                                                <b>Password</b>
-                                            </label>
-                                            <input type="password" placeholder="Enter Password" name="password" required>
-        
-                                            <button type="submit" class="button1">Login</button>
-                                            <label>
-                                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                                            </label>
-                                        </div>
-        
-                                        <div class="container">
-                                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                            <span class="psw">Forgot
-                                                <a href="#">password?</a>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="#" disabled>
                                 <i class="fa fa-gear fa-2x gear"></i>
                             </a>
                             <ul class="submenu">
                                 <li>
-                                    <a href="Profile">Profil</a>
+                                    <a href="/Profile">Profil</a>
                                 </li>
-                                <li>
-                                    <a href="register">Register</a>
-                                </li>
+                               
                                 <li>
                                     <a href="/sign-out">Logout</a>
                                 </li>
@@ -101,49 +59,10 @@
                             <div class="bar3"></div>
                         </div>
                         <div class="dropdown-content">
-                            <a href="index.html">Home</a>
-                            <a href="courses">Courses</a>
-                            <a href="achievements">My Achivements</a>
-                            <a href="myLibrary">My Library</a>
-                            <div>
-        
-                                <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
-        
-                                <div id="id02" class="modal">
-        
-                                    <form class="modal-content animate" action="/signin" method="POST">
-                                        <div class="imgcontainer">
-                                            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-                                            <img src="https://s.ftcdn.net/r/v2013/89bd5a4e8d76a90158624b004ca5f2709f6b3aff/pics/all/categories2013/10031/10034-160x160.jpg"
-                                                alt="Avatar" class="avatar">
-                                        </div>
-        
-                                        <div class="container">
-                                            <label for="email">
-                                                <b>Username</b>
-                                            </label>
-                                            <input type="text" placeholder="Enter Username" name="email" required>
-        
-                                            <label for="password">
-                                                <b>Password</b>
-                                            </label>
-                                            <input type="password" placeholder="Enter Password" name="password" required>
-        
-                                            <button type="submit" class="button1">Login</button>
-                                            <label>
-                                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                                            </label>
-                                        </div>
-        
-                                        <div class="container">
-                                            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
-                                            <span class="psw">Forgot
-                                                <a href="#">password?</a>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                            <a href="/index.html">Home</a>
+                            <a href="/courses">Courses</a>
+                            <a href="/achievements">My Achivements</a>
+                            <a href="/myLibrary">My Library</a>
                             <button class="accordion">Settings</button>
                             <div class="panel">
                                 <a href="Profile">Profil</a>
@@ -173,7 +92,7 @@
                 </div>
             </div>
         
-            <script type="text/javascript" src="/header.js"></script>
+            
 
     <!-- TOT CE AM AVUT PANA AICI REPREZINTA HEADERUL -->
 
@@ -184,6 +103,13 @@
 
 
     <div class="course-body">
+
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <img id="pythonLogo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/600px-Python.svg.png"
+        alt="Python Logo" height="20%" width="20%" >
+           
+        
        
         <div class="courseTitle"><h1>Python Course</h1> </div> 
         <!-- <img class="imagineRockstar" src="/POZA CU PITON"/> -->
@@ -228,7 +154,7 @@
 
         <br/>
         <br/>
-        <button class="launchTest">EXERCISES</button>
+        <a href="/python/exercises"><button class="buton-exercitiu">EXERCISES</button></a>
         <br/><br/><br/>
         <br/>
 
