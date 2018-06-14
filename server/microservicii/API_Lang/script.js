@@ -82,7 +82,7 @@ function makeLink(){
 
       var raspunsParagraf = document.getElementById('response');
 
-      const URL = 'http://localhost:9000/postAudio';
+      const URL = 'http://localhost:9010/postAudio';
       const TIME = 2000;
 
       try { // trying to instantiate a XMLHttpRequest object
@@ -131,14 +131,15 @@ nextExercise.onclick = e => {
   
     var exercitiuCurent = document.getElementById('currentExercise');
 
-    const URL = 'http://localhost:9000/getExercitiu';
-    const TIME = 4000;
+    const URL = 'http://localhost:9010/getExercitiu';
+    const TIME = 8000;
 
     try { // trying to instantiate a XMLHttpRequest object
     var xhr = new XMLHttpRequest();
     } catch (e) {
       exercitiuCurent.textContent = 'XMLHttpRequest cannot be instantiated: ' + e.message;
     } finally {
+      xhr.withCredentials = true;
       xhr.onreadystatechange = function () {
           if (xhr.readyState === 4) {   // data arrived
               if (xhr.status === 200) { // response Ok from Web service
