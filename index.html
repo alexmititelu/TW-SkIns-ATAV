@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="/index_styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script language="javascript" type="text/javascript" src="/indexJSF.js"></script>
     <script>
         function myFunction(x) {
             x.classList.toggle("change");
@@ -35,13 +36,13 @@
                 <li>
                     <a href="courses">Courses</a>
                 </li>
-                <li>
-                    <a href="achievements">My Achivements</a>
+                <li id = "ach">
+                    <a href="achievements.html">My Achivements</a>
                 </li>
-                <li>
+                <li id="lib">
                     <a href="myLibrary">My Library</a>
                 </li>
-                <li>
+                <li id="log">
                     <div>
                         <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">LOGIN</button>
 
@@ -56,9 +57,9 @@
 
                                 <div class="container">
                                     <label for="email">
-                                        <b>Username</b>
+                                        <b>Email</b>
                                     </label>
-                                    <input type="text" placeholder="Enter Username" name="email" required>
+                                    <input type="text" placeholder="Enter email" name="email" required>
 
                                     <label for="password">
                                         <b>Password</b>
@@ -86,10 +87,10 @@
                         <i class="fa fa-gear fa-2x gear"></i>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li id="profilus">
                             <a href="Profile">Profil</a>
                         </li>
-                        <li>
+                        <li id="registerus">
                             <a href="register">Register</a>
                         </li>
                         <li>
@@ -108,9 +109,9 @@
                 <div class="dropdown-content">
                     <a href="index.html">Home</a>
                     <a href="courses">Courses</a>
-                    <a href="achievements">My Achivements</a>
-                    <a href="myLibrary">My Library</a>
-                    <div>
+                    <a id="ach2" href="achievements">My Achivements</a>
+                    <a id="lib2" href="myLibrary">My Library</a>
+                    <div id="log2">
 
                         <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">LOGIN</button>
 
@@ -151,7 +152,7 @@
                     </div>
                     <button class="accordion">Settings</button>
                     <div class="panel">
-                        <a href="Profile">Profil</a>
+                        <a id="profilus2" href="Profile">Profil</a>
 
                         <a href="/sign-out">Logout</a>
                     </div>
@@ -193,12 +194,12 @@
                     if (this.status == 200) {
                         var jsonRes = JSON.parse(xhttp.responseText);
                         console.log(jsonRes[0].feedback);
-                        console.log(jsonRes[1].feedback);
-                        console.log(jsonRes[2].feedback)
+                        // console.log(jsonRes[1].feedback);
+                        // console.log(jsonRes[2].feedback)
 
-                        document.getElementById("test1").innerHTML = jsonRes[0].feedback;
-                        document.getElementById("test2").innerHTML = jsonRes[1].feedback;
-                        document.getElementById("test3").innerHTML = jsonRes[2].feedback;
+                        document.getElementById("test1").textContent = jsonRes[0].feedback.toString();
+                        // document.getElementById("test2").textContent = jsonRes[1].feedback;
+                        // document.getElementById("test3").textContent = jsonRes[2].feedback;
                     }
                 }
             };
@@ -242,57 +243,11 @@
         </div>
         <div class="Courses clear">
             <div class="Clistwraper clear">
-                <ul class="CList">
-                    <li>
-                        <a href="#">
-                            <p>Paid</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Free</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Guitar</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>First Aid</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Avionics</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Origami</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Wire Walking</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>Survival</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <p>...</p>
-                        </a>
-                    </li>
-                </ul>
+               
             </div>
             <div class="Searchw">
                 <form>
-                    <input type="text" name="search" placeholder="Search..">
+                    <input type="text" name="search" placeholder=" Search..">
                 </form>
             </div>
 
@@ -356,7 +311,7 @@
                 commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl, ac euismod magna
                 nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis urna.</p>
 
-            <img src="./src/assets/images/skinsgreen.png">
+            <img src="/Trainer.ir.jpg">
 
             <p>
                 <BR>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis lacus
@@ -394,7 +349,7 @@
                             urna.</span>
                     </li>
 
-                    <li>
+                    <!-- <li>
                         <img src="./src/assets/images/skinsgreen.png">
                         <span id="test2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt hendrerit metus, sed facilisis
                             lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl,
@@ -408,7 +363,7 @@
                             lacus commodo vitae. Duis tincidunt, ligula ac hendrerit dignissim, purus ipsum posuere nisl,
                             ac euismod magna nunc ornare neque. Donec augue nibh, condimentum non viverra ut, viverra quis
                             urna.</span>
-                    </li>
+                    </li> -->
                 </ul>
 
 

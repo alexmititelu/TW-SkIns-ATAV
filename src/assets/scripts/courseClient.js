@@ -36,7 +36,7 @@ function createHTML(title,details,courseId,path){
         Detalii curs : " + details + 
     "</div>\
     <div id = \"postId\" style = \"display : none\">" + courseId + "</div>" + 
-    "<form action = \"http://127.0.0.1:8050/subscribe\" style = \"display : none\" \
+    "<form action = \"https://localhost:8050/subscribe\" style = \"display : none\" \
     id = \"" + courseId + 
     "\"><input type = text name = \"cid\" value = \"" + courseId + "\"></input></form>"
     + "<button style = \"\" class = \"coursebutton\" onclick = \"subscribe(this)\" value = \"" + 
@@ -60,7 +60,7 @@ function sort(sortParam){
 
 function subscribe(caller){
     var xmlhttp = new XMLHttpRequest();
-    var url = "https://127.0.0.1:8050/subscribe";
+    var url = "https://localhost:8050/subscribe";
     var sendForm = document.getElementById(caller.value);
     //sendForm.submit();
     xmlhttp.withCredentials = true;

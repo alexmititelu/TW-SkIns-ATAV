@@ -83,8 +83,20 @@ const server = https.createServer(certOptions, (req, res) => {
 
     languageHandler(req,res,axios,fs);
     // addOwnCourseHandler(req, res, qs, cookies);
-
-
+    
+    if(req.method === 'GET' && req.url === '/Cookie')
+    {
+        var cookie = cookies.get('userToken');
+        console.log("----------------COOKIE-----------");
+        console.log(cookie);
+        if(cookie) {
+        res.writeHead(200, {
+            'Content-Type': 'text/html'
+        });
+        res.write(cookie);
+        res.end();
+        } 
+    }
 
 });
 

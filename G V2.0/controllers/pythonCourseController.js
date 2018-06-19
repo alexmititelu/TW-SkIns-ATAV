@@ -5,6 +5,7 @@ var randomstring = require("randomstring");
 var PythonShell = require('python-shell');
 var formidable = require('formidable');
 const MongoClient = require('mongodb').MongoClient;
+const fs = require('fs');
 
 var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
@@ -49,7 +50,7 @@ function renderScriptResultPage(objectResult, response) {
             '<h4>Expected Output: </h4>' +
             '<p>' + objectResult.expectedScriptResult + '</p>' +
             '<br>' +
-            '<h4>' + finalMessage + '</h4>' +
+            // '<h4>' + finalMessage + '</h4>' +
             '</body>'+
             '</html>'
             response.write(htmlResponse);
@@ -351,6 +352,13 @@ module.export = pythonCourseHandler = function(req, res, axios, fs)
 		}	
 	}
 
+
+
+	
+
+    if(req.url.startsWith('/python/') && req.method === 'GET' && foundPath===false ) {
+		renderNotFoundHTML(res);
+	}
 
 
 

@@ -38,6 +38,7 @@ module.exports = {
         if (req.method === "POST" && path.includes(".css") === false) {
             if (path === "/getFields") {
 
+                console.log("This is my route")
 
                 var body = "";
                 var jsonObj;
@@ -47,10 +48,10 @@ module.exports = {
                 });
                 req.on('end', function () {
                   
-                  jsonObj = JSON.parse(body);
-               
+                   jsonObj = JSON.parse(body);
+                    // console.log(jsonObj);
                 cookie = jsonObj.cookie;
-                })
+                
 
                 console.log(cookie)
                 
@@ -72,7 +73,7 @@ module.exports = {
                             // console.log(cookie)
                             var cookieData = jwt.verify(cookie,secret);
                             
-                            var o_id = new mongo.ObjectID(cookieData._id);
+                            var o_id = cookieData._id;
                             var queryFindConturi = { _id : o_id };
                             
                             dbConnection.collection("Conturi").findOne(queryFindConturi, function (err, result) {
@@ -81,29 +82,31 @@ module.exports = {
                                     throw err;
                                 }
 
-                                console.log("Din conturi: " + result.username + " " + result.password + " " + result.email);
+                                // console.log("Din conturi: " + result.username + " " + result.password + " " + result.email);
 
                                 //var queryFindUtilizatori =  { last_name: "Mititelu" }; //AICI VIN COOKIEURILE DE MAI JOS
                                 
                                 var queryFindUtilizatori = {cont_id : o_id};
+                                console.log("Query:");
                                 console.log(queryFindUtilizatori)
                                 dbConnection.collection("Utilizatori").findOne(queryFindUtilizatori, function (err, result2) {
 
                                         if (err) {
                                             throw err;
                                         }
-
+                                        console.log("Suntem in tabela de utilizatori?");
                                        // console.log("Din Utilizatori: " + result2.first_name + " " + result2.last_name + " " + result2.country + " " + result2.telefon);
 
                                         var objectGet = {};
                                         for (var key in result) {                  
                                             
                                             var value = result[key];
+                                            console.log(value);
                                             objectGet[key] = value;
                                         }
                                         
                                         for (var key in result2) {                 
-                                            
+                                            console.log(key);
                                             var value = result2[key];
                                             objectGet[key] = value;
                                         }
@@ -118,6 +121,7 @@ module.exports = {
                             });
 
                         });
+                        })
                         
             }
 
