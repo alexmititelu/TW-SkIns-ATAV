@@ -5,8 +5,10 @@ var nodemailer = require('nodemailer');
 const randomstring = require('randomstring');
 const MongoClient = require('mongodb').MongoClient;
 var validator = require('validator');
+var mySecret = "0ffiS416IDCkVfBV5L9U5W-lcc6IXtE7uaNo-Y1UJYCOEtMgv8DWLgHG_6AWJF1mQDVP74vL1VnoFKejwDz7bTQAOfaoTBtVBkvq03GfoIMZX6UvtL8m3N3bWk2g_J7wRbNHfS2AvLJmGlj7i7gdg8DX3uWP1BqX811x0O2dabX_1sR5hMKyxKLJtCCwAIqgkMXrmbj9b1RpB5utMdA9RaMP2Hp1tZWvnkX9beIPXjq8QM4rHQwsyi73zszwzXErQx6oAvq9NZxRTyJkd_mDUIp3rPNbvlXSB_W47jyHaQtPnkBq-HH2MKPC_kG02UJsQluHKH5GKzRsoPfAznAIMg";
 const secondValidator = require('validate-data');
-
+// const crypto = require('crypto');
+const {SHA256} = require('crypto-js');
 const registrationRules = {
     required: "email username password",
     email: "email",
@@ -251,7 +253,7 @@ module.exports = {
                             var dbConnection = connection.db("TW_PROJECT_SkIns");
                             var newAccount = {
                                 username: formData.username.toLowerCase(),
-                                password: formData.password,
+                                password: SHA256(formData.password + mySecret).toString(),
                                 email: formData.email.toLowerCase()
                             };
 

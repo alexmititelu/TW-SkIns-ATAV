@@ -1,10 +1,12 @@
 var qs = require('querystring');
 var Cookies = require('cookies');
 
-var pathElements = __dirname.split('\\');
+var pathResolver = require('path');
+
+var pathElements = __dirname.split(pathResolver.sep);
 pathElements.pop();
 pathElements.pop();
-var homePath = pathElements.join('\\');
+var homePath = pathElements.join(pathResolver.sep);
 
 function collectRequestData(request, callback) {
 	const FORM_URLENCODED = 'application/x-www-form-urlencoded';
@@ -29,14 +31,15 @@ module.export = profileHandler = function(req, res, axios, fs)
 
 	var cookies = new Cookies(req, res, null);
 	
+	
     if(req.method === 'GET' && req.url === '/getFields')
     {	
 		var cookie = cookies.get('userToken');
-		
-		
+		console.log("Getting FIelds ------")
+		console.log("Cookie: " + cookie);
         axios({
             method : 'post',
-			url : 'http://127.0.0.1:8055/getFields',
+			url : 'http://localhost:8055/getFields',
 			data: {
 				cookie: cookie
 			  }

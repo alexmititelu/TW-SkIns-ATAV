@@ -45,9 +45,9 @@ module.exports = {
 					// var queryFindTest =  { id_cont: "5b16b59065136feeb6a37b1a" }; //AICI VIN COOKIEURILE
                    
                     
-                    var cookieData = jwt.verify(cookie,secret);
+                    // var cookieData = jwt.verify(cookie,secret);
                     
-					var queryFindTest = {id_cont: new mongo.ObjectID(cookieData._id)};
+					// var queryFindTest = {id_cont: new mongo.ObjectID(cookieData._id)};
 					
 					dbConnection.collection("Testimoniale").find({}).limit(3).toArray( function (err, result) {
 

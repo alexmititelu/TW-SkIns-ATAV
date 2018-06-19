@@ -22,7 +22,7 @@ module.export = achievementHandler = function(req, res, axios, fs)
 {	
 	var cookies = new Cookies(req, res, null);
 	
-	if(req.url === '/src/html/achievements.html' && req.method === 'GET')
+	if(req.url === '/achievements.html' && req.method === 'GET')
 	{
 		var cookie = cookies.get('userToken');
 

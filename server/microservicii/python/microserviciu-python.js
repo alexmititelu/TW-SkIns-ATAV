@@ -58,7 +58,6 @@ function renderScriptResultPage(objectResult, response) {
             '<h4>Expected Output: </h4>' +
             '<p>' + objectResult.expectedScriptResult + '</p>' +
             '<br>' +
-            '<h4>' + finalMessage + '</h4>' +
             '</body>'+
             '</html>'
             response.write(htmlResponse);
